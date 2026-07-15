@@ -1,0 +1,1777 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="NEXO Art & Cultural Advisory — 国际文化艺术顾问 | 专注中国与拉丁美洲文化艺术交流">
+    <meta name="keywords" content="文化艺术顾问, 中拉文化交流, 艺术策展, 国际展览, 文化咨询, NEXO, China Latin America art culture advisory">
+    <title>NEXO — Art & Cultural Advisory | 国际文化艺术顾问</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Noto+Serif+SC:wght@300;400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        /* ===== CSS RESET & BASE ===== */
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --color-bg: #0E0E0E;
+            --color-bg-alt: #161616;
+            --color-bg-dark: #1A1A1A;
+            --color-text: #E8E4DE;
+            --color-text-light: #B8B0A6;
+            --color-text-muted: #8A8279;
+            --color-accent: #C9A96E;
+            --color-accent-dark: #A8884D;
+            --color-accent-light: #D4BC8E;
+            --color-accent-glow: rgba(201, 169, 110, 0.12);
+            --color-white: #F7F5F1;
+            --color-black: #0A0A0A;
+            --color-border: #2A2826;
+            --font-serif: 'Cormorant Garamond', 'Noto Serif SC', Georgia, serif;
+            --font-sans: 'Inter', -apple-system, 'Helvetica Neue', sans-serif;
+            --font-chinese: 'Noto Serif SC', 'Songti SC', Georgia, serif;
+            --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        html { scroll-behavior: smooth; font-size: 18px; }
+        
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.8;
+            font-weight: 300;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        ::selection {
+            background: var(--color-accent);
+            color: var(--color-white);
+        }
+
+        /* ===== LANGUAGE TOGGLE ===== */
+        body.lang-es .zh { display: none !important; }
+        body.lang-zh .es { display: none !important; }
+
+        /* ===== SCROLLBAR ===== */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: var(--color-bg); }
+        ::-webkit-scrollbar-thumb { background: var(--color-accent-light); border-radius: 3px; }
+
+        /* ===== NAVIGATION ===== */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(250, 250, 248, 0.92);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid transparent;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        nav.scrolled {
+            border-bottom-color: var(--color-border);
+            background: rgba(250, 250, 248, 0.97);
+        }
+
+        .nav-container {
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 0 80px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 88px;
+        }
+
+        .logo {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            font-weight: 400;
+            letter-spacing: 0.12em;
+            color: var(--color-text);
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo img {
+            height: 40px;
+            width: auto;
+        }
+
+        .logo:hover { opacity: 0.7; }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 36px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 36px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            font-family: var(--font-sans);
+            font-size: 0.72rem;
+            font-weight: 400;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--color-text-light);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            position: relative;
+            padding-bottom: 2px;
+        }
+
+        .nav-links a:hover { color: var(--color-text); }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--color-accent);
+            transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .nav-links a:hover::after { width: 100%; }
+
+        .lang-toggle {
+            font-family: var(--font-sans);
+            font-size: 0.7rem;
+            letter-spacing: 0.12em;
+            cursor: pointer;
+            padding: 8px 18px;
+            border: 1px solid var(--color-border);
+            background: transparent;
+            color: var(--color-text-light);
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .lang-toggle:hover {
+            border-color: var(--color-accent);
+            color: var(--color-accent);
+        }
+
+        /* ===== HAMBURGER ===== */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 8px;
+            z-index: 1001;
+        }
+
+        .menu-toggle span {
+            display: block;
+            width: 24px;
+            height: 1px;
+            background: var(--color-text);
+            transition: all 0.3s ease;
+        }
+
+        .menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+        .menu-toggle.active span:nth-child(2) { opacity: 0; }
+        .menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 160px 80px 120px;
+            position: relative;
+            overflow: hidden;
+            background: var(--color-bg);
+        }
+
+        .hero-bg-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            opacity: 0.06;
+            background-image: url('logo.png');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 60%;
+            pointer-events: none;
+        }
+
+        .hero-content {
+            max-width: 1000px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-eyebrow {
+            font-family: var(--font-sans);
+            font-size: 0.75rem;
+            letter-spacing: 0.4em;
+            text-transform: uppercase;
+            color: var(--color-accent);
+            margin-bottom: 50px;
+            font-weight: 400;
+        }
+
+        .hero-title {
+            font-family: var(--font-serif);
+            font-size: clamp(3.5rem, 7vw, 6.5rem);
+            font-weight: 300;
+            line-height: 1.05;
+            margin-bottom: 20px;
+            color: var(--color-text);
+            letter-spacing: 0.02em;
+        }
+
+        .hero-title .cn { 
+            font-family: var(--font-chinese); 
+            font-weight: 300;
+            letter-spacing: 0.05em;
+        }
+
+        .hero-title-en {
+            font-family: var(--font-serif);
+            font-size: clamp(1.4rem, 2.5vw, 2rem);
+            font-weight: 300;
+            font-style: italic;
+            color: var(--color-text-muted);
+            margin-bottom: 50px;
+            letter-spacing: 0.03em;
+        }
+
+        .hero-desc {
+            font-size: 1.05rem;
+            line-height: 2.1;
+            color: var(--color-text-light);
+            max-width: 750px;
+            margin: 0 auto 60px;
+            font-weight: 300;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 22px 56px;
+            font-family: var(--font-sans);
+            font-size: 0.72rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--color-text);
+            color: var(--color-white);
+        }
+
+        .btn-primary:hover {
+            background: var(--color-accent);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--color-text);
+            border: 1px solid var(--color-border);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--color-text);
+            transform: translateY(-2px);
+        }
+
+        .hero-scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .hero-scroll-indicator span {
+            font-size: 0.6rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--color-text-muted);
+        }
+
+        .scroll-line {
+            width: 1px;
+            height: 40px;
+            background: linear-gradient(to bottom, var(--color-accent), transparent);
+            animation: scrollLine 2s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(-8px); }
+        }
+
+        @keyframes scrollLine {
+            0% { opacity: 0; transform: scaleY(0); transform-origin: top; }
+            50% { opacity: 1; transform: scaleY(1); transform-origin: top; }
+            100% { opacity: 0; transform: scaleY(1); transform-origin: bottom; }
+        }
+
+        /* ===== SECTION COMMON ===== */
+        section {
+            padding: 160px 80px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 120px;
+        }
+
+        .section-label {
+            font-family: var(--font-sans);
+            font-size: 0.7rem;
+            letter-spacing: 0.4em;
+            text-transform: uppercase;
+            color: var(--color-accent);
+            margin-bottom: 28px;
+            font-weight: 400;
+        }
+
+        .section-title {
+            font-family: var(--font-serif);
+            font-size: clamp(2.4rem, 4vw, 3.8rem);
+            font-weight: 300;
+            line-height: 1.25;
+            margin-bottom: 18px;
+            letter-spacing: 0.01em;
+        }
+
+        .section-title-cn {
+            font-family: var(--font-chinese);
+            font-size: clamp(1.4rem, 2.5vw, 2rem);
+            font-weight: 300;
+            color: var(--color-text-light);
+            margin-bottom: 30px;
+        }
+
+        .section-divider {
+            width: 50px;
+            height: 1px;
+            background: var(--color-accent);
+            margin: 0 auto;
+        }
+
+        /* ===== INTRO / PHILOSOPHY ===== */
+        .intro {
+            background: var(--color-white);
+        }
+
+        .intro-content {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .intro-quote {
+            font-family: var(--font-serif);
+            font-size: clamp(1.8rem, 3vw, 2.8rem);
+            font-weight: 300;
+            line-height: 1.5;
+            color: var(--color-text);
+            margin-bottom: 24px;
+            font-style: italic;
+        }
+
+        .intro-quote-cn {
+            font-family: var(--font-chinese);
+            font-size: clamp(1.2rem, 2vw, 1.7rem);
+            font-weight: 300;
+            line-height: 1.8;
+            color: var(--color-text-light);
+            margin-bottom: 48px;
+        }
+
+        .intro-text {
+            font-size: 1rem;
+            line-height: 2.1;
+            color: var(--color-text-light);
+            max-width: 780px;
+            margin: 0 auto;
+        }
+
+        /* ===== SERVICES ===== */
+        .services {
+            background: var(--color-bg);
+        }
+
+        .services-list {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .service-item {
+            display: grid;
+            grid-template-columns: 80px 1fr 1fr;
+            gap: 80px;
+            padding: 80px 0;
+            border-bottom: 1px solid var(--color-border);
+            align-items: start;
+            transition: all 0.4s ease;
+        }
+
+        .service-item:first-child {
+            border-top: 1px solid var(--color-border);
+        }
+
+        .service-item:hover {
+            padding-left: 24px;
+        }
+
+        .service-number {
+            font-family: var(--font-serif);
+            font-size: 3.5rem;
+            color: var(--color-accent);
+            opacity: 0.2;
+            font-weight: 300;
+            line-height: 1;
+            transition: opacity 0.4s ease;
+        }
+
+        .service-item:hover .service-number {
+            opacity: 0.4;
+        }
+
+        .service-info h3 {
+            font-family: var(--font-serif);
+            font-size: 1.8rem;
+            font-weight: 400;
+            margin-bottom: 6px;
+            line-height: 1.3;
+        }
+
+        .service-info h3 .cn {
+            font-family: var(--font-chinese);
+            font-size: 1.3rem;
+            font-weight: 300;
+            color: var(--color-text-light);
+            display: block;
+            margin-top: 6px;
+        }
+
+        .service-desc {
+            font-size: 0.95rem;
+            line-height: 2;
+            color: var(--color-text-light);
+            margin-top: 20px;
+        }
+
+        .service-details {
+            padding-top: 8px;
+        }
+
+        .service-details ul {
+            list-style: none;
+        }
+
+        .service-details li {
+            font-size: 0.85rem;
+            color: var(--color-text-light);
+            padding: 6px 0;
+            padding-left: 16px;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        .service-details li::before {
+            content: '—';
+            position: absolute;
+            left: 0;
+            color: var(--color-accent);
+            font-size: 0.7rem;
+        }
+
+        /* ===== STRATEGY HIGHLIGHT ===== */
+        .strategy {
+            background: var(--color-text);
+            color: var(--color-white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .strategy::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(139,115,85,0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .strategy .section-label { color: var(--color-accent-light); }
+        .strategy .section-title { color: var(--color-white); }
+        .strategy .section-title-cn { color: rgba(255,255,255,0.5); }
+
+        .strategy-content {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .strategy-text {
+            font-size: 1.05rem;
+            line-height: 2.1;
+            color: rgba(255,255,255,0.65);
+            max-width: 720px;
+            margin: 0 auto 60px;
+        }
+
+        .strategy-clients {
+            display: flex;
+            justify-content: center;
+            gap: 56px;
+            flex-wrap: wrap;
+            margin-top: 60px;
+        }
+
+        .strategy-client {
+            font-size: 0.75rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.4);
+            padding: 14px 28px;
+            border: 1px solid rgba(255,255,255,0.12);
+            transition: all 0.3s ease;
+        }
+
+        .strategy-client:hover {
+            border-color: var(--color-accent-light);
+            color: var(--color-white);
+        }
+
+        /* ===== CONSULTANTS ===== */
+        .consultants {
+            background: var(--color-bg-alt);
+        }
+
+        .consultants-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 60px;
+        }
+
+        .consultant-card {
+            text-align: center;
+            padding: 40px 30px;
+            transition: transform 0.4s ease;
+        }
+
+        .consultant-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .consultant-photo {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: var(--color-bg-dark);
+            margin: 0 auto 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-serif);
+            font-size: 0.9rem;
+            color: var(--color-text-muted);
+            letter-spacing: 0.05em;
+            border: 3px solid var(--color-border);
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+            transition: var(--transition-smooth);
+        }
+
+        .consultant-card:hover .consultant-photo {
+            border-color: var(--color-accent);
+            box-shadow: 0 8px 40px var(--color-accent-glow);
+        }
+
+        .consultant-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .consultant-card h3 {
+            font-family: var(--font-serif);
+            font-size: 1.3rem;
+            font-weight: 400;
+            margin-bottom: 6px;
+        }
+
+        .consultant-role {
+            font-size: 0.72rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--color-accent);
+            margin-bottom: 16px;
+            font-weight: 400;
+        }
+
+        .consultant-bio {
+            font-size: 0.88rem;
+            line-height: 1.9;
+            color: var(--color-text-light);
+            max-width: 320px;
+            margin: 0 auto;
+        }
+
+        /* ===== CONTACT ===== */
+        .contact {
+            background: var(--color-bg-alt);
+        }
+
+        .contact-wrapper {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 80px;
+        }
+
+        .contact-info h3 {
+            font-family: var(--font-serif);
+            font-size: 1.8rem;
+            font-weight: 300;
+            margin-bottom: 40px;
+            line-height: 1.4;
+        }
+
+        .contact-channels {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .contact-channel {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            padding: 20px;
+            background: var(--color-white);
+            border: 1px solid var(--color-border);
+            transition: all 0.3s ease;
+        }
+
+        .contact-channel:hover {
+            border-color: var(--color-accent);
+            transform: translateX(5px);
+        }
+
+        .channel-icon {
+            font-size: 1.3rem;
+            line-height: 1;
+            padding-top: 2px;
+        }
+
+        .channel-info h4 {
+            font-family: var(--font-sans);
+            font-size: 0.7rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--color-text-muted);
+            margin-bottom: 6px;
+            font-weight: 400;
+        }
+
+        .channel-info p {
+            font-size: 0.9rem;
+            color: var(--color-text);
+            line-height: 1.6;
+        }
+
+        .channel-info a {
+            color: var(--color-accent);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .channel-info a:hover {
+            color: var(--color-accent-dark);
+        }
+
+        /* WeChat Copy Button */
+        .wechat-copy-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            margin-left: 8px;
+            padding: 4px 8px;
+            background: transparent;
+            border: 1px solid var(--color-border);
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 0.7rem;
+            color: var(--color-text-muted);
+        }
+        .wechat-copy-btn:hover {
+            border-color: var(--color-accent);
+            color: var(--color-accent);
+        }
+        .wechat-copy-btn:active {
+            transform: scale(0.95);
+        }
+        .wechat-copy-icon {
+            width: 12px;
+            height: 12px;
+        }
+
+        /* ===== FORM ===== */
+        .inquiry-form {
+            background: var(--color-white);
+            padding: 50px;
+            border: 1px solid var(--color-border);
+        }
+
+        .inquiry-form h3 {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            font-weight: 300;
+            margin-bottom: 8px;
+        }
+
+        .inquiry-form .form-subtitle {
+            font-size: 0.85rem;
+            color: var(--color-text-muted);
+            margin-bottom: 35px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .form-row.full {
+            grid-template-columns: 1fr;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            font-size: 0.68rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--color-text-muted);
+            margin-bottom: 10px;
+            font-weight: 400;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            padding: 14px 16px;
+            border: 1px solid var(--color-border);
+            background: var(--color-bg);
+            font-family: var(--font-sans);
+            font-size: 0.9rem;
+            color: var(--color-text);
+            transition: all 0.3s ease;
+            outline: none;
+            -webkit-appearance: none;
+            border-radius: 0;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            border-color: var(--color-accent);
+            background: var(--color-white);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 140px;
+            line-height: 1.7;
+        }
+
+        .form-submit {
+            margin-top: 30px;
+            text-align: right;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: var(--color-black);
+            color: rgba(255,255,255,0.5);
+            padding: 60px 80px;
+        }
+
+        .footer-inner {
+            max-width: 1440px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .footer-brand {
+            font-family: var(--font-serif);
+            font-size: 1.2rem;
+            color: var(--color-white);
+            letter-spacing: 0.05em;
+        }
+
+        .footer-nav {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .footer-nav a {
+            font-size: 0.7rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.4);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-nav a:hover { color: var(--color-white); }
+
+        .footer-copy {
+            font-size: 0.75rem;
+            color: rgba(255,255,255,0.3);
+            width: 100%;
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.08);
+        }
+
+        /* ===== ANIMATIONS ===== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.9s cubic-bezier(0.4, 0, 0.2, 1), 
+                        transform 0.9s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-delay-1 { transition-delay: 0.1s; }
+        .reveal-delay-2 { transition-delay: 0.2s; }
+        .reveal-delay-3 { transition-delay: 0.3s; }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 1200px) {
+            .service-item {
+                grid-template-columns: 60px 1fr;
+                gap: 40px;
+            }
+            .service-details {
+                grid-column: 1 / -1;
+                padding-left: 100px;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            section { padding: 100px 50px; }
+            .nav-container { padding: 0 40px; }
+            
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 50px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            section { padding: 80px 30px; }
+            .nav-container { padding: 0 24px; height: 72px; }
+            
+            .menu-toggle { display: flex; }
+            
+            .nav-links {
+                display: none;
+                position: fixed;
+                top: 72px;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: var(--color-bg);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 30px;
+                z-index: 999;
+            }
+            
+            .nav-links.active { display: flex; }
+            .nav-links a { font-size: 0.85rem; }
+            
+            .hero { padding: 120px 30px 80px; }
+            
+            .service-item {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                padding: 40px 0;
+            }
+            
+            .service-details { padding-left: 0 !important; }
+            .service-item:hover { padding-left: 0; }
+            
+            .consultants-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .form-row { grid-template-columns: 1fr; }
+            
+            .inquiry-form { padding: 30px 24px; }
+            
+            .hero-actions { flex-direction: column; align-items: center; }
+            
+            .btn { width: 100%; max-width: 280px; justify-content: center; }
+            
+            .strategy-clients { gap: 16px; }
+            .strategy-client { font-size: 0.65rem; padding: 10px 16px; }
+            
+            footer { padding: 40px 24px; }
+            .footer-inner { flex-direction: column; text-align: center; }
+            .footer-nav { flex-wrap: wrap; justify-content: center; }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title { font-size: 2.2rem; }
+            .section-title { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body class="lang-zh">
+
+<!-- ===== NAVIGATION ===== -->
+<nav id="navbar">
+    <div class="nav-container">
+        <a href="#" class="logo">
+            <img src="data:image/png;base64,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" alt="NEXO" style="height: 40px; width: auto;">
+        </a>
+        <div class="nav-right">
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#philosophy"><span class="zh">理念</span><span class="es">Filosofía</span></a></li>
+                <li><a href="#services"><span class="zh">服务</span><span class="es">Servicios</span></a></li>
+                <li><a href="#strategy"><span class="zh">战略咨询</span><span class="es">Estrategia</span></a></li>
+                <li><a href="#consultants"><span class="zh">顾问</span><span class="es">Equipo</span></a></li>
+                <li><a href="#contact"><span class="zh">联系</span><span class="es">Contacto</span></a></li>
+                <li>
+                    <button class="lang-toggle" onclick="toggleLang()">
+                        <span class="zh">ES</span>
+                        <span class="es">ZH</span>
+                    </button>
+                </li>
+            </ul>
+            <button class="menu-toggle" id="menuToggle" onclick="toggleMenu()">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+    <div class="hero-bg-pattern"></div>
+    <div class="hero-content">
+        <p class="hero-eyebrow reveal">
+            <span class="zh">国际文化艺术顾问</span>
+            <span class="es">Consultoría Internacional de Cultura y Arte</span>
+        </p>
+        <h1 class="hero-title reveal reveal-delay-1">
+            <span class="cn">NEXO</span>
+        </h1>
+        <p class="hero-title-en reveal reveal-delay-2">
+            Art & Cultural Advisory
+        </p>
+        <p class="hero-desc reveal reveal-delay-2">
+            <span class="zh">专注中国与拉丁美洲、西班牙及意大利之间的文化艺术交流。我们为艺术家、文化机构和政府提供策展、国际展览策划、文化交流项目及文化战略咨询等专业服务。</span>
+            <span class="es">Especializados en el intercambio cultural y artístico entre China y Latinoamérica, España e Italia. Ofrecemos servicios profesionales de curaduría, planificación de exposiciones internacionales, proyectos de intercambio cultural y consultoría estratégica.</span>
+        </p>
+        <div class="hero-actions reveal reveal-delay-3">
+            <a href="#contact" class="btn btn-primary">
+                <span class="zh">合作咨询</span>
+                <span class="es">Consulta</span>
+            </a>
+            <a href="#services" class="btn btn-outline">
+                <span class="zh">服务一览</span>
+                <span class="es">Servicios</span>
+            </a>
+        </div>
+    </div>
+    <div class="hero-scroll-indicator">
+        <span>
+            <span class="zh">向下</span>
+            <span class="es">Descubrir</span>
+        </span>
+        <div class="scroll-line"></div>
+    </div>
+</section>
+
+<!-- ===== PHILOSOPHY ===== -->
+<section class="intro" id="philosophy">
+    <div class="intro-content">
+        <div class="section-header reveal">
+            <p class="section-label">
+                <span class="zh">关于我们</span>
+                <span class="es">Sobre Nosotros</span>
+            </p>
+        </div>
+        <blockquote class="intro-quote reveal reveal-delay-1">
+            <span class="es">"El arte es el puente entre las culturas."</span>
+        </blockquote>
+        <p class="intro-quote-cn reveal reveal-delay-1">
+            <span class="zh">艺术，是文明之间的桥梁。</span>
+        </p>
+        <p class="intro-text reveal reveal-delay-2">
+            <span class="zh">NEXO Art & Cultural Advisory（NEXO 文化艺术顾问）是一家专注于中国与拉丁美洲文化艺术交流的国际艺术顾问机构。我们深耕中拉文化语境，连接两大洲的艺术生态，为艺术家、文化机构、政府和企业提供从策展策划到项目执行的全流程专业服务。我们的使命是搭建一座跨越太平洋的文化桥梁，让艺术成为对话的语言，让文化成为理解的纽带。</span>
+            <span class="es">NEXO Art & Cultural Advisory es una institución de consultoría artística internacional especializada en el intercambio cultural entre China y Latinoamérica. Profundizamos en los contextos culturales de ambas regiones, conectando ecosistemas artísticos del otro lado del Pacífico, y ofrecemos servicios profesionales integrales —desde la curaduría hasta la ejecución de proyectos— para artistas, instituciones culturales, gobiernos y empresas. Nuestra misión es construir un puente cultural que trascienda el Pacífico, donde el arte sea lenguaje de diálogo y la cultura, vínculo de comprensión.</span>
+        </p>
+    </div>
+</section>
+
+<!-- ===== SERVICES ===== -->
+<section class="services" id="services">
+    <div class="section-header reveal">
+        <p class="section-label">
+            <span class="zh">专业服务</span>
+            <span class="es">Servicios Profesionales</span>
+        </p>
+        <h2 class="section-title reveal reveal-delay-1">
+            <span class="zh">八大核心服务领域</span>
+            <span class="es">Ocho Áreas de Servicio Central</span>
+        </h2>
+        <div class="section-divider reveal reveal-delay-2"></div>
+    </div>
+
+    <div class="services-list">
+        <!-- 01 Exhibition Planning -->
+        <div class="service-item reveal">
+            <div class="service-number">01</div>
+            <div class="service-info">
+                <h3>
+                    <span class="es">Planificación de Exposiciones</span>
+                    <span class="cn">国际展览策划</span>
+                </h3>
+                <p class="service-desc">
+                    <span class="zh">为艺术家和文化机构策划和执行海外展览，涵盖从概念构思到开幕落成的全流程服务。</span>
+                    <span class="es">Planificación y ejecución integral de exposiciones internacionales para artistas e instituciones culturales, cubriendo todo el proceso desde la concepción hasta la inauguración.</span>
+                </p>
+            </div>
+            <div class="service-details">
+                <ul>
+                    <li>
+                        <span class="zh">海外个展策划与执行</span>
+                        <span class="es">Exposiciones individuales en el extranjero</span>
+                    </li>
+                    <li>
+                        <span class="zh">群展/联展策划</span>
+                        <span class="es">Exposiciones colectivas y colaborativas</span>
+                    </li>
+                    <li>
+                        <span class="zh">双年展/三年展申请与参与</span>
+                        <span class="es">Postulación y participación en bienales y trienales</span>
+                    </li>
+                    <li>
+                        <span class="zh">美术馆/博物馆合作</span>
+                        <span class="es">Colaboración con museos y galerías de arte</span>
+                    </li>
+                    <li>
+                        <span class="zh">商业空间策展</span>
+                        <span class="es">Curaduría para espacios comerciales</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 02 Curatorial Services -->
+        <div class="service-item reveal">
+            <div class="service-number">02</div>
+            <div class="service-info">
+                <h3>
+                    <span class="es">Servicios Curatoriales</span>
+                    <span class="cn">策展服务</span>
+                </h3>
+                <p class="service-desc">
+                    <span class="zh">提供学术性策展服务，包括展览概念设计、展陈规划、学术研究和文本撰写。</span>
+                    <span class="es">Servicios curatoriales académicos que incluyen diseño conceptual de exposiciones, planificación espacial, investigación académica y redacción de textos.</span>
+                </p>
+            </div>
+            <div class="service-details">
+                <ul>
+                    <li>
+                        <span class="zh">学术研究型策展</span>
+                        <span class="es">Curaduría académica e investigativa</span>
+                    </li>
+                    <li>
+                        <span class="zh">展览概念与主题设计</span>
+                        <span class="es">Diseño conceptual y temático de exposiciones</span>
+                    </li>
+                    <li>
+                        <span class="zh">展陈空间设计指导</span>
+                        <span class="es">Asesoramiento en diseño espacial expositivo</span>
+                    </li>
+                    <li>
+                        <span class="zh">展览画册与出版</span>
+                        <span class="es">Catálogos y publicaciones expositivas</span>
+                    </li>
+                    <li>
+                        <span class="zh">艺术家档案与介绍</span>
+                        <span class="es">Archivos y perfiles de artistas</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 03 Cultural Exchange -->
+        <div class="service-item reveal">
+            <div class="service-number">03</div>
+            <div class="service-info">
+                <h3>
+                    <span class="es">Intercambio Cultural</span>
+                    <span class="cn">文化交流</span>
+                </h3>
+                <p class="service-desc">
+                    <span class="zh">组织高层次文化交流活动，促进中拉艺术界、学术界和教育界的深度对话。</span>
+                    <span class="es">Organización de actividades de alto nivel para fomentar el diálogo profundo entre los ámbitos artístico, académico y educativo de China y Latinoamérica.</span>
+                </p>
+            </div>
+            <div class="service-details">
+                <ul>
+                    <li>
+                        <span class="zh">艺术论坛与文化峰会</span>
+                        <span class="es">Foros artísticos y cumbres culturales</span>
+                    </li>
+                    <li>
+                        <span class="zh">学术讲座与研讨会</span>
+                        <span class="es">Conferencias académicas y seminarios</span>
+                    </li>
+                    <li>
+                        <span class="zh">艺术家驻留计划</span>
+                        <span class="es">Programas de residencia artística</span>
+                    </li>
+                    <li>
+                        <span class="zh">国际交流访问行程</span>
+                        <span class="es">Itinerarios de visita e intercambio internacional</span>
+                    </li>
+                    <li>
+                        <span class="zh">高校合作与学术交流</span>
+                        <span class="es">Cooperación universitaria e intercambio académico</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 04 Institutional Cooperation -->
+        <div class="service-item reveal">
+            <div class="service-number">04</div>
+            <div class="service-info">
+                <h3>
+                    <span class="es">Cooperación Institucional</span>
+                    <span class="cn">机构合作</span>
+                </h3>
+                <p class="service-desc">
+                    <span class="zh">为中拉两地的文化机构搭建合作桥梁，促成博物馆、美术馆、基金会和使馆间的伙伴关系。</span>
+                    <span class="es">Construimos puentes de cooperación entre instituciones culturales de China y Latinoamérica, facilitando alianzas entre museos, galerías, fundaciones y misiones diplomáticas.</span>
+                </p>
+            </div>
+            <div class="service-details">
+                <ul>
+                    <li>
+                        <span class="zh">博物馆/美术馆合作对接</span>
+                        <span class="es">Conexión con museos y galerías de arte</span>
+                    </li>
+                    <li>
+                        <span class="zh">文化基金会合作</span>
+                        <span class="es">Cooperación con fundaciones culturales</span>
+                    </li>
+                    <li>
+                        <span class="zh">大学文化项目合作</span>
+                        <span class="es">Cooperación en proyectos culturales universitarios</span>
+                    </li>
+                    <li>
+                        <span class="zh">驻外使馆文化处协作</span>
+                        <span class="es">Colaboración con departamentos culturales de embajadas</span>
+                    </li>
+                    <li>
+                        <span class="zh">国际组织项目对接</span>
+                        <span class="es">Conexión con organizaciones internacionales</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 05 International Promotion -->
+        <div class="service-item reveal">
+            <div class="service-number">05</div>
+            <div class="service-info">
+                <h3>
+                    <span class="es">Promoción Internacional</span>
+                    <span class="cn">国际推广</span>
+                </h3>
+                <p class="service-desc">
+                    <span class="zh">为艺术家和文化项目提供全方位的海外宣传推广，包括媒体关系、内容创作和数字传播。</span>
+                    <span class="es">Promoción internacional integral para artistas y proyectos culturales, incluyendo relaciones mediáticas, creación de contenido y difusión digital.</span>
+                </p>
+            </div>
+            <div class="service-details">
+                <ul>
+                    <li>
+                        <span class="zh">海外媒体宣传与公关</span>
+                        <span class="es">Prensa y relaciones públicas internacionales</span>
+                    </li>
+                    <li>
+                        <span class="zh">新闻发布与媒体采访</span>
+                        <span class="es">Comunicados de prensa y entrevistas</span>
+                    </li>
+                    <li>
+                        <span class="zh">社交媒体运营与管理</span>
+                        <span class="es">Gestión y operación de redes sociales</span>
+                    </li>
+                    <li>
+                        <span class="zh">多语种资料制作（中/英/西）</span>
+                        <span class="es">Producción de materiales multilingües</span>
+                    </li>
+                    <li>
+                        <span class="zh">艺术家国际形象塑造</span>
+                        <span class="es">Construcción de imagen internacional del artista</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 06 Collection Consulting -->
+        <div class="service-item reveal">
+            <div class="service-number">06</div>
+            <div class="service-info">
+                <h3>
+                    <span class="es">Consultoría de Colecciones</span>
+                    <span class="cn">收藏咨询</span>
+                </h3>
+                <p class="service-desc">
+                    <span class="zh">为收藏家和文化机构提供艺术品收藏策略咨询，包括市场分析、作品甄选和收藏规划。</span>
+                    <span class="es">Asesoramiento estratégico de coleccionismo de arte para coleccionistas e instituciones culturales, incluyendo análisis de mercado, selección de obras y planificación de colecciones.</span>
+                </p>
+            </div>
+            <div class="service-details">
+                <ul>
+                    <li>
+                        <span class="zh">收藏市场分析与趋势</span>
+                        <span class="es">Análisis de mercado y tendencias</span>
+                    </li>
+                    <li>
+                        <span class="zh">艺术品价值评估与定位</span>
+                        <span class="es">Evaluación y posicionamiento de obras</span>
+                    </li>
+                    <li>
+                        <span class="zh">收藏家资源对接</span>
+                        <span class="es">Conexión con coleccionistas</span>
+                    </li>
+                    <li>
+                        <span class="zh">私人/机构艺术顾问</span>
+                        <span class="es">Consultoría artística privada e institucional</span>
+                    </li>
+                    <li>
+                        <span class="zh">收藏体系建设</span>
+                        <span class="es">Desarrollo de sistemas de colección</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 07 Art Market Entry -->
+        <div class="service-item reveal">
+            <div class="service-number">07</div>
+            <div class="service-info">
+                <h3>
+                    <span class="es">Entrada al Mercado Internacional</span>
+                    <span class="cn">海外市场进入</span>
+                </h3>
+                <p class="service-desc">
+                    <span class="zh">帮助中国艺术家系统性地进入拉美和国际艺术市场，建立可持续的职业发展路径。</span>
+                    <span class="es">Ayudamos a artistas chinos a ingresar sistemáticamente al mercado artístico latinoamericano e internacional, construyendo trayectorias profesionales sostenibles.</span>
+                </p>
+            </div>
+            <div class="service-details">
+                <ul>
+                    <li>
+                        <span class="zh">海外艺术履历建设</span>
+                        <span class="es">Construcción de trayectoria artística internacional</span>
+                    </li>
+                    <li>
+                        <span class="zh">海外代理与画廊对接</span>
+                        <span class="es">Representación y conexión con galerías</span>
+                    </li>
+                    <li>
+                        <span class="zh">市场定位与策略制定</span>
+                        <span class="es">Posicionamiento y estrategia de mercado</span>
+                    </li>
+                    <li>
+                        <span class="zh">艺术机构推荐与引荐</span>
+                        <span class="es">Recomendación a instituciones artísticas</span>
+                    </li>
+                    <li>
+                        <span class="zh">作品定价与销售策略</span>
+                        <span class="es">Estrategia de precios y ventas</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 08 Project Management -->
+        <div class="service-item reveal">
+            <div class="service-number">08</div>
+            <div class="service-info">
+                <h3>
+                    <span class="es">Gestión de Proyectos</span>
+                    <span class="cn">项目执行管理</span>
+                </h3>
+                <p class="service-desc">
+                    <span class="zh">提供展览和文化项目的一站式落地执行服务，确保每一个环节精准到位。</span>
+                    <span class="es">Servicios integrales de ejecución para exposiciones y proyectos culturales, asegurando la precisión en cada etapa del proceso.</span>
+                </p>
+            </div>
+            <div class="service-details">
+                <ul>
+                    <li>
+                        <span class="zh">展览场地协调与预订</span>
+                        <span class="es">Coordinación y reserva de espacios</span>
+                    </li>
+                    <li>
+                        <span class="zh">艺术品国际运输与物流</span>
+                        <span class="es">Transporte internacional y logística de obras</span>
+                    </li>
+                    <li>
+                        <span class="zh">海关清关与保险</span>
+                        <span class="es">Desaduanaje y seguros</span>
+                    </li>
+                    <li>
+                        <span class="zh">布展与开幕式策划</span>
+                        <span class="es">Montaje y planificación de inauguraciones</span>
+                    </li>
+                    <li>
+                        <span class="zh">嘉宾邀请与接待</span>
+                        <span class="es">Invitación y recepción de invitados</span>
+                    </li>
+                    <li>
+                        <span class="zh">现场翻译与会务</span>
+                        <span class="es">Traducción e interpretación in situ</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== STRATEGY CONSULTING (FLAGSHIP) ===== -->
+<section class="strategy" id="strategy">
+    <div class="strategy-content">
+        <div class="section-header reveal">
+            <p class="section-label">
+                <span class="zh">核心优势服务</span>
+                <span class="es">Servicio Destacado</span>
+            </p>
+            <h2 class="section-title reveal reveal-delay-1">
+                <span class="es">Consultoría Estratégica Cultural Internacional</span>
+                <span class="cn">国际文化战略咨询</span>
+            </h2>
+            <div class="section-divider reveal reveal-delay-2"></div>
+        </div>
+        <p class="strategy-text reveal reveal-delay-2">
+            <span class="zh">这是我们最具差异化的核心服务。我们为地方政府、文化机构和大型企业量身定制跨国文化项目方案——从"中国文化周"到大型当代艺术展，从书法摄影展到公共艺术项目。这类项目预算规模远超单个艺术家展览，是国际文化咨询机构的核心业务领域。</span>
+            <span class="es">Este es nuestro servicio más distintivo. Diseñamos proyectos culturales transnacionales a medida para gobiernos locales, instituciones culturales y grandes empresas —desde "Semanas Culturales Chinas" hasta grandes exposiciones de arte contemporáneo, desde exhibiciones de caligrafía y fotografía hasta proyectos de arte público. Estos proyectos tienen presupuestos significativamente mayores que las exposiciones individuales de artistas y representan el núcleo del negocio de consultoría cultural internacional.</span>
+        </p>
+        <div class="strategy-clients reveal reveal-delay-3">
+            <div class="strategy-client">
+                <span class="zh">地方政府</span>
+                <span class="es">Gobiernos Locales</span>
+            </div>
+            <div class="strategy-client">
+                <span class="zh">美术馆/博物馆</span>
+                <span class="es">Museos y Galerías</span>
+            </div>
+            <div class="strategy-client">
+                <span class="zh">文化机构</span>
+                <span class="es">Instituciones Culturales</span>
+            </div>
+            <div class="strategy-client">
+                <span class="zh">大型企业</span>
+                <span class="es">Grandes Empresas</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== CONSULTANTS ===== -->
+<section class="consultants" id="consultants">
+    <div class="section-header reveal">
+        <p class="section-label">
+            <span class="zh">顾问团队</span>
+            <span class="es">Equipo de Consultores</span>
+        </p>
+        <h2 class="section-title reveal reveal-delay-1">
+            <span class="zh">专业顾问，深厚积淀</span>
+            <span class="es">Consultores Expertos con Trayectoria</span>
+        </h2>
+        <div class="section-divider reveal reveal-delay-2"></div>
+    </div>
+
+    <div class="consultants-grid">
+        <!-- 顾问 Isabel Liang / 梁东亚 -->
+        <div class="consultant-card reveal">
+            <div class="consultant-photo">
+                <img src="upload_fdaa57f6-e17b-46a2-8070-56ef8b3dd5d0.jpg" alt="Isabel Liang / 梁东亚">
+            </div>
+            <h3>Isabel Liang / 梁东亚</h3>
+            <p class="consultant-role">
+                <span class="zh">联合创始人 · 创意文化组织管理</span>
+                <span class="es">Cofundadora · Gestión Cultural Creativa</span>
+            </p>
+            <p class="consultant-bio">
+                <span class="zh">国际媒体人、文化管理专业人士，长期工作和生活于阿根廷，专注于中国与拉丁美洲文化艺术交流及国际传播。拥有布宜诺斯艾利斯大学文化与创意产业管理专业背景，兼具国际媒体视野、跨文化沟通能力及文化项目管理经验。多年来持续与文化机构、艺术家、策展人、美术馆及公共机构开展合作，深度参与国际文化交流与艺术传播实践。作为 NEXO 联合创始人，她致力于搭建连接中国艺术家与拉丁美洲艺术生态的专业平台，通过国际策展、展览合作、文化交流及项目管理，促进艺术在不同文化语境中的交流、理解与可持续发展。</span>
+                <span class="es">Mediadora internacional y profesional en gestión cultural, con larga trayectoria viviendo y trabajando en Argentina. Especializada en el intercambio cultural y artístico entre China y Latinoamérica. Egresada de la Universidad de Buenos Aires en Gestión Cultural y de la Industria Creativa. Cuenta con visión mediática internacional, habilidades de comunicación intercultural y experiencia en gestión de proyectos culturales. Durante años ha colaborado con instituciones culturales, artistas, curadores, museos e instituciones públicas, participando activamente en prácticas de intercambio cultural y difusión artística internacional. Como cofundadora de NEXO, se dedica a construir una plataforma profesional que conecte a artistas chinos con el ecosistema artístico latinoamericano, promoviendo el diálogo, la comprensión y el desarrollo sostenible del arte a través de la curaduría internacional, la cooperación expositiva, el intercambio cultural y la gestión de proyectos.</span>
+            </p>
+        </div>
+        <!-- 顾问 Claribel Terré Morell -->
+        <div class="consultant-card reveal reveal-delay-1">
+            <div class="consultant-photo">
+                <img src=".agnes/artifacts/images/agnes-image-20260715-042022-019f64011be07823a353cdee45430e96.png" alt="Claribel Terré Morell">
+            </div>
+            <h3>Claribel Terré Morell</h3>
+            <p class="consultant-role">
+                <span class="zh">联合创始人 · 作家、记者</span>
+                <span class="es">Cofundadora · Escritora y Periodista</span>
+            </p>
+            <p class="consultant-bio">
+                <span class="zh">古巴裔阿根廷记者、作家。哈瓦那大学新闻学学士，FLACSO文化管理与政策国际研究生。创办并主编文化杂志《Be Cult》，著有《Cubana confesión》《Bohemia, la huella y el tiempo》等多部小说、诗集与散文，创立阿根廷出版社"La Bohemia"。现任BIENALSUR新闻总监、MUNTREF及ArtHaus Central文化顾问，领导"Cultura Frontal"文化咨询公司，并任同名基金会主席。在Clarín日报《Ñ》周刊开设专栏"艺术叛徒"，播客同名节目在拉美广受欢迎。</span>
+                <span class="es">Periodista y escritora cubano-argentina. Licenciada en Periodismo por la Universidad de La Habana y con un Posgrado Internacional en Gestión y Política Cultural por FLACSO. Funda y dirige la revista cultural Be Cult. Como escritora, ha publicado novelas, poesía y ensayos, entre ellos "Cubana confesión" y "Bohemia, la huella y el tiempo", y fundó la editorial "La Bohemia". Es jefa de prensa de BIENALSUR, asesora de MUNTREF y ArtHaus Central, preside la Fundación Cultura Frontal y escribe la columna "Traidores del Arte" en Revista Ñ/Clarín con reconocido éxito en la región.</span>
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- ===== CONTACT ===== -->
+<section class="contact" id="contact">
+    <div class="section-header reveal">
+        <p class="section-label">
+            <span class="zh">联系我们</span>
+            <span class="es">Contacto</span>
+        </p>
+        <h2 class="section-title reveal reveal-delay-1">
+            <span class="zh">期待与您对话</span>
+            <span class="es">Esperamos conversar con usted</span>
+        </h2>
+        <div class="section-divider reveal reveal-delay-2"></div>
+    </div>
+
+    <div class="contact-wrapper">
+        <div class="contact-grid">
+            <!-- 左侧：联系方式 -->
+            <div class="contact-info reveal">
+                <h3>
+                    <span class="zh">多种渠道<br>随时联系</span>
+                    <span class="es">Múltiples Canales<br>para Contactarse</span>
+                </h3>
+                <div class="contact-channels">
+                    <div class="contact-channel">
+                        <div class="channel-icon">✉</div>
+                        <div class="channel-info">
+                            <h4>Email / 邮箱</h4>
+                            <p><a href="mailto:info@nexoarts.com" class="channel-link">info@nexoarts.com</a></p>
+                        </div>
+                    </div>
+                    <div class="contact-channel">
+                        <div class="channel-icon">💬</div>
+                        <div class="channel-info">
+                            <h4>WhatsApp</h4>
+                            <p><a href="https://wa.me/8613718775569" target="_blank" rel="noopener" class="channel-link">+86 137 1877 5569</a></p>
+                        </div>
+                    </div>
+                    <div class="contact-channel" id="wechat-channel">
+                        <div class="channel-icon">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M8.691 2.188C3.891 2.188 0 5.476 0 9.53c0 2.212 1.17 4.203 3.002 5.55a.59.59 0 0 1 .213.665l-.39 1.48c-.019.07-.048.141-.048.213 0 .163.13.295.29.295a.326.326 0 0 0 .167-.054l1.903-1.114a.864.864 0 0 1 .717-.098 10.16 10.16 0 0 0 2.837.403c.276 0 .543-.027.811-.05a6.127 6.127 0 0 1-.253-1.726c0-3.573 3.27-6.47 7.302-6.47.256 0 .507.022.756.042C16.543 4.674 12.989 2.188 8.691 2.188zm-2.6 4.17c.56 0 1.015.46 1.015 1.024 0 .566-.455 1.025-1.015 1.025-.56 0-1.014-.459-1.014-1.025 0-.564.454-1.024 1.014-1.024zm5.22 0c.56 0 1.015.46 1.015 1.024 0 .566-.454 1.025-1.015 1.025-.561 0-1.015-.459-1.015-1.025 0-.564.454-1.024 1.015-1.024zm4.513 3.13c-3.456 0-6.26 2.426-6.26 5.413 0 2.99 2.804 5.413 6.26 5.413.71 0 1.39-.106 2.036-.29a.717.717 0 0 1 .59.082l1.566.918a.272.272 0 0 0 .136.044.238.238 0 0 0 .237-.24c0-.058-.023-.116-.039-.174l-.32-1.214a.49.49 0 0 1 .175-.548c1.502-1.107 2.468-2.747 2.468-4.523-.002-3.085-2.806-5.413-6.046-5.413h-.307zm-2.29 3.112c.465 0 .842.382.842.854a.847.847 0 0 1-.842.853.847.847 0 0 1-.842-.853c0-.472.377-.854.842-.854zm4.582 0c.465 0 .842.382.842.854a.847.847 0 0 1-.842.853.847.847 0 0 1-.842-.853c0-.472.377-.854.842-.854z"/></svg>
+                        </div>
+                        <div class="channel-info">
+                            <h4>WeChat / 微信</h4>
+                            <p>
+                                <span style="color: var(--color-accent);">chinalatam1</span>
+                                <button class="wechat-copy-btn" onclick="copyWechat()" title="Copiar ID de WeChat">
+                                    <svg class="wechat-copy-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                                    <span id="wechat-copy-status" style="display:none;font-size:.75em;margin-left:.3em;color:var(--color-accent);">✓</span>
+                                </button>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="contact-channel">
+                        <div class="channel-icon">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                        </div>
+                        <div class="channel-info">
+                            <h4>Dirección / 地址</h4>
+                            <p>Av. Córdoba 323, Piso 8<br>Buenos Aires, Argentina</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 右侧：咨询表单 -->
+            <div class="inquiry-form reveal reveal-delay-1">
+                <h3>
+                    <span class="zh">合作咨询</span>
+                    <span class="es">Consulta de Colaboración</span>
+                </h3>
+                <p class="form-subtitle">
+                    <span class="zh">请填写以下信息，我们将在24小时内回复</span>
+                    <span class="es">Complete el siguiente formulario y le responderemos a la brevedad</span>
+                </p>
+                <form action="mailto:info@nexoarts.com" method="post" enctype="text/plain">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>
+                                <span class="zh">姓名 / Nombre</span>
+                            </label>
+                            <input type="text" name="nombre" required>
+                        </div>
+                        <div class="form-group">
+                            <label>
+                                <span class="zh">邮箱 / Email</span>
+                            </label>
+                            <input type="email" name="email" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>
+                                <span class="zh">电话 / Teléfono</span>
+                            </label>
+                            <input type="tel" name="telefono">
+                        </div>
+                        <div class="form-group">
+                            <label>
+                                <span class="zh">咨询类型 / Tipo</span>
+                            </label>
+                            <select name="tipo_consulta" required>
+                                <option value="">-- 请选择 --</option>
+                                <option value="exhibition">国际展览策划</option>
+                                <option value="curatorial">策展服务</option>
+                                <option value="exchange">文化交流</option>
+                                <option value="institutional">机构合作</option>
+                                <option value="promotion">国际推广</option>
+                                <option value="collection">收藏咨询</option>
+                                <option value="market">海外市场进入</option>
+                                <option value="project">项目执行</option>
+                                <option value="strategy">文化战略咨询</option>
+                                <option value="other">其他 / Otro</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row full">
+                        <div class="form-group">
+                            <label>
+                                <span class="zh">留言内容 / Mensaje</span>
+                            </label>
+                            <textarea name="mensaje" rows="5" required></textarea>
+                        </div>
+                    </div>
+                    <div class="form-submit">
+                        <button type="submit" class="btn btn-primary">
+                            <span class="zh">发送咨询</span>
+                            <span class="es">Enviar Consulta →</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+    <div class="footer-inner">
+        <div class="footer-brand">NEXO</div>
+        <ul class="footer-nav">
+            <li><a href="#philosophy"><span class="zh">理念</span><span class="es">Filosofía</span></a></li>
+            <li><a href="#services"><span class="zh">服务</span><span class="es">Servicios</span></a></li>
+            <li><a href="#strategy"><span class="zh">战略</span><span class="es">Estrategia</span></a></li>
+            <li><a href="#consultants"><span class="zh">顾问</span><span class="es">Equipo</span></a></li>
+            <li><a href="#contact"><span class="zh">联系</span><span class="es">Contacto</span></a></li>
+        </ul>
+        <p class="footer-copy">
+            © 2026 NEXO Art & Cultural Advisory. 
+            <span class="zh">版权所有。</span>
+            <span class="es">Todos los derechos reservados.</span>
+        </p>
+    </div>
+</footer>
+
+<!-- ===== JAVASCRIPT ===== -->
+<script>
+    // Mobile menu
+    function toggleMenu() {
+        const nav = document.getElementById('navLinks');
+        const btn = document.getElementById('menuToggle');
+        nav.classList.toggle('active');
+        btn.classList.toggle('active');
+    }
+
+    // Language toggle
+    let currentLang = 'zh';
+    function toggleLang() {
+        const body = document.body;
+        if (currentLang === 'zh') {
+            body.classList.remove('lang-zh');
+            body.classList.add('lang-es');
+            currentLang = 'es';
+        } else {
+            body.classList.remove('lang-es');
+            body.classList.add('lang-zh');
+            currentLang = 'zh';
+        }
+        localStorage.setItem('nexo-lang', currentLang);
+    }
+
+    // Load saved language
+    (function() {
+        const saved = localStorage.getItem('nexo-lang');
+        if (saved === 'es') {
+            document.body.classList.remove('lang-zh');
+            document.body.classList.add('lang-es');
+            currentLang = 'es';
+        }
+    })();
+
+    // Scroll reveal
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Navbar scroll effect
+    window.addEventListener('scroll', () => {
+        const nav = document.getElementById('navbar');
+        if (window.scrollY > 60) {
+            nav.classList.add('scrolled');
+        } else {
+            nav.classList.remove('scrolled');
+        }
+    });
+
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                document.getElementById('navLinks').classList.remove('active');
+                document.getElementById('menuToggle').classList.remove('active');
+            }
+        });
+    });
+
+    // WeChat Copy Function
+    function copyWechat() {
+        const wechatId = 'chinalatam1';
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(wechatId).then(function() {
+                showWechatFeedback();
+            }).catch(function() {
+                fallbackCopy(wechatId);
+            });
+        } else {
+            fallbackCopy(wechatId);
+        }
+    }
+
+    function fallbackCopy(text) {
+        const textarea = document.createElement('textarea');
+        textarea.value = text;
+        textarea.style.position = 'fixed';
+        textarea.style.opacity = '0';
+        document.body.appendChild(textarea);
+        textarea.select();
+        try {
+            document.execCommand('copy');
+            showWechatFeedback();
+        } catch (err) {
+            alert('WeChat ID: ' + text + '\n\nPor favor cópielo manualmente.');
+        }
+        document.body.removeChild(textarea);
+    }
+
+    function showWechatFeedback() {
+        const status = document.getElementById('wechat-copy-status');
+        if (status) {
+            status.style.display = 'inline';
+            setTimeout(function() {
+                status.style.display = 'none';
+            }, 2000);
+        }
+    }
+</script>
+
+</body>
+</html>
