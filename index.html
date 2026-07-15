@@ -1636,9 +1636,13 @@
                 </h3>
                 <p class="form-subtitle">
                     <span class="zh">请填写以下信息，我们将在24小时内回复</span>
-                    <span class="es">Complete el siguiente formulario y le responderemos a la brevedad</span>
+                    <span class="es">Complete el siguiente formulario y le responderemos en 24 horas</span>
                 </p>
-                <form action="mailto:info@nexoarts.com" method="post" enctype="text/plain">
+                <form name="contact-inquiry" method="POST" data-netlify="true" netlify-honeypot="true" netlify-sanitize>
+                    <!-- Hidden honeypot for spam protection -->
+                    <p style="position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden">
+                        <label>Don't fill this out: <input name="bot-field" /></label>
+                    </p>
                     <div class="form-row">
                         <div class="form-group">
                             <label>
