@@ -410,7 +410,7 @@
             font-size: clamp(1.8rem, 3vw, 2.8rem);
             font-weight: 300;
             line-height: 1.5;
-            color: var(--color-text);
+            color: #3A3530;
             margin-bottom: 24px;
             font-style: italic;
         }
@@ -420,14 +420,14 @@
             font-size: clamp(1.2rem, 2vw, 1.7rem);
             font-weight: 300;
             line-height: 1.8;
-            color: var(--color-text-light);
+            color: #5A534A;
             margin-bottom: 48px;
         }
 
         .intro-text {
             font-size: 1rem;
             line-height: 2.1;
-            color: var(--color-text-light);
+            color: #5A534A;
             max-width: 780px;
             margin: 0 auto;
         }
@@ -480,6 +480,7 @@
             font-weight: 400;
             margin-bottom: 6px;
             line-height: 1.3;
+            color: var(--color-white);
         }
 
         .service-info h3 .cn {
@@ -496,10 +497,6 @@
             line-height: 2;
             color: var(--color-text-light);
             margin-top: 20px;
-        }
-
-        .service-details {
-            padding-top: 8px;
         }
 
         .service-details ul {
@@ -525,7 +522,7 @@
 
         /* ===== STRATEGY HIGHLIGHT ===== */
         .strategy {
-            background: var(--color-text);
+            background: #1A1815;
             color: var(--color-white);
             position: relative;
             overflow: hidden;
@@ -539,13 +536,13 @@
             width: 600px;
             height: 600px;
             border-radius: 50%;
-            background: radial-gradient(circle, rgba(139,115,85,0.15) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(201,169,110,0.1) 0%, transparent 70%);
             pointer-events: none;
         }
 
-        .strategy .section-label { color: var(--color-accent-light); }
+        .strategy .section-label { color: var(--color-accent); }
         .strategy .section-title { color: var(--color-white); }
-        .strategy .section-title-cn { color: rgba(255,255,255,0.5); }
+        .strategy .section-title-cn { color: var(--color-text-light); }
 
         .strategy-content {
             max-width: 900px;
@@ -558,7 +555,7 @@
         .strategy-text {
             font-size: 1.05rem;
             line-height: 2.1;
-            color: rgba(255,255,255,0.65);
+            color: rgba(232,228,222,0.6);
             max-width: 720px;
             margin: 0 auto 60px;
         }
@@ -575,15 +572,16 @@
             font-size: 0.75rem;
             letter-spacing: 0.18em;
             text-transform: uppercase;
-            color: rgba(255,255,255,0.4);
+            color: rgba(232,228,222,0.45);
             padding: 14px 28px;
-            border: 1px solid rgba(255,255,255,0.12);
+            border: 1px solid rgba(232,228,222,0.12);
             transition: all 0.3s ease;
         }
 
         .strategy-client:hover {
-            border-color: var(--color-accent-light);
+            border-color: var(--color-accent);
             color: var(--color-white);
+            background: rgba(201, 169, 110, 0.08);
         }
 
         /* ===== CONSULTANTS ===== */
@@ -708,6 +706,13 @@
             transform: translateX(5px);
         }
 
+        /* WeChat clickable channel */
+        #wechat-channel:hover {
+            cursor: pointer;
+            border-color: var(--color-accent);
+            transform: translateX(5px);
+        }
+
         .channel-icon {
             font-size: 1.3rem;
             line-height: 1;
@@ -738,33 +743,6 @@
 
         .channel-info a:hover {
             color: var(--color-accent-dark);
-        }
-
-        /* WeChat Copy Button */
-        .wechat-copy-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 4px;
-            margin-left: 8px;
-            padding: 4px 8px;
-            background: transparent;
-            border: 1px solid var(--color-border);
-            border-radius: 4px;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            font-size: 0.7rem;
-            color: var(--color-text-muted);
-        }
-        .wechat-copy-btn:hover {
-            border-color: var(--color-accent);
-            color: var(--color-accent);
-        }
-        .wechat-copy-btn:active {
-            transform: scale(0.95);
-        }
-        .wechat-copy-icon {
-            width: 12px;
-            height: 12px;
         }
 
         /* ===== FORM ===== */
@@ -1529,38 +1507,46 @@
                     <span class="es">Múltiples Canales<br>para Contactarse</span>
                 </h3>
                 <div class="contact-channels">
+                    <!-- Email -->
                     <div class="contact-channel">
-                        <div class="channel-icon">✉</div>
+                        <div class="channel-icon">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 4-10 8L2 4"/></svg>
+                        </div>
                         <div class="channel-info">
                             <h4>Email / 邮箱</h4>
                             <p><a href="mailto:info@nexoarts.com" class="channel-link">info@nexoarts.com</a></p>
                         </div>
                     </div>
-                    <div class="contact-channel">
-                        <div class="channel-icon">💬</div>
+                    <!-- WhatsApp — icon only, no phone number displayed -->
+                    <a href="https://wa.me/8613718775569" target="_blank" rel="noopener" class="contact-channel" style="text-decoration:none;color:inherit;">
+                        <div class="channel-icon">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="var(--color-accent)"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+                        </div>
                         <div class="channel-info">
                             <h4>WhatsApp</h4>
-                            <p><a href="https://wa.me/8613718775569" target="_blank" rel="noopener" class="channel-link">+86 137 1877 5569</a></p>
+                            <p>
+                                <span class="zh">点击直接对话</span>
+                                <span class="es">Click para chatear</span>
+                            </p>
                         </div>
-                    </div>
-                    <div class="contact-channel" id="wechat-channel">
+                    </a>
+                    <!-- WeChat — icon only, no ID text displayed -->
+                    <div class="contact-channel" id="wechat-channel" style="cursor:pointer;" onclick="copyWechatAndOpen()">
                         <div class="channel-icon">
-                            <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M8.691 2.188C3.891 2.188 0 5.476 0 9.53c0 2.212 1.17 4.203 3.002 5.55a.59.59 0 0 1 .213.665l-.39 1.48c-.019.07-.048.141-.048.213 0 .163.13.295.29.295a.326.326 0 0 0 .167-.054l1.903-1.114a.864.864 0 0 1 .717-.098 10.16 10.16 0 0 0 2.837.403c.276 0 .543-.027.811-.05a6.127 6.127 0 0 1-.253-1.726c0-3.573 3.27-6.47 7.302-6.47.256 0 .507.022.756.042C16.543 4.674 12.989 2.188 8.691 2.188zm-2.6 4.17c.56 0 1.015.46 1.015 1.024 0 .566-.455 1.025-1.015 1.025-.56 0-1.014-.459-1.014-1.025 0-.564.454-1.024 1.014-1.024zm5.22 0c.56 0 1.015.46 1.015 1.024 0 .566-.454 1.025-1.015 1.025-.561 0-1.015-.459-1.015-1.025 0-.564.454-1.024 1.015-1.024zm4.513 3.13c-3.456 0-6.26 2.426-6.26 5.413 0 2.99 2.804 5.413 6.26 5.413.71 0 1.39-.106 2.036-.29a.717.717 0 0 1 .59.082l1.566.918a.272.272 0 0 0 .136.044.238.238 0 0 0 .237-.24c0-.058-.023-.116-.039-.174l-.32-1.214a.49.49 0 0 1 .175-.548c1.502-1.107 2.468-2.747 2.468-4.523-.002-3.085-2.806-5.413-6.046-5.413h-.307zm-2.29 3.112c.465 0 .842.382.842.854a.847.847 0 0 1-.842.853.847.847 0 0 1-.842-.853c0-.472.377-.854.842-.854zm4.582 0c.465 0 .842.382.842.854a.847.847 0 0 1-.842.853.847.847 0 0 1-.842-.853c0-.472.377-.854.842-.854z"/></svg>
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="var(--color-accent)"><path d="M8.691 2.188C3.891 2.188 0 5.476 0 9.53c0 2.212 1.17 4.203 3.002 5.55a.59.59 0 0 1 .213.665l-.39 1.48c-.019.07-.048.141-.048.213 0 .163.13.295.29.295a.326.326 0 0 0 .167-.054l1.903-1.114a.864.864 0 0 1 .717-.098 10.16 10.16 0 0 0 2.837.403c.276 0 .543-.027.811-.05a6.127 6.127 0 0 1-.253-1.726c0-3.573 3.27-6.47 7.302-6.47.256 0 .507.022.756.042C16.543 4.674 12.989 2.188 8.691 2.188zm-2.6 4.17c.56 0 1.015.46 1.015 1.024 0 .566-.455 1.025-1.015 1.025-.56 0-1.014-.459-1.014-1.025 0-.564.454-1.024 1.014-1.024zm5.22 0c.56 0 1.015.46 1.015 1.024 0 .566-.454 1.025-1.015 1.025-.561 0-1.015-.459-1.015-1.025 0-.564.454-1.024 1.015-1.024zm4.513 3.13c-3.456 0-6.26 2.426-6.26 5.413 0 2.99 2.804 5.413 6.26 5.413.71 0 1.39-.106 2.036-.29a.717.717 0 0 1 .59.082l1.566.918a.272.272 0 0 0 .136.044.238.238 0 0 0 .237-.24c0-.058-.023-.116-.039-.174l-.32-1.214a.49.49 0 0 1 .175-.548c1.502-1.107 2.468-2.747 2.468-4.523-.002-3.085-2.806-5.413-6.046-5.413h-.307zm-2.29 3.112c.465 0 .842.382.842.854a.847.847 0 0 1-.842.853.847.847 0 0 1-.842-.853c0-.472.377-.854.842-.854zm4.582 0c.465 0 .842.382.842.854a.847.847 0 0 1-.842.853.847.847 0 0 1-.842-.853c0-.472.377-.854.842-.854z"/></svg>
                         </div>
                         <div class="channel-info">
                             <h4>WeChat / 微信</h4>
                             <p>
-                                <span style="color: var(--color-accent);">chinalatam1</span>
-                                <button class="wechat-copy-btn" onclick="copyWechat()" title="Copiar ID de WeChat">
-                                    <svg class="wechat-copy-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-                                    <span id="wechat-copy-status" style="display:none;font-size:.75em;margin-left:.3em;color:var(--color-accent);">✓</span>
-                                </button>
+                                <span class="zh">点击复制ID并打开对话</span>
+                                <span class="es">Click para copiar y chatear</span>
                             </p>
                         </div>
                     </div>
+                    <!-- Address -->
                     <div class="contact-channel">
                         <div class="channel-icon">
-                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
                         </div>
                         <div class="channel-info">
                             <h4>Dirección / 地址</h4>
@@ -1744,6 +1730,20 @@
         }
     }
 
+    // New: Copy WeChat ID AND show hint to open WeChat
+    function copyWechatAndOpen() {
+        const wechatId = 'chinalatam1';
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(wechatId).then(function() {
+                showToast('WeChat ID copiado: ' + wechatId + '\n\nAbra WeChat y busque este ID para chatear.');
+            }).catch(function() {
+                fallbackCopy(wechatId);
+            });
+        } else {
+            fallbackCopy(wechatId);
+        }
+    }
+
     function fallbackCopy(text) {
         const textarea = document.createElement('textarea');
         textarea.value = text;
@@ -1753,21 +1753,28 @@
         textarea.select();
         try {
             document.execCommand('copy');
-            showWechatFeedback();
+            showToast('WeChat ID copiado: ' + text + '\n\nAbra WeChat y busque este ID para chatear.');
         } catch (err) {
-            alert('WeChat ID: ' + text + '\n\nPor favor cópielo manualmente.');
+            showToast('WeChat ID: ' + text);
         }
         document.body.removeChild(textarea);
     }
 
-    function showWechatFeedback() {
-        const status = document.getElementById('wechat-copy-status');
-        if (status) {
-            status.style.display = 'inline';
-            setTimeout(function() {
-                status.style.display = 'none';
-            }, 2000);
-        }
+    function showToast(message) {
+        // Remove existing toast if any
+        const existing = document.getElementById('wechat-toast');
+        if (existing) existing.remove();
+        
+        const toast = document.createElement('div');
+        toast.id = 'wechat-toast';
+        toast.style.cssText = 'position:fixed;bottom:40px;left:50%;transform:translateX(-50%);background:#1A1815;color:#E8E4DE;padding:16px 32px;border-radius:4px;border:1px solid #C9A96E;font-size:0.85rem;line-height:1.6;z-index:10000;max-width:90vw;text-align:center;box-shadow:0 8px 30px rgba(0,0,0,0.5);transition:opacity 0.3s ease;';
+        toast.textContent = message;
+        document.body.appendChild(toast);
+        
+        setTimeout(function() {
+            toast.style.opacity = '0';
+            setTimeout(function() { toast.remove(); }, 300);
+        }, 4000);
     }
 </script>
 
