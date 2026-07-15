@@ -213,104 +213,10 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background-image: linear-gradient(rgba(14,14,14,0.55), rgba(14,14,14,0.65)), url('assets/images/banner.jpg');
+            background-image: linear-gradient(rgba(255,255,255,0.1), rgba(255,255,255,0.15)), url('assets/images/banner.jpg');
             background-size: cover;
             background-position: center;
             z-index: 0;
-        }
-
-        .hero-content {
-            max-width: 1000px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .hero-eyebrow {
-            font-family: var(--font-sans);
-            font-size: 0.75rem;
-            letter-spacing: 0.4em;
-            text-transform: uppercase;
-            color: var(--color-accent);
-            margin-bottom: 50px;
-            font-weight: 400;
-        }
-
-        .hero-title {
-            font-family: var(--font-serif);
-            font-size: clamp(3.5rem, 7vw, 6.5rem);
-            font-weight: 300;
-            line-height: 1.05;
-            margin-bottom: 20px;
-            color: var(--color-text);
-            letter-spacing: 0.02em;
-        }
-
-        .hero-title .cn { 
-            font-family: var(--font-chinese); 
-            font-weight: 300;
-            letter-spacing: 0.05em;
-        }
-
-        .hero-title-en {
-            font-family: var(--font-serif);
-            font-size: clamp(1.4rem, 2.5vw, 2rem);
-            font-weight: 300;
-            font-style: italic;
-            color: var(--color-text-muted);
-            margin-bottom: 50px;
-            letter-spacing: 0.03em;
-        }
-
-        .hero-desc {
-            font-size: 1.05rem;
-            line-height: 2.1;
-            color: var(--color-text-light);
-            max-width: 750px;
-            margin: 0 auto 60px;
-            font-weight: 300;
-        }
-
-        .hero-actions {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 22px 56px;
-            font-family: var(--font-sans);
-            font-size: 0.72rem;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            text-decoration: none;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            cursor: pointer;
-            border: none;
-        }
-
-        .btn-primary {
-            background: var(--color-text);
-            color: var(--color-white);
-        }
-
-        .btn-primary:hover {
-            background: var(--color-accent);
-            transform: translateY(-2px);
-        }
-
-        .btn-outline {
-            background: transparent;
-            color: var(--color-text);
-            border: 1px solid var(--color-border);
-        }
-
-        .btn-outline:hover {
-            border-color: var(--color-text);
-            transform: translateY(-2px);
         }
 
         .hero-scroll-indicator {
@@ -323,6 +229,7 @@
             align-items: center;
             gap: 8px;
             animation: float 3s ease-in-out infinite;
+            z-index: 1;
         }
 
         .hero-scroll-indicator span {
@@ -992,10 +899,6 @@
             
             .inquiry-form { padding: 30px 24px; }
             
-            .hero-actions { flex-direction: column; align-items: center; }
-            
-            .btn { width: 100%; max-width: 280px; justify-content: center; }
-            
             .strategy-clients { gap: 16px; }
             .strategy-client { font-size: 0.65rem; padding: 10px 16px; }
             
@@ -1005,7 +908,6 @@
         }
 
         @media (max-width: 480px) {
-            .hero-title { font-size: 2.2rem; }
             .section-title { font-size: 1.8rem; }
         }
     </style>
@@ -1042,32 +944,6 @@
 <!-- ===== HERO ===== -->
 <section class="hero">
     <div class="hero-bg-image"></div>
-    <div class="hero-content">
-        <p class="hero-eyebrow reveal">
-            <span class="zh">国际文化艺术顾问</span>
-            <span class="es">Consultoría Internacional de Cultura y Arte</span>
-        </p>
-        <h1 class="hero-title reveal reveal-delay-1">
-            <span class="cn">NEXO</span>
-        </h1>
-        <p class="hero-title-en reveal reveal-delay-2">
-            Art & Cultural Advisory
-        </p>
-        <p class="hero-desc reveal reveal-delay-2">
-            <span class="zh">专注中国与拉丁美洲、西班牙及意大利之间的文化艺术交流。我们为艺术家、文化机构和政府提供策展、国际展览策划、文化交流项目及文化战略咨询等专业服务。</span>
-            <span class="es">Especializados en el intercambio cultural y artístico entre China y Latinoamérica, España e Italia. Ofrecemos servicios profesionales de curaduría, planificación de exposiciones internacionales, proyectos de intercambio cultural y consultoría estratégica.</span>
-        </p>
-        <div class="hero-actions reveal reveal-delay-3">
-            <a href="#contact" class="btn btn-primary">
-                <span class="zh">合作咨询</span>
-                <span class="es">Consulta</span>
-            </a>
-            <a href="#services" class="btn btn-outline">
-                <span class="zh">服务一览</span>
-                <span class="es">Servicios</span>
-            </a>
-        </div>
-    </div>
     <div class="hero-scroll-indicator">
         <span>
             <span class="zh">向下</span>
