@@ -351,260 +351,527 @@
             margin: 0 auto;
         }
 
-        .service-item {
+        /* ===== SERVICES — CARD GRID ===== */
+        .services-grid {
             display: grid;
-            grid-template-columns: 80px 1fr 1fr;
-            gap: 80px;
-            padding: 80px 0;
-            border-bottom: 1px solid var(--color-border);
-            align-items: start;
-            transition: all 0.4s ease;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
-        .service-item:first-child {
-            border-top: 1px solid var(--color-border);
+        @media (max-width: 1024px) {
+            .services-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
         }
 
-        .service-item:hover {
-            padding-left: 24px;
+        @media (max-width: 768px) {
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 16px;
+            }
         }
 
-        .service-number {
+        @media (max-width: 480px) {
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .service-card {
+            position: relative;
+            border-radius: 4px;
+            overflow: hidden;
+            cursor: pointer;
+            aspect-ratio: 4 / 3;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.4);
+        }
+
+        .service-card-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .service-card:hover .service-card-img {
+            transform: scale(1.05);
+        }
+
+        .service-card-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.2) 50%, rgba(0, 0, 0, 0.1) 100%);
+            transition: background 0.4s ease;
+        }
+
+        .service-card:hover .service-card-overlay {
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.3) 50%, rgba(0, 0, 0, 0.15) 100%);
+        }
+
+        .service-card-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 24px 20px;
+            z-index: 1;
+        }
+
+        .service-card-number {
             font-family: var(--font-serif);
-            font-size: 3.5rem;
+            font-size: 0.75rem;
             color: var(--color-accent);
-            opacity: 0.2;
+            letter-spacing: 0.15em;
+            margin-bottom: 8px;
+            font-weight: 400;
+        }
+
+        .service-card-title {
+            font-family: var(--font-serif);
+            font-size: 1.05rem;
+            color: var(--color-white);
+            line-height: 1.4;
+            margin-bottom: 4px;
+            font-weight: 400;
+        }
+
+        .service-card-title-es {
+            font-family: var(--font-serif);
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.4;
             font-weight: 300;
-            line-height: 1;
-            transition: opacity 0.4s ease;
+            margin-bottom: 12px;
         }
 
-        .service-item:hover .service-number {
-            opacity: 0.4;
+        .service-card-expand {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.7rem;
+            color: var(--color-accent);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            opacity: 0;
+            transform: translateY(8px);
+            transition: all 0.3s ease;
         }
 
-        .service-info h3 {
+        .service-card:hover .service-card-expand {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .service-card-expand svg {
+            width: 14px;
+            height: 14px;
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover .service-card-expand svg {
+            transform: translateX(3px);
+        }
+
+        /* ===== SERVICE MODAL ===== */
+        .service-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 10000;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+        }
+
+        .service-modal.active {
+            display: flex;
+        }
+
+        .service-modal-backdrop {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(8px);
+        }
+
+        .service-modal-content {
+            position: relative;
+            background: #1A1815;
+            max-width: 800px;
+            width: 100%;
+            max-height: 85vh;
+            overflow-y: auto;
+            border-radius: 4px;
+            border: 1px solid var(--color-border);
+            animation: modalFadeIn 0.4s ease;
+        }
+
+        @keyframes modalFadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .service-modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            border: none;
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--color-white);
+            font-size: 1.5rem;
+            cursor: pointer;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s ease;
+            z-index: 10;
+        }
+
+        .service-modal-close:hover {
+            background: var(--color-accent);
+        }
+
+        .service-modal-hero {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .service-modal-body {
+            padding: 40px;
+        }
+
+        .service-modal-number {
+            font-family: var(--font-serif);
+            font-size: 0.8rem;
+            color: var(--color-accent);
+            letter-spacing: 0.15em;
+            margin-bottom: 12px;
+        }
+
+        .service-modal-title {
             font-family: var(--font-serif);
             font-size: 1.8rem;
-            font-weight: 400;
-            margin-bottom: 6px;
-            line-height: 1.3;
             color: var(--color-white);
+            margin-bottom: 4px;
+            font-weight: 400;
+            line-height: 1.3;
         }
 
-        .service-info h3 .cn {
-            font-family: var(--font-chinese);
-            font-size: 1.3rem;
+        .service-modal-title-es {
+            font-family: var(--font-serif);
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 24px;
             font-weight: 300;
-            color: var(--color-text-light);
-            display: block;
-            margin-top: 6px;
         }
 
-        .service-desc {
+        .service-modal-desc {
             font-size: 0.95rem;
-            line-height: 2;
-            color: var(--color-text-light);
-            margin-top: 20px;
+            line-height: 1.9;
+            color: rgba(255, 255, 255, 0.75);
+            margin-bottom: 30px;
         }
 
-        .service-details ul {
+        .service-modal-subtitle {
+            font-family: var(--font-serif);
+            font-size: 0.8rem;
+            color: var(--color-accent);
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .service-modal-list {
             list-style: none;
+            padding: 0;
         }
 
-        .service-details li {
-            font-size: 0.85rem;
-            color: var(--color-text-light);
-            padding: 6px 0;
-            padding-left: 16px;
+        .service-modal-list li {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+            padding: 10px 0;
+            padding-left: 20px;
             position: relative;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
             line-height: 1.6;
         }
 
-        .service-details li::before {
+        .service-modal-list li:last-child {
+            border-bottom: none;
+        }
+
+        .service-modal-list li::before {
             content: '—';
             position: absolute;
             left: 0;
             color: var(--color-accent);
-            font-size: 0.7rem;
+            font-size: 0.75rem;
         }
 
-        /* ===== STRATEGY HIGHLIGHT ===== */
-        .strategy {
-            background: #1A1815;
-            color: var(--color-white);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .strategy::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -20%;
-            width: 600px;
-            height: 600px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(201,169,110,0.1) 0%, transparent 70%);
-            pointer-events: none;
-        }
-
-        .strategy .section-label { color: var(--color-accent); }
-        .strategy .section-title { color: var(--color-white); }
-        .strategy .section-title-cn { color: var(--color-text-light); }
-
-        .strategy-content {
+        /* ===== CONSULTANTS — CARD GRID ===== */
+        .consultants-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
             max-width: 900px;
             margin: 0 auto;
-            text-align: center;
-            position: relative;
-            z-index: 1;
         }
 
-        .strategy-text {
-            font-size: 1.05rem;
-            line-height: 2.1;
-            color: rgba(232,228,222,0.6);
-            max-width: 720px;
-            margin: 0 auto 60px;
-        }
-
-        .strategy-clients {
-            display: flex;
-            justify-content: center;
-            gap: 56px;
-            flex-wrap: wrap;
-            margin-top: 60px;
-        }
-
-        .strategy-client {
-            font-size: 0.75rem;
-            letter-spacing: 0.18em;
-            text-transform: uppercase;
-            color: rgba(232,228,222,0.45);
-            padding: 14px 28px;
-            border: 1px solid rgba(232,228,222,0.12);
-            transition: all 0.3s ease;
-        }
-
-        .strategy-client:hover {
-            border-color: var(--color-accent);
-            color: var(--color-white);
-            background: rgba(201, 169, 110, 0.08);
-        }
-
-        .strategy-highlight {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 50px 40px;
-            border: 1px solid rgba(201, 169, 110, 0.3);
-            background: rgba(201, 169, 110, 0.06);
-            text-align: center;
-        }
-
-        .strategy-highlight-label {
-            font-size: 0.65rem;
-            letter-spacing: 0.35em;
-            text-transform: uppercase;
-            color: var(--color-accent);
-            margin-bottom: 16px;
-            font-weight: 500;
-        }
-
-        .strategy-highlight-title {
-            font-family: var(--font-serif);
-            font-size: clamp(1.4rem, 2.5vw, 1.9rem);
-            font-weight: 400;
-            color: var(--color-accent-light);
-            margin-bottom: 20px;
-            line-height: 1.4;
-        }
-
-        .strategy-highlight-desc {
-            font-size: 0.92rem;
-            line-height: 2;
-            color: rgba(232,228,222,0.7);
-            max-width: 680px;
-            margin: 0 auto;
-        }
-
-        /* ===== CONSULTANTS ===== */
-        .consultants {
-            background: var(--color-bg-alt);
-        }
-
-        .consultants-grid {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 60px;
+        @media (max-width: 768px) {
+            .consultants-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
         }
 
         .consultant-card {
-            text-align: center;
-            padding: 40px 30px;
-            transition: transform 0.4s ease;
+            display: flex;
+            gap: 28px;
+            padding: 32px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--color-border);
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            align-items: flex-start;
         }
 
         .consultant-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .consultant-photo {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            background: var(--color-bg-dark);
-            margin: 0 auto 35px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: var(--font-serif);
-            font-size: 0.9rem;
-            color: var(--color-text-muted);
-            letter-spacing: 0.05em;
-            border: 3px solid var(--color-border);
-            overflow: hidden;
-            box-shadow: 0 8px 30px rgba(0,0,0,0.3);
-            transition: var(--transition-smooth);
-        }
-
-        .consultant-card:hover .consultant-photo {
+            background: rgba(255, 255, 255, 0.06);
             border-color: var(--color-accent);
-            box-shadow: 0 8px 40px var(--color-accent-glow);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
         }
 
-        .consultant-photo img {
+        .consultant-card-photo {
+            flex-shrink: 0;
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 2px solid var(--color-border);
+            transition: border-color 0.4s ease;
+        }
+
+        .consultant-card:hover .consultant-card-photo {
+            border-color: var(--color-accent);
+        }
+
+        .consultant-card-photo img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
 
-        .consultant-card h3 {
-            font-family: var(--font-serif);
-            font-size: 1.3rem;
-            font-weight: 400;
-            margin-bottom: 6px;
+        .consultant-card-info {
+            flex: 1;
         }
 
-        .consultant-role {
+        .consultant-card-name {
+            font-family: var(--font-serif);
+            font-size: 1.2rem;
+            color: var(--color-white);
+            margin-bottom: 4px;
+            font-weight: 400;
+        }
+
+        .consultant-card-role {
             font-size: 0.72rem;
-            letter-spacing: 0.18em;
+            letter-spacing: 0.15em;
             text-transform: uppercase;
             color: var(--color-accent);
-            margin-bottom: 16px;
+            margin-bottom: 12px;
             font-weight: 400;
         }
 
-        .consultant-bio {
-            font-size: 0.88rem;
-            line-height: 1.9;
-            color: var(--color-text-light);
-            max-width: 320px;
-            margin: 0 auto;
+        .consultant-card-brief {
+            font-size: 0.85rem;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.55);
+            margin-bottom: 12px;
         }
 
+        .consultant-card-expand {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.7rem;
+            color: var(--color-accent);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            transition: gap 0.3s ease;
+        }
+
+        .consultant-card:hover .consultant-card-expand {
+            gap: 10px;
+        }
+
+        .consultant-card-expand svg {
+            width: 14px;
+            height: 14px;
+        }
+
+        /* ===== CONSULTANT MODAL ===== */
+        .consultant-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 10000;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+        }
+
+        .consultant-modal.active {
+            display: flex;
+        }
+
+        .consultant-modal-backdrop {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(8px);
+        }
+
+        .consultant-modal-content {
+            position: relative;
+            background: #1A1815;
+            max-width: 700px;
+            width: 100%;
+            max-height: 85vh;
+            overflow-y: auto;
+            border-radius: 4px;
+            border: 1px solid var(--color-border);
+            animation: modalFadeIn 0.4s ease;
+        }
+
+        .consultant-modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            border: none;
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--color-white);
+            font-size: 1.5rem;
+            cursor: pointer;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s ease;
+            z-index: 10;
+        }
+
+        .consultant-modal-close:hover {
+            background: var(--color-accent);
+        }
+
+        .consultant-modal-header {
+            display: flex;
+            gap: 28px;
+            padding: 40px 40px 30px;
+            align-items: flex-start;
+        }
+
+        @media (max-width: 600px) {
+            .consultant-modal-header {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                padding: 40px 24px 30px;
+            }
+        }
+
+        .consultant-modal-photo {
+            flex-shrink: 0;
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid var(--color-accent);
+        }
+
+        .consultant-modal-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .consultant-modal-name {
+            font-family: var(--font-serif);
+            font-size: 1.6rem;
+            color: var(--color-white);
+            margin-bottom: 6px;
+            font-weight: 400;
+        }
+
+        .consultant-modal-role {
+            font-size: 0.78rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--color-accent);
+            margin-bottom: 8px;
+            font-weight: 400;
+        }
+
+        .consultant-modal-body {
+            padding: 0 40px 40px;
+        }
+
+        .consultant-modal-bio {
+            font-size: 0.95rem;
+            line-height: 1.9;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Scrollbar styling for modals */
+        .service-modal-content::-webkit-scrollbar,
+        .consultant-modal-content::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .service-modal-content::-webkit-scrollbar-track,
+        .consultant-modal-content::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .service-modal-content::-webkit-scrollbar-thumb,
+        .consultant-modal-content::-webkit-scrollbar-thumb {
+            background: var(--color-accent);
+            border-radius: 3px;
+        }
         /* ===== CONTACT ===== */
         .contact {
             background: var(--color-bg-alt);
@@ -989,468 +1256,184 @@
         <div class="section-divider reveal reveal-delay-2"></div>
     </div>
 
-    <div class="services-list">
-        <!-- 01 Exhibition Planning -->
-        <div class="service-item reveal">
-            <div class="service-number">01</div>
-            <div class="service-info">
-                <h3>
-                    <span class="es">Planificación de Exposiciones</span>
-                    <span class="cn">国际展览策划</span>
-                </h3>
-                <p class="service-desc">
-                    <span class="zh">为艺术家和文化机构策划和执行海外展览，涵盖从概念构思到开幕落成的全流程服务。</span>
-                    <span class="es">Planificación y ejecución integral de exposiciones internacionales para artistas e instituciones culturales, cubriendo todo el proceso desde la concepción hasta la inauguración.</span>
-                </p>
-            </div>
-            <div class="service-details">
-                <ul>
-                    <li>
-                        <span class="zh">海外个展策划与执行</span>
-                        <span class="es">Exposiciones individuales en el extranjero</span>
-                    </li>
-                    <li>
-                        <span class="zh">群展/联展策划</span>
-                        <span class="es">Exposiciones colectivas y colaborativas</span>
-                    </li>
-                    <li>
-                        <span class="zh">双年展/三年展申请与参与</span>
-                        <span class="es">Postulación y participación en bienales y trienales</span>
-                    </li>
-                    <li>
-                        <span class="zh">美术馆/博物馆合作</span>
-                        <span class="es">Colaboración con museos y galerías de arte</span>
-                    </li>
-                    <li>
-                        <span class="zh">商业空间策展</span>
-                        <span class="es">Curaduría para espacios comerciales</span>
-                    </li>
-                </ul>
+    <div class="services-grid">
+        <!-- 01 -->
+        <div class="service-card reveal" onclick="openServiceModal(1)">
+            <img class="service-card-img" src="assets/images/services/svc-01.jpg" alt="展览策划">
+            <div class="service-card-overlay"></div>
+            <div class="service-card-content">
+                <div class="service-card-number">01</div>
+                <div class="service-card-title"><span class="zh">国际展览策划</span><span class="zh-es">Planificación de Exposiciones</span></div>
+                <div class="service-card-title-es">Exhibitions & Curatorial</div>
+                <div class="service-card-expand">
+                    <span class="zh">了解详情</span><span class="es">Ver más</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </div>
             </div>
         </div>
 
-        <!-- 02 Curatorial Services -->
-        <div class="service-item reveal">
-            <div class="service-number">02</div>
-            <div class="service-info">
-                <h3>
-                    <span class="es">Servicios Curatoriales</span>
-                    <span class="cn">策展服务</span>
-                </h3>
-                <p class="service-desc">
-                    <span class="zh">提供学术性策展服务，包括展览概念设计、展陈规划、学术研究和文本撰写。</span>
-                    <span class="es">Servicios curatoriales académicos que incluyen diseño conceptual de exposiciones, planificación espacial, investigación académica y redacción de textos.</span>
-                </p>
-            </div>
-            <div class="service-details">
-                <ul>
-                    <li>
-                        <span class="zh">学术研究型策展</span>
-                        <span class="es">Curaduría académica e investigativa</span>
-                    </li>
-                    <li>
-                        <span class="zh">展览概念与主题设计</span>
-                        <span class="es">Diseño conceptual y temático de exposiciones</span>
-                    </li>
-                    <li>
-                        <span class="zh">展陈空间设计指导</span>
-                        <span class="es">Asesoramiento en diseño espacial expositivo</span>
-                    </li>
-                    <li>
-                        <span class="zh">展览画册与出版</span>
-                        <span class="es">Catálogos y publicaciones expositivas</span>
-                    </li>
-                    <li>
-                        <span class="zh">艺术家档案与介绍</span>
-                        <span class="es">Archivos y perfiles de artistas</span>
-                    </li>
-                </ul>
+        <!-- 02 -->
+        <div class="service-card reveal reveal-delay-1" onclick="openServiceModal(2)">
+            <img class="service-card-img" src="assets/images/services/svc-02.jpg" alt="策展服务">
+            <div class="service-card-overlay"></div>
+            <div class="service-card-content">
+                <div class="service-card-number">02</div>
+                <div class="service-card-title"><span class="zh">策展与学术研究</span><span class="zh-es">Servicios Curatoriales</span></div>
+                <div class="service-card-title-es">Curatorial & Research</div>
+                <div class="service-card-expand">
+                    <span class="zh">了解详情</span><span class="es">Ver más</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </div>
             </div>
         </div>
 
-        <!-- 03 Cultural Exchange -->
-        <div class="service-item reveal">
-            <div class="service-number">03</div>
-            <div class="service-info">
-                <h3>
-                    <span class="es">Intercambio Cultural</span>
-                    <span class="cn">文化交流</span>
-                </h3>
-                <p class="service-desc">
-                    <span class="zh">组织高层次文化交流活动，促进中拉艺术界、学术界和教育界的深度对话。</span>
-                    <span class="es">Organización de actividades de alto nivel para fomentar el diálogo profundo entre los ámbitos artístico, académico y educativo de China y Latinoamérica.</span>
-                </p>
-            </div>
-            <div class="service-details">
-                <ul>
-                    <li>
-                        <span class="zh">艺术论坛与文化峰会</span>
-                        <span class="es">Foros artísticos y cumbres culturales</span>
-                    </li>
-                    <li>
-                        <span class="zh">学术讲座与研讨会</span>
-                        <span class="es">Conferencias académicas y seminarios</span>
-                    </li>
-                    <li>
-                        <span class="zh">艺术家驻留计划</span>
-                        <span class="es">Programas de residencia artística</span>
-                    </li>
-                    <li>
-                        <span class="zh">国际交流访问行程</span>
-                        <span class="es">Itinerarios de visita e intercambio internacional</span>
-                    </li>
-                    <li>
-                        <span class="zh">高校合作与学术交流</span>
-                        <span class="es">Cooperación universitaria e intercambio académico</span>
-                    </li>
-                </ul>
+        <!-- 03 -->
+        <div class="service-card reveal reveal-delay-2" onclick="openServiceModal(3)">
+            <img class="service-card-img" src="assets/images/services/svc-03.jpg" alt="文化交流">
+            <div class="service-card-overlay"></div>
+            <div class="service-card-content">
+                <div class="service-card-number">03</div>
+                <div class="service-card-title"><span class="zh">文化交流项目</span><span class="zh-es">Intercambio Cultural</span></div>
+                <div class="service-card-title-es">Cultural Exchange</div>
+                <div class="service-card-expand">
+                    <span class="zh">了解详情</span><span class="es">Ver más</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </div>
             </div>
         </div>
 
-        <!-- 04 Institutional Cooperation -->
-        <div class="service-item reveal">
-            <div class="service-number">04</div>
-            <div class="service-info">
-                <h3>
-                    <span class="es">Cooperación Institucional</span>
-                    <span class="cn">机构合作</span>
-                </h3>
-                <p class="service-desc">
-                    <span class="zh">为中拉两地的文化机构搭建合作桥梁，促成博物馆、美术馆、基金会和使馆间的伙伴关系。</span>
-                    <span class="es">Construimos puentes de cooperación entre instituciones culturales de China y Latinoamérica, facilitando alianzas entre museos, galerías, fundaciones y misiones diplomáticas.</span>
-                </p>
-            </div>
-            <div class="service-details">
-                <ul>
-                    <li>
-                        <span class="zh">博物馆/美术馆合作对接</span>
-                        <span class="es">Conexión con museos y galerías de arte</span>
-                    </li>
-                    <li>
-                        <span class="zh">文化基金会合作</span>
-                        <span class="es">Cooperación con fundaciones culturales</span>
-                    </li>
-                    <li>
-                        <span class="zh">大学文化项目合作</span>
-                        <span class="es">Cooperación en proyectos culturales universitarios</span>
-                    </li>
-                    <li>
-                        <span class="zh">驻外使馆文化处协作</span>
-                        <span class="es">Colaboración con departamentos culturales de embajadas</span>
-                    </li>
-                    <li>
-                        <span class="zh">国际组织项目对接</span>
-                        <span class="es">Conexión con organizaciones internacionales</span>
-                    </li>
-                </ul>
+        <!-- 04 -->
+        <div class="service-card reveal reveal-delay-3" onclick="openServiceModal(4)">
+            <img class="service-card-img" src="assets/images/services/svc-04.jpg" alt="机构合作">
+            <div class="service-card-overlay"></div>
+            <div class="service-card-content">
+                <div class="service-card-number">04</div>
+                <div class="service-card-title"><span class="zh">机构合作搭建</span><span class="zh-es">Cooperación Institucional</span></div>
+                <div class="service-card-title-es">Institutional Cooperation</div>
+                <div class="service-card-expand">
+                    <span class="zh">了解详情</span><span class="es">Ver más</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </div>
             </div>
         </div>
 
-        <!-- 05 International Promotion -->
-        <div class="service-item reveal">
-            <div class="service-number">05</div>
-            <div class="service-info">
-                <h3>
-                    <span class="es">Promoción Internacional</span>
-                    <span class="cn">国际推广</span>
-                </h3>
-                <p class="service-desc">
-                    <span class="zh">为艺术家和文化项目提供全方位的海外宣传推广，包括媒体关系、内容创作和数字传播。</span>
-                    <span class="es">Promoción internacional integral para artistas y proyectos culturales, incluyendo relaciones mediáticas, creación de contenido y difusión digital.</span>
-                </p>
-            </div>
-            <div class="service-details">
-                <ul>
-                    <li>
-                        <span class="zh">海外媒体宣传与公关</span>
-                        <span class="es">Prensa y relaciones públicas internacionales</span>
-                    </li>
-                    <li>
-                        <span class="zh">新闻发布与媒体采访</span>
-                        <span class="es">Comunicados de prensa y entrevistas</span>
-                    </li>
-                    <li>
-                        <span class="zh">社交媒体运营与管理</span>
-                        <span class="es">Gestión y operación de redes sociales</span>
-                    </li>
-                    <li>
-                        <span class="zh">多语种资料制作（中/英/西）</span>
-                        <span class="es">Producción de materiales multilingües</span>
-                    </li>
-                    <li>
-                        <span class="zh">艺术家国际形象塑造</span>
-                        <span class="es">Construcción de imagen internacional del artista</span>
-                    </li>
-                </ul>
+        <!-- 05 -->
+        <div class="service-card reveal" onclick="openServiceModal(5)">
+            <img class="service-card-img" src="assets/images/services/svc-05.jpg" alt="国际推广">
+            <div class="service-card-overlay"></div>
+            <div class="service-card-content">
+                <div class="service-card-number">05</div>
+                <div class="service-card-title"><span class="zh">国际推广与宣传</span><span class="zh-es">Promoción Internacional</span></div>
+                <div class="service-card-title-es">International Promotion</div>
+                <div class="service-card-expand">
+                    <span class="zh">了解详情</span><span class="es">Ver más</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </div>
             </div>
         </div>
 
-        <!-- 06 Collection Consulting -->
-        <div class="service-item reveal">
-            <div class="service-number">06</div>
-            <div class="service-info">
-                <h3>
-                    <span class="es">Consultoría de Colecciones</span>
-                    <span class="cn">收藏咨询</span>
-                </h3>
-                <p class="service-desc">
-                    <span class="zh">为收藏家和文化机构提供艺术品收藏策略咨询，包括市场分析、作品甄选和收藏规划。</span>
-                    <span class="es">Asesoramiento estratégico de coleccionismo de arte para coleccionistas e instituciones culturales, incluyendo análisis de mercado, selección de obras y planificación de colecciones.</span>
-                </p>
-            </div>
-            <div class="service-details">
-                <ul>
-                    <li>
-                        <span class="zh">收藏市场分析与趋势</span>
-                        <span class="es">Análisis de mercado y tendencias</span>
-                    </li>
-                    <li>
-                        <span class="zh">艺术品价值评估与定位</span>
-                        <span class="es">Evaluación y posicionamiento de obras</span>
-                    </li>
-                    <li>
-                        <span class="zh">收藏家资源对接</span>
-                        <span class="es">Conexión con coleccionistas</span>
-                    </li>
-                    <li>
-                        <span class="zh">私人/机构艺术顾问</span>
-                        <span class="es">Consultoría artística privada e institucional</span>
-                    </li>
-                    <li>
-                        <span class="zh">收藏体系建设</span>
-                        <span class="es">Desarrollo de sistemas de colección</span>
-                    </li>
-                </ul>
+        <!-- 06 -->
+        <div class="service-card reveal reveal-delay-1" onclick="openServiceModal(6)">
+            <img class="service-card-img" src="assets/images/services/svc-06.jpg" alt="收藏咨询">
+            <div class="service-card-overlay"></div>
+            <div class="service-card-content">
+                <div class="service-card-number">06</div>
+                <div class="service-card-title"><span class="zh">收藏策略咨询</span><span class="zh-es">Consultoría de Colecciones</span></div>
+                <div class="service-card-title-es">Collection Consulting</div>
+                <div class="service-card-expand">
+                    <span class="zh">了解详情</span><span class="es">Ver más</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </div>
             </div>
         </div>
 
-        <!-- 07 Art Market Entry -->
-        <div class="service-item reveal">
-            <div class="service-number">07</div>
-            <div class="service-info">
-                <h3>
-                    <span class="es">Entrada al Mercado Internacional</span>
-                    <span class="cn">海外市场进入</span>
-                </h3>
-                <p class="service-desc">
-                    <span class="zh">帮助中国艺术家系统性地进入拉美和国际艺术市场，建立可持续的职业发展路径。</span>
-                    <span class="es">Ayudamos a artistas chinos a ingresar sistemáticamente al mercado artístico latinoamericano e internacional, construyendo trayectorias profesionales sostenibles.</span>
-                </p>
-            </div>
-            <div class="service-details">
-                <ul>
-                    <li>
-                        <span class="zh">海外艺术履历建设</span>
-                        <span class="es">Construcción de trayectoria artística internacional</span>
-                    </li>
-                    <li>
-                        <span class="zh">海外代理与画廊对接</span>
-                        <span class="es">Representación y conexión con galerías</span>
-                    </li>
-                    <li>
-                        <span class="zh">市场定位与策略制定</span>
-                        <span class="es">Posicionamiento y estrategia de mercado</span>
-                    </li>
-                    <li>
-                        <span class="zh">艺术机构推荐与引荐</span>
-                        <span class="es">Recomendación a instituciones artísticas</span>
-                    </li>
-                    <li>
-                        <span class="zh">作品定价与销售策略</span>
-                        <span class="es">Estrategia de precios y ventas</span>
-                    </li>
-                </ul>
+        <!-- 07 -->
+        <div class="service-card reveal reveal-delay-2" onclick="openServiceModal(7)">
+            <img class="service-card-img" src="assets/images/services/svc-07.jpg" alt="市场进入">
+            <div class="service-card-overlay"></div>
+            <div class="service-card-content">
+                <div class="service-card-number">07</div>
+                <div class="service-card-title"><span class="zh">国际市场进入</span><span class="zh-es">Entrada al Mercado Internacional</span></div>
+                <div class="service-card-title-es">Market Entry</div>
+                <div class="service-card-expand">
+                    <span class="zh">了解详情</span><span class="es">Ver más</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </div>
             </div>
         </div>
 
-        <!-- 08 Project Management -->
-        <div class="service-item reveal">
-            <div class="service-number">08</div>
-            <div class="service-info">
-                <h3>
-                    <span class="es">Gestión de Proyectos</span>
-                    <span class="cn">项目执行管理</span>
-                </h3>
-                <p class="service-desc">
-                    <span class="zh">提供展览和文化项目的一站式落地执行服务，确保每一个环节精准到位。</span>
-                    <span class="es">Servicios integrales de ejecución para exposiciones y proyectos culturales, asegurando la precisión en cada etapa del proceso.</span>
-                </p>
-            </div>
-            <div class="service-details">
-                <ul>
-                    <li>
-                        <span class="zh">展览场地协调与预订</span>
-                        <span class="es">Coordinación y reserva de espacios</span>
-                    </li>
-                    <li>
-                        <span class="zh">艺术品国际运输与物流</span>
-                        <span class="es">Transporte internacional y logística de obras</span>
-                    </li>
-                    <li>
-                        <span class="zh">海关清关与保险</span>
-                        <span class="es">Desaduanaje y seguros</span>
-                    </li>
-                    <li>
-                        <span class="zh">布展与开幕式策划</span>
-                        <span class="es">Montaje y planificación de inauguraciones</span>
-                    </li>
-                    <li>
-                        <span class="zh">嘉宾邀请与接待</span>
-                        <span class="es">Invitación y recepción de invitados</span>
-                    </li>
-                    <li>
-                        <span class="zh">现场翻译与会务</span>
-                        <span class="es">Traducción e interpretación in situ</span>
-                    </li>
-                </ul>
+        <!-- 08 -->
+        <div class="service-card reveal reveal-delay-3" onclick="openServiceModal(8)">
+            <img class="service-card-img" src="assets/images/services/svc-08.jpg" alt="项目管理">
+            <div class="service-card-overlay"></div>
+            <div class="service-card-content">
+                <div class="service-card-number">08</div>
+                <div class="service-card-title"><span class="zh">项目全案管理</span><span class="zh-es">Gestión de Proyectos</span></div>
+                <div class="service-card-title-es">Project Management</div>
+                <div class="service-card-expand">
+                    <span class="zh">了解详情</span><span class="es">Ver más</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </div>
             </div>
         </div>
 
-        <!-- 09 Collector Experiences -->
-        <div class="service-item reveal">
-            <div class="service-number">09</div>
-            <div class="service-info">
-                <h3>
-                    <span class="es">Experiencias para Coleccionistas</span>
-                    <span class="cn">收藏家专属体验</span>
-                </h3>
-                <p class="service-desc">
-                    <span class="zh">为收藏家量身打造独一无二的艺术探索之旅。依托与拉美顶尖博物馆、当代美术馆的深度合作关系，提供独家闭门参观、艺术家工作室探访、画廊导览和艺术博览会VIP通道等稀缺体验。每一件旅程都是一次与艺术深度对话的策展式体验。</span>
-                    <span class="es">Programas únicos y exclusivos para coleccionistas de arte. Visitas a talleres de artistas locales, recorridos privados por galerías y acceso VIP a ferias de arte. Mantenemos convenios con museos y galerías de arte contemporáneo de primer nivel para garantizar accesos exclusivos y experiencias a puerta cerrada.</span>
-                </p>
-            </div>
-            <div class="service-details">
-                <ul>
-                    <li>
-                        <span class="zh">收藏家专属艺术之旅「Ruta del Coleccionista」</span>
-                        <span class="es">Ruta del Coleccionista — itinerarios curatoriales exclusivos</span>
-                    </li>
-                    <li>
-                        <span class="zh">艺术家工作室私密探访</span>
-                        <span class="es">Visitas privadas a talleres de artistas</span>
-                    </li>
-                    <li>
-                        <span class="zh">顶级博物馆/美术馆闭门导览</span>
-                        <span class="es">Recorridos exclusivos en museos y galerías de primer nivel</span>
-                    </li>
-                    <li>
-                        <span class="zh">艺术博览会VIP通道与预展</span>
-                        <span class="es">Acceso VIP y previsualización en ferias de arte</span>
-                    </li>
-                    <li>
-                        <span class="zh">定制艺术投资与收藏顾问</span>
-                        <span class="es">Asesoría personalizada en inversión y coleccionismo de arte</span>
-                    </li>
-                </ul>
+        <!-- 09 -->
+        <div class="service-card reveal" onclick="openServiceModal(9)">
+            <img class="service-card-img" src="assets/images/services/svc-09.jpg" alt="收藏家体验">
+            <div class="service-card-overlay"></div>
+            <div class="service-card-content">
+                <div class="service-card-number">09</div>
+                <div class="service-card-title"><span class="zh">收藏家专属体验</span><span class="zh-es">Experiencias para Coleccionistas</span></div>
+                <div class="service-card-title-es">Collector Experiences</div>
+                <div class="service-card-expand">
+                    <span class="zh">了解详情</span><span class="es">Ver más</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </div>
             </div>
         </div>
 
-        <!-- 10 Artist Residencies -->
-        <div class="service-item reveal">
-            <div class="service-number">10</div>
-            <div class="service-info">
-                <h3>
-                    <span class="es">Residencias Artísticas</span>
-                    <span class="cn">艺术家驻留计划</span>
-                </h3>
-                <p class="service-desc">
-                    <span class="zh">为来自中国与拉丁美洲的艺术家精心组织和协调驻留项目。依托 Claribel 在拉美艺术界建立的深厚人脉网络，为艺术家匹配最佳驻留机构、工作室资源和在地文化环境，促成深度的跨文化创作对话。</span>
-                    <span class="es">Organización y coordinación integral de residencias artísticas para artistas chinos y latinoamericanos. Aprovechando la red de contactos consolidada en el ecosistema artístico latinoamericano, conectamos artistas con instituciones, talleres y contextos culturales ideales para una creación intercultural profunda.</span>
-                </p>
-            </div>
-            <div class="service-details">
-                <ul>
-                    <li>
-                        <span class="zh">中拉艺术家双向驻留项目</span>
-                        <span class="es">Programas de residencia bilateral China-Latinoamérica</span>
-                    </li>
-                    <li>
-                        <span class="zh">驻留机构匹配与资源协调</span>
-                        <span class="es">Emparejamiento con instituciones y coordinación de recursos</span>
-                    </li>
-                    <li>
-                        <span class="zh">驻留期间创作展示与成果推广</span>
-                        <span class="es">Exhibición y promoción de resultados creativos</span>
-                    </li>
-                    <li>
-                        <span class="zh">驻留艺术家后续展览与国际推介</span>
-                        <span class="es">Seguimiento con exposiciones y promoción internacional posterior</span>
-                    </li>
-                </ul>
+        <!-- 10 -->
+        <div class="service-card reveal reveal-delay-1" onclick="openServiceModal(10)">
+            <img class="service-card-img" src="assets/images/services/svc-10.jpg" alt="驻留计划">
+            <div class="service-card-overlay"></div>
+            <div class="service-card-content">
+                <div class="service-card-number">10</div>
+                <div class="service-card-title"><span class="zh">艺术家驻留计划</span><span class="zh-es">Residencias Artísticas</span></div>
+                <div class="service-card-title-es">Artist Residencies</div>
+                <div class="service-card-expand">
+                    <span class="zh">了解详情</span><span class="es">Ver más</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </div>
             </div>
         </div>
 
-        <!-- 11 Corporate Cultural Programs -->
-        <div class="service-item reveal">
-            <div class="service-number">11</div>
-            <div class="service-info">
-                <h3>
-                    <span class="es">Programas Corporativos Culturales</span>
-                    <span class="cn">企业社会责任文化项目</span>
-                </h3>
-                <p class="service-desc">
-                    <span class="zh">与中国和阿根廷企业建立深度合作，将文化艺术融入企业的品牌战略与社会责任（CSR）计划。通过在企业总部举办艺术展览、文化节庆活动、艺术家对谈和精品讲座，为企业创造独特的文化价值与品牌影响力。</span>
-                    <span class="es">Convenios de colaboración con empresas chinas y argentinas en programas de responsabilidad social basados en la cultura. Organizamos festivales, charlas con artistas, exposiciones en sedes corporativas y experiencias culturales exclusivas que fortalecen la marca y el impacto social de cada empresa.</span>
-                </p>
-            </div>
-            <div class="service-details">
-                <ul>
-                    <li>
-                        <span class="zh">企业总部艺术展览与文化节庆</span>
-                        <span class="es">Exposiciones y festivales culturales en sedes corporativas</span>
-                    </li>
-                    <li>
-                        <span class="zh">CSR文化项目定制策划</span>
-                        <span class="es">Diseño de programas culturales de RSE a medida</span>
-                    </li>
-                    <li>
-                        <span class="zh">企业品牌与艺术跨界联名</span>
-                        <span class="es">Alianzas de marca con el arte</span>
-                    </li>
-                    <li>
-                        <span class="zh">高管艺术鉴赏与收藏培训</span>
-                        <span class="es">Formación en apreciación y coleccionismo para ejecutivos</span>
-                    </li>
-                </ul>
+        <!-- 11 -->
+        <div class="service-card reveal reveal-delay-2" onclick="openServiceModal(11)">
+            <img class="service-card-img" src="assets/images/services/svc-11.jpg" alt="企业项目">
+            <div class="service-card-overlay"></div>
+            <div class="service-card-content">
+                <div class="service-card-number">11</div>
+                <div class="service-card-title"><span class="zh">企业社会责任文化项目</span><span class="zh-es">Programas Corporativos Culturales</span></div>
+                <div class="service-card-title-es">Corporate Cultural Programs</div>
+                <div class="service-card-expand">
+                    <span class="zh">了解详情</span><span class="es">Ver más</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </div>
             </div>
         </div>
 
-        <!-- 12 Ultra-Luxury Cultural Experiences -->
-        <div class="service-item reveal">
-            <div class="service-number">12</div>
-            <div class="service-info">
-                <h3>
-                    <span class="es">Experiencias Culturales de Ultra Lujo</span>
-                    <span class="cn">高端文化体验之旅</span>
-                </h3>
-                <p class="service-desc">
-                    <span class="zh">打造极致奢华的文化艺术旅行体验，将拉美最顶级的自然、美酒、艺术与生活方式完美融合。从安第斯山脉脚下的传奇酒庄品酒，到布宜诺斯艾利斯城市宫殿中的先锋艺术收藏之夜；从巴塔哥尼亚迷境中的国际级飞蝇钓与艺术 Lodges，到历史剧院的唐吉奥音乐会——每一次旅程都是一场精心策展的感官盛宴。</span>
-                    <span class="es">Itinerarios ultra-lujo que fusionan arte, naturaleza, gastronomía y cultura. Desde catas de vino en viñedos prestigiosos al pie de los Andes con obras de arte, hasta noches en palacios urbanos y chacras con colecciones de vanguardia. Jornadas de pesca con mosca de nivel internacional en míticos lodges patagónicos rodeados de arte pictórico y textil. También ofrecemos la Ruta del Melómano: encuentro con músicos, bailarines y compositores, festivales de Tango y conciertos en teatros históricos.</span>
-                </p>
-            </div>
-            <div class="service-details">
-                <ul>
-                    <li>
-                        <span class="zh">「葡萄酒×艺术」— 安第斯酒庄与先锋收藏之旅</span>
-                        <span class="es">Vino × Arte — Viñedos de los Andes y colecciones de vanguardia</span>
-                    </li>
-                    <li>
-                        <span class="zh">「巴塔哥尼亚×艺术」— 飞蝇钓与艺术Lodge体验</span>
-                        <span class="es">Patagonia × Arte — Pesca con mosca y lodges con arte</span>
-                    </li>
-                    <li>
-                        <span class="zh">「音乐之旅」— 唐吉音乐节与历史剧院音乐会</span>
-                        <span class="es">Ruta del Melómano — Festivales de Tango y conciertos en teatros históricos</span>
-                    </li>
-                    <li>
-                        <span class="zh">城市宫殿艺术之夜与私人收藏参观</span>
-                        <span class="es">Noches de arte en palacios urbanos y visitas a colecciones privadas</span>
-                    </li>
-                    <li>
-                        <span class="zh">全定制策展式奢华行程</span>
-                        <span class="es">Itinerarios de ultra-lujo completamente personalizados y curatoriales</span>
-                    </li>
-                </ul>
+        <!-- 12 -->
+        <div class="service-card reveal reveal-delay-3" onclick="openServiceModal(12)">
+            <img class="service-card-img" src="assets/images/services/svc-12.jpg" alt="高端体验">
+            <div class="service-card-overlay"></div>
+            <div class="service-card-content">
+                <div class="service-card-number">12</div>
+                <div class="service-card-title"><span class="zh">高端文化体验之旅</span><span class="zh-es">Experiencias Culturales de Ultra Lujo</span></div>
+                <div class="service-card-title-es">Ultra-Luxury Cultural Journeys</div>
+                <div class="service-card-expand">
+                    <span class="zh">了解详情</span><span class="es">Ver más</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </div>
             </div>
         </div>
     </div>
@@ -1522,40 +1505,51 @@
     </div>
 
     <div class="consultants-grid">
-        <!-- 顾问 Isabel Liang / 梁东亚 -->
-        <div class="consultant-card reveal">
-            <div class="consultant-photo">
+        <!-- Isabel Liang -->
+        <div class="consultant-card reveal" onclick="openConsultantModal('isabel')">
+            <div class="consultant-card-photo">
                 <img src="assets/images/isabel.jpg" alt="Isabel Liang / 梁东亚">
             </div>
-            <h3>Isabel Liang / 梁东亚</h3>
-            <p class="consultant-role">
-                <span class="zh">联合创始人 · 创意文化组织管理</span>
-                <span class="es">Cofundadora · Gestión Cultural Creativa</span>
-            </p>
-            <p class="consultant-bio">
-                <span class="zh">国际媒体人、文化管理专业人士，长期工作和生活于阿根廷，专注于中国与拉丁美洲文化艺术交流及国际传播。拥有布宜诺斯艾利斯大学文化与创意产业管理专业背景，兼具国际媒体视野、跨文化沟通能力及文化项目管理经验。多年来持续与文化机构、艺术家、策展人、美术馆及公共机构开展合作，深度参与国际文化交流与艺术传播实践。作为 NEXO 联合创始人，她致力于搭建连接中国艺术家与拉丁美洲艺术生态的专业平台，通过国际策展、展览合作、文化交流及项目管理，促进艺术在不同文化语境中的交流、理解与可持续发展。</span>
-                <span class="es">Mediadora internacional y profesional en gestión cultural, con larga trayectoria viviendo y trabajando en Argentina. Especializada en el intercambio cultural y artístico entre China y Latinoamérica. Egresada de la Universidad de Buenos Aires en Gestión Cultural y de la Industria Creativa. Cuenta con visión mediática internacional, habilidades de comunicación intercultural y experiencia en gestión de proyectos culturales. Durante años ha colaborado con instituciones culturales, artistas, curadores, museos e instituciones públicas, participando activamente en prácticas de intercambio cultural y difusión artística internacional. Como cofundadora de NEXO, se dedica a construir una plataforma profesional que conecte a artistas chinos con el ecosistema artístico latinoamericano, promoviendo el diálogo, la comprensión y el desarrollo sostenible del arte a través de la curaduría internacional, la cooperación expositiva, el intercambio cultural y la gestión de proyectos.</span>
-            </p>
+            <div class="consultant-card-info">
+                <h3 class="consultant-card-name">Isabel Liang / 梁东亚</h3>
+                <p class="consultant-card-role">
+                    <span class="zh">联合创始人 · 创意文化组织管理</span>
+                    <span class="es">Cofundadora · Gestión Cultural Creativa</span>
+                </p>
+                <p class="consultant-card-brief">
+                    <span class="zh">国际媒体人、文化管理专家，专注中拉文化艺术交流。布宜诺斯艾利斯大学文化管理专业背景，长期深耕拉美艺术生态。</span>
+                    <span class="es">Mediadora internacional y profesional en gestión cultural, especializada en el intercambio artístico entre China y Latinoamérica.</span>
+                </p>
+                <div class="consultant-card-expand">
+                    <span class="zh">查看详细履历</span><span class="es">Ver perfil completo</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </div>
+            </div>
         </div>
-        <!-- 顾问 Claribel Terré Morell -->
-        <div class="consultant-card reveal reveal-delay-1">
-            <div class="consultant-photo">
+
+        <!-- Claribel Terré Morell -->
+        <div class="consultant-card reveal reveal-delay-1" onclick="openConsultantModal('claribel')">
+            <div class="consultant-card-photo">
                 <img src="assets/images/claribel.jpg" alt="Claribel Terré Morell">
             </div>
-            <h3>Claribel Terré Morell</h3>
-            <p class="consultant-role">
-                <span class="zh">联合创始人 · 高级文化顾问 / 策展人</span>
-                <span class="es">Cofundadora · Asesora Cultural Senior / Curadora</span>
-            </p>
-            <p class="consultant-bio">
-                <span class="zh">资深文化顾问与专业策展人，长期深耕拉丁美洲当代艺术生态。在由南美多国联合发起的 BIENALSUR 双年展项目中担任核心领导角色，深度参与该跨国艺术平台的战略规划、策展体系构建与全球合作网络拓展，积累了丰富的国际策展经验和跨文化项目运作能力。凭借多年在拉美艺术界的深耕，她与区域内主要文化机构、美术馆、双年展、独立艺术空间及众多知名策展人建立了稳固的合作关系，形成了覆盖阿根廷、巴西、哥伦比亚、智利等拉美核心艺术市场的专业资源网络。作为 NEXO 联合创始人，她专注于为中拉文化机构和企业提供专业文化艺术顾问服务，包括国际策展咨询、展览项目策划、艺术机构合作对接、拉美市场文化战略评估等，是连接中国与拉丁美洲艺术生态的关键桥梁。</span>
-                <span class="es">Asesora cultural senior y curadora profesional con amplia trayectoria en el ecosistema del arte contemporáneo latinoamericano. Desempeñó un rol central en BIENALSUR, la bienal iberoamericana que reúne a múltiples países del Sur, contribuyendo a su planificación estratégica, sistema curatorial y red de cooperación global, con sólida experiencia en curaduría internacional y gestión de proyectos interculturales. Gracias a su trabajo sostenido en la región, mantiene relaciones profesionales con las principales instituciones culturales, museos, bienales, espacios independientes y curadores de Argentina, Brasil, Colombia, Chile y otros países, conformando una extensa red de recursos en el arte iberoamericano. Como cofundadora de NEXO, brinda asesoría cultural especializada para instituciones y empresas en la conexión China-Latinoamérica, incluyendo consultoría curatorial, planificación de proyectos expositivos, vinculación con instituciones artísticas y evaluación de estrategias culturales para el mercado latinoamericano.</span>
-            </p>
+            <div class="consultant-card-info">
+                <h3 class="consultant-card-name">Claribel Terré Morell</h3>
+                <p class="consultant-card-role">
+                    <span class="zh">联合创始人 · 高级文化顾问 / 策展人</span>
+                    <span class="es">Cofundadora · Asesora Cultural Senior / Curadora</span>
+                </p>
+                <p class="consultant-card-brief">
+                    <span class="zh">资深策展人与文化顾问，BIENALSUR 双年展核心成员。覆盖拉美核心艺术市场的专业资源网络。</span>
+                    <span class="es">Curadora profesional con rol central en BIENALSUR. Red extensa de recursos en el ecosistema artístico iberoamericano.</span>
+                </p>
+                <div class="consultant-card-expand">
+                    <span class="zh">查看详细履历</span><span class="es">Ver perfil completo</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </div>
+            </div>
         </div>
     </div>
-</section>
-
-<!-- ===== CONTACT ===== -->
+</section><!-- ===== CONTACT ===== -->
 <section class="contact" id="contact">
     <div class="section-header reveal">
         <p class="section-label">
@@ -1853,5 +1847,395 @@
     }
 </script>
 
+
+
+        <div class="service-modal" id="service-modal-1">
+            <div class="service-modal-backdrop" onclick="closeServiceModal(1)"></div>
+            <div class="service-modal-content">
+                <button class="service-modal-close" onclick="closeServiceModal(1)">&times;</button>
+                <img class="service-modal-hero" src="assets/images/services/svc-01.jpg" alt="国际展览策划">
+                <div class="service-modal-body">
+                    <div class="service-modal-number">01</div>
+                    <h3 class="service-modal-title">国际展览策划</h3>
+                    <h4 class="service-modal-title-es">Planificación de Exposiciones</h4>
+                    <p class="service-modal-desc">
+                        <span class="zh">为艺术家和文化机构策划和执行海外展览，涵盖从概念构思到开幕落成的全流程服务。我们提供从展览策划、艺术家邀约、场地协调到开幕活动的完整解决方案，确保每一个展览都达到国际水准。</span>
+                        <span class="es">Planificación y ejecución integral de exposiciones internacionales para artistas e instituciones culturales, cubriendo todo el proceso desde la concepción hasta la inauguración.</span>
+                    </p>
+                    <p class="service-modal-subtitle">
+                        <span class="zh">服务内容</span>
+                        <span class="es">Servicios Incluidos</span>
+                    </p>
+                    <ul class="service-modal-list">
+                        <li><span class="zh">海外个展策划与执行</span><span class="es">Exposiciones individuales en el extranjero</span></li><li><span class="zh">群展/联展策划</span><span class="es">Exposiciones colectivas y colaborativas</span></li><li><span class="zh">双年展/三年展申请与参与</span><span class="es">Postulación y participación en bienales y trienales</span></li><li><span class="zh">美术馆/博物馆合作</span><span class="es">Colaboración con museos y galerías de arte</span></li><li><span class="zh">商业空间策展</span><span class="es">Curaduría para espacios comerciales</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="service-modal" id="service-modal-2">
+            <div class="service-modal-backdrop" onclick="closeServiceModal(2)"></div>
+            <div class="service-modal-content">
+                <button class="service-modal-close" onclick="closeServiceModal(2)">&times;</button>
+                <img class="service-modal-hero" src="assets/images/services/svc-02.jpg" alt="策展与学术研究">
+                <div class="service-modal-body">
+                    <div class="service-modal-number">02</div>
+                    <h3 class="service-modal-title">策展与学术研究</h3>
+                    <h4 class="service-modal-title-es">Servicios Curatoriales</h4>
+                    <p class="service-modal-desc">
+                        <span class="zh">提供学术性策展服务，包括展览概念设计、展陈规划、学术研究和文本撰写。我们的策展团队拥有丰富的国际经验，能够为展览赋予深刻的学术内涵和视觉呈现。</span>
+                        <span class="es">Servicios curatoriales académicos que incluyen diseño conceptual de exposiciones, planificación espacial, investigación académica y redacción de textos.</span>
+                    </p>
+                    <p class="service-modal-subtitle">
+                        <span class="zh">服务内容</span>
+                        <span class="es">Servicios Incluidos</span>
+                    </p>
+                    <ul class="service-modal-list">
+                        <li><span class="zh">展览概念与学术研究</span><span class="es">Concepto expositivo e investigación</span></li><li><span class="zh">展陈空间规划与设计指导</span><span class="es">Planificación espacial y dirección de diseño</span></li><li><span class="zh">策展文本撰写</span><span class="es">Redacción de textos curatoriales</span></li><li><span class="zh">展览画册编辑与出版</span><span class="es">Edición y publicación de catálogos</span></li><li><span class="zh">学术论坛与对谈策划</span><span class="es">Planificación de foros y diálogos académicos</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="service-modal" id="service-modal-3">
+            <div class="service-modal-backdrop" onclick="closeServiceModal(3)"></div>
+            <div class="service-modal-content">
+                <button class="service-modal-close" onclick="closeServiceModal(3)">&times;</button>
+                <img class="service-modal-hero" src="assets/images/services/svc-03.jpg" alt="文化交流项目">
+                <div class="service-modal-body">
+                    <div class="service-modal-number">03</div>
+                    <h3 class="service-modal-title">文化交流项目</h3>
+                    <h4 class="service-modal-title-es">Intercambio Cultural</h4>
+                    <p class="service-modal-desc">
+                        <span class="zh">组织高层次文化交流活动，促进中拉艺术界、学术界和教育界的深度对话。我们策划和执行各类文化节庆、艺术展演、学术论坛和教育合作项目。</span>
+                        <span class="es">Organización de actividades de alto nivel para fomentar el diálogo profundo entre los ámbitos artístico, académico y educativo de China y Latinoamérica.</span>
+                    </p>
+                    <p class="service-modal-subtitle">
+                        <span class="zh">服务内容</span>
+                        <span class="es">Servicios Incluidos</span>
+                    </p>
+                    <ul class="service-modal-list">
+                        <li><span class="zh">文化节庆活动策划与执行</span><span class="es">Planificación y ejecución de festivales culturales</span></li><li><span class="zh">艺术展演与工作坊</span><span class="es">Performances artísticas y talleres</span></li><li><span class="zh">学术论坛与研讨会</span><span class="es">Foros académicos y seminarios</span></li><li><span class="zh">教育合作项目</span><span class="es">Proyectos de cooperación educativa</span></li><li><span class="zh">跨文化艺术创作</span><span class="es">Creación artística intercultural</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="service-modal" id="service-modal-4">
+            <div class="service-modal-backdrop" onclick="closeServiceModal(4)"></div>
+            <div class="service-modal-content">
+                <button class="service-modal-close" onclick="closeServiceModal(4)">&times;</button>
+                <img class="service-modal-hero" src="assets/images/services/svc-04.jpg" alt="机构合作搭建">
+                <div class="service-modal-body">
+                    <div class="service-modal-number">04</div>
+                    <h3 class="service-modal-title">机构合作搭建</h3>
+                    <h4 class="service-modal-title-es">Cooperación Institucional</h4>
+                    <p class="service-modal-desc">
+                        <span class="zh">为中拉两地的文化机构搭建合作桥梁，促成博物馆、美术馆、基金会和使馆间的伙伴关系。我们通过精准的资源匹配和专业的谈判协调，促成可持续的机构合作。</span>
+                        <span class="es">Construimos puentes de cooperación entre instituciones culturales de China y Latinoamérica, facilitando alianzas entre museos, galerías, fundaciones y misiones diplomáticas.</span>
+                    </p>
+                    <p class="service-modal-subtitle">
+                        <span class="zh">服务内容</span>
+                        <span class="es">Servicios Incluidos</span>
+                    </p>
+                    <ul class="service-modal-list">
+                        <li><span class="zh">文化机构配对与对接</span><span class="es">Emparejamiento de instituciones culturales</span></li><li><span class="zh">双边/多边合作协议谈判</span><span class="es">Negociación de acuerdos bilaterales/multilaterales</span></li><li><span class="zh">使馆文化参赞处合作</span><span class="es">Cooperación con oficinas de enlace cultural de embajadas</span></li><li><span class="zh">基金会赞助与合作</span><span class="es">Patrocinio y cooperación con fundaciones</span></li><li><span class="zh">姊妹机构长期关系建立</span><span class="es">Establecimiento de relaciones de hermandad a largo plazo</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="service-modal" id="service-modal-5">
+            <div class="service-modal-backdrop" onclick="closeServiceModal(5)"></div>
+            <div class="service-modal-content">
+                <button class="service-modal-close" onclick="closeServiceModal(5)">&times;</button>
+                <img class="service-modal-hero" src="assets/images/services/svc-05.jpg" alt="国际推广与宣传">
+                <div class="service-modal-body">
+                    <div class="service-modal-number">05</div>
+                    <h3 class="service-modal-title">国际推广与宣传</h3>
+                    <h4 class="service-modal-title-es">Promoción Internacional</h4>
+                    <p class="service-modal-desc">
+                        <span class="zh">为艺术家和文化项目提供全方位的海外宣传推广，包括媒体关系、内容创作和数字传播。我们拥有中、西、英多语种媒体资源网络，确保项目获得最大范围的曝光。</span>
+                        <span class="es">Promoción internacional integral para artistas y proyectos culturales, incluyendo relaciones mediáticas, creación de contenido y difusión digital.</span>
+                    </p>
+                    <p class="service-modal-subtitle">
+                        <span class="zh">服务内容</span>
+                        <span class="es">Servicios Incluidos</span>
+                    </p>
+                    <ul class="service-modal-list">
+                        <li><span class="zh">媒体关系与新闻发布</span><span class="es">Relaciones mediáticas y comunicados de prensa</span></li><li><span class="zh">多语种内容创作</span><span class="es">Creación de contenido multilingüe</span></li><li><span class="zh">社交媒体与数字营销</span><span class="es">Marketing digital y redes sociales</span></li><li><span class="zh">艺术媒体专访与报道</span><span class="es">Entrevistas y cobertura en medios de arte</span></li><li><span class="zh">品牌形象策划</span><span class="es">Planificación de imagen de marca</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="service-modal" id="service-modal-6">
+            <div class="service-modal-backdrop" onclick="closeServiceModal(6)"></div>
+            <div class="service-modal-content">
+                <button class="service-modal-close" onclick="closeServiceModal(6)">&times;</button>
+                <img class="service-modal-hero" src="assets/images/services/svc-06.jpg" alt="收藏策略咨询">
+                <div class="service-modal-body">
+                    <div class="service-modal-number">06</div>
+                    <h3 class="service-modal-title">收藏策略咨询</h3>
+                    <h4 class="service-modal-title-es">Consultoría de Colecciones</h4>
+                    <p class="service-modal-desc">
+                        <span class="zh">为收藏家和文化机构提供艺术品收藏策略咨询，包括市场分析、作品甄选和收藏规划。我们帮助客户建立有深度、有远见的收藏体系，实现艺术价值与收藏价值的双重提升。</span>
+                        <span class="es">Asesoramiento estratégico de coleccionismo de arte para coleccionistas e instituciones culturales, incluyendo análisis de mercado, selección de obras y planificación de colecciones.</span>
+                    </p>
+                    <p class="service-modal-subtitle">
+                        <span class="zh">服务内容</span>
+                        <span class="es">Servicios Incluidos</span>
+                    </p>
+                    <ul class="service-modal-list">
+                        <li><span class="zh">收藏策略制定</span><span class="es">Formulación de estrategia de colección</span></li><li><span class="zh">艺术品市场分析与趋势研究</span><span class="es">Análisis de mercado y tendencias</span></li><li><span class="zh">作品甄选与购买建议</span><span class="es">Selección de obras y asesoramiento de compra</span></li><li><span class="zh">收藏体系规划</span><span class="es">Planificación de sistemas de colección</span></li><li><span class="zh">藏品管理与估值</span><span class="es">Gestión y valuación de colecciones</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="service-modal" id="service-modal-7">
+            <div class="service-modal-backdrop" onclick="closeServiceModal(7)"></div>
+            <div class="service-modal-content">
+                <button class="service-modal-close" onclick="closeServiceModal(7)">&times;</button>
+                <img class="service-modal-hero" src="assets/images/services/svc-07.jpg" alt="国际市场进入">
+                <div class="service-modal-body">
+                    <div class="service-modal-number">07</div>
+                    <h3 class="service-modal-title">国际市场进入</h3>
+                    <h4 class="service-modal-title-es">Entrada al Mercado Internacional</h4>
+                    <p class="service-modal-desc">
+                        <span class="zh">帮助中国艺术家系统性地进入拉美和国际艺术市场，建立可持续的职业发展路径。我们从市场调研、艺术家定位、画廊对接、展览机会到长期职业规划，提供全方位的支持。</span>
+                        <span class="es">Ayudamos a artistas chinos a ingresar sistemáticamente al mercado artístico latinoamericano e internacional, construyendo trayectorias profesionales sostenibles.</span>
+                    </p>
+                    <p class="service-modal-subtitle">
+                        <span class="zh">服务内容</span>
+                        <span class="es">Servicios Incluidos</span>
+                    </p>
+                    <ul class="service-modal-list">
+                        <li><span class="zh">目标市场研究与分析</span><span class="es">Investigación y análisis de mercados objetivo</span></li><li><span class="zh">艺术家国际定位</span><span class="es">Posicionamiento internacional del artista</span></li><li><span class="zh">画廊与代理机构对接</span><span class="es">Conexión con galerías y agencias</span></li><li><span class="zh">国际艺博会参与</span><span class="es">Participación en ferias internacionales</span></li><li><span class="zh">职业发展长期规划</span><span class="es">Planificación a largo plazo de carrera profesional</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="service-modal" id="service-modal-8">
+            <div class="service-modal-backdrop" onclick="closeServiceModal(8)"></div>
+            <div class="service-modal-content">
+                <button class="service-modal-close" onclick="closeServiceModal(8)">&times;</button>
+                <img class="service-modal-hero" src="assets/images/services/svc-08.jpg" alt="项目全案管理">
+                <div class="service-modal-body">
+                    <div class="service-modal-number">08</div>
+                    <h3 class="service-modal-title">项目全案管理</h3>
+                    <h4 class="service-modal-title-es">Gestión de Proyectos</h4>
+                    <p class="service-modal-desc">
+                        <span class="zh">提供展览和文化项目的一站式落地执行服务，确保每一个环节精准到位。从预算编制、时间表管理、供应商协调到现场执行，我们保证项目的完美交付。</span>
+                        <span class="es">Servicios integrales de ejecución para exposiciones y proyectos culturales, asegurando la precisión en cada etapa del proceso.</span>
+                    </p>
+                    <p class="service-modal-subtitle">
+                        <span class="zh">服务内容</span>
+                        <span class="es">Servicios Incluidos</span>
+                    </p>
+                    <ul class="service-modal-list">
+                        <li><span class="zh">项目整体规划与管理</span><span class="es">Planificación y gestión integral del proyecto</span></li><li><span class="zh">预算编制与控制</span><span class="es">Elaboración y control de presupuesto</span></li><li><span class="zh">供应商与承包商协调</span><span class="es">Coordinación de proveedores y contratistas</span></li><li><span class="zh">物流与运输管理</span><span class="es">Gestión logística y transporte</span></li><li><span class="zh">现场执行与开幕管理</span><span class="es">Ejecución en sitio y gestión de inauguración</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="service-modal" id="service-modal-9">
+            <div class="service-modal-backdrop" onclick="closeServiceModal(9)"></div>
+            <div class="service-modal-content">
+                <button class="service-modal-close" onclick="closeServiceModal(9)">&times;</button>
+                <img class="service-modal-hero" src="assets/images/services/svc-09.jpg" alt="收藏家专属体验">
+                <div class="service-modal-body">
+                    <div class="service-modal-number">09</div>
+                    <h3 class="service-modal-title">收藏家专属体验</h3>
+                    <h4 class="service-modal-title-es">Experiencias para Coleccionistas</h4>
+                    <p class="service-modal-desc">
+                        <span class="zh">为收藏家量身打造独一无二的艺术探索之旅。依托与拉美顶尖博物馆、当代美术馆的深度合作关系，提供独家闭门参观、艺术家工作室探访、画廊导览和艺术博览会VIP通道等稀缺体验。</span>
+                        <span class="es">Programas únicos y exclusivos para coleccionistas de arte. Visitas a talleres de artistas locales, recorridos privados por galerías y acceso VIP a ferias de arte. Convenios con museos y galerías de arte contemporáneo de primer nivel.</span>
+                    </p>
+                    <p class="service-modal-subtitle">
+                        <span class="zh">服务内容</span>
+                        <span class="es">Servicios Incluidos</span>
+                    </p>
+                    <ul class="service-modal-list">
+                        <li><span class="zh">收藏家之旅 Ruta del Coleccionista</span><span class="es">Ruta del Coleccionista personalizada</span></li><li><span class="zh">艺术家工作室私密探访</span><span class="es">Visitas privadas a talleres de artistas</span></li><li><span class="zh">顶级博物馆闭门导览</span><span class="es">Recorridos exclusivos en museos de primer nivel</span></li><li><span class="zh">艺博会VIP通道</span><span class="es">Acceso VIP a ferias de arte</span></li><li><span class="zh">定制艺术投资顾问</span><span class="es">Asesoramiento personalizado en inversión artística</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="service-modal" id="service-modal-10">
+            <div class="service-modal-backdrop" onclick="closeServiceModal(10)"></div>
+            <div class="service-modal-content">
+                <button class="service-modal-close" onclick="closeServiceModal(10)">&times;</button>
+                <img class="service-modal-hero" src="assets/images/services/svc-10.jpg" alt="艺术家驻留计划">
+                <div class="service-modal-body">
+                    <div class="service-modal-number">010</div>
+                    <h3 class="service-modal-title">艺术家驻留计划</h3>
+                    <h4 class="service-modal-title-es">Residencias Artísticas</h4>
+                    <p class="service-modal-desc">
+                        <span class="zh">为来自中国与拉丁美洲的艺术家精心组织和协调驻留项目。依托我们在拉美艺术界建立的深厚人脉网络，为艺术家匹配最佳驻留机构、工作室资源和在地文化环境。</span>
+                        <span class="es">Organización y coordinación integral de residencias artísticas para artistas chinos y latinoamericanos. Aprovechando nuestra red de contactos en el ecosistema artístico latinoamericano.</span>
+                    </p>
+                    <p class="service-modal-subtitle">
+                        <span class="zh">服务内容</span>
+                        <span class="es">Servicios Incluidos</span>
+                    </p>
+                    <ul class="service-modal-list">
+                        <li><span class="zh">中拉双向驻留项目</span><span class="es">Programas de residencia bidireccionales China-Latinoamérica</span></li><li><span class="zh">驻留机构匹配</span><span class="es">Emparejamiento con instituciones de residencia</span></li><li><span class="zh">工作室资源协调</span><span class="es">Coordinación de recursos de estudio</span></li><li><span class="zh">驻留成果推广</span><span class="es">Promoción de resultados de residencia</span></li><li><span class="zh">后续展览与国际推介</span><span class="es">Exposiciones posteriores y promoción internacional</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="service-modal" id="service-modal-11">
+            <div class="service-modal-backdrop" onclick="closeServiceModal(11)"></div>
+            <div class="service-modal-content">
+                <button class="service-modal-close" onclick="closeServiceModal(11)">&times;</button>
+                <img class="service-modal-hero" src="assets/images/services/svc-11.jpg" alt="企业社会责任文化项目">
+                <div class="service-modal-body">
+                    <div class="service-modal-number">011</div>
+                    <h3 class="service-modal-title">企业社会责任文化项目</h3>
+                    <h4 class="service-modal-title-es">Programas Corporativos Culturales</h4>
+                    <p class="service-modal-desc">
+                        <span class="zh">与中国和阿根廷企业建立深度合作，将文化艺术融入企业的品牌战略与社会责任（CSR）计划。通过在企业总部举办艺术展览、文化节庆活动、艺术家对谈和精品讲座，为企业创造独特的文化价值。</span>
+                        <span class="es">Convenios de colaboración con empresas chinas y argentinas en programas de responsabilidad social basados en la cultura. Organizamos festivales, charlas con artistas, exposiciones en sedes corporativas.</span>
+                    </p>
+                    <p class="service-modal-subtitle">
+                        <span class="zh">服务内容</span>
+                        <span class="es">Servicios Incluidos</span>
+                    </p>
+                    <ul class="service-modal-list">
+                        <li><span class="zh">企业总部艺术展览</span><span class="es">Exposiciones de arte en sedes corporativas</span></li><li><span class="zh">文化节庆活动</span><span class="es">Eventos de festivales culturales</span></li><li><span class="zh">艺术家对谈与讲座</span><span class="es">Diálogos y conferencias con artistas</span></li><li><span class="zh">品牌×艺术跨界联名</span><span class="es">Colaboraciones cruzadas marca × arte</span></li><li><span class="zh">高管艺术鉴赏培训</span><span class="es">Formación en apreciación artística para ejecutivos</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="service-modal" id="service-modal-12">
+            <div class="service-modal-backdrop" onclick="closeServiceModal(12)"></div>
+            <div class="service-modal-content">
+                <button class="service-modal-close" onclick="closeServiceModal(12)">&times;</button>
+                <img class="service-modal-hero" src="assets/images/services/svc-12.jpg" alt="高端文化体验之旅">
+                <div class="service-modal-body">
+                    <div class="service-modal-number">012</div>
+                    <h3 class="service-modal-title">高端文化体验之旅</h3>
+                    <h4 class="service-modal-title-es">Experiencias Culturales de Ultra Lujo</h4>
+                    <p class="service-modal-desc">
+                        <span class="zh">打造极致奢华的文化艺术旅行体验，将拉美最顶级的自然、美酒、艺术与生活方式完美融合。从安第斯山脉脚下的传奇酒庄品酒，到巴塔哥尼亚迷境中的国际级飞蝇钓与艺术 Lodge。</span>
+                        <span class="es">Itinerarios ultra-lujo que fusionan arte, naturaleza, gastronomía y cultura. Desde catas de vino en viñedos prestigiosos al pie de los Andes, hasta noches en palacios urbanos y chacras con colecciones de vanguardia.</span>
+                    </p>
+                    <p class="service-modal-subtitle">
+                        <span class="zh">服务内容</span>
+                        <span class="es">Servicios Incluidos</span>
+                    </p>
+                    <ul class="service-modal-list">
+                        <li><span class="zh">Vino × Arte 葡萄酒与艺术之旅</span><span class="es">Vino × Arte: Itinerario de vino y arte</span></li><li><span class="zh">Patagonia × Arte 巴塔哥尼亚艺术之旅</span><span class="es">Patagonia × Arte: Naturaleza y arte</span></li><li><span class="zh">Ruta del Melómano 音乐之旅</span><span class="es">Ruta del Melómano: Música y danza</span></li><li><span class="zh">城市宫殿艺术之夜</span><span class="es">Noches artísticas en palacios urbanos</span></li><li><span class="zh">飞蝇钓与艺术 Lodge</span><span class="es">Pesca con mosca y lodges artísticos</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="consultant-modal" id="consultant-modal-isabel">
+            <div class="consultant-modal-backdrop" onclick="closeConsultantModal('isabel')"></div>
+            <div class="consultant-modal-content">
+                <button class="consultant-modal-close" onclick="closeConsultantModal('isabel')">&times;</button>
+                <div class="consultant-modal-header">
+                    <div class="consultant-modal-photo">
+                        <img src="assets/images/isabel.jpg" alt="Isabel Liang / 梁东亚">
+                    </div>
+                    <div>
+                        <h3 class="consultant-modal-name">Isabel Liang / 梁东亚</h3>
+                        <p class="consultant-modal-role">
+                            <span class="zh">联合创始人 · 创意文化组织管理</span>
+                            <span class="es">Cofundadora · Gestión Cultural Creativa</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="consultant-modal-body">
+                    <p class="consultant-modal-bio">
+                        <span class="zh">国际媒体人、文化管理专业人士，长期工作和生活于阿根廷，专注于中国与拉丁美洲文化艺术交流及国际传播。拥有布宜诺斯艾利斯大学文化与创意产业管理专业背景，兼具国际媒体视野、跨文化沟通能力及文化项目管理经验。多年来持续与文化机构、艺术家、策展人、美术馆及公共机构开展合作，深度参与国际文化交流与艺术传播实践。作为 NEXO 联合创始人，她致力于搭建连接中国艺术家与拉丁美洲艺术生态的专业平台，通过国际策展、展览合作、文化交流及项目管理，促进艺术在不同文化语境中的交流、理解与可持续发展。</span>
+                        <span class="es">Mediadora internacional y profesional en gestión cultural, con larga trayectoria viviendo y trabajando en Argentina. Especializada en el intercambio cultural y artístico entre China y Latinoamérica. Egresada de la Universidad de Buenos Aires en Gestión Cultural y de la Industria Creativa. Cuenta con visión mediática internacional, habilidades de comunicación intercultural y experiencia en gestión de proyectos culturales. Como cofundadora de NEXO, se dedica a construir una plataforma profesional que conecte a artistas chinos con el ecosistema artístico latinoamericano.</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="consultant-modal" id="consultant-modal-claribel">
+            <div class="consultant-modal-backdrop" onclick="closeConsultantModal('claribel')"></div>
+            <div class="consultant-modal-content">
+                <button class="consultant-modal-close" onclick="closeConsultantModal('claribel')">&times;</button>
+                <div class="consultant-modal-header">
+                    <div class="consultant-modal-photo">
+                        <img src="assets/images/claribel.jpg" alt="Claribel Terré Morell">
+                    </div>
+                    <div>
+                        <h3 class="consultant-modal-name">Claribel Terré Morell</h3>
+                        <p class="consultant-modal-role">
+                            <span class="zh">联合创始人 · 高级文化顾问 / 策展人</span>
+                            <span class="es">Cofundadora · Asesora Cultural Senior / Curadora</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="consultant-modal-body">
+                    <p class="consultant-modal-bio">
+                        <span class="zh">资深文化顾问与专业策展人，长期深耕拉丁美洲当代艺术生态。在由南美多国联合发起的 BIENALSUR 双年展项目中担任核心领导角色，深度参与该跨国艺术平台的战略规划、策展体系构建与全球合作网络拓展，积累了丰富的国际策展经验和跨文化项目运作能力。凭借多年在拉美艺术界的深耕，她与区域内主要文化机构、美术馆、双年展、独立艺术空间及众多知名策展人建立了稳固的合作关系，形成了覆盖阿根廷、巴西、哥伦比亚、智利等拉美核心艺术市场的专业资源网络。作为 NEXO 联合创始人，她专注于为中拉文化机构和企业提供专业文化艺术顾问服务。</span>
+                        <span class="es">Asesora cultural senior y curadora profesional con amplia trayectoria en el ecosistema del arte contemporáneo latinoamericano. Desempeñó un rol central en BIENALSUR, la bienal iberoamericana que reúne a múltiples países del Sur. Como cofundadora de NEXO, brinda asesoría cultural especializada para instituciones y empresas en la conexión China-Latinoamérica, incluyendo consultoría curatorial, planificación de proyectos expositivos y vinculación con instituciones artísticas.</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+<script>
+
+// ===== Service Modal Functions =====
+function openServiceModal(num) {
+    const modal = document.getElementById('service-modal-' + num);
+    if (modal) {
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+}
+
+function closeServiceModal(num) {
+    const modal = document.getElementById('service-modal-' + num);
+    if (modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+}
+
+// ===== Consultant Modal Functions =====
+function openConsultantModal(id) {
+    const modal = document.getElementById('consultant-modal-' + id);
+    if (modal) {
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+}
+
+function closeConsultantModal(id) {
+    const modal = document.getElementById('consultant-modal-' + id);
+    if (modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+}
+
+// Close modals with Escape key
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        document.querySelectorAll('.service-modal.active').forEach(m => {
+            m.classList.remove('active');
+        });
+        document.querySelectorAll('.consultant-modal.active').forEach(m => {
+            m.classList.remove('active');
+        });
+        document.body.style.overflow = '';
+    }
+});
+
+</script>
 </body>
 </html>
