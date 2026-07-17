@@ -1,4 +1,4 @@
-<!-- Deployed: 2026-07-17 14:41 UTC -->
+<!-- Deployed: 2026-07-17 18:10 UTC -->
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -66,16 +66,17 @@
             left: 0;
             right: 0;
             z-index: 1000;
-            background: rgba(250, 250, 248, 0.92);
+            background: rgba(250, 250, 248, 0.95);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid transparent;
+            border-bottom: 1px solid rgba(0,0,0,0.06);
             transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         nav.scrolled {
-            border-bottom-color: var(--color-border);
-            background: rgba(250, 250, 248, 0.97);
+            border-bottom-color: rgba(0,0,0,0.1);
+            background: rgba(250, 250, 248, 0.98);
+            box-shadow: 0 1px 12px rgba(0,0,0,0.06);
         }
 
         .nav-container {
@@ -93,7 +94,7 @@
             font-size: 1.5rem;
             font-weight: 400;
             letter-spacing: 0.12em;
-            color: var(--color-text);
+            color: #1A1815;
             text-decoration: none;
             transition: opacity 0.3s ease;
             display: flex;
@@ -117,24 +118,27 @@
         .nav-links {
             display: flex;
             list-style: none;
-            gap: 36px;
+            gap: 44px;
             align-items: center;
         }
 
         .nav-links a {
             font-family: var(--font-sans);
-            font-size: 0.72rem;
+            font-size: 0.82rem;
             font-weight: 400;
             letter-spacing: 0.18em;
             text-transform: uppercase;
-            color: var(--color-text-light);
+            color: #3A3530;
             text-decoration: none;
-            transition: color 0.3s ease;
             position: relative;
-            padding-bottom: 2px;
+            padding-bottom: 4px;
+            transition: color 0.3s ease, transform 0.3s ease;
         }
 
-        .nav-links a:hover { color: var(--color-text); }
+        .nav-links a:hover {
+            color: var(--color-accent-dark);
+            transform: translateY(-1px);
+        }
 
         .nav-links a::after {
             content: '';
@@ -142,29 +146,38 @@
             bottom: 0;
             left: 0;
             width: 0;
-            height: 1px;
+            height: 2px;
             background: var(--color-accent);
             transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .nav-links a:hover::after { width: 100%; }
 
+        .nav-links a.active {
+            color: var(--color-accent-dark);
+        }
+
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
         .lang-toggle {
             font-family: var(--font-sans);
-            font-size: 0.7rem;
-            letter-spacing: 0.12em;
+            font-size: 0.78rem;
+            letter-spacing: 0.15em;
             cursor: pointer;
-            padding: 8px 18px;
-            border: 1px solid var(--color-border);
+            padding: 8px 20px;
+            border: 1px solid rgba(0,0,0,0.15);
             background: transparent;
-            color: var(--color-text-light);
+            color: #3A3530;
             transition: all 0.3s ease;
             white-space: nowrap;
         }
 
         .lang-toggle:hover {
             border-color: var(--color-accent);
-            color: var(--color-accent);
+            color: var(--color-accent-dark);
+            background: rgba(201, 169, 110, 0.06);
         }
 
         /* ===== HAMBURGER ===== */
@@ -866,108 +879,241 @@
             background: var(--color-accent);
             border-radius: 3px;
         }
+
+        /* ===== STRATEGY SECTION ===== */
+        .strategy {
+            background: var(--color-bg);
+            padding: 160px 80px;
+        }
+
+        .strategy-content {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .strategy-text {
+            font-size: 1rem;
+            line-height: 2.1;
+            color: var(--color-text-light);
+            max-width: 860px;
+            margin: 0 auto 60px;
+            text-align: center;
+        }
+
+        .strategy-highlight {
+            background: rgba(201, 169, 110, 0.04);
+            border: 1px solid rgba(201, 169, 110, 0.2);
+            border-radius: 4px;
+            padding: 48px 56px;
+            text-align: center;
+            margin-bottom: 80px;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .strategy-highlight-label {
+            font-family: var(--font-sans);
+            font-size: 0.65rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--color-accent);
+            margin-bottom: 20px;
+            font-weight: 400;
+        }
+
+        .strategy-highlight-title {
+            font-family: var(--font-serif);
+            font-size: clamp(1.5rem, 2.5vw, 1.9rem);
+            color: var(--color-white);
+            margin-bottom: 20px;
+            font-weight: 400;
+            line-height: 1.4;
+        }
+
+        .strategy-highlight-desc {
+            font-size: 0.92rem;
+            line-height: 1.9;
+            color: rgba(255, 255, 255, 0.55);
+            max-width: 720px;
+            margin: 0 auto;
+        }
+
+        .strategy-clients {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .strategy-client {
+            position: relative;
+            border-radius: 4px;
+            overflow: hidden;
+            aspect-ratio: 4 / 3;
+            cursor: default;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .strategy-client:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .strategy-client-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .strategy-client:hover .strategy-client-img {
+            transform: scale(1.06);
+        }
+
+        .strategy-client-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.1) 60%, transparent 100%);
+            display: flex;
+            align-items: flex-end;
+            padding: 20px;
+        }
+
+        .strategy-client-label {
+            font-family: var(--font-sans);
+            font-size: 0.72rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.95);
+            font-weight: 400;
+        }
+
+        @media (max-width: 1024px) {
+            .strategy-clients { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+            .strategy { padding: 80px 30px; }
+            .strategy-highlight { padding: 32px 24px; }
+            .strategy-clients { grid-template-columns: 1fr; }
+            .strategy-client { aspect-ratio: 16 / 9; }
+        }
+
         /* ===== CONTACT ===== */
         .contact {
             background: var(--color-bg-alt);
         }
 
         .contact-wrapper {
-            max-width: 1100px;
+            max-width: 1200px;
             margin: 0 auto;
         }
 
         .contact-grid {
             display: grid;
-            grid-template-columns: 1fr 1.2fr;
-            gap: 80px;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            border: 1px solid var(--color-border);
+            border-radius: 6px;
+            overflow: hidden;
+            background: var(--color-bg-dark);
+        }
+
+        /* --- Left Panel: Contact Info --- */
+        .contact-info {
+            padding: 60px 50px;
+            border-right: 1px solid var(--color-border);
         }
 
         .contact-info h3 {
             font-family: var(--font-serif);
-            font-size: 1.8rem;
+            font-size: clamp(1.6rem, 2.5vw, 2rem);
             font-weight: 300;
-            margin-bottom: 40px;
+            margin-bottom: 48px;
             line-height: 1.4;
+            color: var(--color-white);
         }
 
         .contact-channels {
             display: flex;
             flex-direction: column;
-            gap: 24px;
+            gap: 16px;
         }
 
         .contact-channel {
             display: flex;
             align-items: flex-start;
-            gap: 16px;
-            padding: 20px;
-            background: var(--color-white);
-            border: 1px solid var(--color-border);
+            gap: 18px;
+            padding: 20px 24px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 4px;
             transition: all 0.3s ease;
         }
 
-        .contact-channel:hover {
-            border-color: var(--color-accent);
-            transform: translateX(5px);
-        }
-
-        /* WeChat clickable channel */
+        .contact-channel:hover,
         #wechat-channel:hover {
-            cursor: pointer;
-            border-color: var(--color-accent);
-            transform: translateX(5px);
+            border-color: rgba(201, 169, 110, 0.3);
+            background: rgba(201, 169, 110, 0.04);
+            transform: translateX(4px);
         }
 
         .channel-icon {
-            font-size: 1.3rem;
-            line-height: 1;
-            padding-top: 2px;
+            flex-shrink: 0;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .channel-info h4 {
             font-family: var(--font-sans);
-            font-size: 0.7rem;
+            font-size: 0.68rem;
             letter-spacing: 0.18em;
             text-transform: uppercase;
-            color: #5A534A;
+            color: var(--color-accent);
             margin-bottom: 6px;
-            font-weight: 400;
+            font-weight: 500;
         }
 
         .channel-info p {
-            font-size: 0.9rem;
-            color: #3A3530;
+            font-size: 0.88rem;
+            color: rgba(255, 255, 255, 0.7);
             line-height: 1.6;
         }
 
         .channel-info a {
-            color: var(--color-accent);
+            color: var(--color-accent-light);
             text-decoration: none;
             transition: color 0.3s ease;
         }
 
         .channel-info a:hover {
-            color: var(--color-accent-dark);
+            color: var(--color-accent);
         }
 
-        /* ===== FORM ===== */
+        /* --- Right Panel: Inquiry Form --- */
         .inquiry-form {
-            background: var(--color-white);
-            padding: 50px;
-            border: 1px solid var(--color-border);
+            padding: 60px 50px;
+            background: rgba(255, 255, 255, 0.02);
+            border-left: none;
         }
 
         .inquiry-form h3 {
             font-family: var(--font-serif);
-            font-size: 1.5rem;
+            font-size: clamp(1.4rem, 2vw, 1.7rem);
             font-weight: 300;
             margin-bottom: 8px;
+            color: var(--color-white);
         }
 
         .inquiry-form .form-subtitle {
             font-size: 0.85rem;
             color: var(--color-text-muted);
-            margin-bottom: 35px;
+            margin-bottom: 36px;
         }
 
         .form-row {
@@ -999,33 +1145,66 @@
         .form-group textarea,
         .form-group select {
             padding: 14px 16px;
-            border: 1px solid var(--color-border);
-            background: var(--color-bg);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: rgba(0, 0, 0, 0.3);
             font-family: var(--font-sans);
             font-size: 0.9rem;
             color: var(--color-text);
             transition: all 0.3s ease;
             outline: none;
             -webkit-appearance: none;
-            border-radius: 0;
+            border-radius: 3px;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgba(255, 255, 255, 0.25);
         }
 
         .form-group input:focus,
         .form-group textarea:focus,
         .form-group select:focus {
             border-color: var(--color-accent);
-            background: var(--color-white);
+            background: rgba(0, 0, 0, 0.4);
+            box-shadow: 0 0 0 3px rgba(201, 169, 110, 0.08);
+        }
+
+        .form-group select option {
+            background: var(--color-bg-dark);
+            color: var(--color-text);
         }
 
         .form-group textarea {
             resize: vertical;
-            min-height: 140px;
+            min-height: 130px;
             line-height: 1.7;
         }
 
         .form-submit {
             margin-top: 30px;
             text-align: right;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            padding: 14px 40px;
+            background: var(--color-accent);
+            color: var(--color-black);
+            font-family: var(--font-sans);
+            font-size: 0.78rem;
+            font-weight: 500;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background: var(--color-accent-light);
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(201, 169, 110, 0.25);
         }
 
         /* ===== FOOTER ===== */
@@ -1114,13 +1293,20 @@
             
             .contact-grid {
                 grid-template-columns: 1fr;
-                gap: 50px;
+                gap: 0;
+            }
+            .contact-info {
+                border-right: none;
+                border-bottom: 1px solid var(--color-border);
             }
         }
 
         @media (max-width: 768px) {
             section { padding: 80px 30px; }
             .nav-container { padding: 0 24px; height: 72px; }
+            
+            .contact-info { padding: 40px 28px; }
+            .inquiry-form { padding: 40px 28px; }
             
             .menu-toggle { display: flex; }
             
@@ -1159,9 +1345,6 @@
             .form-row { grid-template-columns: 1fr; }
             
             .inquiry-form { padding: 30px 24px; }
-            
-            .strategy-clients { gap: 16px; }
-            .strategy-client { font-size: 0.65rem; padding: 10px 16px; }
             
             footer { padding: 40px 24px; }
             .footer-inner { flex-direction: column; text-align: center; }
@@ -1482,20 +1665,28 @@
         </div>
         <div class="strategy-clients reveal reveal-delay-3">
             <div class="strategy-client">
-                <span class="zh">地方政府</span>
-                <span class="es">Gobiernos Locales</span>
+                <img class="strategy-client-img" src="assets/images/strategy-gov.jpg" alt="地方政府">
+                <div class="strategy-client-overlay">
+                    <span class="strategy-client-label"><span class="zh">地方政府</span><span class="es">Gobiernos Locales</span></span>
+                </div>
             </div>
             <div class="strategy-client">
-                <span class="zh">美术馆/博物馆</span>
-                <span class="es">Museos y Galerías</span>
+                <img class="strategy-client-img" src="assets/images/strategy-museum.jpg" alt="美术馆/博物馆">
+                <div class="strategy-client-overlay">
+                    <span class="strategy-client-label"><span class="zh">美术馆/博物馆</span><span class="es">Museos y Galerías</span></span>
+                </div>
             </div>
             <div class="strategy-client">
-                <span class="zh">文化机构</span>
-                <span class="es">Instituciones Culturales</span>
+                <img class="strategy-client-img" src="assets/images/strategy-institution.jpg" alt="文化机构">
+                <div class="strategy-client-overlay">
+                    <span class="strategy-client-label"><span class="zh">文化机构</span><span class="es">Instituciones Culturales</span></span>
+                </div>
             </div>
             <div class="strategy-client">
-                <span class="zh">大型企业</span>
-                <span class="es">Grandes Empresas</span>
+                <img class="strategy-client-img" src="assets/images/strategy-corporate.jpg" alt="大型企业">
+                <div class="strategy-client-overlay">
+                    <span class="strategy-client-label"><span class="zh">大型企业</span><span class="es">Grandes Empresas</span></span>
+                </div>
             </div>
         </div>
     </div>
@@ -1773,7 +1964,7 @@
 
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-    // Navbar scroll effect
+    // Navbar scroll effect + active link highlighting
     window.addEventListener('scroll', () => {
         const nav = document.getElementById('navbar');
         if (window.scrollY > 60) {
@@ -1781,6 +1972,23 @@
         } else {
             nav.classList.remove('scrolled');
         }
+
+        // Highlight active nav link
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
+        let current = '';
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop - 120;
+            if (window.scrollY >= sectionTop) {
+                current = section.getAttribute('id');
+            }
+        });
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === '#' + current) {
+                link.classList.add('active');
+            }
+        });
     });
 
     // Smooth scroll
