@@ -195,41 +195,30 @@
             transform: rotate(-45deg) translate(5px, -5px);
         }
 
-        /* ===== HERO — VIDEO BACKGROUND ===== */
+        /* ===== HERO ===== */
         .hero {
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
+            text-align: center;
+            padding: 0;
             position: relative;
             overflow: hidden;
-            padding: 0;
-            background: #000;
+            background: #FAF8F5;
         }
 
-        .hero-video-container {
+        .hero-bg-image {
             position: absolute;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
+            right: 0;
+            bottom: 0;
+            background-image: url('assets/images/banner.jpg');
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
             z-index: 0;
-        }
-
-        .hero-video-container video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .hero-video-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.35) 100%);
-            z-index: 1;
         }
 
         .hero-scroll-indicator {
@@ -242,14 +231,14 @@
             align-items: center;
             gap: 8px;
             animation: float 3s ease-in-out infinite;
-            z-index: 2;
+            z-index: 1;
         }
 
         .hero-scroll-indicator span {
-            font-size: 0.65rem;
-            letter-spacing: 0.25em;
+            font-size: 0.6rem;
+            letter-spacing: 0.2em;
             text-transform: uppercase;
-            color: rgba(255,255,255,0.8);
+            color: var(--color-text-muted);
         }
 
         .scroll-line {
@@ -363,114 +352,132 @@
             margin: 0 auto;
         }
 
-        /* ===== SERVICES — CLEAN CARDS ===== */
+        /* ===== SERVICES — CARD GRID ===== */
         .services-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 28px;
+            gap: 24px;
             max-width: 1200px;
             margin: 0 auto;
         }
 
         @media (max-width: 1024px) {
-            .services-grid { grid-template-columns: repeat(3, 1fr); }
+            .services-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
         }
 
         @media (max-width: 768px) {
-            .services-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 16px;
+            }
         }
 
         @media (max-width: 480px) {
-            .services-grid { grid-template-columns: 1fr; }
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
         .service-card {
-            background: #FFFFFF;
-            border-radius: 2px;
+            position: relative;
+            border-radius: 4px;
             overflow: hidden;
             cursor: pointer;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+            aspect-ratio: 4 / 3;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
         }
 
         .service-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 32px rgba(0,0,0,0.12);
-        }
-
-        .service-card-img-wrap {
-            width: 100%;
-            aspect-ratio: 16 / 10;
-            overflow: hidden;
-            background: #F5F3EF;
+            transform: translateY(-6px);
+            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.4);
         }
 
         .service-card-img {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.5s ease;
+            transition: transform 0.6s ease;
         }
 
         .service-card:hover .service-card-img {
             transform: scale(1.05);
         }
 
-        .service-card-body {
-            padding: 18px 16px;
+        .service-card-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.2) 50%, rgba(0, 0, 0, 0.1) 100%);
+            transition: background 0.4s ease;
+        }
+
+        .service-card:hover .service-card-overlay {
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.3) 50%, rgba(0, 0, 0, 0.15) 100%);
+        }
+
+        .service-card-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 24px 20px;
+            z-index: 1;
         }
 
         .service-card-number {
             font-family: var(--font-serif);
-            font-size: 0.7rem;
+            font-size: 0.75rem;
             color: var(--color-accent);
             letter-spacing: 0.15em;
-            margin-bottom: 6px;
+            margin-bottom: 8px;
             font-weight: 400;
         }
 
         .service-card-title {
             font-family: var(--font-serif);
-            font-size: 0.95rem;
-            color: #1A1815;
-            line-height: 1.5;
-            margin-bottom: 2px;
+            font-size: 1.05rem;
+            color: var(--color-white);
+            line-height: 1.4;
+            margin-bottom: 4px;
             font-weight: 400;
         }
 
         .service-card-title-es {
             font-family: var(--font-serif);
-            font-size: 0.72rem;
-            color: #8A8278;
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.7);
             line-height: 1.4;
             font-weight: 300;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
         }
 
         .service-card-expand {
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            font-size: 0.65rem;
+            font-size: 0.7rem;
             color: var(--color-accent);
             letter-spacing: 0.1em;
             text-transform: uppercase;
-            transition: gap 0.3s ease;
+            opacity: 0;
+            transform: translateY(8px);
+            transition: all 0.3s ease;
         }
 
         .service-card:hover .service-card-expand {
-            gap: 10px;
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .service-card-expand svg {
             width: 14px;
-            height: 14px;
-            transition: transform 0.3s ease;
-        }
-
-        .service-card:hover .service-card-expand svg {
-            transform: translateX(3px);
-        }
             height: 14px;
             transition: transform 0.3s ease;
         }
@@ -1204,12 +1211,7 @@
 
 <!-- ===== HERO ===== -->
 <section class="hero">
-    <div class="hero-video-container">
-        <video autoplay muted loop playsinline>
-            <source src="assets/videos/banner.mp4" type="video/mp4">
-        </video>
-    </div>
-    <div class="hero-video-overlay"></div>
+    <div class="hero-bg-image"></div>
     <div class="hero-scroll-indicator">
         <span>
             <span class="zh">向下</span>
@@ -1258,13 +1260,12 @@
     <div class="services-grid">
         <!-- 01 -->
         <div class="service-card reveal" onclick="openServiceModal(1)">
-            <div class="service-card-img-wrap">
-                <img class="service-card-img" src="assets/images/services/svc-01.jpg" alt="展览策划">
-            </div>
-            <div class="service-card-body">
+            <img class="service-card-img" src="assets/images/services/svc-01.jpg" alt="展览策划">
+            <div class="service-card-overlay"></div>
+            <div class="service-card-content">
                 <div class="service-card-number">01</div>
-                <div class="service-card-title"><span class="zh">国际展览策划</span></div>
-                <div class="service-card-title-es">Planificación de Exposiciones</div>
+                <div class="service-card-title"><span class="zh">国际展览策划</span><span class="zh-es">Planificación de Exposiciones</span></div>
+                <div class="service-card-title-es">Exhibitions & Curatorial</div>
                 <div class="service-card-expand">
                     <span class="zh">了解详情</span><span class="es">Ver más</span>
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -1274,13 +1275,12 @@
 
         <!-- 02 -->
         <div class="service-card reveal reveal-delay-1" onclick="openServiceModal(2)">
-            <div class="service-card-img-wrap">
-                <img class="service-card-img" src="assets/images/services/svc-02.jpg" alt="策展服务">
-            </div>
-            <div class="service-card-body">
+            <img class="service-card-img" src="assets/images/services/svc-02.jpg" alt="策展服务">
+            <div class="service-card-overlay"></div>
+            <div class="service-card-content">
                 <div class="service-card-number">02</div>
-                <div class="service-card-title"><span class="zh">策展与学术研究</span></div>
-                <div class="service-card-title-es">Servicios Curatoriales</div>
+                <div class="service-card-title"><span class="zh">策展与学术研究</span><span class="zh-es">Servicios Curatoriales</span></div>
+                <div class="service-card-title-es">Curatorial & Research</div>
                 <div class="service-card-expand">
                     <span class="zh">了解详情</span><span class="es">Ver más</span>
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -1290,13 +1290,12 @@
 
         <!-- 03 -->
         <div class="service-card reveal reveal-delay-2" onclick="openServiceModal(3)">
-            <div class="service-card-img-wrap">
-                <img class="service-card-img" src="assets/images/services/svc-03.jpg" alt="文化交流">
-            </div>
-            <div class="service-card-body">
+            <img class="service-card-img" src="assets/images/services/svc-03.jpg" alt="文化交流">
+            <div class="service-card-overlay"></div>
+            <div class="service-card-content">
                 <div class="service-card-number">03</div>
-                <div class="service-card-title"><span class="zh">文化交流项目</span></div>
-                <div class="service-card-title-es">Intercambio Cultural</div>
+                <div class="service-card-title"><span class="zh">文化交流项目</span><span class="zh-es">Intercambio Cultural</span></div>
+                <div class="service-card-title-es">Cultural Exchange</div>
                 <div class="service-card-expand">
                     <span class="zh">了解详情</span><span class="es">Ver más</span>
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -1306,13 +1305,12 @@
 
         <!-- 04 -->
         <div class="service-card reveal reveal-delay-3" onclick="openServiceModal(4)">
-            <div class="service-card-img-wrap">
-                <img class="service-card-img" src="assets/images/services/svc-04.jpg" alt="机构合作">
-            </div>
-            <div class="service-card-body">
+            <img class="service-card-img" src="assets/images/services/svc-04.jpg" alt="机构合作">
+            <div class="service-card-overlay"></div>
+            <div class="service-card-content">
                 <div class="service-card-number">04</div>
-                <div class="service-card-title"><span class="zh">机构合作搭建</span></div>
-                <div class="service-card-title-es">Cooperación Institucional</div>
+                <div class="service-card-title"><span class="zh">机构合作搭建</span><span class="zh-es">Cooperación Institucional</span></div>
+                <div class="service-card-title-es">Institutional Cooperation</div>
                 <div class="service-card-expand">
                     <span class="zh">了解详情</span><span class="es">Ver más</span>
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -1322,13 +1320,12 @@
 
         <!-- 05 -->
         <div class="service-card reveal" onclick="openServiceModal(5)">
-            <div class="service-card-img-wrap">
-                <img class="service-card-img" src="assets/images/services/svc-05.jpg" alt="国际推广">
-            </div>
-            <div class="service-card-body">
+            <img class="service-card-img" src="assets/images/services/svc-05.jpg" alt="国际推广">
+            <div class="service-card-overlay"></div>
+            <div class="service-card-content">
                 <div class="service-card-number">05</div>
-                <div class="service-card-title"><span class="zh">国际推广与宣传</span></div>
-                <div class="service-card-title-es">Promoción Internacional</div>
+                <div class="service-card-title"><span class="zh">国际推广与宣传</span><span class="zh-es">Promoción Internacional</span></div>
+                <div class="service-card-title-es">International Promotion</div>
                 <div class="service-card-expand">
                     <span class="zh">了解详情</span><span class="es">Ver más</span>
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -1338,13 +1335,12 @@
 
         <!-- 06 -->
         <div class="service-card reveal reveal-delay-1" onclick="openServiceModal(6)">
-            <div class="service-card-img-wrap">
-                <img class="service-card-img" src="assets/images/services/svc-06.jpg" alt="收藏咨询">
-            </div>
-            <div class="service-card-body">
+            <img class="service-card-img" src="assets/images/services/svc-06.jpg" alt="收藏咨询">
+            <div class="service-card-overlay"></div>
+            <div class="service-card-content">
                 <div class="service-card-number">06</div>
-                <div class="service-card-title"><span class="zh">收藏策略咨询</span></div>
-                <div class="service-card-title-es">Consultoría de Colecciones</div>
+                <div class="service-card-title"><span class="zh">收藏策略咨询</span><span class="zh-es">Consultoría de Colecciones</span></div>
+                <div class="service-card-title-es">Collection Consulting</div>
                 <div class="service-card-expand">
                     <span class="zh">了解详情</span><span class="es">Ver más</span>
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -1354,13 +1350,12 @@
 
         <!-- 07 -->
         <div class="service-card reveal reveal-delay-2" onclick="openServiceModal(7)">
-            <div class="service-card-img-wrap">
-                <img class="service-card-img" src="assets/images/services/svc-07.jpg" alt="市场进入">
-            </div>
-            <div class="service-card-body">
+            <img class="service-card-img" src="assets/images/services/svc-07.jpg" alt="市场进入">
+            <div class="service-card-overlay"></div>
+            <div class="service-card-content">
                 <div class="service-card-number">07</div>
-                <div class="service-card-title"><span class="zh">国际市场进入</span></div>
-                <div class="service-card-title-es">Entrada al Mercado Internacional</div>
+                <div class="service-card-title"><span class="zh">国际市场进入</span><span class="zh-es">Entrada al Mercado Internacional</span></div>
+                <div class="service-card-title-es">Market Entry</div>
                 <div class="service-card-expand">
                     <span class="zh">了解详情</span><span class="es">Ver más</span>
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -1370,13 +1365,12 @@
 
         <!-- 08 -->
         <div class="service-card reveal reveal-delay-3" onclick="openServiceModal(8)">
-            <div class="service-card-img-wrap">
-                <img class="service-card-img" src="assets/images/services/svc-08.jpg" alt="项目管理">
-            </div>
-            <div class="service-card-body">
+            <img class="service-card-img" src="assets/images/services/svc-08.jpg" alt="项目管理">
+            <div class="service-card-overlay"></div>
+            <div class="service-card-content">
                 <div class="service-card-number">08</div>
-                <div class="service-card-title"><span class="zh">项目全案管理</span></div>
-                <div class="service-card-title-es">Gestión de Proyectos</div>
+                <div class="service-card-title"><span class="zh">项目全案管理</span><span class="zh-es">Gestión de Proyectos</span></div>
+                <div class="service-card-title-es">Project Management</div>
                 <div class="service-card-expand">
                     <span class="zh">了解详情</span><span class="es">Ver más</span>
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -1386,13 +1380,12 @@
 
         <!-- 09 -->
         <div class="service-card reveal" onclick="openServiceModal(9)">
-            <div class="service-card-img-wrap">
-                <img class="service-card-img" src="assets/images/services/svc-09.jpg" alt="收藏家体验">
-            </div>
-            <div class="service-card-body">
+            <img class="service-card-img" src="assets/images/services/svc-09.jpg" alt="收藏家体验">
+            <div class="service-card-overlay"></div>
+            <div class="service-card-content">
                 <div class="service-card-number">09</div>
-                <div class="service-card-title"><span class="zh">收藏家专属体验</span></div>
-                <div class="service-card-title-es">Experiencias para Coleccionistas</div>
+                <div class="service-card-title"><span class="zh">收藏家专属体验</span><span class="zh-es">Experiencias para Coleccionistas</span></div>
+                <div class="service-card-title-es">Collector Experiences</div>
                 <div class="service-card-expand">
                     <span class="zh">了解详情</span><span class="es">Ver más</span>
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -1402,13 +1395,12 @@
 
         <!-- 10 -->
         <div class="service-card reveal reveal-delay-1" onclick="openServiceModal(10)">
-            <div class="service-card-img-wrap">
-                <img class="service-card-img" src="assets/images/services/svc-10.jpg" alt="驻留计划">
-            </div>
-            <div class="service-card-body">
+            <img class="service-card-img" src="assets/images/services/svc-10.jpg" alt="驻留计划">
+            <div class="service-card-overlay"></div>
+            <div class="service-card-content">
                 <div class="service-card-number">10</div>
-                <div class="service-card-title"><span class="zh">艺术家驻留计划</span></div>
-                <div class="service-card-title-es">Residencias Artísticas</div>
+                <div class="service-card-title"><span class="zh">艺术家驻留计划</span><span class="zh-es">Residencias Artísticas</span></div>
+                <div class="service-card-title-es">Artist Residencies</div>
                 <div class="service-card-expand">
                     <span class="zh">了解详情</span><span class="es">Ver más</span>
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -1418,13 +1410,12 @@
 
         <!-- 11 -->
         <div class="service-card reveal reveal-delay-2" onclick="openServiceModal(11)">
-            <div class="service-card-img-wrap">
-                <img class="service-card-img" src="assets/images/services/svc-11.jpg" alt="企业项目">
-            </div>
-            <div class="service-card-body">
+            <img class="service-card-img" src="assets/images/services/svc-11.jpg" alt="企业项目">
+            <div class="service-card-overlay"></div>
+            <div class="service-card-content">
                 <div class="service-card-number">11</div>
-                <div class="service-card-title"><span class="zh">企业社会责任文化项目</span></div>
-                <div class="service-card-title-es">Programas Corporativos Culturales</div>
+                <div class="service-card-title"><span class="zh">企业社会责任文化项目</span><span class="zh-es">Programas Corporativos Culturales</span></div>
+                <div class="service-card-title-es">Corporate Cultural Programs</div>
                 <div class="service-card-expand">
                     <span class="zh">了解详情</span><span class="es">Ver más</span>
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -1434,13 +1425,12 @@
 
         <!-- 12 -->
         <div class="service-card reveal reveal-delay-3" onclick="openServiceModal(12)">
-            <div class="service-card-img-wrap">
-                <img class="service-card-img" src="assets/images/services/svc-12.jpg" alt="高端体验">
-            </div>
-            <div class="service-card-body">
+            <img class="service-card-img" src="assets/images/services/svc-12.jpg" alt="高端体验">
+            <div class="service-card-overlay"></div>
+            <div class="service-card-content">
                 <div class="service-card-number">12</div>
-                <div class="service-card-title"><span class="zh">高端文化体验之旅</span></div>
-                <div class="service-card-title-es">Experiencias Culturales de Ultra Lujo</div>
+                <div class="service-card-title"><span class="zh">高端文化体验之旅</span><span class="zh-es">Experiencias Culturales de Ultra Lujo</span></div>
+                <div class="service-card-title-es">Ultra-Luxury Cultural Journeys</div>
                 <div class="service-card-expand">
                     <span class="zh">了解详情</span><span class="es">Ver más</span>
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
