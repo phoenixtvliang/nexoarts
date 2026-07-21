@@ -1,0 +1,710 @@
+<!-- Deployed: 2026-07-21 14:50 UTC -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="NEXO Signature Programs — 旗舰项目：NEXO Gateway, NEXO Institutional Bridge, NEXO Collector Circle">
+    <title>NEXO — Signature Programs | 旗舰项目</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Noto+Serif+SC:wght@300;400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --color-bg: #0E0E0E;
+            --color-bg-alt: #161616;
+            --color-text: #E8E4DE;
+            --color-text-light: #B8B0A6;
+            --color-text-muted: #8A8279;
+            --color-accent: #C9A96E;
+            --color-accent-dark: #A8884D;
+            --color-accent-light: #D4BC8E;
+            --color-white: #F7F5F1;
+            --color-border: #2A2826;
+            --font-serif: 'Cormorant Garamond', 'Noto Serif SC', Georgia, serif;
+            --font-sans: 'Inter', -apple-system, 'Helvetica Neue', sans-serif;
+            --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        html { scroll-behavior: smooth; font-size: 18px; }
+
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.8;
+            font-weight: 300;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        ::selection { background: var(--color-accent); color: var(--color-white); }
+
+        /* ===== LANGUAGE TOGGLE ===== */
+        body.lang-es .zh { display: none !important; }
+        body.lang-en .zh { display: none !important; }
+        body.lang-zh .es { display: none !important; }
+        body.lang-zh .en { display: none !important; }
+        body.lang-es .zh { display: none !important; }
+        body.lang-es .en { display: none !important; }
+        body.lang-en .zh { display: none !important; }
+        body.lang-en .es { display: none !important; }
+
+        /* ===== SCROLLBAR ===== */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: var(--color-bg); }
+        ::-webkit-scrollbar-thumb { background: var(--color-accent-light); border-radius: 3px; }
+
+        /* ===== NAVIGATION ===== */
+        nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+            background: rgba(14, 14, 14, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(201, 169, 110, 0.15);
+        }
+
+        .nav-container {
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 0 80px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        .logo {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            font-weight: 400;
+            letter-spacing: 0.15em;
+            color: var(--color-accent);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-family: var(--font-sans);
+            font-size: 0.75rem;
+            font-weight: 400;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--color-text-light);
+            text-decoration: none;
+            transition: var(--transition-smooth);
+        }
+
+        .nav-links a:hover { color: var(--color-accent); }
+
+        .lang-switcher {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-left: 1rem;
+            padding-left: 1.5rem;
+            border-left: 1px solid var(--color-border);
+        }
+
+        .lang-btn {
+            background: none;
+            border: none;
+            color: var(--color-text-muted);
+            font-family: var(--font-sans);
+            font-size: 0.7rem;
+            letter-spacing: 0.05em;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            padding: 0.2rem 0.3rem;
+        }
+
+        .lang-btn:hover { color: var(--color-text); }
+        .lang-btn.active { color: var(--color-accent); font-weight: 500; }
+
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+        .mobile-toggle span {
+            display: block;
+            width: 24px;
+            height: 1.5px;
+            background: var(--color-text);
+            margin: 6px 0;
+        }
+
+        @media (max-width: 968px) {
+            .nav-container { padding: 0 32px; height: 72px; }
+            .nav-links {
+                position: fixed;
+                top: 72px; left: 0; right: 0; bottom: 0;
+                background: rgba(14, 14, 14, 0.98);
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: center;
+                gap: 2rem;
+                padding-top: 3rem;
+                transform: translateX(100%);
+                transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            }
+            .nav-links.open { transform: translateX(0); }
+            .mobile-toggle { display: block; }
+        }
+
+        /* ===== PAGE HEADER ===== */
+        .page-header {
+            padding: 14rem 32px 6rem;
+            text-align: center;
+            background: var(--color-bg-alt);
+        }
+
+        .page-header .section-label {
+            font-family: var(--font-sans);
+            font-size: 0.65rem;
+            font-weight: 500;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--color-accent);
+            margin-bottom: 1rem;
+        }
+
+        .page-header .section-title {
+            font-family: var(--font-serif);
+            font-size: clamp(2rem, 3.5vw, 2.8rem);
+            font-weight: 300;
+            color: var(--color-white);
+            margin-bottom: 1.5rem;
+            line-height: 1.3;
+        }
+
+        .page-header .section-divider {
+            width: 60px;
+            height: 1px;
+            background: var(--color-accent);
+            margin: 0 auto 2rem;
+        }
+
+        .page-header .section-text {
+            font-size: 0.95rem;
+            line-height: 1.9;
+            color: var(--color-text-light);
+            max-width: 650px;
+            margin: 0 auto;
+        }
+
+        /* ===== PROGRAM SECTIONS ===== */
+        .program-section {
+            padding: 6rem 32px;
+            border-top: 1px solid var(--color-border);
+        }
+
+        .program-section:nth-child(even) {
+            background: var(--color-bg-alt);
+        }
+
+        .program-inner {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .program-number {
+            font-family: var(--font-serif);
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--color-accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .program-title {
+            font-family: var(--font-serif);
+            font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+            font-weight: 300;
+            color: var(--color-white);
+            margin-bottom: 0.5rem;
+        }
+
+        .program-subtitle {
+            font-family: var(--font-serif);
+            font-size: 1rem;
+            font-weight: 300;
+            font-style: italic;
+            color: var(--color-accent-light);
+            margin-bottom: 2.5rem;
+        }
+
+        .program-body {
+            font-size: 0.9rem;
+            line-height: 2;
+            color: var(--color-text-light);
+            max-width: 720px;
+        }
+
+        .program-body p {
+            margin-bottom: 1.5rem;
+        }
+
+        .program-features {
+            margin-top: 2.5rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--color-border);
+        }
+
+        .program-features h4 {
+            font-family: var(--font-serif);
+            font-size: 1rem;
+            font-weight: 400;
+            color: var(--color-white);
+            margin-bottom: 1.25rem;
+        }
+
+        .program-features ul {
+            list-style: none;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.75rem;
+        }
+
+        .program-features li {
+            font-size: 0.82rem;
+            color: var(--color-text-light);
+            padding-left: 1.2rem;
+            position: relative;
+        }
+
+        .program-features li::before {
+            content: '—';
+            position: absolute;
+            left: 0;
+            color: var(--color-accent);
+        }
+
+        .program-cta {
+            margin-top: 2.5rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--color-border);
+        }
+
+        .program-cta a {
+            display: inline-block;
+            padding: 0.8rem 2.5rem;
+            border: 1px solid var(--color-accent);
+            color: var(--color-accent);
+            font-family: var(--font-sans);
+            font-size: 0.75rem;
+            font-weight: 400;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: var(--transition-smooth);
+        }
+
+        .program-cta a:hover {
+            background: var(--color-accent);
+            color: var(--color-bg);
+        }
+
+        @media (max-width: 768px) {
+            .program-features ul {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            padding: 3rem 32px;
+            border-top: 1px solid var(--color-border);
+            background: var(--color-bg);
+        }
+
+        .footer-container {
+            max-width: 1440px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-copy {
+            font-size: 0.7rem;
+            color: var(--color-text-muted);
+            letter-spacing: 0.05em;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .footer-links a {
+            font-size: 0.7rem;
+            color: var(--color-text-muted);
+            text-decoration: none;
+            transition: var(--transition-smooth);
+        }
+
+        .footer-links a:hover { color: var(--color-accent); }
+
+        @media (max-width: 768px) {
+            .footer-container {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+            .page-header { padding: 12rem 24px 4rem; }
+            .program-section { padding: 4rem 24px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ===== NAVIGATION ===== -->
+<nav>
+    <div class="nav-container">
+        <a href="index.html" class="logo">NEXO</a>
+        <button class="mobile-toggle" onclick="toggleMenu()" aria-label="Toggle menu">
+            <span></span><span></span><span></span>
+        </button>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html#about" class="zh">关于我们</a><a href="index.html#about" class="es">Nosotros</a><a href="index.html#about" class="en">About</a></li>
+            <li><a href="index.html#services" class="zh">核心服务</a><a href="index.html#services" class="es">Servicios</a><a href="index.html#services" class="en">Services</a></li>
+            <li><a href="index.html#team" class="zh">团队</a><a href="index.html#team" class="es">Equipo</a><a href="index.html#team" class="en">Team</a></li>
+            <li><a href="index.html#contact" class="zh">联系我们</a><a href="index.html#contact" class="es">Contacto</a><a href="index.html#contact" class="en">Contact</a></li>
+            <li>
+                <div class="lang-switcher">
+                    <button class="lang-btn active" onclick="setLang('zh')" data-lang-btn="zh">中</button>
+                    <button class="lang-btn" onclick="setLang('es')" data-lang-btn="es">ES</button>
+                    <button class="lang-btn" onclick="setLang('en')" data-lang-btn="en">EN</button>
+                </div>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<!-- ===== PAGE HEADER ===== -->
+<header class="page-header">
+    <p class="section-label">
+        <span class="zh">旗舰项目</span>
+        <span class="es">Programas Emblemáticos</span>
+        <span class="en">Signature Programs</span>
+    </p>
+    <h1 class="section-title">
+        <span class="zh">三大旗舰产品</span>
+        <span class="es">Tres Programas Emblemáticos</span>
+        <span class="en">Three Signature Programs</span>
+    </h1>
+    <div class="section-divider"></div>
+    <p class="section-text">
+        <span class="zh">NEXO 的核心业务通过三大旗舰项目展开，分别面向艺术家、机构与收藏家，构建完整的国际文化艺术服务生态。</span>
+        <span class="es">Las operaciones centrales de NEXO se desarrollan a través de tres programas emblemáticos, dirigidos respectivamente a artistas, instituciones y coleccionistas, construyendo un ecosistema integral de servicios internacionales de arte y cultura.</span>
+        <span class="en">NEXO's core operations are delivered through three signature programs, serving artists, institutions, and collectors respectively — building a comprehensive international art and cultural service ecosystem.</span>
+    </p>
+</header>
+
+<!-- ===== PROGRAM 1: NEXO GATEWAY ===== -->
+<section class="program-section">
+    <div class="program-inner">
+        <p class="program-number">
+            <span class="zh">项目一</span>
+            <span class="es">Programa Uno</span>
+            <span class="en">Program One</span>
+        </p>
+        <h2 class="program-title">
+            <span class="zh">NEXO Gateway</span>
+            <span class="es">NEXO Gateway</span>
+            <span class="en">NEXO Gateway</span>
+        </h2>
+        <p class="program-subtitle">
+            <span class="zh">艺术家国际化通道</span>
+            <span class="es">Puerta de Internacionalización para Artistas</span>
+            <span class="en">Artist Internationalization Channel</span>
+        </p>
+        <div class="program-body">
+            <p>
+                <span class="zh">NEXO Gateway 是我们为艺术家量身打造的国际化服务平台。我们帮助中国艺术家走向国际市场，同时也协助拉美艺术家进入中国市场。通过系统性的职业规划、学术定位和国际资源对接，我们为每位合作艺术家制定个性化的发展路径。</span>
+                <span class="es">NEXO Gateway es nuestra plataforma de servicios diseñada para la internacionalización de artistas. Ayudamos a artistas chinos a alcanzar mercados internacionales y, al mismo tiempo, facilitamos a artistas latinoamericanos su ingreso al mercado chino. Mediante planificación profesional sistemática, posicionamiento académico y conexión de recursos internacionales, elaboramos trayectorias de desarrollo personalizadas para cada artista con quien colaboramos.</span>
+                <span class="en">NEXO Gateway is our international service platform designed specifically for artists. We help Chinese artists reach international markets while also assisting Latin American artists in entering the Chinese market. Through systematic career planning, academic positioning, and international resource connection, we develop personalized development pathways for each collaborating artist.</span>
+            </p>
+            <p>
+                <span class="zh">我们的服务涵盖艺术家国际展览策划、海外市场拓展、学术出版推广、媒体传播策略等多个维度。我们与全球范围内的画廊、美术馆、艺术机构和媒体建立了深度合作网络，确保艺术家能够获得高质量的曝光和发展机会。</span>
+                <span class="es">Nuestros servicios abarcan la conceptualización de exposiciones internacionales, expansión de mercados en el extranjero, publicaciones académicas, estrategias de comunicación mediática y múltiples dimensiones más. Hemos establecido redes de colaboración profunda con galerías, museos, instituciones artísticas y medios de comunicación a nivel global, asegurando que cada artista acceda a oportunidades de exposición y desarrollo de alta calidad.</span>
+                <span class="en">Our services encompass international exhibition planning, overseas market expansion, academic publishing, media communication strategies, and multiple dimensions. We have established deep collaboration networks with galleries, museums, art institutions, and media worldwide, ensuring artists receive high-quality exposure and development opportunities.</span>
+            </p>
+        </div>
+        <div class="program-features">
+            <h4>
+                <span class="zh">服务内容</span>
+                <span class="es">Servicios Incluidos</span>
+                <span class="en">Service Offerings</span>
+            </h4>
+            <ul>
+                <li>
+                    <span class="zh">国际展览策划与执行</span>
+                    <span class="es">Conceptualización y Ejecución de Exposiciones Internacionales</span>
+                    <span class="en">International Exhibition Planning &amp; Execution</span>
+                </li>
+                <li>
+                    <span class="zh">艺术家职业发展规划</span>
+                    <span class="es">Planificación de Carrera Artística</span>
+                    <span class="en">Artist Career Development Planning</span>
+                </li>
+                <li>
+                    <span class="zh">学术研究与出版推广</span>
+                    <span class="es">Investigación Académica y Promoción Editorial</span>
+                    <span class="en">Academic Research &amp; Publishing</span>
+                </li>
+                <li>
+                    <span class="zh">海外市场拓展</span>
+                    <span class="es">Expansión de Mercados Internacionales</span>
+                    <span class="en">Overseas Market Expansion</span>
+                </li>
+                <li>
+                    <span class="zh">国际画廊与机构对接</span>
+                    <span class="es">Conexión con Galerías e Instituciones Internacionales</span>
+                    <span class="en">Gallery &amp; Institution Matching</span>
+                </li>
+                <li>
+                    <span class="zh">媒体传播与品牌建设</span>
+                    <span class="es">Comunicación Mediática y Construcción de Marca</span>
+                    <span class="en">Media Communication &amp; Brand Building</span>
+                </li>
+            </ul>
+        </div>
+        <div class="program-cta">
+            <a href="mailto:info@nexoarts.com">
+                <span class="zh">了解更多信息</span>
+                <span class="es">Más Información</span>
+                <span class="en">Learn More</span>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- ===== PROGRAM 2: NEXO INSTITUTIONAL BRIDGE ===== -->
+<section class="program-section">
+    <div class="program-inner">
+        <p class="program-number">
+            <span class="zh">项目二</span>
+            <span class="es">Programa Dos</span>
+            <span class="en">Program Two</span>
+        </p>
+        <h2 class="program-title">
+            <span class="zh">NEXO Institutional Bridge</span>
+            <span class="es">NEXO Institutional Bridge</span>
+            <span class="en">NEXO Institutional Bridge</span>
+        </h2>
+        <p class="program-subtitle">
+            <span class="zh">政府与美术馆国际合作平台</span>
+            <span class="es">Plataforma de Cooperación Internacional para Gobiernos y Museos</span>
+            <span class="en">International Cooperation Platform for Governments &amp; Museums</span>
+        </p>
+        <div class="program-body">
+            <p>
+                <span class="zh">NEXO Institutional Bridge 是面向政府文化部门和美术馆机构的国际合作服务平台。我们协助各国政府、文化机构和美术馆策划和执行跨国文化艺术合作项目，包括大型国际展览、文化年活动、政府间文化交流协议等。</span>
+                <span class="es">NEXO Institutional Bridge es nuestra plataforma de servicios de cooperación internacional dirigida a departamentos culturales gubernamentales e instituciones museográficas. Asistimos a gobiernos, instituciones culturales y museos en la conceptualización y ejecución de proyectos de cooperación cultural transnacional, incluyendo grandes exposiciones internacionales, festivales de año cultural, acuerdos de intercambio cultural intergubernamental y más.</span>
+                <span class="en">NEXO Institutional Bridge is our international cooperation service platform designed for government cultural departments and museum institutions. We assist governments, cultural institutions, and museums in conceptualizing and executing transnational cultural cooperation projects, including large-scale international exhibitions, cultural year events, and intergovernmental cultural exchange agreements.</span>
+            </p>
+            <p>
+                <span class="zh">凭借在中拉两地深厚的机构资源和跨文化运作经验，我们能够高效地协调多方利益相关者，从政策沟通到项目落地，确保每一个国际合作项目都能顺利推进并产生持久的文化影响力。我们曾参与多个国家级文化交流项目的策划与执行。</span>
+                <span class="es">Gracias a nuestros profundos recursos institucionales en ambos lados de China y Latinoamérica, así como nuestra experiencia operativa intercultural, podemos coordinar eficientemente a múltiples partes interesadas — desde la comunicación política hasta la ejecución del proyecto — asegurando que cada iniciativa de cooperación internacional avance sin contratiempos y genere un impacto cultural duradero. Hemos participado en la conceptualización y ejecución de múltiples proyectos de intercambio cultural de nivel nacional.</span>
+                <span class="en">With our deep institutional resources in both China and Latin America, along with our cross-cultural operational experience, we can efficiently coordinate multiple stakeholders — from policy communication to project execution — ensuring every international cooperation initiative advances smoothly and generates lasting cultural impact. We have participated in the planning and execution of numerous national-level cultural exchange projects.</span>
+            </p>
+        </div>
+        <div class="program-features">
+            <h4>
+                <span class="zh">服务内容</span>
+                <span class="es">Servicios Incluidos</span>
+                <span class="en">Service Offerings</span>
+            </h4>
+            <ul>
+                <li>
+                    <span class="zh">跨国展览项目策划</span>
+                    <span class="es">Conceptualización de Proyectos de Exposición Transnacional</span>
+                    <span class="en">Transnational Exhibition Planning</span>
+                </li>
+                <li>
+                    <span class="zh">文化年与艺术节合作</span>
+                    <span class="es">Cooperación en Años Culturales y Festivales</span>
+                    <span class="en">Cultural Year &amp; Festival Cooperation</span>
+                </li>
+                <li>
+                    <span class="zh">政府间文化交流项目</span>
+                    <span class="es">Proyectos de Intercambio Cultural Intergubernamental</span>
+                    <span class="en">Intergovernmental Cultural Exchange Programs</span>
+                </li>
+                <li>
+                    <span class="zh">美术馆战略合作</span>
+                    <span class="es">Cooperación Estratégica Museográfica</span>
+                    <span class="en">Strategic Museum Partnerships</span>
+                </li>
+                <li>
+                    <span class="zh">多边机构协调</span>
+                    <span class="es">Coordinación de Múltiples Instituciones</span>
+                    <span class="en">Multi-Institution Coordination</span>
+                </li>
+                <li>
+                    <span class="zh">政策与文化外交咨询</span>
+                    <span class="es">Asesoría en Política y Diplomacia Cultural</span>
+                    <span class="en">Policy &amp; Cultural Diplomacy Consulting</span>
+                </li>
+            </ul>
+        </div>
+        <div class="program-cta">
+            <a href="mailto:info@nexoarts.com">
+                <span class="zh">了解更多信息</span>
+                <span class="es">Más Información</span>
+                <span class="en">Learn More</span>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- ===== PROGRAM 3: NEXO COLLECTOR CIRCLE ===== -->
+<section class="program-section">
+    <div class="program-inner">
+        <p class="program-number">
+            <span class="zh">项目三</span>
+            <span class="es">Programa Tres</span>
+            <span class="en">Program Three</span>
+        </p>
+        <h2 class="program-title">
+            <span class="zh">NEXO Collector Circle</span>
+            <span class="es">NEXO Collector Circle</span>
+            <span class="en">NEXO Collector Circle</span>
+        </h2>
+        <p class="program-subtitle">
+            <span class="zh">收藏家国际网络</span>
+            <span class="es">Red Internacional de Coleccionistas</span>
+            <span class="en">International Collector Network</span>
+        </p>
+        <div class="program-body">
+            <p>
+                <span class="zh">NEXO Collector Circle 是为全球艺术收藏家打造的专属国际网络平台。我们汇聚来自中国和拉丁美洲的资深藏家、新兴收藏力量和文化爱好者，通过高品质的艺术活动、私人鉴赏会和跨界交流，构建一个开放而深度的收藏家社区。</span>
+                <span class="es">NEXO Collector Circle es nuestra plataforma internacional exclusiva para coleccionistas de arte a nivel global. Reunimos a coleccionistas experimentados, nuevas fuerzas colectoras y amantes de la cultura provenientes de China y Latinoamérica, construyendo una comunidad de coleccionistas abierta y profunda a través de actividades artísticas de alta calidad, sesiones privadas de鉴赏 y intercambios interdisciplinarios.</span>
+                <span class="en">NEXO Collector Circle is our exclusive international network platform for global art collectors. We bring together seasoned collectors, emerging collecting forces, and culture enthusiasts from China and Latin America, building an open and deep collector community through high-quality art activities, private viewing sessions, and cross-disciplinary exchanges.</span>
+            </p>
+            <p>
+                <span class="zh">会员可以享受独家艺术体验，包括私人画廊参观、艺术家工作室探访、国际艺术博览会VIP导览、学术讲座和收藏研讨会。我们还为会员提供个性化的艺术品收藏建议和跨境交易支持，帮助每一位收藏家在探索艺术世界的过程中获得独特而珍贵的体验。</span>
+                <span class="es">Los miembros disfrutan de experiencias artísticas exclusivas, incluyendo visitas privadas a galerías, recorridos por estudios de artistas, recorridos VIP en ferias internacionales de arte, conferencias académicas y seminarios de colección. También brindamos asesoría personalizada en colección de obras de arte y apoyo en transacciones transfronterizas, ayudando a cada coleccionista a obtener experiencias únicas y valiosas mientras explora el mundo del arte.</span>
+                <span class="en">Members enjoy exclusive art experiences, including private gallery visits, artist studio tours, VIP guides at international art fairs, academic lectures, and collection workshops. We also provide personalized art collection advice and cross-border transaction support, helping every collector obtain unique and valuable experiences while exploring the art world.</span>
+            </p>
+        </div>
+        <div class="program-features">
+            <h4>
+                <span class="zh">服务内容</span>
+                <span class="es">Servicios Incluidos</span>
+                <span class="en">Service Offerings</span>
+            </h4>
+            <ul>
+                <li>
+                    <span class="zh">私人画廊与博物馆导览</span>
+                    <span class="es">Recorridos Privados por Galerías y Museos</span>
+                    <span class="en">Private Gallery &amp; Museum Tours</span>
+                </li>
+                <li>
+                    <span class="zh">艺术家工作室探访</span>
+                    <span class="es">Visitas a Estudios de Artistas</span>
+                    <span class="en">Artist Studio Visits</span>
+                </li>
+                <li>
+                    <span class="zh">国际艺术博览会VIP服务</span>
+                    <span class="es">Servicio VIP en Ferias Internacionales de Arte</span>
+                    <span class="en">VIP Services at International Art Fairs</span>
+                </li>
+                <li>
+                    <span class="zh">收藏策略咨询</span>
+                    <span class="es">Asesoría en Estrategia de Colección</span>
+                    <span class="en">Collection Strategy Consulting</span>
+                </li>
+                <li>
+                    <span class="zh">学术讲座与收藏研讨会</span>
+                    <span class="es">Conferencias Académicas y Seminarios de Colección</span>
+                    <span class="en">Academic Lectures &amp; Collection Workshops</span>
+                </li>
+                <li>
+                    <span class="zh">跨境交易支持</span>
+                    <span class="es">Apoyo en Transacciones Transfronterizas</span>
+                    <span class="en">Cross-Border Transaction Support</span>
+                </li>
+            </ul>
+        </div>
+        <div class="program-cta">
+            <a href="mailto:info@nexoarts.com">
+                <span class="zh">了解更多信息</span>
+                <span class="es">Más Información</span>
+                <span class="en">Learn More</span>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+    <div class="footer-container">
+        <p class="footer-copy">&copy; 2026 NEXO Art &amp; Cultural Advisory. All rights reserved.</p>
+        <ul class="footer-links">
+            <li><a href="index.html">
+                <span class="zh">首页</span>
+                <span class="es">Inicio</span>
+                <span class="en">Home</span>
+            </a></li>
+            <li><a href="index.html#contact">
+                <span class="zh">联系我们</span>
+                <span class="es">Contacto</span>
+                <span class="en">Contact</span>
+            </a></li>
+        </ul>
+    </div>
+</footer>
+
+<!-- ===== JAVASCRIPT ===== -->
+<script>
+// ===== LANGUAGE SWITCHING =====
+function setLang(lang) {
+    document.body.className = 'lang-' + lang;
+    document.documentElement.lang = lang === 'zh' ? 'zh-CN' : lang === 'es' ? 'es' : 'en';
+    document.querySelectorAll('.lang-btn').forEach(function(btn) {
+        btn.classList.remove('active');
+        if (btn.getAttribute('data-lang-btn') === lang) {
+            btn.classList.add('active');
+        }
+    });
+    try { localStorage.setItem('nexo-lang', lang); } catch(e) {}
+}
+
+// Load saved language preference
+(function() {
+    try {
+        var saved = localStorage.getItem('nexo-lang');
+        if (saved && ['zh','es','en'].indexOf(saved) !== -1) {
+            setLang(saved);
+        }
+    } catch(e) {}
+})();
+
+// ===== MOBILE MENU =====
+function toggleMenu() {
+    document.getElementById('navLinks').classList.toggle('open');
+}
+
+document.addEventListener('click', function(e) {
+    var navLinks = document.getElementById('navLinks');
+    if (navLinks.classList.contains('open') && e.target.tagName === 'A') {
+        navLinks.classList.remove('open');
+    }
+});
+</script>
+
+</body>
+</html>
