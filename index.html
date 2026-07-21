@@ -975,6 +975,140 @@
             transform: translateY(0);
         }
 
+        /* ===== MODAL SYSTEM ===== */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            background: rgba(10, 10, 10, 0.92);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .modal-content {
+            position: relative;
+            max-width: 800px;
+            width: 100%;
+            max-height: 85vh;
+            overflow-y: auto;
+            background: var(--color-bg-alt);
+            border: 1px solid var(--color-border);
+            padding: 3rem;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: none;
+            border: none;
+            color: var(--color-text-muted);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-close:hover { color: var(--color-accent); }
+
+        .modal-title {
+            font-family: var(--font-serif);
+            font-size: 1.6rem;
+            font-weight: 300;
+            color: var(--color-white);
+            margin-bottom: 0.5rem;
+        }
+
+        .modal-subtitle {
+            font-family: var(--font-serif);
+            font-size: 0.95rem;
+            font-style: italic;
+            color: var(--color-accent);
+            margin-bottom: 2rem;
+        }
+
+        .modal-body {
+            font-size: 0.9rem;
+            line-height: 2;
+            color: var(--color-text-light);
+        }
+
+        .modal-body p {
+            margin-bottom: 1.25rem;
+        }
+
+        .modal-body ul {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-body ul li {
+            padding-left: 1.2rem;
+            position: relative;
+            margin-bottom: 0.5rem;
+        }
+
+        .modal-body ul li::before {
+            content: '—';
+            position: absolute;
+            left: 0;
+            color: var(--color-accent);
+        }
+
+        .modal-partner-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .modal-partner-tag {
+            padding: 0.6rem 1.4rem;
+            border: 1px solid var(--color-border);
+            font-family: var(--font-serif);
+            font-size: 0.85rem;
+            color: var(--color-text-light);
+        }
+
+        @media (max-width: 768px) {
+            .modal-content {
+                padding: 2rem 1.5rem;
+                max-height: 90vh;
+            }
+            .modal-title { font-size: 1.3rem; }
+        }
+
+        /* ===== TEAM DETAIL LINK ===== */
+        .team-member {
+            cursor: pointer;
+        }
+
+        .team-member:hover .team-info h3 {
+            color: var(--color-accent);
+        }
+
+        /* ===== PROJECT CARD CLICKABLE ===== */
+        .project-card {
+            cursor: pointer;
+        }
+
+        /* ===== PARTNER CATEGORY CLICKABLE ===== */
+        .partner-cat {
+            cursor: pointer;
+        }
+
         /* ===== RESPONSIVE ===== */
         @media (max-width: 768px) {
             section { padding: 5rem 24px; }
@@ -1392,42 +1526,42 @@
             <span class="en">Below are the main project types served by NEXO. See our Programs page for detailed case studies.</span>
         </p>
         <div class="projects-grid fade-in">
-            <div class="project-card">
+            <div class="project-card" onclick="openModal('project-1')">
                 <div class="project-placeholder">
                     <span class="zh">国际联合展览</span>
                     <span class="es">Exposición Conjunta Internacional</span>
                     <span class="en">International Joint Exhibition</span>
                 </div>
             </div>
-            <div class="project-card">
+            <div class="project-card" onclick="openModal('project-2')">
                 <div class="project-placeholder">
                     <span class="zh">艺术家驻留计划</span>
                     <span class="es">Residencia Artística</span>
                     <span class="en">Artist Residency Program</span>
                 </div>
             </div>
-            <div class="project-card">
+            <div class="project-card" onclick="openModal('project-3')">
                 <div class="project-placeholder">
                     <span class="zh">文化论坛与峰会</span>
                     <span class="es">Foro y Cumbre Cultural</span>
                     <span class="en">Cultural Forum &amp; Summit</span>
                 </div>
             </div>
-            <div class="project-card">
+            <div class="project-card" onclick="openModal('project-4')">
                 <div class="project-placeholder">
                     <span class="zh">品牌艺术合作</span>
                     <span class="es">Colaboración Artística de Marca</span>
                     <span class="en">Brand-Art Partnership</span>
                 </div>
             </div>
-            <div class="project-card">
+            <div class="project-card" onclick="openModal('project-5')">
                 <div class="project-placeholder">
                     <span class="zh">公共艺术项目</span>
                     <span class="es">Proyecto de Arte Público</span>
                     <span class="en">Public Art Project</span>
                 </div>
             </div>
-            <div class="project-card">
+            <div class="project-card" onclick="openModal('project-6')">
                 <div class="project-placeholder">
                     <span class="zh">学术出版与研究</span>
                     <span class="es">Publicación y Investigación Académica</span>
@@ -1454,7 +1588,7 @@
         <div class="section-divider fade-in"></div>
         <div class="team-grid fade-in">
             <!-- Member 1: Isabel -->
-            <div class="team-member">
+            <div class="team-member" onclick="openModal('team-isabel')">
                 <div class="team-photo">
                     <img src="assets/images/isabel.jpg" alt="Isabel">
                 </div>
@@ -1465,14 +1599,14 @@
                         <span class="en">Founder &amp; Artistic Director</span>
                     </h3>
                     <p class="team-brief">
-                        <span class="zh">拥有超过15年的文化艺术行业经验，深耕中国与拉美艺术生态。</span>
-                        <span class="es">Más de 15 años de experiencia en el sector cultural y artístico, con especialización en los ecosistemas artísticos de China y Latinoamérica.</span>
-                        <span class="en">Over 15 years of experience in the cultural and arts sector, specializing in the art ecosystems of China and Latin America.</span>
+                        <span class="zh">点击查看详情</span>
+                        <span class="es">Click para ver detalle</span>
+                        <span class="en">Click for details</span>
                     </p>
                 </div>
             </div>
             <!-- Member 2: Claribel -->
-            <div class="team-member">
+            <div class="team-member" onclick="openModal('team-claribel')">
                 <div class="team-photo">
                     <img src="assets/images/claribel.jpg" alt="Claribel">
                 </div>
@@ -1483,9 +1617,9 @@
                         <span class="en">Co-Founder</span>
                     </h3>
                     <p class="team-brief">
-                        <span class="zh">来自拉丁美洲，拥有丰富的国际文化项目管理和机构运营经验。</span>
-                        <span class="es">Originaria de Latinoamérica, con amplia experiencia en gestión de proyectos culturales internacionales y operación institucional.</span>
-                        <span class="en">From Latin America, with extensive experience in international cultural project management and institutional operations.</span>
+                        <span class="zh">点击查看详情</span>
+                        <span class="es">Click para ver detalle</span>
+                        <span class="en">Click for details</span>
                     </p>
                 </div>
             </div>
@@ -1508,32 +1642,32 @@
         </h2>
         <div class="section-divider fade-in"></div>
         <div class="partner-categories fade-in">
-            <span class="partner-cat">
+            <span class="partner-cat" onclick="openModal('partner-museum')">
                 <span class="zh">美术馆 / 博物馆</span>
                 <span class="es">Museos de Arte / Museos</span>
                 <span class="en">Art Museums / Museums</span>
             </span>
-            <span class="partner-cat">
+            <span class="partner-cat" onclick="openModal('partner-gov')">
                 <span class="zh">政府文化部门</span>
                 <span class="es">Departamentos Culturales Gubernamentales</span>
                 <span class="en">Government Cultural Departments</span>
             </span>
-            <span class="partner-cat">
+            <span class="partner-cat" onclick="openModal('partner-corp')">
                 <span class="zh">企业</span>
                 <span class="es">Empresas</span>
                 <span class="en">Corporations</span>
             </span>
-            <span class="partner-cat">
+            <span class="partner-cat" onclick="openModal('partner-foundation')">
                 <span class="zh">艺术基金会</span>
                 <span class="es">Fundaciones Artísticas</span>
                 <span class="en">Art Foundations</span>
             </span>
-            <span class="partner-cat">
+            <span class="partner-cat" onclick="openModal('partner-edu')">
                 <span class="zh">教育机构</span>
                 <span class="es">Instituciones Educativas</span>
                 <span class="en">Educational Institutions</span>
             </span>
-            <span class="partner-cat">
+            <span class="partner-cat" onclick="openModal('partner-intl')">
                 <span class="zh">国际组织</span>
                 <span class="es">Organizaciones Internacionales</span>
                 <span class="en">International Organizations</span>
@@ -1595,20 +1729,105 @@
     </div>
 </footer>
 
+<!-- ===== MODAL OVERLAY ===== -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
+    <div class="modal-content" onclick="event.stopPropagation()">
+        <button class="modal-close" onclick="closeModalDirect()">&times;</button>
+        <div id="modalBody"></div>
+    </div>
+</div>
+
 <!-- ===== JAVASCRIPT ===== -->
 <script>
+// ===== MODAL DATA =====
+var modalData = {
+    // --- PROJECTS ---
+    'project-1': {
+        zh: { title: '国际联合展览', subtitle: 'International Joint Exhibition', body: '<p>促成中国与拉丁美洲美术馆、画廊之间的联合策展与巡展项目。我们负责从艺术家遴选、展览主题策划、学术框架搭建，到物流协调、当地落地执行的全流程管理。</p><ul><li>跨国联合策展与巡展规划</li><li>艺术家遴选与作品借展谈判</li><li>展览文本撰写与多语翻译</li><li>物流保险与海关清关协调</li><li>开幕活动与公共项目策划</li></ul>' },
+        es: { title: 'Exposición Conjunta Internacional', subtitle: 'International Joint Exhibition', body: '<p>Facilitamos proyectos de curaduría conjunta y giras de exposiciones entre museos y galerías de China y América Latina. Nos encargamos de todo el proceso: desde la selección de artistas y la conceptualización temática, hasta la coordinación logística y la ejecución local.</p><ul><li>Curaduría conjunta y planificación de giras</li><li>Selección de artistas y negociación de préstamos</li><li>Redacción de textos expositivos y traducción multilingüe</li><li>Coordinación logística, seguros y despacho aduanero</li><li>Planificación de eventos de apertura y programas públicos</li></ul>' },
+        en: { title: 'International Joint Exhibition', subtitle: 'Exposición Conjunta Internacional', body: '<p>Facilitating joint curatorial and touring exhibition projects between museums and galleries in China and Latin America. We manage the entire process — from artist selection and thematic conceptualization, to logistics coordination and local execution.</p><ul><li>Joint curation and tour planning</li><li>Artist selection and loan negotiation</li><li>Exhibition text writing and multilingual translation</li><li>Logistics, insurance, and customs clearance coordination</li><li>Opening events and public program planning</li></ul>' }
+    },
+    'project-2': {
+        zh: { title: '艺术家驻留计划', subtitle: 'Artist Residency Program', body: '<p>为中拉两国艺术家提供跨国驻留机会，促进深度创作交流与跨文化对话。我们协助艺术家对接驻留机构、申请资助、安排行程，并提供驻留期间的学术支持和成果展示平台。</p><ul><li>驻留项目匹配与机构对接</li><li>资助申请与预算管理</li><li>签证与行程安排</li><li>驻期间学术导师配对</li><li>驻留成果展览与出版</li></ul>' },
+        es: { title: 'Residencia Artística', subtitle: 'Artist Residency Program', body: '<p>Brindamos oportunidades de residencia transnacional a artistas de China y Latinoamérica, fomentando el diálogo intercultural y la creación profunda. Asistimos a los artistas en la conexión con instituciones de residencia, solicitud de fondos, organización logística y apoyo académico durante la estancia.</p><ul><li>Match de proyectos de residencia y conexión institucional</li><li>Solicitud de fondos y gestión presupuestaria</li><li>Trámites de visa y organización de viajes</li><li>Asignación de mentores académicos durante la residencia</li><li>Exposición y publicación de resultados de residencia</li></ul>' },
+        en: { title: 'Artist Residency Program', subtitle: 'Residencia Artística', body: '<p>Providing cross-border residency opportunities for artists from China and Latin America, fostering deep creative exchange and cross-cultural dialogue. We help artists connect with residency institutions, apply for funding, arrange travel, and provide academic support and exhibition platforms during their stay.</p><ul><li>Residency matching and institutional connection</li><li>Funding applications and budget management</li><li>Visa processing and travel arrangements</li><li>Academic mentor pairing during residency</li><li>Residency outcome exhibitions and publications</li></ul>' }
+    },
+    'project-3': {
+        zh: { title: '文化论坛与峰会', subtitle: 'Cultural Forum & Summit', body: '<p>策划和执行高水平的中拉文化艺术论坛、峰会与对话活动。从主题设定、嘉宾邀请、议程设计到现场执行，我们确保每一场活动都能促进实质性的文化交流与行业合作。</p><ul><li>论坛主题策划与议程设计</li><li>国内外嘉宾邀请与接待</li><li>演讲者与圆桌讨论协调</li><li>同声传译与多语种支持</li><li>媒体传播与内容沉淀</li></ul>' },
+        es: { title: 'Foro y Cumbre Cultural', subtitle: 'Cultural Forum & Summit', body: '<p>Conceptualizamos y ejecutamos foros, cumbres y diálogos de alto nivel sobre arte y cultura entre China y Latinoamérica. Desde la definición temática y la invitación de invitados, hasta la producción en terreno, aseguramos que cada evento genere un intercambio cultural sustantivo y cooperación sectorial.</p><ul><li>Conceptualización temática y diseño de agenda</li><li>Invitación y recepción de invitados nacionales e internacionales</li><li>Coordinación de ponentes y mesas redondas</li><li>Interpretación simultánea y soporte multilingüe</li><li>Divulgación mediática y documentación de contenidos</li></ul>' },
+        en: { title: 'Cultural Forum & Summit', subtitle: 'Foro y Cumbre Cultural', body: '<p>Planning and executing high-level cultural forums, summits, and dialogue events between China and Latin America. From theme definition and guest invitation to on-site production, we ensure each event generates substantive cultural exchange and industry collaboration.</p><ul><li>Forum theme planning and agenda design</li><li>Domestic and international guest invitation and reception</li><li>Speaker and roundtable coordination</li><li>Simultaneous interpretation and multilingual support</li><li>Media dissemination and content documentation</li></ul>' }
+    },
+    'project-4': {
+        zh: { title: '品牌艺术合作', subtitle: 'Brand-Art Partnership', body: '<p>为企业和品牌提供艺术赋能的商业合作方案。我们帮助企业通过艺术项目提升品牌形象、拓展文化内涵，同时为艺术项目引入商业资源，实现文化与商业的双赢。</p><ul><li>品牌艺术战略咨询</li><li>企业艺术收藏与空间陈设</li><li>联名艺术项目策划</li><li>品牌赞助与文化基金对接</li><li>艺术体验活动设计与执行</li></ul>' },
+        es: { title: 'Colaboración Artística de Marca', subtitle: 'Brand-Art Partnership', body: '<p>Ofrecemos soluciones de colaboración comercial donde el arte potencia marcas y empresas. Ayudamos a las empresas a elevar su imagen corporativa y expandir su dimensión cultural a través de proyectos artísticos, mientras conectamos proyectos culturales con recursos comerciales, logrando un beneficio mutuo.</p><ul><li>Consultoría de estrategia arte-marca</li><li>colecciones corporativas y ambientación espacial</li><li>Conceptualización de proyectos de marca y arte</li><li>Conexión con patrocinadores y fondos culturales</li><li>Diseño y ejecución de experiencias artísticas</li></ul>' },
+        en: { title: 'Brand-Art Partnership', subtitle: 'Colaboración Artística de Marca', body: '<p>Providing commercial partnership solutions where art empowers brands and corporations. We help businesses elevate their brand image and expand their cultural dimension through art projects, while connecting art projects with commercial resources for mutual benefit.</p><ul><li>Brand-art strategy consulting</li><li>Corporate art collections and spatial installation</li><li>Co-branded art project planning</li><li>Brand sponsorship and cultural fund matching</li><li>Art experience event design and execution</li></ul>' }
+    },
+    'project-5': {
+        zh: { title: '公共艺术项目', subtitle: 'Public Art Project', body: '<p>将当代艺术引入公共空间，打造城市文化地标和公共艺术装置。我们从概念创作、场地评估、工程实施到后期维护，提供完整的公共艺术解决方案。</p><ul><li>公共艺术概念创作与方案比选</li><li>场地评估与工程可行性分析</li><li>艺术家与工程师协同创作</li><li>施工管理与质量监督</li><li>公众参与与社区互动策划</li></ul>' },
+        es: { title: 'Proyecto de Arte Público', subtitle: 'Public Art Project', body: '<p>Llevamos el arte contemporáneo al espacio público, creando hitos culturales urbanos e instalaciones de arte público. Ofrecemos soluciones integrales que abarcan desde la creación conceptual, evaluación de sitios e implementación técnica, hasta mantenimiento posterior.</p><ul><li>Creación conceptual y selección de propuestas</li><li>Evaluación de sitio y análisis de viabilidad técnica</li><li>Co-creación colaborativa entre artistas e ingenieros</li><li>Gestión de construcción y control de calidad</li><li>Participación pública y programación comunitaria</li></ul>' },
+        en: { title: 'Public Art Project', subtitle: 'Proyecto de Arte Público', body: '<p>Bringing contemporary art into public spaces, creating urban cultural landmarks and public art installations. We provide comprehensive public art solutions from conceptual creation, site assessment, and engineering implementation to post-installation maintenance.</p><ul><li>Conceptual creation and proposal selection</li><li>Site assessment and engineering feasibility analysis</li><li>Collaborative creation between artists and engineers</li><li>Construction management and quality supervision</li><li>Public engagement and community programming</li></ul>' }
+    },
+    'project-6': {
+        zh: { title: '学术出版与研究', subtitle: 'Academic Publishing & Research', body: '<p>为艺术展览、文化项目和艺术家创作提供学术支撑。我们组织学者进行深入研究，撰写展览画册、学术专著和多语出版物，确保艺术项目的学术深度和知识传承。</p><ul><li>展览画册与图录编辑出版</li><li>学术专题研究与论文撰写</li><li>多语种翻译与审校</li><li>艺术家个展专著策划</li><li>数字出版与线上学术资源建设</li></ul>' },
+        es: { title: 'Publicación y Investigación Académica', subtitle: 'Academic Publishing & Research', body: '<p>Brindamos soporte académico a exposiciones de arte, proyectos culturales y creaciones artísticas. Organizamos investigaciones profundas, escribimos catálogos de exposición, monografías académicas y publicaciones multilingües, asegurando la profundidad intelectual y la transmisión de conocimiento de cada proyecto.</p><ul><li>Edición y publicación de catálogos y libros de arte</li><li>Investigación temática y redacción académica</li><li>Traducción y revisión multilingüe</li><li>Conceptualización de monografías de artistas</li><li>Publicación digital y construcción de recursos académicos en línea</li></ul>' },
+        en: { title: 'Academic Publishing & Research', subtitle: 'Publicación y Investigación Académica', body: '<p>Providing academic support for art exhibitions, cultural projects, and artistic creation. We organize in-depth scholarly research, write exhibition catalogs, academic monographs, and multilingual publications, ensuring the intellectual depth and knowledge transmission of every art project.</p><ul><li>Exhibition catalog and art book editing & publishing</li><li>Thematic academic research and paper writing</li><li>Multilingual translation and proofreading</li><li>Artist monograph planning</li><li>Digital publishing and online academic resource development</li></ul>' }
+    },
+
+    // --- TEAM ---
+    'team-isabel': {
+        zh: { title: '创始人 & 艺术总监', subtitle: 'Fundadora & Directora Artística', body: '<p>拥有超过15年的文化艺术行业经验，深耕中国与拉美艺术生态。曾在国内多家知名美术馆担任策展与学术职务，主导策划多个具有影响力的中拉文化交流项目。</p><p>她对中拉两地的艺术市场、学术脉络和文化政策有着深刻的理解，善于将学术深度与跨文化传播相结合，为合作机构提供兼具专业性和创新性的解决方案。</p><ul><li>15+年文化艺术行业经验</li><li>知名美术馆策展与学术背景</li><li>中拉文化交流项目策划专家</li><li>跨文化沟通与资源整合能力</li></ul>' },
+        es: { title: 'Fundadora & Directora Artística', subtitle: 'Fundadora & Directora Artística', body: '<p>Más de 15 años de experiencia en el sector cultural y artístico, con especialización profunda en los ecosistemas artísticos de China y Latinoamérica. Ha desempeñado cargos curatoriales y académicos en prestigiosos museos de China, liderando la conceptualización de múltiples proyectos de intercambio cultural entre China y Latinoamérica de gran impacto.</p><p>Tiene una comprensión profunda del mercado artístico, las corrientes académicas y las políticas culturales de ambas regiones, y destaca por combinar rigor académico con comunicación intercultural efectiva, ofreciendo a las instituciones colaboradoras soluciones que combinan profesionalismo e innovación.</p><ul><li>+15 años de experiencia en el sector cultural y artístico</li><li>Formación curatorial y académica en museos de primer nivel</li><li>Especialista en conceptualización de intercambios culturales</li><li>Capacidad de comunicación intercultural e integración de recursos</li></ul>' },
+        en: { title: 'Founder & Artistic Director', subtitle: 'Fundadora & Directora Artística', body: '<p>With over 15 years of experience in the cultural and arts sector, she specializes deeply in the art ecosystems of China and Latin America. She has held curatorial and academic positions at several renowned Chinese museums, leading the conceptualization of multiple impactful China-Latin America cultural exchange projects.</p><p>She possesses a profound understanding of the art markets, academic currents, and cultural policies in both regions, excelling at combining academic rigor with effective cross-cultural communication to provide partner institutions with solutions that blend professionalism and innovation.</p><ul><li>15+ years in the cultural and arts sector</li><li>Curatorial and academic background at premier museums</li><li>Expert in China-Latin America cultural exchange projects</li><li>Cross-cultural communication and resource integration</li></ul>' }
+    },
+    'team-claribel': {
+        zh: { title: '联合创始人', subtitle: 'Co-Fundadora', body: '<p>来自拉丁美洲，拥有丰富的国际文化项目管理和机构运营经验。曾在多个国际文化组织和艺术机构担任管理职务，擅长跨文化团队协调和大型文化活动的策划执行。</p><p>她的加入使 NEXO 具备了真正的双区域视角——不仅理解中国文化的深层逻辑，也熟悉拉美艺术生态的运作方式和合作模式。</p><ul><li>拉美文化项目管理专家</li><li>国际文化组织管理经验</li><li>跨文化团队协调与领导</li><li>大型文化活动策划执行</li></ul>' },
+        es: { title: 'Co-Fundadora', subtitle: 'Co-Fundadora', body: '<p>Originaria de Latinoamérica, con amplia experiencia en gestión de proyectos culturales internacionales y operación institucional. Ha ocupado cargos directivos en múltiples organizaciones culturales internacionales e instituciones artísticas, destacándose en la coordinación de equipos interculturales y la conceptualización y ejecución de grandes eventos culturales.</p><p>Su incorporación aporta a NEXO una perspectiva verdaderamente binacional — no solo comprende la lógica profunda de la cultura china, sino también las formas de operación y los modelos de cooperación del ecosistema artístico latinoamericano.</p><ul><li>Especialista en gestión de proyectos culturales latinoamericanos</li><li>Experiencia directiva en organizaciones culturales internacionales</li><li>Coordinación y liderazgo de equipos interculturales</li><li>Conceptualización y ejecución de grandes eventos culturales</li></ul>' },
+        en: { title: 'Co-Founder', subtitle: 'Co-Fundadora', body: '<p>From Latin America, with extensive experience in international cultural project management and institutional operations. She has held management positions at multiple international cultural organizations and art institutions, excelling in cross-cultural team coordination and the planning and execution of large-scale cultural events.</p><p>Her addition brings a truly dual-region perspective to NEXO — not only understanding the deep logic of Chinese culture, but also familiar with the operational methods and cooperation models of the Latin American art ecosystem.</p><ul><li>Latin American cultural project management specialist</li><li>Management experience at international cultural organizations</li><li>Cross-cultural team coordination and leadership</li><li>Large-scale cultural event planning and execution</li></ul>' }
+    },
+
+    // --- PARTNERS ---
+    'partner-museum': {
+        zh: { title: '美术馆 / 博物馆', subtitle: 'Museos de Arte / Museos', body: '<p>我们与全球范围内的美术馆和博物馆建立了广泛的联系，包括但不限于：中国国家级美术馆、省级美术馆、拉美地区重要公立和私立美术馆、国际知名艺术博物馆等。我们协助这些机构开展国际合作展览、学术交流和文化互访项目。</p>' },
+        es: { title: 'Museos de Arte / Museos', subtitle: 'Museos de Arte / Museos', body: '<p>Hemos establecido amplias conexiones con museos de arte y museos a nivel global, incluyendo — entre otros — museos nacionales de China, museos provinciales, importantes museos públicos y privados de América Latina y museos de arte internacionalmente reconocidos. Asistimos a estas instituciones en proyectos de exposiciones internacionales conjuntas, intercambios académicos y misiones culturales recíprocas.</p>' },
+        en: { title: 'Art Museums / Museums', subtitle: 'Museos de Arte / Museos', body: '<p>We have established extensive connections with art museums and museums worldwide, including — among others — national museums in China, provincial museums, major public and private museums in Latin America, and internationally recognized art museums. We assist these institutions in international joint exhibitions, academic exchanges, and reciprocal cultural missions.</p>' }
+    },
+    'partner-gov': {
+        zh: { title: '政府文化部门', subtitle: 'Departamentos Culturales Gubernamentales', body: '<p>我们与多国政府文化部门保持合作关系，包括文化和旅游部下属机构、地方文化局、文化参赞办公室等。我们协助政府层面推动中拉文化交流协议的落实，策划国家级文化年、政府间艺术交流等重大项目。</p>' },
+        es: { title: 'Departamentos Culturales Gubernamentales', subtitle: 'Departamentos Culturales Gubernamentales', body: '<p>Mantenemos relaciones de colaboración con departamentos culturales gubernamentales de múltiples países, incluyendo organismos afiliados al Ministerio de Cultura y Turismo, oficinas culturales locales y despachos de secretarías culturales. Asistimos al gobierno en la implementación de acuerdos de intercambio cultural entre China y Latinoamérica, conceptualizando proyectos de gran envergadura como años culturales nacionales y intercambios artísticos intergubernamentales.</p>' },
+        en: { title: 'Government Cultural Departments', subtitle: 'Departamentos Culturales Gubernamentales', body: '<p>We maintain cooperative relationships with government cultural departments across multiple countries, including agencies under the Ministry of Culture and Tourism, local cultural bureaus, and cultural attaché offices. We assist governments in implementing China-Latin America cultural exchange agreements, conceptualizing large-scale projects such as national cultural years and intergovernmental art exchanges.</p>' }
+    },
+    'partner-corp': {
+        zh: { title: '企业', subtitle: 'Empresas', body: '<p>我们的企业合作伙伴涵盖金融、地产、科技、消费等多个行业。我们帮助企业通过艺术项目提升品牌价值、丰富企业文化，并为企业的艺术收藏和公共空间艺术配置提供专业顾问服务。</p>' },
+        es: { title: 'Empresas', subtitle: 'Empresas', body: '<p>Nuestras alianzas corporativas abarcan múltiples sectores, incluyendo finanzas, bienes raíces, tecnología y consumo. Ayudamos a las empresas a elevar su valor de marca y enriquecer su cultura corporativa a través de proyectos artísticos, además de ofrecer servicios de asesoría profesional para colecciones corporativas y ambientación artística de espacios públicos.</p>' },
+        en: { title: 'Corporations', subtitle: 'Empresas', body: '<p>Our corporate partners span multiple sectors including finance, real estate, technology, and consumer goods. We help companies elevate their brand value and enrich their corporate culture through art projects, and provide professional advisory services for corporate art collections and public space art installations.</p>' }
+    },
+    'partner-foundation': {
+        zh: { title: '艺术基金会', subtitle: 'Fundaciones Artísticas', body: '<p>我们与国内外艺术基金会保持紧密合作，共同推动艺术资助、学术研究和文化公益项目。基金会是我们的关键合作伙伴，为艺术家驻留、展览策划和学术出版提供重要的资金支持。</p>' },
+        es: { title: 'Fundaciones Artísticas', subtitle: 'Fundaciones Artísticas', body: '<p>Mantenemos una estrecha colaboración con fundaciones artísticas nacionales e internacionales, promoviendo conjuntamente la financiación artística, la investigación académica y los proyectos de bienestar cultural. Las fundaciones son socios clave que proporcionan financiamiento esencial para residencias artísticas, conceptualización de exposiciones y publicaciones académicas.</p>' },
+        en: { title: 'Art Foundations', subtitle: 'Fundaciones Artísticas', body: '<p>We maintain close collaboration with domestic and international art foundations, jointly advancing art funding, academic research, and cultural public welfare projects. Foundations are key partners providing essential financial support for artist residencies, exhibition planning, and academic publishing.</p>' }
+    },
+    'partner-edu': {
+        zh: { title: '教育机构', subtitle: 'Instituciones Educativas', body: '<p>我们与知名艺术院校、大学文化研究系和教育机构合作，开展艺术教育项目、联合研究计划和师生交流项目，为中拉文化艺术的未来培养跨文化人才。</p>' },
+        es: { title: 'Instituciones Educativas', subtitle: 'Instituciones Educativas', body: '<p>Colaboramos con escuelas de arte de primer nivel, departamentos de estudios culturales universitarios e instituciones educativas para desarrollar programas de educación artística, planes de investigación conjunta y programas de intercambio docente-estudiantil, formando talento intercultural para el futuro del arte y la cultura entre China y Latinoamérica.</p>' },
+        en: { title: 'Educational Institutions', subtitle: 'Instituciones Educativas', body: '<p>We collaborate with premier art schools, university cultural studies departments, and educational institutions to develop art education programs, joint research plans, and faculty-student exchange programs, cultivating cross-cultural talent for the future of China-Latin America art and culture.</p>' }
+    },
+    'partner-intl': {
+        zh: { title: '国际组织', subtitle: 'Organizaciones Internacionales', body: '<p>我们与联合国教科文组织、拉美文化共同体等国际及区域组织保持合作，参与多边文化对话和项目，推动中拉文化合作在全球层面的制度化发展。</p>' },
+        es: { title: 'Organizaciones Internacionales', subtitle: 'Organizaciones Internacionales', body: '<p>Mantenemos colaboración con organizaciones internacionales y regionales como la UNESCO y la Comunidad de Estados Latinoamericanos y Caribeños, participando en diálogos culturales multilaterales y proyectos que impulsan el desarrollo institucionalizado de la cooperación cultural entre China y Latinoamérica a nivel global.</p>' },
+        en: { title: 'International Organizations', subtitle: 'Organizaciones Internacionales', body: '<p>We collaborate with international and regional organizations such as UNESCO and CELAC, participating in multilateral cultural dialogues and projects that advance the institutionalized development of China-Latin America cultural cooperation at the global level.</p>' }
+    }
+};
+
 // ===== LANGUAGE SWITCHING =====
 function setLang(lang) {
     document.body.className = 'lang-' + lang;
     document.documentElement.lang = lang === 'zh' ? 'zh-CN' : lang === 'es' ? 'es' : 'en';
-    // Update active button
     document.querySelectorAll('.lang-btn').forEach(function(btn) {
         btn.classList.remove('active');
         if (btn.getAttribute('data-lang-btn') === lang) {
             btn.classList.add('active');
         }
     });
-    // Save preference
     try { localStorage.setItem('nexo-lang', lang); } catch(e) {}
 }
 
@@ -1621,6 +1840,42 @@ function setLang(lang) {
         }
     } catch(e) {}
 })();
+
+// ===== MODAL FUNCTIONS =====
+function openModal(id) {
+    var data = modalData[id];
+    if (!data) return;
+    var lang = document.body.className.match(/lang-(zh|es|en)/);
+    var langCode = lang ? lang[1] : 'zh';
+    var item = data[langCode] || data['zh'];
+
+    var html = '<h2 class="modal-title">' + item.title + '</h2>';
+    if (item.subtitle) html += '<p class="modal-subtitle">' + item.subtitle + '</p>';
+    html += '<div class="modal-body">' + item.body + '</div>';
+
+    document.getElementById('modalBody').innerHTML = html;
+    var overlay = document.getElementById('modalOverlay');
+    overlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeModal(e) {
+    if (e.target === document.getElementById('modalOverlay')) {
+        closeModalDirect();
+    }
+}
+
+function closeModalDirect() {
+    document.getElementById('modalOverlay').classList.remove('active');
+    document.body.style.overflow = '';
+}
+
+// Close modal with Escape key
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        closeModalDirect();
+    }
+});
 
 // ===== MOBILE MENU =====
 function toggleMenu() {
