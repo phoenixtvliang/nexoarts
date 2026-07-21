@@ -48,7 +48,8 @@
         .lang-btn:hover { color: var(--color-text); }
         .lang-btn.active { color: var(--color-accent); font-weight: 500; }
 
-        @media (max-width: 768px) { .nav-container { padding: 0 24px; } .nav-links { display: none; } }
+        @media (max-width: 768px) { .nav-container { padding: 0 24px; } .nav-links { display: none; } .page-header { padding: 12rem 24px 4rem; } .page-header .section-title { font-size: 1.6rem; } .content-section { padding: 3rem 20px; } .content-section h2 { font-size: 1.3rem; } .content-section p { font-size: 0.85rem; } .content-section ul li { font-size: 0.85rem; } }
+        @media (max-width: 480px) { html { font-size: 16px; } .page-header { padding: 10rem 16px 3rem; } .page-header .section-title { font-size: 1.3rem; } .content-section { padding: 2.5rem 16px; } .content-section h2 { font-size: 1.15rem; } }
 
         /* Page Header */
         .page-header { padding: 14rem 32px 6rem; text-align: center; background: var(--color-bg-alt); }
@@ -284,7 +285,7 @@ function setLang(lang) {
     try { localStorage.setItem('nexo-lang', lang); } catch(e) {}
 }
 (function() {
-    try { var saved = localStorage.getItem('nexo-lang'); if (saved && ['zh','es','en'].indexOf(saved) !== -1) setLang(saved); } catch(e) {}
+    try { var saved = localStorage.getItem('nexo-lang'); if (saved && ['zh','es','en'].indexOf(saved) !== -1) setLang(saved); else setLang('zh'); } catch(e) {}
 })();
 
 // Scroll animations

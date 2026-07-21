@@ -1141,9 +1141,92 @@
         }
 
         /* ===== RESPONSIVE ===== */
+        @media (max-width: 1024px) {
+            .services-grid { grid-template-columns: repeat(3, 1fr); }
+        }
+
         @media (max-width: 768px) {
-            section { padding: 5rem 24px; }
-            .nav-container { padding: 0 24px; }
+            section { padding: 4rem 20px; }
+            .nav-container { padding: 0 20px; height: 64px; }
+            .logo { font-size: 1.2rem; }
+
+            /* Hero */
+            .hero { min-height: 500px; }
+            .hero-content { padding: 0 20px; }
+            .hero-title { font-size: 2rem; }
+            .hero-subtitle { font-size: 0.75rem; letter-spacing: 0.1em; }
+            .hero-tagline { font-size: 0.95rem; }
+            .hero-cta { padding: 0.7rem 2rem; font-size: 0.7rem; }
+            .scroll-indicator { bottom: 2rem; }
+
+            /* About */
+            .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+            .about-stats { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+            .stat-number { font-size: 2rem; }
+            .stat-label { font-size: 0.7rem; }
+
+            /* Why NEXO */
+            .why-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+
+            /* Services */
+            .services-grid { grid-template-columns: 1fr; gap: 1rem; }
+            .service-pillar { padding: 2rem 1.5rem; }
+
+            /* Industries */
+            .industries-list { gap: 0.75rem; }
+            .industry-tag { padding: 0.6rem 1.2rem; font-size: 0.8rem; }
+
+            /* Process */
+            .process-steps { grid-template-columns: 1fr; gap: 1.5rem; }
+
+            /* Projects */
+            .projects-grid { grid-template-columns: 1fr; gap: 1rem; }
+            .project-card .project-caption { padding: 1.2rem 1rem 1rem; }
+            .project-card .project-caption span { font-size: 0.8rem; }
+
+            /* Team */
+            .team-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+            .team-photo { width: 90px; height: 115px; }
+            .team-info h3 { font-size: 0.95rem; }
+
+            /* Partners */
+            .partner-categories { flex-direction: column; }
+            .partner-cat { text-align: center; }
+
+            /* Contact */
+            .contact { padding: 6rem 20px; }
+            .contact .section-title { font-size: 1.6rem; }
+            .contact-email { font-size: 1rem; }
+
+            /* Footer */
+            footer { padding: 2rem 20px; }
+            .footer-container { flex-direction: column; gap: 0.75rem; }
+            .footer-links { flex-direction: column; gap: 0.75rem; text-align: center; }
+
+            /* Modal */
+            .modal-content { padding: 2rem 1.25rem; margin: 1rem; }
+            .modal-title { font-size: 1.2rem; }
+            .modal-subtitle { font-size: 0.85rem; }
+            .modal-body { font-size: 0.85rem; }
+
+            /* Section titles */
+            .section-title { font-size: 1.6rem; }
+            .section-text { font-size: 0.85rem; }
+        }
+
+        @media (max-width: 480px) {
+            html { font-size: 16px; }
+            section { padding: 3rem 16px; }
+            .nav-container { padding: 0 16px; height: 56px; }
+            .logo { font-size: 1rem; }
+            .hero { min-height: 450px; }
+            .hero-title { font-size: 1.6rem; }
+            .hero-subtitle { font-size: 0.65rem; }
+            .hero-tagline { font-size: 0.85rem; }
+            .about-stats { grid-template-columns: 1fr; }
+            .stat-item { border-left: none; border-top: 1px solid var(--color-accent); padding-left: 0; padding-top: 1rem; }
+            .project-card .project-caption { padding: 1rem 0.75rem 0.75rem; }
+            .project-card .project-caption span { font-size: 0.75rem; }
         }
     </style>
 </head>
@@ -1895,6 +1978,9 @@ function setLang(lang) {
         var saved = localStorage.getItem('nexo-lang');
         if (saved && ['zh','es','en'].indexOf(saved) !== -1) {
             setLang(saved);
+        } else {
+            // Default to Chinese if no saved preference
+            setLang('zh');
         }
     } catch(e) {}
 })();

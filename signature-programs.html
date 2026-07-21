@@ -363,7 +363,18 @@
                 text-align: center;
             }
             .page-header { padding: 12rem 24px 4rem; }
-            .program-section { padding: 4rem 24px; }
+            .page-header .section-title { font-size: 1.6rem; }
+            .program-section { padding: 3rem 20px; }
+            .program-title { font-size: 1.3rem; }
+            .program-body { font-size: 0.85rem; }
+            .program-features ul { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 480px) {
+            html { font-size: 16px; }
+            .page-header { padding: 10rem 16px 3rem; }
+            .page-header .section-title { font-size: 1.3rem; }
+            .program-section { padding: 2.5rem 16px; }
+            .program-title { font-size: 1.15rem; }
         }
     </style>
 </head>
@@ -690,6 +701,8 @@ function setLang(lang) {
         var saved = localStorage.getItem('nexo-lang');
         if (saved && ['zh','es','en'].indexOf(saved) !== -1) {
             setLang(saved);
+        } else {
+            setLang('zh');
         }
     } catch(e) {}
 })();
