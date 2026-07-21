@@ -1,0 +1,302 @@
+<!-- Deployed: 2026-07-21 16:40 UTC -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="NEXO — 为什么选择我们 | 独特的跨文化优势">
+    <title>为什么选择 NEXO — 凝絮文化艺术顾问</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Noto+Serif+SC:wght@300;400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --color-bg: #0E0E0E;
+            --color-bg-alt: #161616;
+            --color-text: #E8E4DE;
+            --color-text-light: #B8B0A6;
+            --color-text-muted: #8A8279;
+            --color-accent: #C9A96E;
+            --color-accent-light: #D4BC8E;
+            --color-white: #F7F5F1;
+            --color-border: #2A2826;
+            --font-serif: 'Cormorant Garamond', 'Noto Serif SC', Georgia, serif;
+            --font-sans: 'Inter', -apple-system, 'Helvetica Neue', sans-serif;
+            --font-chinese: 'Noto Serif SC', 'Songti SC', Georgia, serif;
+        }
+        html { scroll-behavior: smooth; font-size: 18px; }
+        body { font-family: var(--font-sans); background: var(--color-bg); color: var(--color-text); line-height: 1.8; font-weight: 300; }
+        ::selection { background: var(--color-accent); color: var(--color-white); }
+
+        /* Language */
+        body.lang-es .zh { display: none !important; }
+        body.lang-en .zh { display: none !important; }
+        body.lang-zh .es { display: none !important; }
+        body.lang-zh .en { display: none !important; }
+        body.lang-es .en { display: none !important; }
+        body.lang-en .es { display: none !important; }
+
+        /* Nav */
+        nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(14,14,14,0.95); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(201,169,110,0.15); }
+        .nav-container { max-width: 1200px; margin: 0 auto; padding: 0 80px; display: flex; justify-content: space-between; align-items: center; height: 72px; }
+        .logo { font-family: var(--font-serif); font-size: 1.5rem; font-weight: 400; letter-spacing: 0.15em; color: var(--color-accent); text-decoration: none; }
+        .nav-links { display: flex; align-items: center; gap: 2.5rem; list-style: none; }
+        .nav-links a { font-family: var(--font-sans); font-size: 0.75rem; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-text-light); text-decoration: none; transition: color 0.3s; }
+        .nav-links a:hover { color: var(--color-accent); }
+        .lang-switcher { display: flex; align-items: center; gap: 0.75rem; margin-left: 1rem; padding-left: 1.5rem; border-left: 1px solid var(--color-border); }
+        .lang-btn { background: none; border: none; color: var(--color-text-muted); font-family: var(--font-sans); font-size: 0.7rem; letter-spacing: 0.05em; cursor: pointer; padding: 0.2rem 0.3rem; transition: color 0.3s; }
+        .lang-btn:hover { color: var(--color-text); }
+        .lang-btn.active { color: var(--color-accent); font-weight: 500; }
+
+        @media (max-width: 768px) { .nav-container { padding: 0 24px; } .nav-links { display: none; } }
+
+        /* Page Header */
+        .page-header { padding: 14rem 32px 6rem; text-align: center; background: var(--color-bg-alt); }
+        .page-header .section-label { font-family: var(--font-sans); font-size: 0.65rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--color-accent); margin-bottom: 1rem; }
+        .page-header .section-title { font-family: var(--font-serif); font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 300; color: var(--color-white); margin-bottom: 1.5rem; line-height: 1.3; }
+        .page-header .section-divider { width: 60px; height: 1px; background: var(--color-accent); margin: 0 auto 2rem; }
+        .page-header .section-text { font-size: 0.95rem; line-height: 1.9; color: var(--color-text-light); max-width: 700px; margin: 0 auto; }
+
+        /* Content Sections */
+        .content-section { padding: 5rem 32px; border-top: 1px solid var(--color-border); }
+        .content-section:nth-child(even) { background: var(--color-bg-alt); }
+        .content-inner { max-width: 800px; margin: 0 auto; }
+        .content-section .section-label { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--color-accent); margin-bottom: 0.75rem; }
+        .content-section h2 { font-family: var(--font-serif); font-size: clamp(1.5rem, 2.5vw, 2rem); font-weight: 300; color: var(--color-white); margin-bottom: 2rem; }
+        .content-section p { font-size: 0.9rem; line-height: 2; color: var(--color-text-light); margin-bottom: 1.5rem; }
+        .content-section ul { list-style: none; margin-bottom: 1.5rem; }
+        .content-section ul li { padding-left: 1.2rem; position: relative; margin-bottom: 0.5rem; font-size: 0.9rem; color: var(--color-text-light); }
+        .content-section ul li::before { content: '—'; position: absolute; left: 0; color: var(--color-accent); }
+
+        /* Back Link */
+        .back-link { display: inline-block; margin-top: 3rem; font-size: 0.8rem; color: var(--color-accent); text-decoration: none; letter-spacing: 0.1em; transition: color 0.3s; }
+        .back-link:hover { color: var(--color-accent-light); }
+
+        /* Footer */
+        footer { padding: 3rem 32px; border-top: 1px solid var(--color-border); text-align: center; }
+        .footer-copy { font-size: 0.7rem; color: var(--color-text-muted); letter-spacing: 0.05em; }
+
+        /* Animations */
+        .fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease; }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="nav-container">
+        <a href="index.html" class="logo">NEXO</a>
+        <ul class="nav-links">
+            <li><a href="index.html#about" class="zh">关于我们</a><a href="index.html#about" class="es">Nosotros</a><a href="index.html#about" class="en">About</a></li>
+            <li><a href="index.html#services" class="zh">核心服务</a><a href="index.html#services" class="es">Servicios</a><a href="index.html#services" class="en">Services</a></li>
+            <li><a href="index.html#contact" class="zh">联系我们</a><a href="index.html#contact" class="es">Contacto</a><a href="index.html#contact" class="en">Contact</a></li>
+            <li>
+                <div class="lang-switcher">
+                    <button class="lang-btn active" onclick="setLang('zh')" data-lang-btn="zh">中</button>
+                    <button class="lang-btn" onclick="setLang('es')" data-lang-btn="es">ES</button>
+                    <button class="lang-btn" onclick="setLang('en')" data-lang-btn="en">EN</button>
+                </div>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<!-- Page Header -->
+<header class="page-header">
+    <p class="section-label fade-in">
+        <span class="zh">为什么选择 NEXO</span>
+        <span class="es">¿Por Qué NEXO?</span>
+        <span class="en">Why NEXO</span>
+    </p>
+    <h1 class="section-title fade-in">
+        <span class="zh">独特的跨文化优势</span>
+        <span class="es">Ventaja Intercultural Única</span>
+        <span class="en">Unique Cross-Cultural Advantage</span>
+    </h1>
+    <div class="section-divider fade-in"></div>
+    <p class="section-text fade-in">
+        <span class="zh">在中拉两大文化板块之间，NEXO 以独特的双区域视角、全链路服务能力和深厚的资源网络，为每一位合作伙伴创造不可替代的价值。</span>
+        <span class="es">Entre los dos grandes bloques culturales de China y Latinoamérica, NEXO crea un valor insustituible para cada socio con nuestra perspectiva binacional única, capacidades de servicio integral y una profunda red de recursos.</span>
+        <span class="en">Between the two great cultural spheres of China and Latin America, NEXO creates irreplaceable value for every partner through our unique dual-region perspective, end-to-end service capabilities, and deep resource network.</span>
+    </p>
+</header>
+
+<!-- Section 1: Dual-Region Expertise -->
+<section class="content-section">
+    <div class="content-inner fade-in">
+        <p class="section-label">
+            <span class="zh">01</span>
+            <span class="es">01</span>
+            <span class="en">01</span>
+        </p>
+        <h2>
+            <span class="zh">双区域深耕</span>
+            <span class="es">Profundidad Binacional</span>
+            <span class="en">Dual-Region Expertise</span>
+        </h2>
+        <p>
+            <span class="zh">NEXO 的核心竞争力源于团队对中拉两大区域的深度理解。我们的创始团队由来自中国和拉丁美洲两地的资深从业者组成，他们不仅在各自的文化土壤中成长，更在国际化的艺术环境中积累了深厚的经验。</span>
+            <span class="es">La ventaja competitiva central de NEXO surge de nuestra comprensión profunda de las dos regiones. Nuestro equipo fundador está conformado por profesionales experimentados de China y Latinoamérica, quienes no solo crecieron en sus respectivos contextos culturales, sino que también acumularon una sólida experiencia en entornos artísticos internacionalizados.</span>
+            <span class="en">NEXO's core competitiveness stems from our deep understanding of both regions. Our founding team consists of seasoned practitioners from China and Latin America, who not only grew up in their respective cultural contexts but also accumulated substantial experience in internationalized art environments.</span>
+        </p>
+        <p>
+            <span class="zh">这种双区域的视角使我们能够：</span>
+            <span class="es">Esta perspectiva binacional nos permite:</span>
+            <span class="en">This dual-region perspective enables us to:</span>
+        </p>
+        <ul>
+            <li><span class="zh">准确理解双方文化语境中的细微差异</span><span class="es">Comprender con precisión las sutilezas culturales entre ambos contextos</span><span class="en">Accurately comprehend the nuanced differences between both cultural contexts</span></li>
+            <li><span class="zh">预判并化解跨文化合作中的潜在障碍</span><span class="es">Anticipar y resolver obstáculos potenciales en la cooperación intercultural</span><span class="en">Anticipate and resolve potential obstacles in cross-cultural cooperation</span></li>
+            <li><span class="zh">精准匹配中拉两地的优质资源</span><span class="es">Conectar de manera precisa los recursos de alta calidad entre China y Latinoamérica</span><span class="en">Precisely match high-quality resources between China and Latin America</span></li>
+            <li><span class="zh">在商业逻辑和艺术追求之间找到最佳平衡点</span><span class="es">Encontrar el mejor equilibrio entre lógica comercial y aspiraciones artísticas</span><span class="en">Find the optimal balance between commercial logic and artistic aspirations</span></li>
+        </ul>
+        <p>
+            <span class="zh">我们不是简单的翻译者或中介，而是真正能够在两种文化中自由切换、深刻理解双方需求的战略合作伙伴。</span>
+            <span class="es">No somos simples traductores o intermediarios, sino verdaderos socios estratégicos que pueden moverse libremente entre ambas culturas y comprender profundamente las necesidades de cada parte.</span>
+            <span class="en">We are not simple translators or intermediaries, but genuine strategic partners who can navigate freely between both cultures and deeply understand the needs of each side.</span>
+        </p>
+    </div>
+</section>
+
+<!-- Section 2: End-to-End Service -->
+<section class="content-section">
+    <div class="content-inner fade-in">
+        <p class="section-label">
+            <span class="zh">02</span>
+            <span class="es">02</span>
+            <span class="en">02</span>
+        </p>
+        <h2>
+            <span class="zh">全链路服务</span>
+            <span class="es">Servicio Integral</span>
+            <span class="en">End-to-End Service</span>
+        </h2>
+        <p>
+            <span class="zh">NEXO 提供覆盖艺术项目全生命周期的专业服务。从最初的概念构思到最终的成果呈现，我们为每一个环节注入专业精神和文化敏感度。</span>
+            <span class="es">NEXO ofrece servicios profesionales que cubren todo el ciclo de vida de los proyectos artísticos. Desde la concepción inicial hasta la presentación final, inyectamos profesionalismo y sensibilidad cultural en cada etapa.</span>
+            <span class="en">NEXO provides professional services covering the full lifecycle of art projects. From initial concept conception to final presentation, we infuse professionalism and cultural sensitivity into every stage.</span>
+        </p>
+        <p>
+            <span class="zh">我们的服务链条包括：</span>
+            <span class="es">Nuestra cadena de servicios incluye:</span>
+            <span class="en">Our service chain includes:</span>
+        </p>
+        <ul>
+            <li><span class="zh">战略规划与可行性研究</span><span class="es">Planificación estratégica e investigación de viabilidad</span><span class="en">Strategic planning and feasibility research</span></li>
+            <li><span class="zh">学术框架搭建与研究支持</span><span class="es">Marco académico y apoyo investigativo</span><span class="en">Academic framework development and research support</span></li>
+            <li><span class="zh">艺术家与机构对接</span><span class="es">Conexión con artistas e instituciones</span><span class="en">Artist and institutional matchmaking</span></li>
+            <li><span class="zh">策展设计与视觉呈现</span><span class="es">Diseño curatorial y presentación visual</span><span class="en">Curatorial design and visual presentation</span></li>
+            <li><span class="zh">项目管理与现场执行</span><span class="es">Gestión de proyectos y ejecución en terreno</span><span class="en">Project management and on-site execution</span></li>
+            <li><span class="zh">公共教育与传播推广</span><span class="es">Educación pública y divulgación</span><span class="en">Public education and outreach</span></li>
+            <li><span class="zh">成果评估与长期追踪</span><span class="es">Evaluación de resultados y seguimiento a largo plazo</span><span class="en">Results evaluation and long-term tracking</span></li>
+        </ul>
+        <p>
+            <span class="zh">一站式的服务模式确保项目的连贯性和完整性，减少沟通成本，提高执行效率。</span>
+            <span class="es">El modelo de servicio integral asegura la coherencia e integridad del proyecto, reduciendo costos de comunicación y mejorando la eficiencia de ejecución.</span>
+            <span class="en">The one-stop service model ensures project coherence and completeness, reducing communication costs and improving execution efficiency.</span>
+        </p>
+    </div>
+</section>
+
+<!-- Section 3: Resource Network -->
+<section class="content-section">
+    <div class="content-inner fade-in">
+        <p class="section-label">
+            <span class="zh">03</span>
+            <span class="es">03</span>
+            <span class="en">03</span>
+        </p>
+        <h2>
+            <span class="zh">资源网络</span>
+            <span class="es">Red de Recursos</span>
+            <span class="en">Resource Network</span>
+        </h2>
+        <p>
+            <span class="zh">NEXO 与全球范围内的顶级文化机构建立了广泛而深入的合作网络。这一网络是我们为客户提供优质服务的重要保障。</span>
+            <span class="es">NEXO ha establecido una red amplia y profunda de colaboración con las principales instituciones culturales del mundo. Esta red es una garantía fundamental para ofrecer un servicio de calidad a nuestros clientes.</span>
+            <span class="en">NEXO has established an extensive and deep collaborative network with top cultural institutions worldwide. This network is a fundamental guarantee for delivering quality service to our clients.</span>
+        </p>
+        <p>
+            <span class="zh">我们的合作网络涵盖：</span>
+            <span class="es">Nuestra red de colaboración abarca:</span>
+            <span class="en">Our collaborative network covers:</span>
+        </p>
+        <ul>
+            <li><span class="zh">全球 50+ 美术馆与博物馆</span><span class="es">+50 museos y galerías de arte a nivel global</span><span class="en">50+ museums and art galleries globally</span></li>
+            <li><span class="zh">多国政府文化部门</span><span class="es">Departamentos culturales de gobiernos de múltiples países</span><span class="en">Government cultural departments across multiple countries</span></li>
+            <li><span class="zh">国际艺术基金会</span><span class="es">Fundaciones artísticas internacionales</span><span class="en">International art foundations</span></li>
+            <li><span class="zh">知名艺术院校与设计学院</span><span class="es">Escuelas de arte y academias de diseño de renombre</span><span class="en">Prestigious art schools and design academies</span></li>
+            <li><span class="zh">企业品牌与文化机构</span><span class="es">Empresas, marcas e instituciones culturales</span><span class="en">Corporations, brands, and cultural institutions</span></li>
+        </ul>
+        <p>
+            <span class="zh">凭借这一强大的资源网络，我们能够：</span>
+            <span class="es">Gracias a esta poderosa red de recursos, podemos:</span>
+            <span class="en">Leveraging this powerful resource network, we can:</span>
+        </p>
+        <ul>
+            <li><span class="zh">为艺术家快速匹配理想的驻留与展览机会</span><span class="es">Conectar rápidamente a artistas con oportunidades ideales de residencia y exposición</span><span class="en">Rapidly connect artists with ideal residency and exhibition opportunities</span></li>
+            <li><span class="zh">为展览项目寻找最合适的学术支持</span><span class="es">Encontrar el apoyo académico más adecuado para proyectos expositivos</span><span class="en">Find the most suitable academic support for exhibition projects</span></li>
+            <li><span class="zh">为品牌合作方对接最具影响力的文化 IP</span><span class="es">Emparejar marcas con los IP culturales más influyentes</span><span class="en">Match brands with the most influential cultural IPs</span></li>
+            <li><span class="zh">为收藏家提供稀缺的艺术品获取渠道</span><span class="es">Proporcionar a coleccionistas canales de acceso a obras de arte excepcionales</span><span class="en">Provide collectors with access channels to exceptional artworks</span></li>
+        </ul>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="content-section" style="text-align: center;">
+    <div class="content-inner fade-in">
+        <h2 style="margin-bottom: 1.5rem;">
+            <span class="zh">开启您的跨文化之旅</span>
+            <span class="es">Inicie su Viaje Intercultural</span>
+            <span class="en">Begin Your Cross-Cultural Journey</span>
+        </h2>
+        <p style="margin-bottom: 2rem;">
+            <span class="zh">无论您是艺术家、机构还是企业，我们都期待与您携手共创文化价值。</span>
+            <span class="es">Ya sea que usted sea un artista, institución o empresa, esperamos colaborar con usted para crear valor cultural conjunto.</span>
+            <span class="en">Whether you are an artist, institution, or enterprise, we look forward to collaborating with you to create cultural value together.</span>
+        </p>
+        <a href="mailto:info@nexoarts.com" class="back-link" style="display: inline-block; padding: 0.9rem 2.5rem; border: 1px solid var(--color-accent); color: var(--color-accent); text-decoration: none; letter-spacing: 0.15em; text-transform: uppercase; font-size: 0.75rem; font-family: var(--font-sans);">
+            <span class="zh">联系我们</span>
+            <span class="es">Contáctenos</span>
+            <span class="en">Contact Us</span>
+        </a>
+        <br><br>
+        <a href="index.html" class="back-link">
+            <span class="zh">← 返回首页</span>
+            <span class="es">← Volver al inicio</span>
+            <span class="en">← Back to Home</span>
+        </a>
+    </div>
+</section>
+
+<footer>
+    <p class="footer-copy">&copy; 2026 NEXO Art &amp; Cultural Advisory. All rights reserved.</p>
+</footer>
+
+<script>
+function setLang(lang) {
+    document.body.className = 'lang-' + lang;
+    document.documentElement.lang = lang === 'zh' ? 'zh-CN' : lang === 'es' ? 'es' : 'en';
+    document.querySelectorAll('.lang-btn').forEach(function(btn) {
+        btn.classList.remove('active');
+        if (btn.getAttribute('data-lang-btn') === lang) btn.classList.add('active');
+    });
+    try { localStorage.setItem('nexo-lang', lang); } catch(e) {}
+}
+(function() {
+    try { var saved = localStorage.getItem('nexo-lang'); if (saved && ['zh','es','en'].indexOf(saved) !== -1) setLang(saved); } catch(e) {}
+})();
+
+// Scroll animations
+(function() {
+    var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+            if (entry.isIntersecting) entry.target.classList.add('visible');
+        });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+    document.querySelectorAll('.fade-in').forEach(function(el) { observer.observe(el); });
+})();
+</script>
+
+</body>
+</html>

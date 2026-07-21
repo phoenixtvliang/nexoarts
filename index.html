@@ -215,7 +215,7 @@
             top: 0; left: 0;
             width: 100%; height: 100%;
             object-fit: cover;
-            opacity: 0.35;
+            opacity: 1;
         }
 
         .hero-overlay {
@@ -224,9 +224,9 @@
             width: 100%; height: 100%;
             background: linear-gradient(
                 to bottom,
-                rgba(14, 14, 14, 0.4) 0%,
-                rgba(14, 14, 14, 0.6) 50%,
-                rgba(14, 14, 14, 0.95) 100%
+                rgba(14, 14, 14, 0.15) 0%,
+                rgba(14, 14, 14, 0.25) 50%,
+                rgba(14, 14, 14, 0.6) 100%
             );
         }
 
@@ -640,6 +640,37 @@
 
         .project-card:hover .project-placeholder {
             color: var(--color-accent);
+        }
+
+        /* Project card images */
+        .project-card .project-img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .project-card:hover .project-img {
+            transform: scale(1.05);
+        }
+
+        .project-card .project-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 2rem 1.5rem 1.5rem;
+            background: linear-gradient(to top, rgba(14,14,14,0.95) 0%, rgba(14,14,14,0.6) 60%, transparent 100%);
+            z-index: 2;
+        }
+
+        .project-card .project-caption span {
+            font-family: var(--font-serif);
+            font-size: 0.9rem;
+            color: var(--color-white);
+            letter-spacing: 0.05em;
         }
 
         .project-card:hover {
@@ -1131,6 +1162,7 @@
             <li><a href="#team" class="zh">团队</a><a href="#team" class="es">Equipo</a><a href="#team" class="en">Team</a></li>
             <li><a href="#contact" class="zh">联系我们</a><a href="#contact" class="es">Contacto</a><a href="#contact" class="en">Contact</a></li>
             <li><a href="signature-programs.html" class="zh">旗舰项目</a><a href="signature-programs.html" class="es">Programas</a><a href="signature-programs.html" class="en">Programs</a></li>
+            <li><a href="why-nexo.html" class="zh">为什么选择 NEXO</a><a href="why-nexo.html" class="es">¿Por Qué NEXO?</a><a href="why-nexo.html" class="en">Why NEXO</a></li>
             <li>
                 <div class="lang-switcher">
                     <button class="lang-btn active" onclick="setLang('zh')" data-lang-btn="zh">中</button>
@@ -1190,23 +1222,18 @@
                 </h2>
                 <div class="section-divider"></div>
                 <p class="section-text">
-                    <span class="zh">NEXO 是一家专注于中国与拉丁美洲之间文化艺术交流的国际顾问机构。我们为中国及全球的艺术机构、政府组织、企业和收藏家提供战略咨询、策展支持和项目落地服务。</span>
-                    <span class="es">NEXO es una consultora internacional especializada en el intercambio cultural y artístico entre China y América Latina. Brindamos asesoría estratégica, apoyo curatorial y ejecución de proyectos a instituciones artísticas, organizaciones gubernamentales, empresas y coleccionistas en China y a nivel global.</span>
-                    <span class="en">NEXO is an international advisory firm specializing in cultural and artistic exchange between China and Latin America. We provide strategic consulting, curatorial support, and project execution services for art institutions, government organizations, corporations, and collectors in China and globally.</span>
-                </p>
-                <p class="section-text">
-                    <span class="zh">我们的团队由来自中拉两地的资深艺术从业者组成，拥有深厚的行业资源和跨文化沟通能力。我们相信，艺术的真正力量在于它能够跨越国界、连接不同文明。</span>
-                    <span class="es">Nuestro equipo está conformado por profesionales experimentados del sector artístico tanto de China como de Latinoamérica, con profundos recursos del sector y capacidad de comunicación intercultural. Creemos que el verdadero poder del arte reside en su capacidad de trascender fronteras y conectar civilizaciones.</span>
-                    <span class="en">Our team consists of seasoned art professionals from both China and Latin America, with deep industry connections and cross-cultural communication capabilities. We believe that the true power of art lies in its ability to transcend borders and connect civilizations.</span>
+                    <span class="zh">NEXO 是一家专注于中国与拉丁美洲之间文化艺术交流的国际顾问机构。我们为中国的艺术家、艺术机构、政府组织、企业和收藏家提供战略咨询、策展支持和项目落地服务。我们的团队由来自中拉两地的资深艺术从业者组成，拥有深厚的行业资源和跨文化沟通能力。我们相信，艺术的真正力量在于它能够跨越国界、连接不同文明。</span>
+                    <span class="es">NEXO es una consultora internacional especializada en el intercambio cultural y artístico entre China y América Latina. Brindamos asesoría estratégica, apoyo curatorial y ejecución de proyectos a artistas, instituciones artísticas, organizaciones gubernamentales, empresas y coleccionistas en China. Nuestro equipo está conformado por profesionales experimentados del sector artístico tanto de China como de Latinoamérica, con profundos recursos del sector y capacidad de comunicación intercultural. Creemos que el verdadero poder del arte reside en su capacidad de trascender fronteras y conectar civilizaciones.</span>
+                    <span class="en">NEXO is an international advisory firm specializing in cultural and artistic exchange between China and Latin America. We provide strategic consulting, curatorial support, and project execution services for Chinese artists, art institutions, government organizations, corporations, and collectors. Our team consists of seasoned art professionals from both China and Latin America, with deep industry resources and cross-cultural communication capabilities. We believe that the true power of art lies in its ability to transcend borders and connect different civilizations.</span>
                 </p>
             </div>
             <div class="about-stats fade-in">
                 <div class="stat-item">
                     <div class="stat-number">2</div>
                     <div class="stat-label">
-                        <span class="zh">核心市场</span>
-                        <span class="es">Mercados Centrales</span>
-                        <span class="en">Core Markets</span>
+                        <span class="zh">核心市场：拉美 · 欧洲</span>
+                        <span class="es">Mercados Centrales: LATAM · Europa</span>
+                        <span class="en">Core Markets: LatAm · Europe</span>
                     </div>
                 </div>
                 <div class="stat-item">
@@ -1253,7 +1280,7 @@
         </h2>
         <div class="section-divider fade-in"></div>
         <div class="why-grid">
-            <div class="why-card fade-in">
+            <div class="why-card fade-in" onclick="openModal('why-1')">
                 <span class="why-icon">◆</span>
                 <h3>
                     <span class="zh">双区域深耕</span>
@@ -1266,7 +1293,7 @@
                     <span class="en">Core team members from both China and Latin America, deeply understanding both cultural contexts, art ecosystems, and business logics.</span>
                 </p>
             </div>
-            <div class="why-card fade-in">
+            <div class="why-card fade-in" onclick="openModal('why-2')">
                 <span class="why-icon">◆</span>
                 <h3>
                     <span class="zh">全链路服务</span>
@@ -1279,7 +1306,7 @@
                     <span class="en">From strategic planning to project execution, from academic research to public communication, we provide professional services covering the full lifecycle of art projects.</span>
                 </p>
             </div>
-            <div class="why-card fade-in">
+            <div class="why-card fade-in" onclick="openModal('why-3')">
                 <span class="why-icon">◆</span>
                 <h3>
                     <span class="zh">资源网络</span>
@@ -1312,73 +1339,73 @@
         <div class="section-divider fade-in"></div>
         <div class="services-grid">
             <!-- Pillar 1 -->
-            <div class="service-pillar fade-in">
+            <div class="service-pillar fade-in" onclick="openModal('service-1')">
                 <div class="service-number">01</div>
                 <h3>
-                    <span class="zh">艺术顾问</span>
-                    <span class="es">Asesoría Artística</span>
-                    <span class="en">Art Advisory</span>
+                    <span class="zh">藏家路线</span>
+                    <span class="es">Ruta del Coleccionista</span>
+                    <span class="en">Collector Route</span>
                 </h3>
                 <p>
-                    <span class="zh">为机构与个人藏家提供艺术品收藏策略、市场分析和投资咨询。</span>
-                    <span class="es">Estrategias de colección, análisis de mercado y asesoría de inversión para instituciones y coleccionistas individuales.</span>
-                    <span class="en">Art collection strategy, market analysis, and investment consulting for institutions and private collectors.</span>
+                    <span class="zh">为艺术藏家打造专属文化体验：参观本地艺术家工作室、知名画廊及艺术博览会，感受拉美艺术的深度魅力。</span>
+                    <span class="es">Experiencias culturales exclusivas para coleccionistas de arte: visitas a talleres de artistas locales, galerías de renombre y ferias de arte para sumergirse en el profundo encanto del arte latinoamericano.</span>
+                    <span class="en">Bespoke cultural experiences for art collectors: visiting local artist studios, renowned galleries, and art fairs to immerse in the deep allure of Latin American art.</span>
                 </p>
             </div>
             <!-- Pillar 2 -->
-            <div class="service-pillar fade-in">
+            <div class="service-pillar fade-in" onclick="openModal('service-2')">
                 <div class="service-number">02</div>
                 <h3>
-                    <span class="zh">策展咨询</span>
-                    <span class="es">Asesoría Curatorial</span>
-                    <span class="en">Curatorial Consulting</span>
+                    <span class="zh">艺术家驻留</span>
+                    <span class="es">Residencias Artísticas</span>
+                    <span class="en">Artist Residencies</span>
                 </h3>
                 <p>
-                    <span class="zh">展览主题策划、学术研究与艺术家推荐，打造有深度的文化叙事。</span>
-                    <span class="es">Conceptualización de exposiciones, investigación académica y selección de artistas para construir narrativas culturales profundas.</span>
-                    <span class="en">Exhibition conceptualization, academic research, and artist selection to craft culturally rich narratives.</span>
+                    <span class="zh">组织并协调中拉两国艺术家驻留项目，与知名当代艺术博物馆和画廊建立合作，确保独家访问与闭门体验。</span>
+                    <span class="es">Organizamos y coordinamos programas de residencia artística entre China y Latinoamérica, manteniendo convenios de colaboración con museos de arte contemporáneo y galerías de renombre para garantizar accesos exclusivos y experiencias reservadas.</span>
+                    <span class="en">Organizing and coordinating artist residency programs between China and Latin America, maintaining collaboration agreements with renowned contemporary art museums and galleries to guarantee exclusive access and behind-the-scenes experiences.</span>
                 </p>
             </div>
             <!-- Pillar 3 -->
-            <div class="service-pillar fade-in">
+            <div class="service-pillar fade-in" onclick="openModal('service-3')">
                 <div class="service-number">03</div>
                 <h3>
-                    <span class="zh">文化交流</span>
-                    <span class="es">Intercambio Cultural</span>
-                    <span class="en">Cultural Exchange</span>
+                    <span class="zh">企业社会责任</span>
+                    <span class="es">Responsabilidad Social Corporativa</span>
+                    <span class="en">Corporate Social Responsibility</span>
                 </h3>
                 <p>
-                    <span class="zh">促成中拉两国间的艺术合作、艺术家驻留和文化交流活动。</span>
-                    <span class="es">Facilitamos la cooperación artística, residencias de artistas y actividades de intercambio entre China y Latinoamérica.</span>
-                    <span class="en">Facilitating artistic cooperation, artist residencies, and cultural exchange activities between China and Latin America.</span>
+                    <span class="zh">与中国及阿根廷企业合作，基于文化开展社会责任项目：在企業总部举办艺术节、讲座和展览。</span>
+                    <span class="es">Convenios con empresas chinas y argentinas en programas de responsabilidad social basados en la cultura: festivales, charlas y exposiciones en sus sedes corporativas.</span>
+                    <span class="en">Partnerships with Chinese and Argentine enterprises on culture-based CSR programs: festivals, lectures, and exhibitions held at corporate headquarters.</span>
                 </p>
             </div>
             <!-- Pillar 4 -->
-            <div class="service-pillar fade-in">
+            <div class="service-pillar fade-in" onclick="openModal('service-4')">
                 <div class="service-number">04</div>
                 <h3>
-                    <span class="zh">品牌合作</span>
-                    <span class="es">Colaboración de Marcas</span>
-                    <span class="en">Brand Partnerships</span>
+                    <span class="zh">葡萄酒与艺术</span>
+                    <span class="es">Vino por ARTE</span>
+                    <span class="en">Wine by ART</span>
                 </h3>
                 <p>
-                    <span class="zh">为企业和品牌提供艺术赋能的商业合作方案和创意支持。</span>
-                    <span class="es">Soluciones de colaboración comercial y apoyo creativo para que empresas y marcas se potencien a través del arte.</span>
-                    <span class="en">Commercial partnership solutions and creative support for brands seeking to leverage the power of art.</span>
+                    <span class="zh">超高端定制行程：安第斯山脉脚下的顶级酒庄品酒、乌尔巴诺宫殿之夜、巴塔哥尼亚国际级路亚钓鱼与艺术交融的极致体验。</span>
+                    <span class="es">Itinerario ultra-premium con curaduría perfecta que fusiona varias pasiones unidas por el arte: catas de vinos en viñedos prestigiosos a los pies de los Andes, noches en palacios urbanos, y jornadas de pesca con mosca en míticos lodges patagónicos.</span>
+                    <span class="en">Ultra-luxury bespoke itineraries: prestigious vineyard wine tastings at the foot of the Andes, evenings in urban palaces, and international fly-fishing days in legendary Patagonian lodges — all seamlessly intertwined with art.</span>
                 </p>
             </div>
             <!-- Pillar 5 -->
-            <div class="service-pillar fade-in">
+            <div class="service-pillar fade-in" onclick="openModal('service-5')">
                 <div class="service-number">05</div>
                 <h3>
-                    <span class="zh">项目管理</span>
-                    <span class="es">Gestión de Proyectos</span>
-                    <span class="en">Project Management</span>
+                    <span class="zh">音乐之旅</span>
+                    <span class="es">Ruta del Melómano</span>
+                    <span class="en">Musician's Route</span>
                 </h3>
                 <p>
-                    <span class="zh">国际艺术项目的统筹规划、执行监督和质量把控。</span>
-                    <span class="es">Planificación integral, supervisión de ejecución y control de calidad de proyectos artísticos internacionales.</span>
-                    <span class="en">Comprehensive planning, execution oversight, and quality management for international art projects.</span>
+                    <span class="zh">音乐人专属行程：与音乐家、舞者、作曲家会面，参观传统音乐节（探戈），在历史剧院欣赏音乐会。</span>
+                    <span class="es">Encuentro con músicos, bailarines y compositores. Visita a festivales de música tradicional (Tango) y conciertos en teatros históricos, creando una experiencia inmersiva en la vida musical latinoamericana.</span>
+                    <span class="en">Exclusive programs for musicians: meetings with musicians, dancers, and composers; visits to traditional music festivals (Tango); and concerts in historic theaters — an immersive experience in Latin American musical life.</span>
                 </p>
             </div>
         </div>
@@ -1527,46 +1554,28 @@
         </p>
         <div class="projects-grid fade-in">
             <div class="project-card" onclick="openModal('project-1')">
-                <div class="project-placeholder">
-                    <span class="zh">国际联合展览</span>
-                    <span class="es">Exposición Conjunta Internacional</span>
-                    <span class="en">International Joint Exhibition</span>
-                </div>
+                <img class="project-img" src="assets/images/museum-argentina-bellas-artes-1.webp" alt="Museo Nacional de Bellas Artes, Argentina">
+                <div class="project-caption"><span class="zh">阿根廷国立美术博物馆</span><span class="es">MNBA Argentina</span><span class="en">National Museum of Fine Arts, Argentina</span></div>
             </div>
             <div class="project-card" onclick="openModal('project-2')">
-                <div class="project-placeholder">
-                    <span class="zh">艺术家驻留计划</span>
-                    <span class="es">Residencia Artística</span>
-                    <span class="en">Artist Residency Program</span>
-                </div>
+                <img class="project-img" src="assets/images/museum-mexico-anthropology-1.webp" alt="Museo Nacional de Antropología, México">
+                <div class="project-caption"><span class="zh">墨西哥国家人类学博物馆</span><span class="es">MNA México</span><span class="en">National Museum of Anthropology, Mexico</span></div>
             </div>
             <div class="project-card" onclick="openModal('project-3')">
-                <div class="project-placeholder">
-                    <span class="zh">文化论坛与峰会</span>
-                    <span class="es">Foro y Cumbre Cultural</span>
-                    <span class="en">Cultural Forum &amp; Summit</span>
-                </div>
+                <img class="project-img" src="assets/images/museum-brazil-masp-1.jpg" alt="MASP, São Paulo">
+                <div class="project-caption"><span class="zh">圣保罗艺术博物馆 MASP</span><span class="es">MASP São Paulo</span><span class="en">São Paulo Art Museum, MASP</span></div>
             </div>
             <div class="project-card" onclick="openModal('project-4')">
-                <div class="project-placeholder">
-                    <span class="zh">品牌艺术合作</span>
-                    <span class="es">Colaboración Artística de Marca</span>
-                    <span class="en">Brand-Art Partnership</span>
-                </div>
+                <img class="project-img" src="assets/images/museum-naba-interior.jpg" alt="NABA, Milano">
+                <div class="project-caption"><span class="zh">意大利那不勒斯美术学院</span><span class="es">NABA Italia</span><span class="en">NABA, Milan</span></div>
             </div>
             <div class="project-card" onclick="openModal('project-5')">
-                <div class="project-placeholder">
-                    <span class="zh">公共艺术项目</span>
-                    <span class="es">Proyecto de Arte Público</span>
-                    <span class="en">Public Art Project</span>
-                </div>
+                <img class="project-img" src="assets/images/museum-argentina-decorative-arts-1.jpg" alt="Museo de Arte Decorativo, Argentina">
+                <div class="project-caption"><span class="zh">阿根廷装饰艺术博物馆</span><span class="es">MAD Argentina</span><span class="en">Museum of Decorative Arts, Argentina</span></div>
             </div>
             <div class="project-card" onclick="openModal('project-6')">
-                <div class="project-placeholder">
-                    <span class="zh">学术出版与研究</span>
-                    <span class="es">Publicación y Investigación Académica</span>
-                    <span class="en">Academic Publishing &amp; Research</span>
-                </div>
+                <img class="project-img" src="assets/images/gallery-contemporary-installation.jpg" alt="Contemporary Gallery Installation">
+                <div class="project-caption"><span class="zh">当代艺术画廊装置</span><span class="es">Instalación Contemporánea</span><span class="en">Contemporary Gallery Installation</span></div>
             </div>
         </div>
     </div>
@@ -1720,6 +1729,11 @@
                 <span class="es">Programas</span>
                 <span class="en">Programs</span>
             </a></li>
+            <li><a href="why-nexo.html">
+                <span class="zh">为什么选择 NEXO</span>
+                <span class="es">¿Por Qué NEXO?</span>
+                <span class="en">Why NEXO</span>
+            </a></li>
             <li><a href="#contact">
                 <span class="zh">联系我们</span>
                 <span class="es">Contacto</span>
@@ -1741,6 +1755,50 @@
 <script>
 // ===== MODAL DATA =====
 var modalData = {
+    // --- WHY NEXO ---
+    'why-1': {
+        zh: { title: '双区域深耕', subtitle: 'Profundidad Binacional', body: '<p>NEXO 的核心竞争力源于团队对中拉两大区域的深度理解。我们的创始团队由来自中国拉丁美洲两地的资深从业者组成，他们不仅在各自的文化土壤中成长，更在国际化的艺术环境中积累了深厚的经验。</p><p>这种双区域的视角使我们能够：</p><ul><li>准确理解双方文化语境中的细微差异</li><li>预判并化解跨文化合作中的潜在障碍</li><li>精准匹配中拉两地的优质资源</li><li>在商业逻辑和艺术追求之间找到最佳平衡点</li></ul><p>我们不是简单的翻译者或中介，而是真正能够在两种文化中自由切换、深刻理解双方需求的战略合作伙伴。</p>' },
+        es: { title: 'Profundidad Binacional', subtitle: 'Profundidad Binacional', body: '<p>La ventaja competitiva central de NEXO surge de nuestra comprensión profunda de las dos regiones. Nuestro equipo fundador está conformado por profesionales experimentados de China y Latinoamérica, quienes no solo crecieron en sus respectivos contextos culturales, sino que también acumularon una sólida experiencia en entornos artísticos internacionalizados.</p><p>Esta perspectiva binacional nos permite:</p><ul><li>Comprender con precisión las sutilezas culturales entre ambos contextos</li><li>Anticipar y resolver obstáculos potenciales en la cooperación intercultural</li><li>Conectar de manera precisa los recursos de alta calidad entre China y Latinoamérica</li><li>Encontrar el mejor equilibrio entre lógica comercial y aspiraciones artísticas</li></ul><p>No somos simples traductores o intermediarios, sino verdaderos socios estratégicos que pueden moverse libremente entre ambas culturas y comprender profundamente las necesidades de cada parte.</p>' },
+        en: { title: 'Dual-Region Expertise', subtitle: 'Profundidad Binacional', body: '<p>NEXO\'s core competitiveness stems from our deep understanding of both regions. Our founding team consists of seasoned practitioners from China and Latin America, who not only grew up in their respective cultural contexts but also accumulated substantial experience in internationalized art environments.</p><p>This dual-region perspective enables us to:</p><ul><li>Accurately comprehend the nuanced differences between both cultural contexts</li><li>Anticipate and resolve potential obstacles in cross-cultural cooperation</li><li>Precisely match high-quality resources between China and Latin America</li><li>Find the optimal balance between commercial logic and artistic aspirations</li></ul><p>We are not simple translators or intermediaries, but genuine strategic partners who can navigate freely between both cultures and deeply understand the needs of each side.</p>' }
+    },
+    'why-2': {
+        zh: { title: '全链路服务', subtitle: 'Servicio Integral', body: '<p>NEXO 提供覆盖艺术项目全生命周期的专业服务。从最初的概念构思到最终的成果呈现，我们为每一个环节注入专业精神和文化敏感度。</p><p>我们的服务链条包括：</p><ul><li>战略规划与可行性研究</li><li>学术框架搭建与研究支持</li><li>艺术家与机构对接</li><li>策展设计与视觉呈现</li><li>项目管理与现场执行</li><li>公共教育与传播推广</li><li>成果评估与长期追踪</li></ul><p>一站式的服务模式确保项目的连贯性和完整性，减少沟通成本，提高执行效率。</p>' },
+        es: { title: 'Servicio Integral', subtitle: 'Servicio Integral', body: '<p>NEXO ofrece servicios profesionales que cubren todo el ciclo de vida de los proyectos artísticos. Desde la concepción inicial hasta la presentación final, inyectamos profesionalismo y sensibilidad cultural en cada etapa.</p><p>Nuestra cadena de servicios incluye:</p><ul><li>Planificación estratégica e investigación de viabilidad</li><li>Marco académico y apoyo investigativo</li><li>Conexión con artistas e instituciones</li><li>Diseño curatorial y presentación visual</li><li>Gestión de proyectos y ejecución en terreno</li><li>Educación pública y divulgación</li><li>Evaluación de resultados y seguimiento a largo plazo</li></ul><p>El modelo de servicio integral asegura la coherencia e integridad del proyecto, reduciendo costos de comunicación y mejorando la eficiencia de ejecución.</p>' },
+        en: { title: 'End-to-End Service', subtitle: 'Servicio Integral', body: '<p>NEXO provides professional services covering the full lifecycle of art projects. From initial concept conception to final presentation, we infuse professionalism and cultural sensitivity into every stage.</p><p>Our service chain includes:</p><ul><li>Strategic planning and feasibility research</li><li>Academic framework development and research support</li><li>Artist and institutional matchmaking</li><li>Curatorial design and visual presentation</li><li>Project management and on-site execution</li><li>Public education and outreach</li><li>Results evaluation and long-term tracking</li></ul><p>The one-stop service model ensures project coherence and completeness, reducing communication costs and improving execution efficiency.</p>' }
+    },
+    'why-3': {
+        zh: { title: '资源网络', subtitle: 'Red de Recursos', body: '<p>NEXO 与全球范围内的顶级文化机构建立了广泛而深入的合作网络。这一网络是我们为客户提供优质服务的重要保障。</p><p>我们的合作网络涵盖：</p><ul><li>全球 50+ 美术馆与博物馆</li><li>多国政府文化部门</li><li>国际艺术基金会</li><li>知名艺术院校与设计学院</li><li>企业品牌与文化机构</li></ul><p>凭借这一强大的资源网络，我们能够：</p><ul><li>为艺术家快速匹配理想的驻留与展览机会</li><li>为展览项目寻找最合适的学术支持</li><li>为品牌合作方对接最具影响力的文化 IP</li><li>为收藏家提供稀缺的艺术品获取渠道</li></ul>' },
+        es: { title: 'Red de Recursos', subtitle: 'Red de Recursos', body: '<p>NEXO ha establecido una red amplia y profunda de colaboración con las principales instituciones culturales del mundo. Esta red es una garantía fundamental para ofrecer un servicio de calidad a nuestros clientes.</p><p>Nuestra red de colaboración abarca:</p><ul><li>+50 museos y galerías de arte a nivel global</li><li>Departamentos culturales de gobiernos de múltiples países</li><li>Fundaciones artísticas internacionales</li><li>Escuelas de arte y academias de diseño de renombre</li><li>Empresas, marcas e instituciones culturales</li></ul><p>Gracias a esta poderosa red de recursos, podemos:</p><ul><li>Conectar rápidamente a artistas con oportunidades ideales de residencia y exposición</li><li>Encontrar el apoyo académico más adecuado para proyectos expositivos</li><li>Emparejar marcas con los IP culturales más influyentes</li><li>Proporcionar a coleccionistas canales de acceso a obras de arte excepcionales</li></ul>' },
+        en: { title: 'Resource Network', subtitle: 'Red de Recursos', body: '<p>NEXO has established an extensive and deep collaborative network with top cultural institutions worldwide. This network is a fundamental guarantee for delivering quality service to our clients.</p><p>Our collaborative network covers:</p><ul><li>50+ museums and art galleries globally</li><li>Government cultural departments across multiple countries</li><li>International art foundations</li><li>Prestigious art schools and design academies</li><li>Corporations, brands, and cultural institutions</li></ul><p>Leveraging this powerful resource network, we can:</p><ul><li>Rapidly connect artists with ideal residency and exhibition opportunities</li><li>Find the most suitable academic support for exhibition projects</li><li>Match brands with the most influential cultural IPs</li><li>Provide collectors with access channels to exceptional artworks</li></ul>' }
+    },
+
+    // --- SERVICES (from Word doc) ---
+    'service-1': {
+        zh: { title: '藏家路线', subtitle: 'Ruta del Coleccionista — Collector Route', body: '<p>为艺术藏家量身定制的深度文化体验项目。我们为您打开一扇通往拉美艺术世界的大门，让您亲身感受这片大陆丰富的艺术创造力。</p><p>项目内容包括：</p><ul><li>参观本地艺术家工作室，了解创作过程</li><li>探访知名画廊，发现新兴艺术家</li><li>参加顶级艺术博览会，把握市场趋势</li><li>与本地藏家交流收藏心得</li><li>独家闭门参观，体验非公开的艺术空间</li></ul><p>无论是首次探索拉美艺术，还是资深藏家的深度之旅，我们都能为您打造独一无二的文化体验。</p>' },
+        es: { title: 'Ruta del Coleccionista', subtitle: 'Collector Route', body: '<p>Proyectos de experiencia cultural profunda diseñados a medida para coleccionistas de arte. Abrimos las puertas del mundo del arte latinoamericano para que viva de primera mano la rica creatividad artística del continente.</p><p>El programa incluye:</p><ul><li>Visitas a talleres de artistas locales para conocer el proceso creativo</li><li>Exploración de galerías de renombre para descubrir nuevos talentos</li><li>Participación en ferias de arte de primer nivel para captar tendencias del mercado</li><li>Intercambio de experiencias de colección con coleccionistas locales</li><li>Visitas exclusivas reservadas a espacios artísticos no públicos</li></ul><p>Tanto si es su primera exploración del arte latinoamericano como un viaje profundo para un coleccionista experimentado, creamos experiencias culturales únicas para usted.</p>' },
+        en: { title: 'Collector Route', subtitle: 'Ruta del Coleccionista', body: '<p>Deep cultural experience programs tailor-made for art collectors. We open the doors to the Latin American art world, allowing you to personally experience the rich creative energy of this continent.</p><p>The program includes:</p><ul><li>Visits to local artist studios to understand the creative process</li><li>Exploration of renowned galleries to discover emerging talents</li><li>Participation in premier art fairs to capture market trends</li><li>Exchange of collecting insights with local collectors</li><li>Exclusive behind-closed-doors access to non-public art spaces</li></ul><p>Whether it\'s your first exploration of Latin American art or an in-depth journey for a seasoned collector, we craft unique cultural experiences for you.</p>' }
+    },
+    'service-2': {
+        zh: { title: '艺术家驻留', subtitle: 'Residencias Artísticas — Artist Residencies', body: '<p>我们组织并协调中拉两国之间的艺术家驻留项目，为艺术家提供深度创作的绝佳机会。</p><p>我们的驻留项目特色：</p><ul><li>与知名当代艺术博物馆和画廊建立合作</li><li>确保独家访问权限和闭门体验</li><li>跨文化创作环境的深度融入</li><li>驻留期间的学术导师配对</li><li>驻留成果的展览与出版支持</li></ul><p>我们协助艺术家完成从机构对接、资助申请、签证办理到驻留期间全面支持的整个流程。</p>' },
+        es: { title: 'Residencias Artísticas', subtitle: 'Artist Residencies', body: '<p>Organizamos y coordinamos programas de residencia artística entre China y Latinoamérica, brindando a los artistas oportunidades excepcionales de creación profunda.</p><p>Características de nuestros programas de residencia:</p><ul><li>Convenios con museos y galerías de arte contemporáneo de renombre</li><li>Acceso exclusivo y experiencias reservadas garantizadas</li><li>Inmersión profunda en entornos de creación intercultural</li><li>Asignación de mentores académicos durante la residencia</li><li>Apoyo para exposición y publicación de resultados</li></ul><p>Asistimos a los artistas en todo el proceso: desde la conexión institucional y solicitud de fondos, hasta trámites de visa y apoyo integral durante la estancia.</p>' },
+        en: { title: 'Artist Residencies', subtitle: 'Residencias Artísticas', body: '<p>We organize and coordinate artist residency programs between China and Latin America, providing artists with exceptional opportunities for deep creative work.</p><p>Features of our residency programs:</p><ul><li>Partnerships with renowned contemporary art museums and galleries</li><li>Guaranteed exclusive access and behind-the-scenes experiences</li><li>Deep immersion in cross-cultural creative environments</li><li>Academic mentor pairing during residency</li><li>Support for exhibition and publication of residency outcomes</li></ul><p>We assist artists through the entire process: from institutional matching and funding applications, to visa processing and comprehensive support during their stay.</p>' }
+    },
+    'service-3': {
+        zh: { title: '企业社会责任', subtitle: 'Responsabilidad Social Corporativa — CSR', body: '<p>我们与中国及阿根廷企业建立深度合作，通过文化艺术项目助力企业的社会责任实践。</p><p>我们的 CSR 文化项目包括：</p><ul><li>在企业总部举办文化艺术节</li><li>定制化主题讲座与大师班</li><li>企业空间艺术配置与收藏建议</li><li>员工文化体验与团队建设活动</li><li>中拉文化交流主题的年度合作项目</li></ul><p>我们帮助企业将文化融入品牌基因，在履行社会责任的同时提升品牌形象和文化内涵。</p>' },
+        es: { title: 'Responsabilidad Social Corporativa', subtitle: 'CSR — Responsabilidad Social Corporativa', body: '<p>Establecemos cooperación profunda con empresas chinas y argentinas, utilizando proyectos de arte y cultura para impulsar las prácticas de responsabilidad social empresarial.</p><p>Nuestros programas culturales de RSE incluyen:</p><ul><li>Festivales de arte y cultura en sedes corporativas</li><li>Charlas temáticas y masterclass personalizadas</li><li>Ambientación artística y asesoría de colección para espacios corporativos</li><li>Experiencias culturales y actividades de team building para empleados</li><li>Proyectos anuales de cooperación en el tema de intercambio cultural sino-latinoamericano</li></ul><p>Ayudamos a las empresas a integrar la cultura en su identidad de marca, elevando la imagen corporativa y la dimensión cultural mientras cumplen su responsabilidad social.</p>' },
+        en: { title: 'Corporate Social Responsibility', subtitle: 'CSR — Corporate Social Responsibility', body: '<p>We establish deep partnerships with Chinese and Argentine enterprises, leveraging art and culture projects to advance corporate social responsibility practices.</p><p>Our CSR cultural programs include:</p><ul><li>Art and culture festivals at corporate headquarters</li><li>Customized themed lectures and masterclasses</li><li>Spatial art installation and collection advisory for corporate spaces</li><li>Employee cultural experiences and team-building activities</li><li>Annual cooperation projects on China-Latin America cultural exchange themes</li></ul><p>We help companies integrate culture into their brand identity, elevating corporate image and cultural depth while fulfilling social responsibility.</p>' }
+    },
+    'service-4': {
+        zh: { title: '葡萄酒与艺术', subtitle: 'Vino por ARTE — Wine by ART', body: '<p>这是 NEXO 最具标志性的超高端定制项目之一。我们将阿根廷世界顶级的葡萄酒文化与当代艺术完美融合，为您打造一场感官与心灵的双重盛宴。</p><p>行程亮点：</p><ul><li>安第斯山脉脚下最负盛名的葡萄酒庄园品鉴</li><li>乌尔巴诺宫殿内的私人艺术晚宴</li><li>阿根廷乡间庄园中的前卫私人收藏参观</li><li>巴塔哥尼亚国际级路亚钓鱼体验</li><li>在传奇巴塔哥尼亚旅馆中，自然壮美与区域绘画、纺织艺术的温暖对话</li></ul><p>这是一个为极致品味人士设计的旅程，将美酒、艺术、自然与奢华融为一体。</p>' },
+        es: { title: 'Vino por ARTE', subtitle: 'Wine by ART', body: '<p>Este es uno de los programas personalizados ultra-premium más emblemáticos de NEXO. Fusionamos perfectamente la cultura vitivinícola de primer nivel mundial de Argentina con el arte contemporáneo, creando para usted un doble festín sensorial y espiritual.</p><p>Destacados del itinerario:</p><ul><li>Catas en las bodegas más prestigiosas a los pies de los Andes</li><li>Cenas artísticas privadas en palacios urbanos</li><li>Visitas a colecciones privadas de vanguardia en chacras del campo argentino</li><li>Experiencia de pesca con mosca de nivel internacional en la Patagonia</li><li>Diálogo entre la majestuosidad de la naturaleza y la calidez del arte pictórico y textil regional en míticos lodges patagónicos</li></ul><p>Un viaje diseñado para personas de gustos extremadamente refinados, donde el vino, el arte, la naturaleza y el lujo se fusionan en una sola experiencia.</p>' },
+        en: { title: 'Wine by ART', subtitle: 'Vino por ARTE', body: '<p>One of NEXO\'s most iconic ultra-premium bespoke programs. We perfectly fuse Argentina\'s world-class winery culture with contemporary art, creating a dual feast for both senses and spirit.</p><p>Itinerary highlights:</p><ul><li>Tastings at the most prestigious vineyards at the foot of the Andes</li><li>Private art dinners in urban palaces</li><li>Visits to avant-garde private collections in countryside estates</li><li>International-level fly-fishing experiences in Patagonia</li><li>A dialogue between nature\'s majesty and the warmth of regional painting and textile arts in legendary Patagonian lodges</li></ul><p>A journey designed for those with the most refined tastes, where wine, art, nature, and luxury merge into a single experience.</p>' }
+    },
+    'service-5': {
+        zh: { title: '音乐之旅', subtitle: 'Ruta del Melómano — Musician\'s Route', body: '<p>为音乐爱好者和艺术家量身定制的深度文化体验。走进拉美音乐的灵魂深处，感受探戈的节奏、历史的回响与文化的交融。</p><p>音乐之旅内容包括：</p><ul><li>与当地音乐家、舞者和作曲家的面对面交流</li><li>参观传统音乐节，尤其是探戈文化节</li><li>在历史悠久的歌剧院欣赏顶级音乐会</li><li>参与音乐工作坊和即兴演奏</li><li>探访音乐相关的文化地标与纪念馆</li></ul><p>这不仅是一次旅行，更是一场深入拉美音乐文化核心的沉浸式体验。</p>' },
+        es: { title: 'Ruta del Melómano', subtitle: 'Musician\'s Route', body: '<p>Experiencia cultural profunda diseñada para amantes de la música y artistas. Sumérjase en lo más profundo del alma musical latinoamericana, sintiendo el ritmo del tango, el eco de la historia y la fusión cultural.</p><p>El programa de Ruta del Melómano incluye:</p><ul><li>Encuentros cara a cara con músicos, bailarines y compositores locales</li><li>Visitas a festivales de música tradicional, especialmente el festival de tango</li><li>Conciertos de primer nivel en teatros históricos</li><li>Participación en talleres musicales y sesiones de improvisación</li><li>Visita a hitos culturales y memoriales relacionados con la música</li></ul><p>No es solo un viaje, sino una experiencia inmersiva en el corazón de la cultura musical latinoamericana.</p>' },
+        en: { title: 'Musician\'s Route', subtitle: 'Ruta del Melómano', body: '<p>Deep cultural experience tailored for music lovers and artists. Dive into the soul of Latin American music, feeling the rhythm of tango, the echo of history, and the fusion of cultures.</p><p>The Musician\'s Route program includes:</p><ul><li>Face-to-face encounters with local musicians, dancers, and composers</li><li>Visits to traditional music festivals, especially the tango festival</li><li>Top-tier concerts in historic theaters</li><li>Participation in music workshops and jam sessions</li><li>Visits to music-related cultural landmarks and memorials</li></ul><p>This is not just a trip — it\'s an immersive experience at the heart of Latin American musical culture.</p>' }
+    },
+
     // --- PROJECTS ---
     'project-1': {
         zh: { title: '国际联合展览', subtitle: 'International Joint Exhibition', body: '<p>促成中国与拉丁美洲美术馆、画廊之间的联合策展与巡展项目。我们负责从艺术家遴选、展览主题策划、学术框架搭建，到物流协调、当地落地执行的全流程管理。</p><ul><li>跨国联合策展与巡展规划</li><li>艺术家遴选与作品借展谈判</li><li>展览文本撰写与多语翻译</li><li>物流保险与海关清关协调</li><li>开幕活动与公共项目策划</li></ul>' },
