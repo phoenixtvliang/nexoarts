@@ -3,135 +3,63 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>国际展览与策展服务 | NEXO Arts</title>
-<meta name="description" content="NEXO Arts提供从概念策划到落地执行的完整国际展览解决方案。">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+<title>NEXO | International Exhibitions & Curatorial Services</title>
+<meta name="description" content="NEXO 从概念策划到落地执行的完整国际展览解决方案。.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-:root{--white:#fff;--black:#111;--gray-100:#f7f7f7;--gray-200:#eee;--gray-400:#999;--gray-600:#666;--gray-800:#333;--accent:#b8860b;--accent-dark:#8b6914;--nav-h:72px}
+:root{--cream:#faf8f5;--ivory:#f5f0eb;--white:#fff;--black:#1a1a1a;--gray-100:#f0ede8;--gray-200:#ddd8d0;--gray-400:#999;--gray-500:#777;--gray-600:#555;--gold:#b8860b;--gold-dark:#8b6914;--serif:'Cormorant Garamond','Noto Serif SC',Georgia,serif;--sans:'Inter','Noto Sans SC',Helvetica,Arial,sans-serif;--nav-h:64px}
 html{scroll-behavior:smooth;font-size:16px}
-body{font-family:'Inter','Noto Sans SC',sans-serif;color:var(--black);background:var(--white);line-height:1.6}
-a{text-decoration:none;color:inherit}
-.container{max-width:1200px;margin:0 auto;padding:0 24px}
-.nav{position:fixed;top:0;left:0;width:100%;height:var(--nav-h);background:rgba(255,255,255,.97);backdrop-filter:blur(10px);z-index:1000;display:flex;align-items:center;border-bottom:1px solid var(--gray-200)}
-.nav .container{display:flex;align-items:center;justify-content:space-between;width:100%}
-.nav-logo img{height:40px}
-.nav-links{display:flex;align-items:center;gap:32px}
-.nav-links a{font-size:.875rem;font-weight:500;color:var(--gray-800);transition:color .2s}
-.nav-links a:hover{color:var(--accent)}
-.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:8px}
-.hamburger span{width:24px;height:2px;background:var(--black)}
-.page-hero{padding-top:calc(var(--nav-h) + 80px);padding-bottom:80px;background:linear-gradient(135deg,#1a1a2e,#0f3460);color:var(--white);text-align:center}
-.page-hero h1{font-size:clamp(2rem,4vw,3rem);font-weight:700;margin-bottom:16px}
-.page-hero p{font-size:1.1rem;opacity:.8;max-width:600px;margin:0 auto}
-.content-section{padding:80px 0}
-.content-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
-.content-text h2{font-size:1.75rem;font-weight:700;margin-bottom:16px}
-.content-text p{font-size:1rem;color:var(--gray-600);margin-bottom:16px;line-height:1.8}
-.content-list{margin:24px 0}
-.content-list li{padding:12px 0;border-bottom:1px solid var(--gray-200);font-size:.95rem;display:flex;align-items:flex-start;gap:12px}
-.content-list li::before{content:'✓';color:var(--accent);font-weight:700;flex-shrink:0}
-.cta-section{background:var(--gray-100);padding:80px 0;text-align:center}
-.cta-section h2{font-size:2rem;font-weight:700;margin-bottom:16px}
-.cta-section p{font-size:1.05rem;color:var(--gray-600);margin-bottom:32px;max-width:500px;margin-left:auto;margin-right:auto}
-.btn{display:inline-block;padding:16px 48px;background:var(--accent);color:var(--white);font-size:1rem;font-weight:600;border-radius:4px;transition:all .3s}
-.btn:hover{background:var(--accent-dark);transform:translateY(-2px)}
-.footer{background:var(--black);color:rgba(255,255,255,.7);padding:48px 0 24px}
-.footer-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:48px;margin-bottom:32px}
-.footer h4{color:var(--white);font-size:.9rem;margin-bottom:16px}
-.footer p,.footer a{font-size:.875rem}
-.footer a:hover{color:var(--accent)}
-.footer-bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:24px;text-align:center;font-size:.8rem}
-@media(max-width:768px){.nav-links{display:none;position:absolute;top:var(--nav-h);left:0;right:0;background:var(--white);flex-direction:column;padding:24px;gap:16px;border-bottom:1px solid var(--gray-200)}.nav-links.open{display:flex}.hamburger{display:flex}.content-grid{grid-template-columns:1fr;gap:32px}.footer-grid{grid-template-columns:1fr 1fr;gap:24px}}
+body{font-family:var(--sans);color:var(--black);background:var(--white);line-height:1.7;-webkit-font-smoothing:antialiased}
+body.lang-zh,.lang-zh *{font-family:'Noto Sans SC','Inter',sans-serif}
+a{text-decoration:none;color:inherit;transition:color .2s}
+h1,h2,h3,h4{font-family:var(--serif);font-weight:400;line-height:1.3}
+.container{max-width:1200px;margin:0 auto;padding:0 40px}
+@media(max-width:768px){.container{padding:0 24px}}
+.nav{position:fixed;top:0;left:0;width:100%;height:var(--nav-h);background:rgba(255,255,255,.97);backdrop-filter:blur(12px);z-index:1000;border-bottom:1px solid var(--gray-200)}
+.nav .container{display:flex;align-items:center;justify-content:space-between;height:100%}
+.nav-logo{font-family:var(--serif);font-size:1.5rem;font-weight:600;letter-spacing:.12em;color:var(--black)}.nav-logo span{color:var(--gold)}
+.nav-links{display:flex;align-items:center;gap:28px}.nav-links a{font-size:.8rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--gray-600)}.nav-links a:hover{color:var(--gold)}
+.nav-lang{display:flex;gap:4px;margin-left:12px;padding-left:16px;border-left:1px solid var(--gray-200)}
+.nav-lang button{background:none;border:none;font-size:.75rem;cursor:pointer;color:var(--gray-400);font-weight:500;padding:4px 8px;border-radius:3px;text-transform:uppercase;letter-spacing:.04em}.nav-lang button.active{color:var(--gold)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:8px}.hamburger span{width:22px;height:1.5px;background:var(--black)}
+@media(max-width:1024px){.nav-links{display:none;position:absolute;top:var(--nav-h);left:0;right:0;background:var(--white);flex-direction:column;padding:24px;gap:16px;border-bottom:1px solid var(--gray-200)}.nav-links.open{display:flex}.hamburger{display:flex}}
+.page-hero{padding:calc(var(--nav-h)+80px) 0 60px;background:var(--cream)}.page-hero-inner{max-width:700px}.page-hero .label{font-size:.72rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:12px}.page-hero h1{font-size:clamp(2rem,4vw,3rem);margin-bottom:12px}.page-hero p{font-size:1.05rem;color:var(--gray-600);line-height:1.8}
+.back-link{display:inline-block;margin-bottom:20px;font-size:.82rem;color:var(--gold);font-weight:500}
+.content-section{padding:60px 0}.content-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+.content-text h2{font-size:1.6rem;margin-bottom:16px}.content-text p{font-size:.95rem;color:var(--gray-600);line-height:1.8;margin-bottom:16px}
+.content-list li{padding:10px 0 10px 24px;position:relative;font-size:.92rem;color:var(--gray-600);border-bottom:1px solid var(--gray-100)}.content-list li::before{content:'—';position:absolute;left:0;color:var(--gold)}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:32px}
+.service-card{padding:28px 24px;background:var(--cream);border:1px solid var(--gray-200);border-radius:4px}.service-card h4{font-size:1rem;margin-bottom:8px;font-family:var(--sans);font-weight:600}.service-card p{font-size:.85rem;color:var(--gray-500);line-height:1.7}
+.cta-section{padding:80px 0;background:var(--cream);text-align:center}.cta-section h2{font-size:clamp(1.5rem,3vw,2.2rem);margin-bottom:12px}.cta-section p{font-size:1rem;color:var(--gray-600);max-width:500px;margin:0 auto 32px;line-height:1.8}
+.cta-btn{display:inline-block;padding:14px 40px;background:var(--gold);color:var(--white);font-size:.85rem;font-weight:500;border-radius:3px;letter-spacing:.06em;text-transform:uppercase;transition:all .3s}.cta-btn:hover{background:var(--gold-dark);transform:translateY(-2px)}
+.footer{background:var(--cream);border-top:1px solid var(--gray-200);padding:40px 0}.footer-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}.footer-copy{font-size:.78rem;color:var(--gray-400)}.footer-back{font-size:.82rem;color:var(--gold);font-weight:500}
+.fab-container{position:fixed;bottom:32px;right:32px;z-index:999}.fab-main{width:52px;height:52px;border-radius:50%;background:var(--gold);color:var(--white);border:none;cursor:pointer;font-size:1.3rem;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(184,134,11,.3);transition:all .3s;z-index:2}.fab-main:hover{background:var(--gold-dark);transform:scale(1.08)}.fab-main.open{transform:rotate(45deg)}
+.fab-menu{position:absolute;bottom:64px;right:0;display:flex;flex-direction:column;gap:10px;opacity:0;pointer-events:none;transform:translateY(16px);transition:all .3s}.fab-menu.show{opacity:1;pointer-events:auto;transform:translateY(0)}
+.fab-item{display:flex;align-items:center;gap:10px;cursor:pointer;transition:all .2s}.fab-item:hover{transform:translateX(-4px)}
+.fab-item-icon{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.1rem;color:var(--white);flex-shrink:0;box-shadow:0 2px 8px rgba(0,0,0,.12)}
+.fab-item-whatsapp .fab-item-icon{background:#25d366}.fab-item-email .fab-item-icon{background:#ea4335}.fab-item-wechat .fab-item-icon{background:#07c160}.fab-item-calendly .fab-item-icon{background:#3498db}
+.fab-item-label{background:var(--white);padding:5px 12px;border-radius:5px;font-size:.78rem;font-weight:500;white-space:nowrap;box-shadow:0 2px 8px rgba(0,0,0,.1);color:var(--gray-700)}
+.wechat-modal{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:2000;display:none;align-items:center;justify-content:center}.wechat-modal.show{display:flex}
+.wechat-modal-inner{background:var(--white);border-radius:8px;padding:48px;max-width:420px;width:90%;position:relative;text-align:center}
+.wechat-modal-close{position:absolute;top:16px;right:20px;background:none;border:none;font-size:1.4rem;cursor:pointer;color:var(--gray-400)}.wechat-modal-close:hover{color:var(--black)}
+.wechat-modal-icon{font-size:2.5rem;margin-bottom:16px}.wechat-modal-title{font-size:1.1rem;font-weight:600;margin-bottom:4px;font-family:var(--sans)}.wechat-modal-subtitle{font-size:.85rem;color:var(--gray-500);margin-bottom:24px}
+.wechat-modal-qr{width:180px;height:180px;margin:0 auto 16px;background:var(--cream);border:1px solid var(--gray-200);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:.8rem;color:var(--gray-400)}
+.wechat-modal-id{font-size:.82rem;color:var(--gray-500)}.wechat-modal-id span{font-weight:600;color:var(--black)}
+@media(max-width:1024px){.services-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:768px){.content-grid{grid-template-columns:1fr}.services-grid{grid-template-columns:1fr}}
 </style>
 </head>
-<body>
-<nav class="nav">
-<div class="container">
-<a href="index.html" class="nav-logo"><img src="assets/images/logo.png" alt="NEXO Arts"></a>
-<div class="nav-links" id="navLinks">
-<a href="index.html#about">关于我们</a>
-<a href="index.html#solutions">解决方案</a>
-<a href="index.html#industries">行业</a>
-<a href="index.html#process">合作流程</a>
-<a href="signature-programs.html">标志性项目</a>
-<a href="index.html#team">国际顾问网络</a>
-<a href="index.html#contact">联系我们</a>
-</div>
-<button class="hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')"><span></span><span></span><span></span></button>
-</div>
-</nav>
-
-<header class="page-hero">
-<div class="container">
-<h1>国际展览与策展服务</h1>
-<p>从概念策划到落地执行的完整国际展览解决方案</p>
-</div>
-</header>
-
-<section class="content-section">
-<div class="container">
-<div class="content-grid">
-<div class="content-text">
-<h2>我们做什么</h2>
-<p>国际展览与策展服务是 NEXO Arts 最具代表性的核心业务之一。我们提供从展览概念策划、展品遴选、物流运输、场馆布置到开幕活动的完整一站式服务。</p>
-<p>无论您是想将中国当代艺术引入拉美，还是将拉美本土文化精品推向中国市场，我们都能为您提供专业的策展和执行支持。</p>
-</div>
-<div class="content-text">
-<h2>服务内容</h2>
-<ul class="content-list">
-<li>国际展览概念策划与主题设定</li>
-<li>艺术家与作品遴选</li>
-<li>展品国际物流与保险安排</li>
-<li>场馆选址与设计</li>
-<li>展览开幕式与配套活动策划</li>
-<li>展览宣传与媒体推广</li>
-<li>展品出入境报关与文化审批</li>
-</ul>
-</div>
-</div>
-</div>
-</section>
-
-<section class="content-section" style="background:var(--gray-100)">
-<div class="container">
-<div class="content-grid">
-<div class="content-text">
-<h2>策展理念</h2>
-<p>我们相信好的展览不仅仅是作品的陈列，更是文化的对话。每一个展览我们都力求在艺术性、学术性和公众参与度之间找到最佳平衡点。</p>
-</div>
-<div class="content-text">
-<h2>合作场馆</h2>
-<ul class="content-list">
-<li>国家级博物馆与美术馆</li>
-<li>当代艺术中心</li>
-<li>大学画廊与文化中心</li>
-<li>公共空间与临时展馆</li>
-<li>商业画廊与艺术博览会</li>
-</ul>
-</div>
-</div>
-</div>
-</section>
-
-<section class="cta-section">
-<div class="container">
-<h2>有展览策划的需求？</h2>
-<p>让我们帮您把展览构想变为现实。</p>
-<a href="index.html#contact" class="btn">联系我们</a>
-</div>
-</section>
-
-<footer class="footer">
-<div class="container">
-<div class="footer-grid">
-<div><h4>NEXO Arts</h4><p>搭建中国与拉丁美洲之间的文化桥梁。</p></div>
-<div><h4>导航</h4><a href="index.html">首页</a><br><a href="index.html#about">关于我们</a><br><a href="index.html#contact">联系我们</a></div>
-<div><h4>解决方案</h4><a href="solution-1.html">文化伙伴关系</a><br><a href="solution-2.html">展览与策展</a><br><a href="solution-3.html">项目管理</a></div>
-<div><h4>联系方式</h4><a href="mailto:info@nexoarts.com">info@nexoarts.com</a><br><a href="https://wa.me/5491125628888">WhatsApp</a></div>
-</div>
-<div class="footer-bottom">© 2025 NEXO Arts. 保留所有权利。</div>
-</div>
-</footer>
+<body class="lang-zh">
+<nav class="nav"><div class="container"><a href="index.html" class="nav-logo">NEXO<span>.</span></a><div class="nav-links" id="navLinks"><a href="index.html#about">About</a><a href="index.html#solutions">Solutions</a><a href="index.html#people">People</a><a href="signature-programs.html">Signature Projects</a><a href="index.html#contact">Contact</a><a href="insights.html">Insights</a><div class="nav-lang"><button class="active" onclick="setLang('zh')">中</button><button onclick="setLang('es')">ES</button><button onclick="setLang('en')">EN</button></div></div><button class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button></div></nav>
+<header class="page-hero"><div class="container"><div class="page-hero-inner"><a href="index.html#solutions" class="back-link">← All Solutions</a><p class="label">Solution 2</p><h1>国际展览与策展服务</h1><p>International Exhibitions & Curatorial Services<br>从概念策划到落地执行的完整国际展览解决方案。</p></div></div></header>
+<section class="content-section"><div class="container"><div class="content-grid"><div class="content-text"><h2>我们做什么</h2><p>NEXO 提供从概念策划到落地执行的完整国际展览解决方案。我们与中拉两地的博物馆、美术馆、画廊和文化机构紧密合作，为您的展览项目提供全方位的专业支持。</p><p>从策展理念的形成、艺术家的邀请、作品的运输与保险，到开幕活动和公共教育项目，我们确保每一个环节都达到国际标准。</p></div><div class="content-text"><h2>服务范围</h2><ul class="content-list"><li>展览概念策划与方案设计</li><li>国际艺术家邀请与协调</li><li>作品运输、保险与海关清关</li><li>展览空间设计与视觉传达</li><li>开幕活动与媒体推广</li><li>公共教育与导览项目</li></ul></div></div></div></section>
+<section class="content-section" style="background:var(--cream)"><div class="container"><h2 style="margin-bottom:8px">更多服务</h2><p style="color:var(--gray-500);margin-bottom:32px;font-size:.95rem">深入了解我们的专业服务。</p><div class="services-grid"><div class="service-card"><h4>&#127918; 当代艺术展</h4><p>策划和执行中拉当代艺术联合展览，涵盖多种媒介。</p></div><div class="service-card"><h4>&#127960; 博物馆特展</h4><p>与国际博物馆合作，策划专题特展。</p></div><div class="service-card"><h4>&#127758; 国际巡展</h4><p>为展览项目规划多国巡展路线。</p></div></div></div></section>
+<section class="cta-section"><div class="container"><h2>准备好开始了吗？</h2><p>联系我们，了解我们如何帮助您实现目标。</p><a href="index.html#contact" class="cta-btn">联系我们</a></div></section>
+<footer class="footer"><div class="container"><div class="footer-inner"><p class="footer-copy">&copy; 2026 NEXO Art & Cultural Advisory. Building bridges between China and Latin America.</p><a href="index.html" class="footer-back">← Back to Home</a></div></div></footer>
+<div class="fab-container"><button class="fab-main" id="fabMain" onclick="toggleFab()">+</button><div class="fab-menu" id="fabMenu"><a href="https://wa.me/5491125628888" target="_blank" class="fab-item fab-item-whatsapp"><div class="fab-item-icon">&#128172;</div><span class="fab-item-label">WhatsApp</span></a><a href="mailto:info@nexoarts.com" class="fab-item fab-item-email"><div class="fab-item-icon">&#10003;</div><span class="fab-item-label">Email</span></a><div class="fab-item fab-item-wechat" onclick="openWechatModal()"><div class="fab-item-icon">&#128157;</div><span class="fab-item-label">WeChat</span></div><div class="fab-item fab-item-calendly" onclick="alert('Calendly coming soon.')"><div class="fab-item-icon">&#128197;</div><span class="fab-item-label">Book a Meeting</span></div></div></div>
+<div class="wechat-modal" id="wechatModal"><div class="wechat-modal-inner"><button class="wechat-modal-close" onclick="closeWechatModal()">&times;</button><div class="wechat-modal-icon">&#128157;</div><h4 class="wechat-modal-title">WeChat</h4><p class="wechat-modal-subtitle">Scan to connect with us.</p><div class="wechat-modal-qr"><div style="text-align:center"><div style="font-size:3rem;margin-bottom:8px">&#128157;</div><div>二维码</div><div style="font-size:.7rem;margin-top:4px">QR Code</div></div></div><p class="wechat-modal-id">WeChat ID: <span>chinalatam1</span></p></div></div>
+<script>function setLang(l){document.body.className='lang-'+l;document.querySelectorAll('.nav-lang button').forEach(function(b){b.classList.remove('active')});event.target.classList.add('active')}function toggleMenu(){document.getElementById('navLinks').classList.toggle('open')}document.querySelectorAll('.nav-links a').forEach(function(l){l.addEventListener('click',function(){document.getElementById('navLinks').classList.remove('open')})});function toggleFab(){var m=document.getElementById('fabMenu'),b=document.getElementById('fabMain');m.classList.toggle('show');b.classList.toggle('open')}document.addEventListener('click',function(e){if(!e.target.closest('.fab-container')){document.getElementById('fabMenu').classList.remove('show');document.getElementById('fabMain').classList.remove('open')}});function openWechatModal(){document.getElementById('wechatModal').classList.add('show')}function closeWechatModal(){document.getElementById('wechatModal').classList.remove('show')}document.getElementById('wechatModal').addEventListener('click',function(e){if(e.target===this)closeWechatModal()});</script>
 </body>
 </html>

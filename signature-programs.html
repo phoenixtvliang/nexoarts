@@ -3,112 +3,89 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>标志性项目 | NEXO Arts</title>
-<meta name="description" content="NEXO Arts标志性项目精选，每一个项目都是中拉文化交流的里程碑。">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+<title>NEXO | Signature Projects</title>
+<meta name="description" content="NEXO Signature Projects — International cultural initiatives with long-term impact.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-:root{--white:#fff;--black:#111;--gray-100:#f7f7f7;--gray-200:#eee;--gray-400:#999;--gray-600:#666;--gray-800:#333;--accent:#b8860b;--accent-dark:#8b6914;--nav-h:72px}
+:root{--cream:#faf8f5;--ivory:#f5f0eb;--white:#fff;--black:#1a1a1a;--gray-100:#f0ede8;--gray-200:#ddd8d0;--gray-400:#999;--gray-500:#777;--gray-600:#555;--gold:#b8860b;--gold-dark:#8b6914;--serif:'Cormorant Garamond','Noto Serif SC',Georgia,serif;--sans:'Inter','Noto Sans SC',Helvetica,Arial,sans-serif;--nav-h:64px}
 html{scroll-behavior:smooth;font-size:16px}
-body{font-family:'Inter','Noto Sans SC',sans-serif;color:var(--black);background:var(--white);line-height:1.6}
-a{text-decoration:none;color:inherit}
-.container{max-width:1200px;margin:0 auto;padding:0 24px}
-.nav{position:fixed;top:0;left:0;width:100%;height:var(--nav-h);background:rgba(255,255,255,.97);backdrop-filter:blur(10px);z-index:1000;display:flex;align-items:center;border-bottom:1px solid var(--gray-200)}
-.nav .container{display:flex;align-items:center;justify-content:space-between;width:100%}
-.nav-logo img{height:40px}
-.nav-links{display:flex;align-items:center;gap:32px}
-.nav-links a{font-size:.875rem;font-weight:500;color:var(--gray-800);transition:color .2s}
-.nav-links a:hover{color:var(--accent)}
-.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:8px}
-.hamburger span{width:24px;height:2px;background:var(--black)}
-.page-hero{padding-top:calc(var(--nav-h) + 80px);padding-bottom:60px;background:linear-gradient(135deg,#1a1a2e,#0f3460);color:var(--white);text-align:center}
-.page-hero h1{font-size:clamp(2rem,4vw,3rem);font-weight:700;margin-bottom:16px}
-.page-hero p{font-size:1.1rem;opacity:.8;max-width:600px;margin:0 auto}
-.categories{padding:60px 0}
-.cat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:20px}
-.cat-card{padding:32px 20px;text-align:center;background:var(--white);border:1px solid var(--gray-200);border-radius:8px;cursor:pointer;transition:all .3s}
-.cat-card:hover{border-color:var(--accent);background:var(--accent);color:var(--white)}
-.cat-icon{font-size:2rem;margin-bottom:12px}
-.cat-name{font-size:1rem;font-weight:600}
-.cat-count{font-size:.8rem;color:var(--gray-400);margin-top:4px}
-.projects-section{padding:40px 0 80px}
-.projects-section h2{font-size:1.5rem;font-weight:700;margin-bottom:32px;padding-bottom:16px;border-bottom:1px solid var(--gray-200)}
-.projects-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:20px}
-.project-card{border-radius:8px;overflow:hidden;background:var(--gray-100);aspect-ratio:3/4;display:flex;align-items:center;justify-content:center;color:var(--gray-400);font-size:.9rem}
-.coming-soon{text-align:center;padding:80px 24px}
-.coming-soon h2{font-size:2rem;font-weight:700;margin-bottom:16px}
-.coming-soon p{font-size:1.1rem;color:var(--gray-600);margin-bottom:40px}
-.btn{display:inline-block;padding:16px 48px;background:var(--accent);color:var(--white);font-size:1rem;font-weight:600;border-radius:4px;transition:all .3s}
-.btn:hover{background:var(--accent-dark);transform:translateY(-2px)}
-.footer{background:var(--black);color:rgba(255,255,255,.7);padding:48px 0 24px}
-.footer-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:48px;margin-bottom:32px}
-.footer h4{color:var(--white);font-size:.9rem;margin-bottom:16px}
-.footer p,.footer a{font-size:.875rem}
-.footer a:hover{color:var(--accent)}
-.footer-bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:24px;text-align:center;font-size:.8rem}
-@media(max-width:768px){.nav-links{display:none;position:absolute;top:var(--nav-h);left:0;right:0;background:var(--white);flex-direction:column;padding:24px;gap:16px;border-bottom:1px solid var(--gray-200)}.nav-links.open{display:flex}.hamburger{display:flex}.cat-grid{grid-template-columns:repeat(2,1fr)}.projects-grid{grid-template-columns:repeat(2,1fr)}.footer-grid{grid-template-columns:1fr 1fr;gap:24px}}
+body{font-family:var(--sans);color:var(--black);background:var(--white);line-height:1.7;-webkit-font-smoothing:antialiased}
+body.lang-zh,.lang-zh *{font-family:'Noto Sans SC','Inter',sans-serif}
+a{text-decoration:none;color:inherit;transition:color .2s}
+h1,h2,h3,h4{font-family:var(--serif);font-weight:400;line-height:1.3}
+.container{max-width:1200px;margin:0 auto;padding:0 40px}
+@media(max-width:768px){.container{padding:0 24px}}
+.nav{position:fixed;top:0;left:0;width:100%;height:var(--nav-h);background:rgba(255,255,255,.97);backdrop-filter:blur(12px);z-index:1000;border-bottom:1px solid var(--gray-200)}
+.nav .container{display:flex;align-items:center;justify-content:space-between;height:100%}
+.nav-logo{font-family:var(--serif);font-size:1.5rem;font-weight:600;letter-spacing:.12em;color:var(--black)}.nav-logo span{color:var(--gold)}
+.nav-links{display:flex;align-items:center;gap:28px}.nav-links a{font-size:.8rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--gray-600)}.nav-links a:hover{color:var(--gold)}
+.nav-lang{display:flex;gap:4px;margin-left:12px;padding-left:16px;border-left:1px solid var(--gray-200)}
+.nav-lang button{background:none;border:none;font-size:.75rem;cursor:pointer;color:var(--gray-400);font-weight:500;padding:4px 8px;border-radius:3px;text-transform:uppercase;letter-spacing:.04em}.nav-lang button.active{color:var(--gold)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:8px}.hamburger span{width:22px;height:1.5px;background:var(--black)}
+@media(max-width:1024px){.nav-links{display:none;position:absolute;top:var(--nav-h);left:0;right:0;background:var(--white);flex-direction:column;padding:24px;gap:16px;border-bottom:1px solid var(--gray-200)}.nav-links.open{display:flex}.hamburger{display:flex}}
+.page-header{padding:calc(var(--nav-h)+80px) 0 60px;background:var(--cream)}
+.page-header h1{font-size:clamp(2rem,4vw,3rem);margin-bottom:12px}
+.page-header p{font-size:1.05rem;color:var(--gray-600);max-width:700px;line-height:1.8}
+.back-link{display:inline-block;margin-bottom:20px;font-size:.82rem;color:var(--gold);font-weight:500}
+.category{padding:60px 0;border-bottom:1px solid var(--gray-200)}
+.category:last-child{border-bottom:none}
+.category-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.category:nth-child(even) .category-visual{order:-1}
+.category-label{font-size:.72rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
+.category-title{font-size:clamp(1.5rem,3vw,2.2rem);margin-bottom:8px}
+.category-title-zh{font-size:1.1rem;color:var(--gray-500);margin-bottom:20px;font-weight:400}
+.category-desc{font-size:.92rem;color:var(--gray-600);line-height:1.8;margin-bottom:20px}
+.category-list{margin-bottom:24px}
+.category-list li{font-size:.88rem;color:var(--gray-600);padding:6px 0 6px 20px;position:relative;border-bottom:1px solid var(--gray-100)}
+.category-list li::before{content:'—';position:absolute;left:0;color:var(--gold)}
+.category-visual{width:100%;aspect-ratio:16/10;background:var(--gray-100);border:1px solid var(--gray-200);border-radius:6px;display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--gray-400)}
+.category-visual-icon{font-size:2.5rem;margin-bottom:12px;opacity:.4}
+.category-visual-text{font-size:.75rem;letter-spacing:.1em;text-transform:uppercase}
+@media(max-width:768px){.category-grid{grid-template-columns:1fr;gap:32px}.category:nth-child(even) .category-visual{order:0}}
+.footer{background:var(--cream);border-top:1px solid var(--gray-200);padding:40px 0}
+.footer-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+.footer-copy{font-size:.78rem;color:var(--gray-400)}
+.footer-back{font-size:.82rem;color:var(--gold);font-weight:500}
+.fab-container{position:fixed;bottom:32px;right:32px;z-index:999}
+.fab-main{width:52px;height:52px;border-radius:50%;background:var(--gold);color:var(--white);border:none;cursor:pointer;font-size:1.3rem;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(184,134,11,.3);transition:all .3s;z-index:2}
+.fab-main:hover{background:var(--gold-dark);transform:scale(1.08)}.fab-main.open{transform:rotate(45deg)}
+.fab-menu{position:absolute;bottom:64px;right:0;display:flex;flex-direction:column;gap:10px;opacity:0;pointer-events:none;transform:translateY(16px);transition:all .3s}
+.fab-menu.show{opacity:1;pointer-events:auto;transform:translateY(0)}
+.fab-item{display:flex;align-items:center;gap:10px;cursor:pointer;transition:all .2s}.fab-item:hover{transform:translateX(-4px)}
+.fab-item-icon{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.1rem;color:var(--white);flex-shrink:0;box-shadow:0 2px 8px rgba(0,0,0,.12)}
+.fab-item-whatsapp .fab-item-icon{background:#25d366}.fab-item-email .fab-item-icon{background:#ea4335}.fab-item-wechat .fab-item-icon{background:#07c160}.fab-item-calendly .fab-item-icon{background:#3498db}
+.fab-item-label{background:var(--white);padding:5px 12px;border-radius:5px;font-size:.78rem;font-weight:500;white-space:nowrap;box-shadow:0 2px 8px rgba(0,0,0,.1);color:var(--gray-700)}
+.wechat-modal{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:2000;display:none;align-items:center;justify-content:center}
+.wechat-modal.show{display:flex}
+.wechat-modal-inner{background:var(--white);border-radius:8px;padding:48px;max-width:420px;width:90%;position:relative;text-align:center}
+.wechat-modal-close{position:absolute;top:16px;right:20px;background:none;border:none;font-size:1.4rem;cursor:pointer;color:var(--gray-400)}.wechat-modal-close:hover{color:var(--black)}
+.wechat-modal-icon{font-size:2.5rem;margin-bottom:16px}.wechat-modal-title{font-size:1.1rem;font-weight:600;margin-bottom:4px;font-family:var(--sans)}.wechat-modal-subtitle{font-size:.85rem;color:var(--gray-500);margin-bottom:24px}
+.wechat-modal-qr{width:180px;height:180px;margin:0 auto 16px;background:var(--cream);border:1px solid var(--gray-200);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:.8rem;color:var(--gray-400)}
+.wechat-modal-id{font-size:.82rem;color:var(--gray-500)}.wechat-modal-id span{font-weight:600;color:var(--black)}
+.fade-in{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
+.fade-in.visible{opacity:1;transform:translateY(0)}
 </style>
 </head>
-<body>
-<nav class="nav">
-<div class="container">
-<a href="index.html" class="nav-logo"><img src="assets/images/logo.png" alt="NEXO Arts"></a>
-<div class="nav-links" id="navLinks">
-<a href="index.html#about">关于我们</a>
-<a href="index.html#solutions">解决方案</a>
-<a href="index.html#industries">行业</a>
-<a href="index.html#process">合作流程</a>
-<a href="signature-programs.html">标志性项目</a>
-<a href="index.html#team">国际顾问网络</a>
-<a href="index.html#contact">联系我们</a>
-</div>
-<button class="hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')"><span></span><span></span><span></span></button>
-</div>
-</nav>
-
-<header class="page-hero">
-<div class="container">
-<h1>标志性项目</h1>
-<p>每一个项目都是中拉文化交流的里程碑</p>
-</div>
-</header>
-
-<section class="categories">
-<div class="container">
-<h2 style="font-size:1.5rem;font-weight:700;margin-bottom:32px;text-align:center">项目分类</h2>
-<div class="cat-grid">
-<div class="cat-card"><div class="cat-icon">🏛️</div><div class="cat-name">政府间合作</div><div class="cat-count">Coming Soon</div></div>
-<div class="cat-card"><div class="cat-icon">🖼️</div><div class="cat-name">艺术展览</div><div class="cat-count">Coming Soon</div></div>
-<div class="cat-card"><div class="cat-icon">🎭</div><div class="cat-name">表演艺术</div><div class="cat-count">Coming Soon</div></div>
-<div class="cat-card"><div class="cat-icon">📚</div><div class="cat-name">出版与学术</div><div class="cat-count">Coming Soon</div></div>
-<div class="cat-card"><div class="cat-icon">🎓</div><div class="cat-name">教育交流</div><div class="cat-count">Coming Soon</div></div>
-<div class="cat-card"><div class="cat-icon">🎨</div><div class="cat-name">当代艺术</div><div class="cat-count">Coming Soon</div></div>
-<div class="cat-card"><div class="cat-icon">🏺</div><div class="cat-name">文化遗产</div><div class="cat-count">Coming Soon</div></div>
-<div class="cat-card"><div class="cat-icon">🎪</div><div class="cat-name">节庆活动</div><div class="cat-count">Coming Soon</div></div>
-<div class="cat-card"><div class="cat-icon">🏗️</div><div class="cat-name">空间设计</div><div class="cat-count">Coming Soon</div></div>
-<div class="cat-card"><div class="cat-icon">💡</div><div class="cat-name">创新融合</div><div class="cat-count">Coming Soon</div></div>
-</div>
-</div>
-</section>
-
-<section class="coming-soon">
-<div class="container">
-<h2>项目案例正在整理中</h2>
-<p>我们正在完善项目案例库，敬请期待。</p>
-<a href="index.html#contact" class="btn">联系我们了解更多信息</a>
-</div>
-</section>
-
-<footer class="footer">
-<div class="container">
-<div class="footer-grid">
-<div><h4>NEXO Arts</h4><p>搭建中国与拉丁美洲之间的文化桥梁。</p></div>
-<div><h4>导航</h4><a href="index.html">首页</a><br><a href="index.html#about">关于我们</a><br><a href="index.html#contact">联系我们</a></div>
-<div><h4>解决方案</h4><a href="solution-1.html">文化伙伴关系</a><br><a href="solution-2.html">展览与策展</a><br><a href="solution-3.html">项目管理</a></div>
-<div><h4>联系方式</h4><a href="mailto:info@nexoarts.com">info@nexoarts.com</a><br><a href="https://wa.me/5491125628888">WhatsApp</a></div>
-</div>
-<div class="footer-bottom">© 2025 NEXO Arts. 保留所有权利。</div>
-</div>
-</footer>
+<body class="lang-zh">
+<nav class="nav"><div class="container"><a href="index.html" class="nav-logo">NEXO<span>.</span></a><div class="nav-links" id="navLinks"><a href="index.html#about">About</a><a href="index.html#solutions">Solutions</a><a href="index.html#people">People</a><a href="signature-programs.html">Signature Projects</a><a href="index.html#contact">Contact</a><a href="insights.html">Insights</a><div class="nav-lang"><button class="active" onclick="setLang('zh')">中</button><button onclick="setLang('es')">ES</button><button onclick="setLang('en')">EN</button></div></div><button class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button></div></nav>
+<header class="page-header"><div class="container"><a href="index.html" class="back-link">← Back to Home</a><p class="category-label">Signature Projects</p><h1>Signature Projects</h1><p>我们推动具有长期文化影响力的国际合作项目。<br>每一个项目都始于一次合作，也希望成为长期伙伴关系的开始。<br><br>NEXO 根据客户需求提供定制化国际文化解决方案，从展览、论坛到品牌合作，从机构交流到收藏家项目，我们始终关注项目的长期价值与国际影响力。</p></div></header>
+<main>
+<section class="category"><div class="container"><div class="category-grid"><div><p class="category-label">Category 01</p><h2 class="category-title">Museum Partnerships</h2><p class="category-title-zh">博物馆合作</p><p class="category-desc">推动中国与拉丁美洲博物馆之间的深度合作关系，建立可持续的机构级交流平台。</p><ul class="category-list"><li>馆际合作</li><li>国际巡展</li><li>馆藏交流</li><li>公共教育</li><li>国际合作项目</li></ul></div><div class="category-visual"><div class="category-visual-icon">&#127968;</div><div class="category-visual-text">Museum Project — Coming Soon</div></div></div></div></section>
+<section class="category"><div class="container"><div class="category-grid"><div><p class="category-label">Category 02</p><h2 class="category-title">International Exhibitions</h2><p class="category-title-zh">国际联合展览</p><p class="category-desc">从概念策划到落地执行，打造具有国际影响力的展览项目。</p><ul class="category-list"><li>策展</li><li>国际巡展</li><li>双年展合作</li><li>艺术家邀请</li><li>学术论坛</li></ul></div><div class="category-visual"><div class="category-visual-icon">&#127918;</div><div class="category-visual-text">Coming Soon</div></div></div></div></section>
+<section class="category"><div class="container"><div class="category-grid"><div><p class="category-label">Category 03</p><h2 class="category-title">Cultural Forums</h2><p class="category-title-zh">国际文化论坛</p><p class="category-desc">搭建高水平的国际文化交流平台，促进思想碰撞与深度合作。</p><ul class="category-list"><li>论坛</li><li>峰会</li><li>公共讲座</li><li>学术会议</li><li>文化交流</li></ul></div><div class="category-visual"><div class="category-visual-icon">&#127758;</div><div class="category-visual-text">Coming Soon</div></div></div></div></section>
+<section class="category"><div class="container"><div class="category-grid"><div><p class="category-label">Category 04</p><h2 class="category-title">Artist Residency</h2><p class="category-title-zh">艺术家驻留</p><p class="category-desc">为艺术家提供跨文化创作环境，促进深度艺术交流与灵感碰撞。</p><ul class="category-list"><li>驻留计划</li><li>创作交流</li><li>工作坊</li><li>开放工作室</li><li>艺术教育</li></ul></div><div class="category-visual"><div class="category-visual-icon">&#10024;</div><div class="category-visual-text">Coming Soon</div></div></div></div></section>
+<section class="category"><div class="container"><div class="category-grid"><div><p class="category-label">Category 05</p><h2 class="category-title">Collectors Program</h2><p class="category-title-zh">收藏家项目</p><p class="category-desc">为收藏家提供独特的文化体验，连接中国与拉丁美洲的艺术世界。</p><ul class="category-list"><li>私人收藏参访</li><li>画廊VIP</li><li>艺术家工作室</li><li>国际艺博会</li><li>私人晚宴</li></ul></div><div class="category-visual"><div class="category-visual-icon">&#127913;</div><div class="category-visual-text">Ruta del Coleccionista — Coming Soon</div></div></div></div></section>
+<section class="category"><div class="container"><div class="category-grid"><div><p class="category-label">Category 06</p><h2 class="category-title">Art & Wine Experience</h2><p class="category-title-zh">艺术与葡萄酒体验</p><p class="category-desc">将艺术收藏与葡萄酒文化完美融合，打造独一无二的门多萨体验。</p><ul class="category-list"><li>门多萨</li><li>私人酒庄</li><li>艺术收藏</li><li>葡萄酒</li><li>阿根廷文化</li></ul></div><div class="category-visual"><div class="category-visual-icon">&#127859;</div><div class="category-visual-text">Coming Soon</div></div></div></div></section>
+<section class="category"><div class="container"><div class="category-grid"><div><p class="category-label">Category 07</p><h2 class="category-title">Corporate Cultural Programs</h2><p class="category-title-zh">企业文化合作</p><p class="category-desc">帮助企业构建文化战略，提升品牌在国际舞台上的文化影响力。</p><ul class="category-list"><li>CSR</li><li>艺术展览</li><li>品牌合作</li><li>企业文化</li><li>国际传播</li></ul></div><div class="category-visual"><div class="category-visual-icon">&#127970;</div><div class="category-visual-text">Coming Soon</div></div></div></div></section>
+<section class="category"><div class="container"><div class="category-grid"><div><p class="category-label">Category 08</p><h2 class="category-title">Public Art</h2><p class="category-title-zh">公共艺术</p><p class="category-desc">通过公共艺术项目推动城市文化更新和社区文化建设。</p><ul class="category-list"><li>城市更新</li><li>公共艺术</li><li>艺术装置</li><li>社区文化</li></ul></div><div class="category-visual"><div class="category-visual-icon">&#127983;</div><div class="category-visual-text">Coming Soon</div></div></div></div></section>
+<section class="category"><div class="container"><div class="category-grid"><div><p class="category-label">Category 09</p><h2 class="category-title">Academic Research</h2><p class="category-title-zh">学术出版</p><p class="category-desc">推动中拉学术交流与研究成果的国际传播。</p><ul class="category-list"><li>研究</li><li>出版</li><li>论坛</li><li>国际交流</li></ul></div><div class="category-visual"><div class="category-visual-icon">&#128218;</div><div class="category-visual-text">Coming Soon</div></div></div></div></section>
+<section class="category"><div class="container"><div class="category-grid"><div><p class="category-label">Category 10</p><h2 class="category-title">Special Projects</h2><p class="category-title-zh">特别项目</p><p class="category-desc">所有创新性和实验性的文化项目都将在此呈现。从中国新年到AI艺术，从建筑到电影，一切皆有可能。</p><ul class="category-list"><li>中国新年</li><li>音乐</li><li>舞蹈</li><li>建筑</li><li>设计</li><li>电影</li><li>AI艺术</li><li>数字艺术</li></ul></div><div class="category-visual"><div class="category-visual-icon">&#127881;</div><div class="category-visual-text">Special Projects — Coming Soon</div></div></div></div></section>
+</main>
+<footer class="footer"><div class="container"><div class="footer-inner"><p class="footer-copy">&copy; 2026 NEXO Art & Cultural Advisory. Building bridges between China and Latin America.</p><a href="index.html" class="footer-back">← Back to Home</a></div></div></footer>
+<div class="fab-container"><button class="fab-main" id="fabMain" onclick="toggleFab()">+</button><div class="fab-menu" id="fabMenu"><a href="https://wa.me/5491125628888" target="_blank" class="fab-item fab-item-whatsapp"><div class="fab-item-icon">&#128172;</div><span class="fab-item-label">WhatsApp</span></a><a href="mailto:info@nexoarts.com" class="fab-item fab-item-email"><div class="fab-item-icon">&#10003;</div><span class="fab-item-label">Email</span></a><div class="fab-item fab-item-wechat" onclick="openWechatModal()"><div class="fab-item-icon">&#128157;</div><span class="fab-item-label">WeChat</span></div><div class="fab-item fab-item-calendly" onclick="alert('Calendly coming soon.')"><div class="fab-item-icon">&#128197;</div><span class="fab-item-label">Book a Meeting</span></div></div></div>
+<div class="wechat-modal" id="wechatModal"><div class="wechat-modal-inner"><button class="wechat-modal-close" onclick="closeWechatModal()">&times;</button><div class="wechat-modal-icon">&#128157;</div><h4 class="wechat-modal-title">WeChat</h4><p class="wechat-modal-subtitle">Scan to connect with us.</p><div class="wechat-modal-qr"><div style="text-align:center"><div style="font-size:3rem;margin-bottom:8px">&#128157;</div><div>二维码</div><div style="font-size:.7rem;margin-top:4px">QR Code</div></div></div><p class="wechat-modal-id">WeChat ID: <span>chinalatam1</span></p></div></div>
+<script>function setLang(l){document.body.className='lang-'+l;document.querySelectorAll('.nav-lang button').forEach(function(b){b.classList.remove('active')});event.target.classList.add('active')}function toggleMenu(){document.getElementById('navLinks').classList.toggle('open')}document.querySelectorAll('.nav-links a').forEach(function(l){l.addEventListener('click',function(){document.getElementById('navLinks').classList.remove('open')})});function toggleFab(){var m=document.getElementById('fabMenu'),b=document.getElementById('fabMain');m.classList.toggle('show');b.classList.toggle('open')}document.addEventListener('click',function(e){if(!e.target.closest('.fab-container')){document.getElementById('fabMenu').classList.remove('show');document.getElementById('fabMain').classList.remove('open')}});function openWechatModal(){document.getElementById('wechatModal').classList.add('show')}function closeWechatModal(){document.getElementById('wechatModal').classList.remove('show')}document.getElementById('wechatModal').addEventListener('click',function(e){if(e.target===this)closeWechatModal()});(function(){var o=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:.1});document.querySelectorAll('.category').forEach(function(el){el.classList.add('fade-in');o.observe(el)})})();</script>
 </body>
 </html>
