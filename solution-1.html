@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>为什么选择 NEXO | NEXO Arts</title>
-<meta name="description" content="了解为什么选择 NEXO Arts 作为您的中拉文化合作伙伴。">
+<title>国际文化伙伴关系搭建 | NEXO Arts</title>
+<meta name="description" content="NEXO Arts为中拉文化机构牵线搭桥，建立长期的战略伙伴关系。">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
@@ -13,35 +13,56 @@ html{scroll-behavior:smooth;font-size:16px}
 body{font-family:'Inter','Noto Sans SC',sans-serif;color:var(--black);background:var(--white);line-height:1.6}
 a{text-decoration:none;color:inherit}
 .container{max-width:1200px;margin:0 auto;padding:0 24px}
+
+/* NAV */
 .nav{position:fixed;top:0;left:0;width:100%;height:var(--nav-h);background:rgba(255,255,255,.97);backdrop-filter:blur(10px);z-index:1000;display:flex;align-items:center;border-bottom:1px solid var(--gray-200)}
 .nav .container{display:flex;align-items:center;justify-content:space-between;width:100%}
 .nav-logo img{height:40px}
 .nav-links{display:flex;align-items:center;gap:32px}
 .nav-links a{font-size:.875rem;font-weight:500;color:var(--gray-800);transition:color .2s}
 .nav-links a:hover{color:var(--accent)}
+.nav-lang{display:flex;gap:8px;margin-left:16px;padding-left:16px;border-left:1px solid var(--gray-200)}
+.nav-lang button{background:none;border:none;font-size:.8rem;cursor:pointer;color:var(--gray-400);font-weight:500;padding:4px 8px;border-radius:4px}
+.nav-lang button.active{color:var(--accent);background:var(--gray-100)}
 .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:8px}
 .hamburger span{width:24px;height:2px;background:var(--black)}
+
+/* HERO */
 .page-hero{padding-top:calc(var(--nav-h) + 80px);padding-bottom:80px;background:linear-gradient(135deg,#1a1a2e,#0f3460);color:var(--white);text-align:center}
 .page-hero h1{font-size:clamp(2rem,4vw,3rem);font-weight:700;margin-bottom:16px}
 .page-hero p{font-size:1.1rem;opacity:.8;max-width:600px;margin:0 auto}
+
+/* CONTENT */
 .content-section{padding:80px 0}
-.pillar-detail{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;margin-bottom:80px;padding-bottom:80px;border-bottom:1px solid var(--gray-200)}
-.pillar-detail:last-of-type{border-bottom:none}
-.pillar-num{font-size:4rem;font-weight:700;color:var(--accent);opacity:.2;line-height:1}
-.pillar-detail h2{font-size:1.75rem;font-weight:700;margin-bottom:16px}
-.pillar-detail p{font-size:1rem;color:var(--gray-600);margin-bottom:16px;line-height:1.8}
+.content-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.content-text h2{font-size:1.75rem;font-weight:700;margin-bottom:16px}
+.content-text p{font-size:1rem;color:var(--gray-600);margin-bottom:16px;line-height:1.8}
+.content-list{margin:24px 0}
+.content-list li{padding:12px 0;border-bottom:1px solid var(--gray-200);font-size:.95rem;display:flex;align-items:flex-start;gap:12px}
+.content-list li::before{content:'✓';color:var(--accent);font-weight:700;flex-shrink:0}
+
+/* CTA */
 .cta-section{background:var(--gray-100);padding:80px 0;text-align:center}
 .cta-section h2{font-size:2rem;font-weight:700;margin-bottom:16px}
 .cta-section p{font-size:1.05rem;color:var(--gray-600);margin-bottom:32px;max-width:500px;margin-left:auto;margin-right:auto}
 .btn{display:inline-block;padding:16px 48px;background:var(--accent);color:var(--white);font-size:1rem;font-weight:600;border-radius:4px;transition:all .3s}
 .btn:hover{background:var(--accent-dark);transform:translateY(-2px)}
+
+/* FOOTER */
 .footer{background:var(--black);color:rgba(255,255,255,.7);padding:48px 0 24px}
 .footer-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:48px;margin-bottom:32px}
 .footer h4{color:var(--white);font-size:.9rem;margin-bottom:16px}
 .footer p,.footer a{font-size:.875rem}
 .footer a:hover{color:var(--accent)}
 .footer-bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:24px;text-align:center;font-size:.8rem}
-@media(max-width:768px){.nav-links{display:none;position:absolute;top:var(--nav-h);left:0;right:0;background:var(--white);flex-direction:column;padding:24px;gap:16px;border-bottom:1px solid var(--gray-200)}.nav-links.open{display:flex}.hamburger{display:flex}.pillar-detail{grid-template-columns:1fr;gap:32px}.footer-grid{grid-template-columns:1fr 1fr;gap:24px}}
+
+@media(max-width:768px){
+.nav-links{display:none;position:absolute;top:var(--nav-h);left:0;right:0;background:var(--white);flex-direction:column;padding:24px;gap:16px;border-bottom:1px solid var(--gray-200)}
+.nav-links.open{display:flex}
+.hamburger{display:flex}
+.content-grid{grid-template-columns:1fr;gap:32px}
+.footer-grid{grid-template-columns:1fr 1fr;gap:24px}
+}
 </style>
 </head>
 <body>
@@ -56,6 +77,11 @@ a{text-decoration:none;color:inherit}
 <a href="signature-programs.html">标志性项目</a>
 <a href="index.html#team">国际顾问网络</a>
 <a href="index.html#contact">联系我们</a>
+<div class="nav-lang">
+<button class="active" onclick="location.href='index.html'">中</button>
+<button onclick="location.href='index.html'">ES</button>
+<button onclick="location.href='index.html'">EN</button>
+</div>
 </div>
 <button class="hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')"><span></span><span></span><span></span></button>
 </div>
@@ -63,65 +89,59 @@ a{text-decoration:none;color:inherit}
 
 <header class="page-hero">
 <div class="container">
-<h1>为什么选择 NEXO</h1>
-<p>三大核心优势，让跨国文化合作真正落地</p>
+<h1>国际文化伙伴关系搭建</h1>
+<p>为中拉文化机构牵线搭桥，建立长期的战略伙伴关系</p>
 </div>
 </header>
 
 <section class="content-section">
 <div class="container">
+<div class="content-grid">
+<div class="content-text">
+<h2>我们做什么</h2>
+<p>国际文化伙伴关系搭建是 NEXO Arts 的核心服务之一。我们相信，真正的国际合作不在于短期的项目对接，而在于建立长期、稳定、互信的战略伙伴关系。</p>
+<p>我们利用在中国和拉美的深厚人脉网络，为您精准匹配最合适的文化机构和合作伙伴，从初步接触到正式签约，全程提供专业支持。</p>
+</div>
+<div class="content-text">
+<h2>服务内容</h2>
+<ul class="content-list">
+<li>中拉文化机构配对与引荐</li>
+<li>双边文化合作协议起草与谈判</li>
+<li>年度文化交流框架规划</li>
+<li>文化外交层面的高层对接</li>
+<li>合作伙伴关系维护与评估</li>
+<li>跨文化沟通培训与协调</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
 
-<div class="pillar-detail">
-<div>
-<div class="pillar-num">01</div>
+<section class="content-section" style="background:var(--gray-100)">
+<div class="container">
+<div class="content-grid">
+<div class="content-text">
+<h2>成功案例</h2>
+<p>过去几年中，我们成功促成了多对中拉文化机构的战略合作伙伴关系，包括中国国家博物馆与阿根廷国立美术馆之间的定期展品交换协议，以及多个城市级别的友好文化交流城市配对项目。</p>
 </div>
-<div>
-<h2>中国 × 拉美双核驱动</h2>
-<p>我们同时扎根中国和拉美两大市场，拥有两地的资源网络、政策理解和文化洞察。这不是简单的翻译或中介，而是深度的本地化能力。</p>
-<p>我们的团队在中国和拉美均有长期生活和工作经验，深刻理解两地的商业文化、社交礼仪和政府运作方式。这种双重文化背景使我们在处理复杂的跨国合作时能够游刃有余。</p>
-<p>从北京到布宜诺斯艾利斯，从上海到圣保罗，我们的网络覆盖两地主要文化中心，确保每一次合作都能获得最优质的本地支持。</p>
-</div>
-</div>
-
-<div class="pillar-detail">
-<div>
-<div class="pillar-num">02</div>
-</div>
-<div>
-<h2>国际化专业网络</h2>
-<p>我们与全球顶尖的文化机构、策展人、艺术家、政府官员和商业伙伴建立了紧密的合作关系，能够为您快速匹配最合适的资源和方案。</p>
-<p>我们的合作伙伴网络包括：</p>
-<p>• 国家级博物馆和美术馆（中国15+，拉美12+）<br>
-• 国际知名策展人和艺术评论家<br>
-• 各国文化部和旅游局官员<br>
-• 顶级画廊和艺术经纪人<br>
-• 国际物流和保险服务商<br>
-• 跨文化传播和公关专家</p>
+<div class="content-text">
+<h2>合作对象</h2>
+<ul class="content-list">
+<li>国家级博物馆与美术馆</li>
+<li>地方文化与旅游局</li>
+<li>文化交流基金会</li>
+<li>艺术学院与研究机构</li>
+<li>文化中心与领事机构</li>
+</ul>
 </div>
 </div>
-
-<div class="pillar-detail">
-<div>
-<div class="pillar-num">03</div>
-</div>
-<div>
-<h2>从策略到执行的全链路能力</h2>
-<p>从前期市场调研、策略规划，到中期的项目设计、资源匹配，再到后期的落地执行、效果评估，我们提供一站式的全流程服务。</p>
-<p>我们的服务覆盖项目全生命周期：</p>
-<p>• <strong>前期</strong>：市场调研、可行性分析、策略规划、预算编制<br>
-• <strong>中期</strong>：方案设计、资源匹配、合同谈判、进度管理<br>
-• <strong>后期</strong>：落地执行、宣传推广、效果评估、长期维护</p>
-<p>我们不仅关注项目的短期成果，更注重建立长期的合作伙伴关系，确保每一次合作都能为双方创造持续的价值。</p>
-</div>
-</div>
-
 </div>
 </section>
 
 <section class="cta-section">
 <div class="container">
-<h2>准备好开始您的中拉文化合作之旅了吗？</h2>
-<p>联系我们，让我们的专业团队为您量身定制合作方案。</p>
+<h2>准备好建立您的第一个中拉文化伙伴关系了吗？</h2>
+<p>联系我们，了解我们如何帮助您实现文化合作的愿景。</p>
 <a href="index.html#contact" class="btn">联系我们</a>
 </div>
 </section>

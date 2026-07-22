@@ -1,2079 +1,641 @@
-<!-- Deployed: 2026-07-21 14:50 UTC -->
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="NEXO Art & Cultural Advisory — 国际文化艺术顾问 | 专注中国与拉丁美洲文化艺术交流">
-    <meta name="keywords" content="文化艺术顾问, 中拉文化交流, 艺术策展, 国际展览, 文化咨询, NEXO, China Latin America art culture advisory">
-    <meta name="google-site-verification" content="Ulc1cOAbVbojKAmNhv0AtT-s-V3ebhTN_dGRUWccwzo" />
-    <title>NEXO — International Art &amp; Cultural Advisory</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Noto+Serif+SC:wght@300;400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
-    <style>
-        /* ===== CSS RESET & BASE ===== */
-        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
-        :root {
-            --color-bg: #0E0E0E;
-            --color-bg-alt: #161616;
-            --color-bg-dark: #1A1A1A;
-            --color-text: #E8E4DE;
-            --color-text-light: #B8B0A6;
-            --color-text-muted: #8A8279;
-            --color-accent: #C9A96E;
-            --color-accent-dark: #A8884D;
-            --color-accent-light: #D4BC8E;
-            --color-accent-glow: rgba(201, 169, 110, 0.12);
-            --color-white: #F7F5F1;
-            --color-black: #0A0A0A;
-            --color-border: #2A2826;
-            --font-serif: 'Cormorant Garamond', 'Noto Serif SC', Georgia, serif;
-            --font-sans: 'Inter', -apple-system, 'Helvetica Neue', sans-serif;
-            --font-chinese: 'Noto Serif SC', 'Songti SC', Georgia, serif;
-            --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        html { scroll-behavior: smooth; font-size: 18px; }
-
-        body {
-            font-family: var(--font-sans);
-            background-color: var(--color-bg);
-            color: var(--color-text);
-            line-height: 1.8;
-            font-weight: 300;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-
-        ::selection {
-            background: var(--color-accent);
-            color: var(--color-white);
-        }
-
-        /* ===== LANGUAGE TOGGLE ===== */
-        body.lang-es .zh { display: none !important; }
-        body.lang-en .zh { display: none !important; }
-        body.lang-zh .es { display: none !important; }
-        body.lang-zh .en { display: none !important; }
-        body.lang-es .zh { display: none !important; }
-        body.lang-es .en { display: none !important; }
-        body.lang-en .zh { display: none !important; }
-        body.lang-en .es { display: none !important; }
-
-        /* ===== SCROLLBAR ===== */
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: var(--color-bg); }
-        ::-webkit-scrollbar-thumb { background: var(--color-accent-light); border-radius: 3px; }
-
-        /* ===== NAVIGATION ===== */
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            background: rgba(14, 14, 14, 0.95);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(201, 169, 110, 0.15);
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        nav.scrolled {
-            background: rgba(14, 14, 14, 0.98);
-            box-shadow: 0 2px 20px rgba(0,0,0,0.3);
-        }
-
-        .nav-container {
-            max-width: 1440px;
-            margin: 0 auto;
-            padding: 0 80px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            height: 80px;
-        }
-
-        .logo {
-            font-family: var(--font-serif);
-            font-size: 1.5rem;
-            font-weight: 400;
-            letter-spacing: 0.15em;
-            color: var(--color-accent);
-            text-decoration: none;
-            transition: opacity 0.3s ease;
-        }
-
-        .logo:hover { opacity: 0.8; }
-
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 2.5rem;
-            list-style: none;
-        }
-
-        .nav-links a {
-            font-family: var(--font-sans);
-            font-size: 0.75rem;
-            font-weight: 400;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: var(--color-text-light);
-            text-decoration: none;
-            transition: var(--transition-smooth);
-        }
-
-        .nav-links a:hover {
-            color: var(--color-accent);
-        }
-
-        .lang-switcher {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            margin-left: 1rem;
-            padding-left: 1.5rem;
-            border-left: 1px solid var(--color-border);
-        }
-
-        .lang-btn {
-            background: none;
-            border: none;
-            color: var(--color-text-muted);
-            font-family: var(--font-sans);
-            font-size: 0.7rem;
-            letter-spacing: 0.05em;
-            cursor: pointer;
-            transition: var(--transition-smooth);
-            padding: 0.2rem 0.3rem;
-        }
-
-        .lang-btn:hover { color: var(--color-text); }
-        .lang-btn.active { color: var(--color-accent); font-weight: 500; }
-
-        /* Mobile menu */
-        .mobile-toggle {
-            display: none;
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 0.5rem;
-        }
-        .mobile-toggle span {
-            display: block;
-            width: 24px;
-            height: 1.5px;
-            background: var(--color-text);
-            margin: 6px 0;
-            transition: var(--transition-smooth);
-        }
-
-        @media (max-width: 968px) {
-            .nav-container { padding: 0 32px; height: 72px; }
-            .nav-links {
-                position: fixed;
-                top: 72px;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                background: rgba(14, 14, 14, 0.98);
-                flex-direction: column;
-                justify-content: flex-start;
-                align-items: center;
-                gap: 2rem;
-                padding-top: 3rem;
-                transform: translateX(100%);
-                transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            }
-            .nav-links.open { transform: translateX(0); }
-            .nav-links a { font-size: 0.9rem; }
-            .lang-switcher {
-                margin-left: 0;
-                padding-left: 0;
-                border-left: none;
-                border-top: 1px solid var(--color-border);
-                padding-top: 1rem;
-            }
-            .mobile-toggle { display: block; }
-        }
-
-        /* ===== HERO SECTION ===== */
-        .hero {
-            position: relative;
-            height: 100vh;
-            min-height: 600px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-        }
-
-        .hero-video {
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            object-fit: cover;
-            opacity: 1;
-        }
-
-        .hero-overlay {
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background: linear-gradient(
-                to bottom,
-                rgba(14, 14, 14, 0.15) 0%,
-                rgba(14, 14, 14, 0.25) 50%,
-                rgba(14, 14, 14, 0.6) 100%
-            );
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            text-align: center;
-            max-width: 900px;
-            padding: 0 32px;
-        }
-
-        .hero-title {
-            font-family: var(--font-serif);
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            font-weight: 300;
-            letter-spacing: 0.08em;
-            color: var(--color-white);
-            margin-bottom: 1.5rem;
-            line-height: 1.3;
-        }
-
-        .hero-subtitle {
-            font-family: var(--font-sans);
-            font-size: clamp(0.85rem, 1.2vw, 1rem);
-            font-weight: 300;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            color: var(--color-text-light);
-            margin-bottom: 2.5rem;
-        }
-
-        .hero-tagline {
-            font-family: var(--font-serif);
-            font-size: clamp(1rem, 1.5vw, 1.25rem);
-            font-weight: 300;
-            font-style: italic;
-            color: var(--color-accent-light);
-            margin-bottom: 3rem;
-            line-height: 1.6;
-        }
-
-        .hero-cta {
-            display: inline-block;
-            padding: 0.9rem 2.5rem;
-            border: 1px solid var(--color-accent);
-            color: var(--color-accent);
-            font-family: var(--font-sans);
-            font-size: 0.75rem;
-            font-weight: 400;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            text-decoration: none;
-            transition: var(--transition-smooth);
-        }
-
-        .hero-cta:hover {
-            background: var(--color-accent);
-            color: var(--color-bg);
-        }
-
-        .scroll-indicator {
-            position: absolute;
-            bottom: 3rem;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 2;
-            animation: bounce 2s infinite;
-        }
-
-        .scroll-indicator span {
-            display: block;
-            width: 1px;
-            height: 40px;
-            background: var(--color-accent);
-            margin: 0 auto;
-        }
-
-        @keyframes bounce {
-            0%, 100% { transform: translateX(-50%) translateY(0); }
-            50% { transform: translateX(-50%) translateY(10px); }
-        }
-
-        /* ===== SECTION COMMON ===== */
-        section {
-            padding: 8rem 32px;
-        }
-
-        .section-container {
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-
-        .section-label {
-            font-family: var(--font-sans);
-            font-size: 0.65rem;
-            font-weight: 500;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            color: var(--color-accent);
-            margin-bottom: 1rem;
-        }
-
-        .section-title {
-            font-family: var(--font-serif);
-            font-size: clamp(1.8rem, 3vw, 2.5rem);
-            font-weight: 300;
-            color: var(--color-white);
-            margin-bottom: 2rem;
-            line-height: 1.3;
-        }
-
-        .section-divider {
-            width: 60px;
-            height: 1px;
-            background: var(--color-accent);
-            margin-bottom: 2.5rem;
-        }
-
-        .section-text {
-            font-size: 0.95rem;
-            line-height: 1.9;
-            color: var(--color-text-light);
-            max-width: 720px;
-        }
-
-        /* ===== ABOUT ===== */
-        .about {
-            background: var(--color-bg);
-        }
-
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 5rem;
-            align-items: start;
-        }
-
-        .about-text p {
-            margin-bottom: 1.5rem;
-        }
-
-        .about-stats {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            padding-top: 1rem;
-        }
-
-        .stat-item {
-            border-left: 1px solid var(--color-accent);
-            padding-left: 1.5rem;
-        }
-
-        .stat-number {
-            font-family: var(--font-serif);
-            font-size: 2.5rem;
-            font-weight: 300;
-            color: var(--color-accent);
-            line-height: 1;
-            margin-bottom: 0.5rem;
-        }
-
-        .stat-label {
-            font-size: 0.75rem;
-            color: var(--color-text-muted);
-            letter-spacing: 0.05em;
-            line-height: 1.5;
-        }
-
-        @media (max-width: 768px) {
-            .about-grid {
-                grid-template-columns: 1fr;
-                gap: 3rem;
-            }
-        }
-
-        /* ===== WHY NEXO ===== */
-        .why-nexo {
-            background: var(--color-bg-alt);
-        }
-
-        .why-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 3rem;
-            margin-top: 3rem;
-        }
-
-        .why-card {
-            padding: 2.5rem 2rem;
-            border: 1px solid var(--color-border);
-            transition: var(--transition-smooth);
-        }
-
-        .why-card:hover {
-            border-color: var(--color-accent);
-            background: var(--color-accent-glow);
-        }
-
-        .why-icon {
-            font-size: 1.5rem;
-            margin-bottom: 1.5rem;
-            display: block;
-        }
-
-        .why-card h3 {
-            font-family: var(--font-serif);
-            font-size: 1.15rem;
-            font-weight: 400;
-            color: var(--color-white);
-            margin-bottom: 1rem;
-        }
-
-        .why-card p {
-            font-size: 0.85rem;
-            line-height: 1.8;
-            color: var(--color-text-light);
-        }
-
-        @media (max-width: 768px) {
-            .why-grid {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-        }
-
-        /* ===== SERVICES ===== */
-        .services {
-            background: var(--color-bg);
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            gap: 1.5rem;
-            margin-top: 3rem;
-        }
-
-        .service-pillar {
-            text-align: center;
-            padding: 2.5rem 1.5rem;
-            border: 1px solid var(--color-border);
-            transition: var(--transition-smooth);
-        }
-
-        .service-pillar:hover {
-            border-color: var(--color-accent);
-            transform: translateY(-4px);
-        }
-
-        .service-number {
-            font-family: var(--font-serif);
-            font-size: 2rem;
-            color: var(--color-accent);
-            margin-bottom: 1rem;
-            opacity: 0.5;
-        }
-
-        .service-pillar h3 {
-            font-family: var(--font-serif);
-            font-size: 1rem;
-            font-weight: 400;
-            color: var(--color-white);
-            margin-bottom: 0.75rem;
-        }
-
-        .service-pillar p {
-            font-size: 0.75rem;
-            line-height: 1.7;
-            color: var(--color-text-muted);
-        }
-
-        @media (max-width: 1024px) {
-            .services-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
-        }
-
-        @media (max-width: 640px) {
-            .services-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* ===== INDUSTRIES ===== */
-        .industries {
-            background: var(--color-bg-alt);
-        }
-
-        .industries-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            margin-top: 2.5rem;
-        }
-
-        .industry-tag {
-            padding: 0.8rem 1.8rem;
-            border: 1px solid var(--color-border);
-            font-family: var(--font-serif);
-            font-size: 0.9rem;
-            color: var(--color-text-light);
-            transition: var(--transition-smooth);
-            cursor: default;
-        }
-
-        .industry-tag:hover {
-            border-color: var(--color-accent);
-            color: var(--color-accent);
-        }
-
-        /* ===== HOW WE WORK ===== */
-        .how-we-work {
-            background: var(--color-bg);
-        }
-
-        .process-steps {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 2rem;
-            margin-top: 3rem;
-            counter-reset: step;
-        }
-
-        .process-step {
-            position: relative;
-            padding: 2rem 1.5rem;
-            counter-increment: step;
-        }
-
-        .process-step::before {
-            content: counter(step, decimal-leading-zero);
-            font-family: var(--font-serif);
-            font-size: 3rem;
-            color: var(--color-accent);
-            opacity: 0.2;
-            display: block;
-            margin-bottom: 1rem;
-            line-height: 1;
-        }
-
-        .process-step h3 {
-            font-family: var(--font-serif);
-            font-size: 1.05rem;
-            font-weight: 400;
-            color: var(--color-white);
-            margin-bottom: 0.75rem;
-        }
-
-        .process-step p {
-            font-size: 0.8rem;
-            line-height: 1.7;
-            color: var(--color-text-muted);
-        }
-
-        @media (max-width: 768px) {
-            .process-steps {
-                grid-template-columns: 1fr 1fr;
-                gap: 1.5rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .process-steps {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* ===== FEATURED PROJECTS ===== */
-        .projects {
-            background: var(--color-bg-alt);
-        }
-
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
-            margin-top: 3rem;
-        }
-
-        .project-card {
-            position: relative;
-            aspect-ratio: 4/3;
-            overflow: hidden;
-            border: 1px solid var(--color-border);
-            display: flex;
-            align-items: flex-end;
-        }
-
-        .project-placeholder {
-            position: absolute;
-            inset: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: var(--font-serif);
-            font-size: 0.85rem;
-            color: var(--color-text-muted);
-            letter-spacing: 0.1em;
-            text-align: center;
-            padding: 2rem;
-            transition: var(--transition-smooth);
-        }
-
-        .project-card:nth-child(1) .project-placeholder { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); }
-        .project-card:nth-child(2) .project-placeholder { background: linear-gradient(135deg, #2d1b2e 0%, #1a1a2e 100%); }
-        .project-card:nth-child(3) .project-placeholder { background: linear-gradient(135deg, #1b2d1b 0%, #1a2e1a 100%); }
-        .project-card:nth-child(4) .project-placeholder { background: linear-gradient(135deg, #2e2d1b 0%, #2e1a1a 100%); }
-        .project-card:nth-child(5) .project-placeholder { background: linear-gradient(135deg, #1b1b2e 0%, #2e1a2d 100%); }
-        .project-card:nth-child(6) .project-placeholder { background: linear-gradient(135deg, #2e1a1a 0%, #1b2d2d 100%); }
-
-        .project-card:hover .project-placeholder {
-            color: var(--color-accent);
-        }
-
-        /* Project card images */
-        .project-card .project-img {
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.6s ease;
-        }
-
-        .project-card:hover .project-img {
-            transform: scale(1.05);
-        }
-
-        .project-card .project-caption {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            padding: 2rem 1.5rem 1.5rem;
-            background: linear-gradient(to top, rgba(14,14,14,0.95) 0%, rgba(14,14,14,0.6) 60%, transparent 100%);
-            z-index: 2;
-        }
-
-        .project-card .project-caption span {
-            font-family: var(--font-serif);
-            font-size: 0.9rem;
-            color: var(--color-white);
-            letter-spacing: 0.05em;
-        }
-
-        .project-card:hover {
-            border-color: var(--color-accent);
-        }
-
-        @media (max-width: 768px) {
-            .projects-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* ===== TEAM ===== */
-        .team {
-            background: var(--color-bg);
-        }
-
-        .team-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 3rem;
-            margin-top: 3rem;
-            max-width: 800px;
-        }
-
-        .team-member {
-            display: flex;
-            gap: 1.5rem;
-            align-items: center;
-        }
-
-        .team-photo {
-            width: 120px;
-            height: 150px;
-            flex-shrink: 0;
-            border: 1px solid var(--color-border);
-            overflow: hidden;
-        }
-
-        .team-photo img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            filter: grayscale(30%);
-            transition: var(--transition-smooth);
-        }
-
-        .team-member:hover .team-photo img {
-            filter: grayscale(0%);
-        }
-
-        .team-info h3 {
-            font-family: var(--font-serif);
-            font-size: 1.1rem;
-            font-weight: 400;
-            color: var(--color-white);
-            margin-bottom: 0.25rem;
-        }
-
-        .team-info .team-role {
-            font-size: 0.75rem;
-            color: var(--color-accent);
-            letter-spacing: 0.05em;
-            margin-bottom: 0.5rem;
-        }
-
-        .team-info .team-brief {
-            font-size: 0.8rem;
-            color: var(--color-text-muted);
-            line-height: 1.6;
-        }
-
-        .team-advisor-slot {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 150px;
-            border: 1px dashed var(--color-border);
-            color: var(--color-text-muted);
-            font-size: 0.8rem;
-            font-style: italic;
-        }
-
-        @media (max-width: 640px) {
-            .team-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* ===== PARTNERS ===== */
-        .partners {
-            background: var(--color-bg-alt);
-        }
-
-        .partner-categories {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1.5rem;
-            margin-top: 2.5rem;
-        }
-
-        .partner-cat {
-            padding: 1rem 2rem;
-            border: 1px solid var(--color-border);
-            font-family: var(--font-serif);
-            font-size: 0.95rem;
-            color: var(--color-text-light);
-            transition: var(--transition-smooth);
-        }
-
-        .partner-cat:hover {
-            border-color: var(--color-accent);
-            color: var(--color-accent);
-        }
-
-        /* ===== CONTACT / CTA ===== */
-        .contact {
-            background: var(--color-bg);
-            text-align: center;
-            padding: 10rem 32px;
-        }
-
-        .contact .section-container {
-            max-width: 700px;
-        }
-
-        .contact .section-title {
-            margin-bottom: 1.5rem;
-        }
-
-        .contact .section-divider {
-            margin: 0 auto 2.5rem;
-        }
-
-        .contact-email {
-            display: inline-block;
-            font-family: var(--font-serif);
-            font-size: 1.2rem;
-            color: var(--color-accent);
-            text-decoration: none;
-            margin-bottom: 2.5rem;
-            transition: var(--transition-smooth);
-        }
-
-        .contact-email:hover {
-            color: var(--color-accent-light);
-        }
-
-        .contact-cta-btn {
-            display: inline-block;
-            padding: 1rem 3rem;
-            background: var(--color-accent);
-            color: var(--color-bg);
-            font-family: var(--font-sans);
-            font-size: 0.8rem;
-            font-weight: 500;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            text-decoration: none;
-            transition: var(--transition-smooth);
-        }
-
-        .contact-cta-btn:hover {
-            background: var(--color-accent-light);
-        }
-
-        /* ===== FOOTER ===== */
-        footer {
-            padding: 3rem 32px;
-            border-top: 1px solid var(--color-border);
-            background: var(--color-bg);
-        }
-
-        .footer-container {
-            max-width: 1440px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .footer-copy {
-            font-size: 0.7rem;
-            color: var(--color-text-muted);
-            letter-spacing: 0.05em;
-        }
-
-        .footer-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-        }
-
-        .footer-links a {
-            font-size: 0.7rem;
-            color: var(--color-text-muted);
-            text-decoration: none;
-            transition: var(--transition-smooth);
-        }
-
-        .footer-links a:hover {
-            color: var(--color-accent);
-        }
-
-        @media (max-width: 768px) {
-            .footer-container {
-                flex-direction: column;
-                gap: 1rem;
-                text-align: center;
-            }
-        }
-
-        /* ===== SIGNATURE PROGRAMS PAGE ===== */
-        .page-header {
-            padding: 12rem 32px 6rem;
-            text-align: center;
-            background: var(--color-bg-alt);
-        }
-
-        .page-header .section-title {
-            max-width: 700px;
-            margin: 0 auto 1rem;
-        }
-
-        .page-header .section-divider {
-            margin: 0 auto 1.5rem;
-        }
-
-        .page-header .section-text {
-            max-width: 600px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .program-section {
-            padding: 6rem 32px;
-            border-top: 1px solid var(--color-border);
-        }
-
-        .program-section:nth-child(even) {
-            background: var(--color-bg-alt);
-        }
-
-        .program-inner {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .program-name {
-            font-family: var(--font-serif);
-            font-size: 0.7rem;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            color: var(--color-accent);
-            margin-bottom: 0.5rem;
-        }
-
-        .program-title {
-            font-family: var(--font-serif);
-            font-size: clamp(1.5rem, 2.5vw, 2rem);
-            font-weight: 300;
-            color: var(--color-white);
-            margin-bottom: 2rem;
-        }
-
-        .program-body {
-            font-size: 0.9rem;
-            line-height: 2;
-            color: var(--color-text-light);
-            max-width: 720px;
-        }
-
-        .program-body p {
-            margin-bottom: 1.5rem;
-        }
-
-        .program-features {
-            margin-top: 2rem;
-            padding-top: 2rem;
-            border-top: 1px solid var(--color-border);
-        }
-
-        .program-features h4 {
-            font-family: var(--font-serif);
-            font-size: 0.95rem;
-            font-weight: 400;
-            color: var(--color-white);
-            margin-bottom: 1rem;
-        }
-
-        .program-features ul {
-            list-style: none;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 0.75rem;
-        }
-
-        .program-features li {
-            font-size: 0.8rem;
-            color: var(--color-text-light);
-            padding-left: 1.2rem;
-            position: relative;
-        }
-
-        .program-features li::before {
-            content: '—';
-            position: absolute;
-            left: 0;
-            color: var(--color-accent);
-        }
-
-        @media (max-width: 768px) {
-            .program-features ul {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* ===== ANIMATIONS ===== */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* ===== MODAL SYSTEM ===== */
-        .modal-overlay {
-            position: fixed;
-            inset: 0;
-            z-index: 9999;
-            background: rgba(10, 10, 10, 0.92);
-            display: none;
-            align-items: center;
-            justify-content: center;
-            padding: 2rem;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .modal-overlay.active {
-            display: flex;
-            opacity: 1;
-        }
-
-        .modal-content {
-            position: relative;
-            max-width: 800px;
-            width: 100%;
-            max-height: 85vh;
-            overflow-y: auto;
-            background: var(--color-bg-alt);
-            border: 1px solid var(--color-border);
-            padding: 3rem;
-        }
-
-        .modal-close {
-            position: absolute;
-            top: 1.5rem;
-            right: 1.5rem;
-            background: none;
-            border: none;
-            color: var(--color-text-muted);
-            font-size: 1.5rem;
-            cursor: pointer;
-            transition: var(--transition-smooth);
-            width: 36px;
-            height: 36px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .modal-close:hover { color: var(--color-accent); }
-
-        .modal-title {
-            font-family: var(--font-serif);
-            font-size: 1.6rem;
-            font-weight: 300;
-            color: var(--color-white);
-            margin-bottom: 0.5rem;
-        }
-
-        .modal-subtitle {
-            font-family: var(--font-serif);
-            font-size: 0.95rem;
-            font-style: italic;
-            color: var(--color-accent);
-            margin-bottom: 2rem;
-        }
-
-        .modal-body {
-            font-size: 0.9rem;
-            line-height: 2;
-            color: var(--color-text-light);
-        }
-
-        .modal-body p {
-            margin-bottom: 1.25rem;
-        }
-
-        .modal-body ul {
-            list-style: none;
-            margin-bottom: 1.5rem;
-        }
-
-        .modal-body ul li {
-            padding-left: 1.2rem;
-            position: relative;
-            margin-bottom: 0.5rem;
-        }
-
-        .modal-body ul li::before {
-            content: '—';
-            position: absolute;
-            left: 0;
-            color: var(--color-accent);
-        }
-
-        .modal-partner-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.75rem;
-        }
-
-        .modal-partner-tag {
-            padding: 0.6rem 1.4rem;
-            border: 1px solid var(--color-border);
-            font-family: var(--font-serif);
-            font-size: 0.85rem;
-            color: var(--color-text-light);
-        }
-
-        @media (max-width: 768px) {
-            .modal-content {
-                padding: 2rem 1.5rem;
-                max-height: 90vh;
-            }
-            .modal-title { font-size: 1.3rem; }
-        }
-
-        /* ===== TEAM DETAIL LINK ===== */
-        .team-member {
-            cursor: pointer;
-        }
-
-        .team-member:hover .team-info h3 {
-            color: var(--color-accent);
-        }
-
-        /* ===== PROJECT CARD CLICKABLE ===== */
-        .project-card {
-            cursor: pointer;
-        }
-
-        /* ===== PARTNER CATEGORY CLICKABLE ===== */
-        .partner-cat {
-            cursor: pointer;
-        }
-
-        /* ===== RESPONSIVE ===== */
-        @media (max-width: 1024px) {
-            .services-grid { grid-template-columns: repeat(3, 1fr); }
-        }
-
-        @media (max-width: 768px) {
-            section { padding: 4rem 20px; }
-            .nav-container { padding: 0 20px; height: 64px; }
-            .logo { font-size: 1.2rem; }
-
-            /* Hero */
-            .hero { min-height: 500px; }
-            .hero-content { padding: 0 20px; }
-            .hero-title { font-size: 2rem; }
-            .hero-subtitle { font-size: 0.75rem; letter-spacing: 0.1em; }
-            .hero-tagline { font-size: 0.95rem; }
-            .hero-cta { padding: 0.7rem 2rem; font-size: 0.7rem; }
-            .scroll-indicator { bottom: 2rem; }
-
-            /* About */
-            .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-            .about-stats { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
-            .stat-number { font-size: 2rem; }
-            .stat-label { font-size: 0.7rem; }
-
-            /* Why NEXO */
-            .why-grid { grid-template-columns: 1fr; gap: 1.5rem; }
-
-            /* Services */
-            .services-grid { grid-template-columns: 1fr; gap: 1rem; }
-            .service-pillar { padding: 2rem 1.5rem; }
-
-            /* Industries */
-            .industries-list { gap: 0.75rem; }
-            .industry-tag { padding: 0.6rem 1.2rem; font-size: 0.8rem; }
-
-            /* Process */
-            .process-steps { grid-template-columns: 1fr; gap: 1.5rem; }
-
-            /* Projects */
-            .projects-grid { grid-template-columns: 1fr; gap: 1rem; }
-            .project-card .project-caption { padding: 1.2rem 1rem 1rem; }
-            .project-card .project-caption span { font-size: 0.8rem; }
-
-            /* Team */
-            .team-grid { grid-template-columns: 1fr; gap: 1.5rem; }
-            .team-photo { width: 90px; height: 115px; }
-            .team-info h3 { font-size: 0.95rem; }
-
-            /* Partners */
-            .partner-categories { flex-direction: column; }
-            .partner-cat { text-align: center; }
-
-            /* Contact */
-            .contact { padding: 6rem 20px; }
-            .contact .section-title { font-size: 1.6rem; }
-            .contact-email { font-size: 1rem; }
-
-            /* Footer */
-            footer { padding: 2rem 20px; }
-            .footer-container { flex-direction: column; gap: 0.75rem; }
-            .footer-links { flex-direction: column; gap: 0.75rem; text-align: center; }
-
-            /* Modal */
-            .modal-content { padding: 2rem 1.25rem; margin: 1rem; }
-            .modal-title { font-size: 1.2rem; }
-            .modal-subtitle { font-size: 0.85rem; }
-            .modal-body { font-size: 0.85rem; }
-
-            /* Section titles */
-            .section-title { font-size: 1.6rem; }
-            .section-text { font-size: 0.85rem; }
-        }
-
-        @media (max-width: 480px) {
-            html { font-size: 16px; }
-            section { padding: 3rem 16px; }
-            .nav-container { padding: 0 16px; height: 56px; }
-            .logo { font-size: 1rem; }
-            .hero { min-height: 450px; }
-            .hero-title { font-size: 1.6rem; }
-            .hero-subtitle { font-size: 0.65rem; }
-            .hero-tagline { font-size: 0.85rem; }
-            .about-stats { grid-template-columns: 1fr; }
-            .stat-item { border-left: none; border-top: 1px solid var(--color-accent); padding-left: 0; padding-top: 1rem; }
-            .project-card .project-caption { padding: 1rem 0.75rem 0.75rem; }
-            .project-card .project-caption span { font-size: 0.75rem; }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NEXO Arts | China × Latin America Cultural Bridge</title>
+<meta name="description" content="NEXO Arts connects Chinese and Latin American cultural institutions, collectors, and creative industries.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+/* ===== RESET & BASE ===== */
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+--white:#fff;--black:#111;--gray-100:#f7f7f7;--gray-200:#eee;--gray-400:#999;--gray-600:#666;--gray-800:#333;
+--accent:#b8860b;--accent-dark:#8b6914;
+--font-main:'Inter','Noto Sans SC',sans-serif;
+--nav-h:72px;
+}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:var(--font-main);color:var(--black);background:var(--white);line-height:1.6;-webkit-font-smoothing:antialiased}
+body.lang-zh,.lang-zh *{font-family:'Noto Sans SC','Inter',sans-serif}
+body.lang-es,.lang-es *{font-family:'Inter',sans-serif}
+body.lang-en,.lang-en *{font-family:'Inter',sans-serif}
+a{text-decoration:none;color:inherit}
+ul{list-style:none}
+img{max-width:100%;display:block}
+.container{max-width:1200px;margin:0 auto;padding:0 24px}
+
+/* ===== NAVIGATION ===== */
+.nav{position:fixed;top:0;left:0;width:100%;height:var(--nav-h);background:rgba(255,255,255,.97);backdrop-filter:blur(10px);z-index:1000;display:flex;align-items:center;border-bottom:1px solid var(--gray-200)}
+.nav .container{display:flex;align-items:center;justify-content:space-between;width:100%}
+.nav-logo img{height:40px}
+.nav-links{display:flex;align-items:center;gap:32px}
+.nav-links a{font-size:.875rem;font-weight:500;color:var(--gray-800);transition:color .2s;letter-spacing:.02em}
+.nav-links a:hover{color:var(--accent)}
+.nav-lang{display:flex;gap:8px;margin-left:16px;padding-left:16px;border-left:1px solid var(--gray-200)}
+.nav-lang button{background:none;border:none;font-size:.8rem;cursor:pointer;color:var(--gray-400);font-weight:500;padding:4px 8px;border-radius:4px;transition:all .2s}
+.nav-lang button.active{color:var(--accent);background:var(--gray-100)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:8px}
+.hamburger span{width:24px;height:2px;background:var(--black);transition:all .3s}
+
+/* ===== HERO ===== */
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;background:linear-gradient(135deg,#1a1a2e 0%,#16213e 50%,#0f3460 100%);padding-top:var(--nav-h)}
+.hero-bg{position:absolute;inset:0;opacity:.15}
+.hero-bg img{width:100%;height:100%;object-fit:cover}
+.hero-overlay{position:absolute;inset:0;background:radial-gradient(circle at center,transparent 0%,rgba(0,0,0,.4) 100%)}
+.hero-content{position:relative;z-index:2;text-align:center;max-width:800px;padding:0 24px}
+.hero-headline-en{font-size:clamp(1.5rem,3.5vw,2.5rem);font-weight:300;color:var(--white);letter-spacing:.08em;text-transform:uppercase;margin-bottom:24px;line-height:1.4}
+.hero-headline-zh{font-size:clamp(2rem,5vw,3.5rem);font-weight:700;color:var(--white);margin-bottom:16px;line-height:1.3}
+.hero-sub{font-size:clamp(1rem,2vw,1.25rem);color:rgba(255,255,255,.8);margin-bottom:40px;font-weight:300}
+.hero-cta{display:inline-block;padding:16px 48px;background:var(--accent);color:var(--white);font-size:1rem;font-weight:600;border-radius:4px;transition:all .3s;letter-spacing:.05em}
+.hero-cta:hover{background:var(--accent-dark);transform:translateY(-2px);box-shadow:0 8px 24px rgba(184,134,11,.3)}
+
+/* ===== SECTIONS ===== */
+.section{padding:100px 0}
+.section-gray{background:var(--gray-100)}
+.section-title{font-size:clamp(1.75rem,3vw,2.5rem);font-weight:700;margin-bottom:16px;letter-spacing:-.02em}
+.section-subtitle{font-size:1.1rem;color:var(--gray-600);max-width:640px;margin-bottom:64px;line-height:1.7}
+.text-center{text-align:center}
+.mx-auto{margin-left:auto;margin-right:auto}
+
+/* ===== ABOUT ===== */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.about-text p{font-size:1.05rem;color:var(--gray-600);margin-bottom:20px;line-height:1.8}
+.about-stats{display:grid;grid-template-columns:repeat(2,1fr);gap:32px;margin-top:48px}
+.stat-item{text-align:center;padding:24px;background:var(--white);border-radius:8px;border:1px solid var(--gray-200)}
+.stat-number{font-size:2.5rem;font-weight:700;color:var(--accent);line-height:1}
+.stat-label{font-size:.875rem;color:var(--gray-600);margin-top:8px}
+
+/* ===== WHY NEXO ===== */
+.pillars-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin-bottom:48px}
+.pillar-card{padding:40px 32px;background:var(--white);border:1px solid var(--gray-200);border-radius:8px;transition:all .3s}
+.pillar-card:hover{border-color:var(--accent);transform:translateY(-4px);box-shadow:0 12px 32px rgba(0,0,0,.08)}
+.pillar-icon{font-size:2.5rem;margin-bottom:20px}
+.pillar-title{font-size:1.25rem;font-weight:600;margin-bottom:12px}
+.pillar-desc{font-size:.95rem;color:var(--gray-600);line-height:1.7}
+.pillar-link{display:inline-block;margin-top:20px;font-size:.9rem;color:var(--accent);font-weight:500;border-bottom:1px solid var(--accent);transition:all .2s}
+.pillar-link:hover{color:var(--accent-dark);border-color:var(--accent-dark)}
+
+/* ===== SOLUTIONS ===== */
+.solutions-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.solution-card{padding:32px 24px;background:var(--white);border:1px solid var(--gray-200);border-radius:8px;transition:all .3s;cursor:pointer}
+.solution-card:hover{border-color:var(--accent);box-shadow:0 8px 24px rgba(0,0,0,.06)}
+.solution-num{font-size:.75rem;color:var(--accent);font-weight:600;letter-spacing:.1em;margin-bottom:12px}
+.solution-title{font-size:1.1rem;font-weight:600;margin-bottom:8px}
+.solution-desc{font-size:.875rem;color:var(--gray-600);line-height:1.6}
+.solution-more{display:inline-flex;align-items:center;gap:4px;margin-top:16px;font-size:.85rem;color:var(--accent);font-weight:500}
+
+/* ===== INDUSTRIES ===== */
+.industries-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.industry-item{padding:28px 20px;text-align:center;background:var(--white);border:1px solid var(--gray-200);border-radius:8px;transition:all .3s;font-weight:500;font-size:.95rem}
+.industry-item:hover{border-color:var(--accent);background:var(--accent);color:var(--white)}
+.industry-icon{font-size:1.8rem;margin-bottom:12px}
+
+/* ===== PROCESS ===== */
+.process-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative}
+.process-step{text-align:center;padding:32px 24px;position:relative}
+.process-step::after{content:'';position:absolute;top:48px;right:-16px;width:32px;height:2px;background:var(--gray-200)}
+.process-step:last-child::after{display:none}
+.step-num{width:48px;height:48px;border-radius:50%;background:var(--accent);color:var(--white);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:1.1rem;margin:0 auto 16px}
+.step-title{font-size:1.05rem;font-weight:600;margin-bottom:8px}
+.step-desc{font-size:.85rem;color:var(--gray-600);line-height:1.6}
+
+/* ===== FEATURED PROJECTS ===== */
+.projects-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:20px}
+.project-card{position:relative;border-radius:8px;overflow:hidden;aspect-ratio:3/4;background:var(--gray-200)}
+.project-card img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.project-card:hover img{transform:scale(1.05)}
+.project-overlay{position:absolute;bottom:0;left:0;right:0;padding:20px 16px;background:linear-gradient(transparent,rgba(0,0,0,.7));color:var(--white)}
+.project-name{font-size:.9rem;font-weight:600}
+.project-year{font-size:.75rem;opacity:.8}
+
+/* ===== TEAM ===== */
+.team-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:40px;margin-bottom:64px}
+.team-card{display:flex;gap:24px;align-items:flex-start}
+.team-avatar{width:120px;height:120px;border-radius:50%;object-fit:cover;flex-shrink:0;border:3px solid var(--gray-200)}
+.team-info h3{font-size:1.15rem;font-weight:600;margin-bottom:4px}
+.team-role{font-size:.85rem;color:var(--accent);font-weight:500;margin-bottom:8px}
+.team-bio{font-size:.875rem;color:var(--gray-600);line-height:1.7}
+.advisors-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.advisor-card{text-align:center;padding:24px 16px;background:var(--gray-100);border-radius:8px}
+.advisor-avatar{width:64px;height:64px;border-radius:50%;background:var(--gray-200);margin:0 auto 12px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;color:var(--gray-400)}
+.advisor-name{font-size:.9rem;font-weight:600;margin-bottom:4px}
+.advisor-title{font-size:.75rem;color:var(--gray-600);line-height:1.5}
+
+/* ===== CONTACT ===== */
+.contact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-bottom:64px}
+.contact-card{padding:32px 24px;background:var(--white);border:1px solid var(--gray-200);border-radius:8px;text-align:center;transition:all .3s;cursor:pointer}
+.contact-card:hover{border-color:var(--accent);transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.06)}
+.contact-card-icon{font-size:2rem;margin-bottom:12px}
+.contact-card-title{font-size:1rem;font-weight:600;margin-bottom:8px}
+.contact-card-desc{font-size:.85rem;color:var(--gray-600);line-height:1.6}
+.contact-info-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;padding-top:48px;border-top:1px solid var(--gray-200)}
+.contact-info-item{text-align:center}
+.contact-info-icon{font-size:1.5rem;margin-bottom:8px}
+.contact-info-label{font-size:.8rem;color:var(--gray-400);margin-bottom:4px;text-transform:uppercase;letter-spacing:.05em}
+.contact-info-value{font-size:.95rem;font-weight:500}
+.contact-info-value a{color:var(--accent);transition:color .2s}
+.contact-info-value a:hover{color:var(--accent-dark)}
+
+/* ===== FOOTER ===== */
+.footer{background:var(--black);color:rgba(255,255,255,.7);padding:64px 0 32px}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px}
+.footer-brand h3{color:var(--white);font-size:1.25rem;margin-bottom:12px}
+.footer-brand p{font-size:.875rem;line-height:1.7}
+.footer-col h4{color:var(--white);font-size:.9rem;font-weight:600;margin-bottom:16px;text-transform:uppercase;letter-spacing:.05em}
+.footer-col ul li{margin-bottom:8px}
+.footer-col ul li a{font-size:.875rem;transition:color .2s}
+.footer-col ul li a:hover{color:var(--accent)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:24px;display:flex;justify-content:space-between;align-items:center;font-size:.8rem}
+
+/* ===== FLOATING CONTACT ===== */
+.fab-container{position:fixed;bottom:32px;right:32px;z-index:999}
+.fab-main{width:56px;height:56px;border-radius:50%;background:var(--accent);color:var(--white);border:none;cursor:pointer;font-size:1.5rem;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(184,134,11,.4);transition:all .3s;z-index:2}
+.fab-main:hover{background:var(--accent-dark);transform:scale(1.1)}
+.fab-main.open{transform:rotate(45deg)}
+.fab-menu{position:absolute;bottom:72px;right:0;display:flex;flex-direction:column;gap:12px;opacity:0;pointer-events:none;transform:translateY(16px);transition:all .3s}
+.fab-menu.show{opacity:1;pointer-events:auto;transform:translateY(0)}
+.fab-item{display:flex;align-items:center;gap:12px;cursor:pointer;transition:all .2s}
+.fab-item:hover{transform:translateX(-4px)}
+.fab-item-icon{width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.2rem;color:var(--white);flex-shrink:0;box-shadow:0 2px 8px rgba(0,0,0,.15)}
+.fab-item-email .fab-item-icon{background:#ea4335}
+.fab-item-whatsapp .fab-item-icon{background:#25d366}
+.fab-item-wechat .fab-item-icon{background:#07c160}
+.fab-item-calendly .fab-item-icon{background:#05c1ff}
+.fab-item-label{background:var(--white);padding:6px 12px;border-radius:6px;font-size:.8rem;font-weight:500;white-space:nowrap;box-shadow:0 2px 8px rgba(0,0,0,.1);color:var(--gray-800)}
+
+/* ===== WECHAT MODAL ===== */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:2000;display:none;align-items:center;justify-content:center}
+.modal-overlay.show{display:flex}
+.modal-content{background:var(--white);border-radius:12px;padding:40px;text-align:center;max-width:360px;width:90%}
+.modal-close{position:absolute;top:12px;right:16px;background:none;border:none;font-size:1.5rem;cursor:pointer;color:var(--gray-400)}
+.modal-qr{width:200px;height:200px;margin:16px auto;background:var(--gray-100);display:flex;align-items:center;justify-content:center;border-radius:8px;font-size:.85rem;color:var(--gray-400)}
+.modal-id{font-size:.9rem;color:var(--gray-600);margin-top:12px}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:1024px){
+.pillars-grid,.solutions-grid{grid-template-columns:repeat(2,1fr)}
+.industries-grid{grid-template-columns:repeat(3,1fr)}
+.process-steps{grid-template-columns:repeat(2,1fr)}
+.process-step::after{display:none}
+.projects-grid{grid-template-columns:repeat(3,1fr)}
+.footer-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:768px){
+.nav-links{display:none;position:absolute;top:var(--nav-h);left:0;right:0;background:var(--white);flex-direction:column;padding:24px;gap:16px;border-bottom:1px solid var(--gray-200);box-shadow:0 8px 24px rgba(0,0,0,.08)}
+.nav-links.open{display:flex}
+.hamburger{display:flex}
+.about-grid{grid-template-columns:1fr;gap:32px}
+.pillars-grid,.solutions-grid{grid-template-columns:1fr}
+.industries-grid{grid-template-columns:repeat(2,1fr)}
+.team-grid{grid-template-columns:1fr}
+.advisors-grid{grid-template-columns:repeat(2,1fr)}
+.contact-grid,.contact-info-grid{grid-template-columns:1fr}
+.projects-grid{grid-template-columns:repeat(2,1fr)}
+.footer-grid{grid-template-columns:1fr;gap:32px}
+.fab-container{bottom:20px;right:20px}
+.hero-headline-en{font-size:1.2rem}
+.hero-headline-zh{font-size:1.75rem}
+}
+</style>
 </head>
-<body>
+<body class="lang-zh">
 
 <!-- ===== NAVIGATION ===== -->
-<nav>
-    <div class="nav-container">
-        <a href="index.html" class="logo">NEXO</a>
-        <button class="mobile-toggle" onclick="toggleMenu()" aria-label="Toggle menu">
-            <span></span><span></span><span></span>
-        </button>
-        <ul class="nav-links" id="navLinks">
-            <li><a href="#about" class="zh">关于我们</a><a href="#about" class="es">Nosotros</a><a href="#about" class="en">About</a></li>
-            <li><a href="#services" class="zh">核心服务</a><a href="#services" class="es">Servicios</a><a href="#services" class="en">Services</a></li>
-            <li><a href="#team" class="zh">团队</a><a href="#team" class="es">Equipo</a><a href="#team" class="en">Team</a></li>
-            <li><a href="#contact" class="zh">联系我们</a><a href="#contact" class="es">Contacto</a><a href="#contact" class="en">Contact</a></li>
-            <li><a href="signature-programs.html" class="zh">旗舰项目</a><a href="signature-programs.html" class="es">Programas</a><a href="signature-programs.html" class="en">Programs</a></li>
-            <li><a href="why-nexo.html" class="zh">为什么选择 NEXO</a><a href="why-nexo.html" class="es">¿Por Qué NEXO?</a><a href="why-nexo.html" class="en">Why NEXO</a></li>
-            <li>
-                <div class="lang-switcher">
-                    <button class="lang-btn active" onclick="setLang('zh')" data-lang-btn="zh">中</button>
-                    <button class="lang-btn" onclick="setLang('es')" data-lang-btn="es">ES</button>
-                    <button class="lang-btn" onclick="setLang('en')" data-lang-btn="en">EN</button>
-                </div>
-            </li>
-        </ul>
-    </div>
+<nav class="nav">
+<div class="container">
+<a href="index.html" class="nav-logo"><img src="assets/images/logo.png" alt="NEXO Arts"></a>
+<div class="nav-links" id="navLinks">
+<a href="#about" data-zh="关于我们" data-es="Nosotros" data-en="About">关于我们</a>
+<a href="#solutions" data-zh="解决方案" data-es="Soluciones" data-en="Solutions">解决方案</a>
+<a href="#industries" data-zh="行业" data-es="Sectores" data-en="Industries">行业</a>
+<a href="#process" data-zh="合作流程" data-es="Proceso" data-en="Process">合作流程</a>
+<a href="signature-programs.html" data-zh="标志性项目" data-es="Programas Destacados" data-en="Projects">标志性项目</a>
+<a href="#team" data-zh="国际顾问网络" data-es="Equipo" data-en="Team">国际顾问网络</a>
+<a href="#contact" data-zh="联系我们" data-es="Contacto" data-en="Contact">联系我们</a>
+<div class="nav-lang">
+<button onclick="setLang('zh')" class="active" id="btn-zh">中</button>
+<button onclick="setLang('es')" id="btn-es">ES</button>
+<button onclick="setLang('en')" id="btn-en">EN</button>
+</div>
+</div>
+<button class="hamburger" id="hamburger" onclick="toggleMenu()">
+<span></span><span></span><span></span>
+</button>
+</div>
 </nav>
 
 <!-- ===== HERO ===== -->
-<section class="hero">
-    <video class="hero-video" autoplay muted loop playsinline poster="assets/images/banner.jpg">
-        <source src="assets/videos/banner.mp4" type="video/mp4">
-    </video>
-    <div class="hero-overlay"></div>
-    <div class="hero-content">
-        <h1 class="hero-title">
-            <span class="zh">连接中国与拉丁美洲<br>的国际文化艺术顾问</span>
-            <span class="es">Consultoría Internacional<br>de Arte y Cultura entre China y Latinoamérica</span>
-            <span class="en">International Art &amp;<br>Cultural Advisory between China and Latin America</span>
-        </h1>
-        <p class="hero-subtitle">
-            <span class="zh">艺术顾问 · 策展咨询 · 文化交流</span>
-            <span class="es">Asesoría Artística · Curaduría · Intercambio Cultural</span>
-            <span class="en">Art Advisory · Curatorial Consulting · Cultural Exchange</span>
-        </p>
-        <p class="hero-tagline">
-            <span class="zh">以专业洞察与跨文化经验，为全球艺术生态搭建对话与合作的桥梁</span>
-            <span class="es">Construimos puentes de diálogo y cooperación para el ecosistema artístico global, con visión profesional y experiencia intercultural.</span>
-            <span class="en">Building bridges of dialogue and collaboration for the global art ecosystem through professional insight and cross-cultural expertise.</span>
-        </p>
-        <a href="#about" class="hero-cta">
-            <span class="zh">了解更多</span>
-            <span class="es">Descubra más</span>
-            <span class="en">Discover More</span>
-        </a>
-    </div>
-    <div class="scroll-indicator"><span></span></div>
+<section class="hero" id="hero">
+<div class="hero-bg">
+<img src="assets/images/cultural-exchange-china-latam-1.jpg" alt="">
+</div>
+<div class="hero-overlay"></div>
+<div class="hero-content">
+<h1 class="hero-headline-en" data-zh="Connecting China and Latin America through Culture" data-es="Conectando China y Latinoamérica a través de la Cultura" data-en="Connecting China and Latin America through Culture">Connecting China and Latin America through Culture</h1>
+<h2 class="hero-headline-zh" data-zh="搭建中国与拉美之间的文化桥梁" data-es="Construyendo el Puente Cultural entre China y Latinoamérica" data-en="搭建中国与拉美之间的文化桥梁">搭建中国与拉美之间的文化桥梁</h2>
+<p class="hero-sub" data-zh="我们为中国政府机构、博物馆、基金会、收藏家及创意产业提供中国与拉丁美洲之间从战略规划到落地执行的全链路文化合作服务。" data-es="Brindamos servicios integrales de cooperación cultural entre China y América Latina — desde la estrategia hasta la ejecución — para gobiernos, museos, fundaciones, coleccionistas e industrias creativas." data-en="We provide end-to-end cultural cooperation services between China and Latin America — from strategy to execution — for government institutions, museums, foundations, collectors, and creative industries.">我们为中国政府机构、博物馆、基金会、收藏家及创意产业提供中国与拉美之间从战略规划到落地执行的全链路文化合作服务。</p>
+<a href="#about" class="hero-cta" data-zh="了解更多" data-es="Más Información" data-en="Learn More">了解更多</a>
+</div>
 </section>
 
 <!-- ===== ABOUT ===== -->
-<section class="about" id="about">
-    <div class="section-container">
-        <div class="about-grid">
-            <div class="about-text fade-in">
-                <p class="section-label">
-                    <span class="zh">关于我们</span>
-                    <span class="es">Sobre Nosotros</span>
-                    <span class="en">About Us</span>
-                </p>
-                <h2 class="section-title">
-                    <span class="zh">国际文化艺术顾问</span>
-                    <span class="es">Consultoría Internacional de Arte y Cultura</span>
-                    <span class="en">International Art &amp; Cultural Advisory</span>
-                </h2>
-                <div class="section-divider"></div>
-                <p class="section-text">
-                    <span class="zh">NEXO 是一家专注于中国与拉丁美洲之间文化艺术交流的国际顾问机构。我们为中国的艺术家、艺术机构、政府组织、企业和收藏家提供战略咨询、策展支持和项目落地服务。我们的团队由来自中拉两地的资深艺术从业者组成，拥有深厚的行业资源和跨文化沟通能力。我们相信，艺术的真正力量在于它能够跨越国界、连接不同文明。</span>
-                    <span class="es">NEXO es una consultora internacional especializada en el intercambio cultural y artístico entre China y América Latina. Brindamos asesoría estratégica, apoyo curatorial y ejecución de proyectos a artistas, instituciones artísticas, organizaciones gubernamentales, empresas y coleccionistas en China. Nuestro equipo está conformado por profesionales experimentados del sector artístico tanto de China como de Latinoamérica, con profundos recursos del sector y capacidad de comunicación intercultural. Creemos que el verdadero poder del arte reside en su capacidad de trascender fronteras y conectar civilizaciones.</span>
-                    <span class="en">NEXO is an international advisory firm specializing in cultural and artistic exchange between China and Latin America. We provide strategic consulting, curatorial support, and project execution services for Chinese artists, art institutions, government organizations, corporations, and collectors. Our team consists of seasoned art professionals from both China and Latin America, with deep industry resources and cross-cultural communication capabilities. We believe that the true power of art lies in its ability to transcend borders and connect different civilizations.</span>
-                </p>
-            </div>
-            <div class="about-stats fade-in">
-                <div class="stat-item">
-                    <div class="stat-number">2</div>
-                    <div class="stat-label">
-                        <span class="zh">核心市场：拉美 · 欧洲</span>
-                        <span class="es">Mercados Centrales: LATAM · Europa</span>
-                        <span class="en">Core Markets: LatAm · Europe</span>
-                    </div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">15+</div>
-                    <div class="stat-label">
-                        <span class="zh">年行业经验</span>
-                        <span class="es">Años de Experiencia</span>
-                        <span class="en">Years of Experience</span>
-                    </div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">50+</div>
-                    <div class="stat-label">
-                        <span class="zh">合作机构</span>
-                        <span class="es">Instituciones Aliadas</span>
-                        <span class="en">Partner Institutions</span>
-                    </div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">∞</div>
-                    <div class="stat-label">
-                        <span class="zh">文化桥梁</span>
-                        <span class="es">Puentes Culturales</span>
-                        <span class="en">Cultural Bridges</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+<section class="section" id="about">
+<div class="container">
+<h2 class="section-title" data-zh="关于 NEXO Arts" data-es="Sobre NEXO Arts" data-en="About NEXO Arts">关于 NEXO Arts</h2>
+<p class="section-subtitle" data-zh="我们不只是翻译语言，我们翻译信任。" data-es="No solo traducimos idiomas. Traducimos confianza." data-en="We don't just translate languages. We translate trust.">我们不只是翻译语言，我们翻译信任。</p>
+<div class="about-grid">
+<div class="about-text">
+<p data-zh="NEXO Arts 成立于中国与拉丁美洲文化交流日益频繁的时代背景之下。我们的创始人团队深耕中拉文化、艺术和商业领域多年，拥有覆盖两地的深厚人脉网络和丰富的项目执行经验。" data-es="NEXO Arts nace en un contexto de creciente intercambio cultural entre China y América Latina. Nuestro equipo fundador cuenta con años de experiencia en los ámbitos cultural, artístico y comercial, con una red profunda de contactos en ambas regiones." data-en="NEXO Arts was founded against the backdrop of growing cultural exchange between China and Latin America. Our founding team has years of deep experience in culture, arts, and business across both regions.">NEXO Arts 成立于中国与拉丁美洲文化交流日益频繁的时代背景之下。我们的创始人团队深耕中拉文化、艺术和商业领域多年，拥有覆盖两地的深厚人脉网络和丰富的项目执行经验。</p>
+<p data-zh="我们相信，真正的国际合作不在于短期的项目对接，而在于建立长期、稳定、互信的战略伙伴关系。我们以文化为桥梁，帮助中国机构走进拉美，也帮助拉美机构走向中国，创造持久的双向价值。" data-es="Creemos que la verdadera cooperación internacional no se trata de proyectos puntuales, sino de construir relaciones estratégicas a largo plazo, estables y basadas en la confianza." data-en="We believe true international cooperation is not about one-off projects, but building long-term, stable, trust-based strategic partnerships.">我们相信，真正的国际合作不在于短期的项目对接，而在于建立长期、稳定、互信的战略伙伴关系。我们以文化为桥梁，帮助中国机构走进拉美，也帮助拉美机构走向中国，创造持久的双向价值。</p>
+</div>
+<div class="about-stats">
+<div class="stat-item"><div class="stat-number">2</div><div class="stat-label" data-zh="核心市场" data-es="Mercados Centrales" data-en="Core Markets">核心市场</div></div>
+<div class="stat-item"><div class="stat-number">30+</div><div class="stat-label" data-zh="年行业经验" data-es="Años de Experiencia" data-en="Years Experience">年行业经验</div></div>
+<div class="stat-item"><div class="stat-number">100+</div><div class="stat-label" data-zh="合作伙伴" data-es="Socios" data-en="Partners">合作伙伴</div></div>
+<div class="stat-item"><div class="stat-number">∞</div><div class="stat-label" data-zh="可搭建的桥梁" data-es="Puentes Possibles" data-en="Bridges Possible">可搭建的桥梁</div></div>
+</div>
+</div>
+</div>
 </section>
 
 <!-- ===== WHY NEXO ===== -->
-<section class="why-nexo">
-    <div class="section-container">
-        <p class="section-label fade-in">
-            <span class="zh">为什么选择 NEXO</span>
-            <span class="es">¿Por Qué NEXO?</span>
-            <span class="en">Why NEXO</span>
-        </p>
-        <h2 class="section-title fade-in">
-            <span class="zh">独特的跨文化优势</span>
-            <span class="es">Ventaja Intercultural Única</span>
-            <span class="en">Unique Cross-Cultural Advantage</span>
-        </h2>
-        <div class="section-divider fade-in"></div>
-        <div class="why-grid">
-            <div class="why-card fade-in" onclick="openModal('why-1')">
-                <span class="why-icon">◆</span>
-                <h3>
-                    <span class="zh">双区域深耕</span>
-                    <span class="es">Profundidad Binacional</span>
-                    <span class="en">Dual-Region Expertise</span>
-                </h3>
-                <p>
-                    <span class="zh">团队核心成员来自中国与拉美两地，深谙双方的文化语境、艺术生态和商业逻辑。</span>
-                    <span class="es">Los miembros clave del equipo provienen de China y Latinoamérica, comprendiendo ambos contextos culturales, ecosistemas artísticos y lógicas comerciales.</span>
-                    <span class="en">Core team members from both China and Latin America, deeply understanding both cultural contexts, art ecosystems, and business logics.</span>
-                </p>
-            </div>
-            <div class="why-card fade-in" onclick="openModal('why-2')">
-                <span class="why-icon">◆</span>
-                <h3>
-                    <span class="zh">全链路服务</span>
-                    <span class="es">Servicio Integral</span>
-                    <span class="en">End-to-End Service</span>
-                </h3>
-                <p>
-                    <span class="zh">从战略规划到项目落地，从学术研究到公共传播，提供覆盖艺术项目全生命周期的专业服务。</span>
-                    <span class="es">Desde la planificación estratégica hasta la ejecución del proyecto, desde la investigación académica hasta la difusión pública, ofrecemos servicios profesionales que cubren todo el ciclo de vida del proyecto artístico.</span>
-                    <span class="en">From strategic planning to project execution, from academic research to public communication, we provide professional services covering the full lifecycle of art projects.</span>
-                </p>
-            </div>
-            <div class="why-card fade-in" onclick="openModal('why-3')">
-                <span class="why-icon">◆</span>
-                <h3>
-                    <span class="zh">资源网络</span>
-                    <span class="es">Red de Recursos</span>
-                    <span class="en">Resource Network</span>
-                </h3>
-                <p>
-                    <span class="zh">与全球顶级美术馆、政府文化机构、基金会和企业建立了广泛的合作关系，能够为项目快速匹配最优资源。</span>
-                    <span class="es">Hemos establecido amplias relaciones de colaboración con los mejores museos mundiales, instituciones culturales gubernamentales, fundaciones y empresas, pudiendo asignar rápidamente los recursos óptimos para cada proyecto.</span>
-                    <span class="en">We have established extensive partnerships with world-class museums, government cultural institutions, foundations, and corporations, enabling rapid resource matching for optimal project outcomes.</span>
-                </p>
-            </div>
-        </div>
-    </div>
+<section class="section section-gray" id="why-nexo">
+<div class="container">
+<div class="text-center">
+<h2 class="section-title" data-zh="为什么选择 NEXO" data-es="¿Por Qué NEXO?" data-en="Why NEXO">为什么选择 NEXO</h2>
+<p class="section-subtitle mx-auto" data-zh="三大核心优势，让跨国文化合作真正落地。" data-es="Tres ventajas centrales que hacen posible la cooperación cultural transfronteriza." data-en="Three core advantages that make cross-border cultural cooperation truly happen.">三大核心优势，让跨国文化合作真正落地。</p>
+</div>
+<div class="pillars-grid">
+<div class="pillar-card">
+<div class="pillar-icon">🌏</div>
+<h3 class="pillar-title" data-zh="中国 × 拉美双核驱动" data-es="Motor Dual: China × Latinoamérica" data-en="China × Latin America Dual Engine">中国 × 拉美双核驱动</h3>
+<p class="pillar-desc" data-zh="我们同时扎根中国和拉美两大市场，拥有两地的资源网络、政策理解和文化洞察。这不是简单的翻译或中介，而是深度的本地化能力。" data-es="Estamos arraigados en ambos mercados — China y Latinoamérica — con redes de recursos, comprensión política e inteligencia cultural en ambas regiones." data-en="We are rooted in both China and Latin America, with resource networks, policy understanding, and cultural intelligence in both regions.">我们同时扎根中国和拉美两大市场，拥有两地的资源网络、政策理解和文化洞察。这不是简单的翻译或中介，而是深度的本地化能力。</p>
+<a href="why-nexo.html" class="pillar-link" data-zh="了解更多 →" data-es="Más información →" data-en="Learn more →">了解更多 →</a>
+</div>
+<div class="pillar-card">
+<div class="pillar-icon">🌐</div>
+<h3 class="pillar-title" data-zh="国际化专业网络" data-es="Red Profesional Internacional" data-en="International Professional Network">国际化专业网络</h3>
+<p class="pillar-desc" data-zh="我们与全球顶尖的文化机构、策展人、艺术家、政府官员和商业伙伴建立了紧密的合作关系，能够为您快速匹配最合适的资源和方案。" data-es="Mantenemos alianzas cercanas con instituciones culturales de primer nivel, curadores, artistas, funcionarios gubernamentales y socios comerciales a nivel global." data-en="We maintain close alliances with top-level cultural institutions, curators, artists, government officials, and commercial partners worldwide.">我们与全球顶尖的文化机构、策展人、艺术家、政府官员和商业伙伴建立了紧密的合作关系，能够为您快速匹配最合适的资源和方案。</p>
+<a href="#team" class="pillar-link" data-zh="认识我们的团队 →" data-es="Conozca a nuestro equipo →" data-en="Meet our team →">认识我们的团队 →</a>
+</div>
+<div class="pillar-card">
+<div class="pillar-icon">⚡</div>
+<h3 class="pillar-title" data-zh="从策略到执行的全链路能力" data-es="Capacidad Integral: Estrategia a Ejecución" data-en="End-to-End Capability: Strategy to Execution">从策略到执行的全链路能力</h3>
+<p class="pillar-desc" data-zh="从前期市场调研、策略规划，到中期的项目设计、资源匹配，再到后期的落地执行、效果评估，我们提供一站式的全流程服务。" data-es="Desde investigación de mercado y planificación estratégica inicial, hasta diseño de proyectos, emparejamiento de recursos y ejecución final con evaluación de resultados." data-en="From initial market research and strategic planning, to project design, resource matching, and final execution with results evaluation.">从前期市场调研、策略规划，到中期的项目设计、资源匹配，再到后期的落地执行、效果评估，我们提供一站式的全流程服务。</p>
+</div>
+</div>
+</div>
 </section>
 
-<!-- ===== SERVICES ===== -->
-<section class="services" id="services">
-    <div class="section-container">
-        <p class="section-label fade-in">
-            <span class="zh">核心服务</span>
-            <span class="es">Servicios Principales</span>
-            <span class="en">Core Services</span>
-        </p>
-        <h2 class="section-title fade-in">
-            <span class="zh">五大服务支柱</span>
-            <span class="es">Cinco Pilares de Servicio</span>
-            <span class="en">Five Service Pillars</span>
-        </h2>
-        <div class="section-divider fade-in"></div>
-        <div class="services-grid">
-            <!-- Pillar 1 -->
-            <div class="service-pillar fade-in" onclick="openModal('service-1')">
-                <div class="service-number">01</div>
-                <h3>
-                    <span class="zh">藏家路线</span>
-                    <span class="es">Ruta del Coleccionista</span>
-                    <span class="en">Collector Route</span>
-                </h3>
-                <p>
-                    <span class="zh">为艺术藏家打造专属文化体验：参观本地艺术家工作室、知名画廊及艺术博览会，感受拉美艺术的深度魅力。</span>
-                    <span class="es">Experiencias culturales exclusivas para coleccionistas de arte: visitas a talleres de artistas locales, galerías de renombre y ferias de arte para sumergirse en el profundo encanto del arte latinoamericano.</span>
-                    <span class="en">Bespoke cultural experiences for art collectors: visiting local artist studios, renowned galleries, and art fairs to immerse in the deep allure of Latin American art.</span>
-                </p>
-            </div>
-            <!-- Pillar 2 -->
-            <div class="service-pillar fade-in" onclick="openModal('service-2')">
-                <div class="service-number">02</div>
-                <h3>
-                    <span class="zh">艺术家驻留</span>
-                    <span class="es">Residencias Artísticas</span>
-                    <span class="en">Artist Residencies</span>
-                </h3>
-                <p>
-                    <span class="zh">组织并协调中拉两国艺术家驻留项目，与知名当代艺术博物馆和画廊建立合作，确保独家访问与闭门体验。</span>
-                    <span class="es">Organizamos y coordinamos programas de residencia artística entre China y Latinoamérica, manteniendo convenios de colaboración con museos de arte contemporáneo y galerías de renombre para garantizar accesos exclusivos y experiencias reservadas.</span>
-                    <span class="en">Organizing and coordinating artist residency programs between China and Latin America, maintaining collaboration agreements with renowned contemporary art museums and galleries to guarantee exclusive access and behind-the-scenes experiences.</span>
-                </p>
-            </div>
-            <!-- Pillar 3 -->
-            <div class="service-pillar fade-in" onclick="openModal('service-3')">
-                <div class="service-number">03</div>
-                <h3>
-                    <span class="zh">企业社会责任</span>
-                    <span class="es">Responsabilidad Social Corporativa</span>
-                    <span class="en">Corporate Social Responsibility</span>
-                </h3>
-                <p>
-                    <span class="zh">与中国及阿根廷企业合作，基于文化开展社会责任项目：在企業总部举办艺术节、讲座和展览。</span>
-                    <span class="es">Convenios con empresas chinas y argentinas en programas de responsabilidad social basados en la cultura: festivales, charlas y exposiciones en sus sedes corporativas.</span>
-                    <span class="en">Partnerships with Chinese and Argentine enterprises on culture-based CSR programs: festivals, lectures, and exhibitions held at corporate headquarters.</span>
-                </p>
-            </div>
-            <!-- Pillar 4 -->
-            <div class="service-pillar fade-in" onclick="openModal('service-4')">
-                <div class="service-number">04</div>
-                <h3>
-                    <span class="zh">葡萄酒与艺术</span>
-                    <span class="es">Vino por ARTE</span>
-                    <span class="en">Wine by ART</span>
-                </h3>
-                <p>
-                    <span class="zh">超高端定制行程：安第斯山脉脚下的顶级酒庄品酒、乌尔巴诺宫殿之夜、巴塔哥尼亚国际级路亚钓鱼与艺术交融的极致体验。</span>
-                    <span class="es">Itinerario ultra-premium con curaduría perfecta que fusiona varias pasiones unidas por el arte: catas de vinos en viñedos prestigiosos a los pies de los Andes, noches en palacios urbanos, y jornadas de pesca con mosca en míticos lodges patagónicos.</span>
-                    <span class="en">Ultra-luxury bespoke itineraries: prestigious vineyard wine tastings at the foot of the Andes, evenings in urban palaces, and international fly-fishing days in legendary Patagonian lodges — all seamlessly intertwined with art.</span>
-                </p>
-            </div>
-            <!-- Pillar 5 -->
-            <div class="service-pillar fade-in" onclick="openModal('service-5')">
-                <div class="service-number">05</div>
-                <h3>
-                    <span class="zh">音乐之旅</span>
-                    <span class="es">Ruta del Melómano</span>
-                    <span class="en">Musician's Route</span>
-                </h3>
-                <p>
-                    <span class="zh">音乐人专属行程：与音乐家、舞者、作曲家会面，参观传统音乐节（探戈），在历史剧院欣赏音乐会。</span>
-                    <span class="es">Encuentro con músicos, bailarines y compositores. Visita a festivales de música tradicional (Tango) y conciertos en teatros históricos, creando una experiencia inmersiva en la vida musical latinoamericana.</span>
-                    <span class="en">Exclusive programs for musicians: meetings with musicians, dancers, and composers; visits to traditional music festivals (Tango); and concerts in historic theaters — an immersive experience in Latin American musical life.</span>
-                </p>
-            </div>
-        </div>
-    </div>
+<!-- ===== SOLUTIONS ===== -->
+<section class="section" id="solutions">
+<div class="container">
+<div class="text-center">
+<h2 class="section-title" data-zh="我们的解决方案" data-es="Nuestras Soluciones" data-en="Our Solutions">我们的解决方案</h2>
+<p class="section-subtitle mx-auto" data-zh="五大核心服务能力，覆盖中拉文化合作的主要场景。" data-es="Cinco capacidades centrales que cubren los principales escenarios de cooperación cultural entre China y Latinoamérica." data-en="Five core capabilities covering the main scenarios of cultural cooperation between China and Latin America.">五大核心服务能力，覆盖中拉文化合作的主要场景。</p>
+</div>
+<div class="solutions-grid">
+<div class="solution-card" onclick="location.href='solution-1.html'">
+<div class="solution-num">01</div>
+<h3 class="solution-title" data-zh="国际文化伙伴关系搭建" data-es="Alianzas Culturales Internacionales" data-en="International Cultural Partnerships">国际文化伙伴关系搭建</h3>
+<p class="solution-desc" data-zh="为中拉文化机构牵线搭桥，建立长期的战略伙伴关系。" data-es="Facilitamos alianzas estratégicas a largo plazo entre instituciones culturales de China y Latinoamérica." data-en="We facilitate long-term strategic partnerships between cultural institutions in China and Latin America.">为中拉文化机构牵线搭桥，建立长期的战略伙伴关系。</p>
+<div class="solution-more" data-zh="了解详情 →" data-es="Más información →" data-en="Learn more →">了解详情 →</div>
+</div>
+<div class="solution-card" onclick="location.href='solution-2.html'">
+<div class="solution-num">02</div>
+<h3 class="solution-title" data-zh="国际展览与策展服务" data-es="Exposiciones y Servicios Curatoriales" data-en="Exhibitions & Curatorial Services">国际展览与策展服务</h3>
+<p class="solution-desc" data-zh="从概念策划到落地执行的完整国际展览解决方案。" data-es="Soluciones completas de exposiciones internacionales, desde la conceptualización hasta la ejecución." data-en="Complete international exhibition solutions, from conceptualization to execution.">从概念策划到落地执行的完整国际展览解决方案。</p>
+<div class="solution-more" data-zh="了解详情 →" data-es="Más información →" data-en="Learn more →">了解详情 →</div>
+</div>
+<div class="solution-card" onclick="location.href='solution-3.html'">
+<div class="solution-num">03</div>
+<h3 class="solution-title" data-zh="国际项目管理" data-es="Gestión Internacional de Proyectos" data-en="International Project Management">国际项目管理</h3>
+<p class="solution-desc" data-zh="跨文化、跨国界的大型项目全周期管理。" data-es="Gestión integral del ciclo de vida de proyectos grandes a través de culturas y fronteras." data-en="Comprehensive lifecycle management of large-scale projects across cultures and borders.">跨文化、跨国界的大型项目全周期管理。</p>
+<div class="solution-more" data-zh="了解详情 →" data-es="Más información →" data-en="Learn more →">了解详情 →</div>
+</div>
+<div class="solution-card" onclick="location.href='solution-4.html'">
+<div class="solution-num">04</div>
+<h3 class="solution-title" data-zh="品牌与文化战略咨询" data-es="Consultoría de Marca y Estrategia Cultural" data-en="Brand & Cultural Strategy Consulting">品牌与文化战略咨询</h3>
+<p class="solution-desc" data-zh="帮助中国品牌进入拉美，或帮助拉美品牌进入中国市场的文化战略咨询。" data-es="Consultoría estratégica cultural para marcas chinas que buscan entrar en Latinoamérica y viceversa." data-en="Cultural strategic consulting for Chinese brands entering Latin America and vice versa.">帮助中国品牌进入拉美，或帮助拉美品牌进入中国市场的文化战略咨询。</p>
+<div class="solution-more" data-zh="了解详情 →" data-es="Más información →" data-en="Learn more →">了解详情 →</div>
+</div>
+<div class="solution-card" onclick="location.href='solution-5.html'">
+<div class="solution-num">05</div>
+<h3 class="solution-title" data-zh="藏家与艺术品顾问服务" data-es="Servicios de Asesoría para Coleccionistas y Arte" data-en="Collectors & Art Advisory Services">藏家与艺术品顾问服务</h3>
+<p class="solution-desc" data-zh="为中拉两地藏家提供艺术品投资、收藏规划和跨境交易顾问服务。" data-es="Asesoría en inversión artística, planificación de colecciones y transacciones transfronterizas para coleccionistas en China y Latinoamérica." data-en="Art investment advisory, collection planning, and cross-border transaction consulting for collectors in China and Latin America.">为中拉两地藏家提供艺术品投资、收藏规划和跨境交易顾问服务。</p>
+<div class="solution-more" data-zh="了解详情 →" data-es="Más información →" data-en="Learn more →">了解详情 →</div>
+</div>
+</div>
+</div>
 </section>
 
 <!-- ===== INDUSTRIES ===== -->
-<section class="industries">
-    <div class="section-container">
-        <p class="section-label fade-in">
-            <span class="zh">服务行业</span>
-            <span class="es">Sectores Atendidos</span>
-            <span class="en">Industries Served</span>
-        </p>
-        <h2 class="section-title fade-in">
-            <span class="zh">我们服务的领域</span>
-            <span class="es">Áreas que Atendemos</span>
-            <span class="en">Areas We Serve</span>
-        </h2>
-        <div class="section-divider fade-in"></div>
-        <div class="industries-list fade-in">
-            <span class="industry-tag">
-                <span class="zh">美术馆 / 博物馆</span>
-                <span class="es">Museos / Galerías de Arte</span>
-                <span class="en">Museums / Art Galleries</span>
-            </span>
-            <span class="industry-tag">
-                <span class="zh">政府与文化机构</span>
-                <span class="es">Gobierno e Instituciones Culturales</span>
-                <span class="en">Government &amp; Cultural Institutions</span>
-            </span>
-            <span class="industry-tag">
-                <span class="zh">企业 / 品牌</span>
-                <span class="es">Empresas / Marcas</span>
-                <span class="en">Corporations &amp; Brands</span>
-            </span>
-            <span class="industry-tag">
-                <span class="zh">私人收藏家</span>
-                <span class="es">Coleccionistas Privados</span>
-                <span class="en">Private Collectors</span>
-            </span>
-            <span class="industry-tag">
-                <span class="zh">艺术基金会</span>
-                <span class="es">Fundaciones Artísticas</span>
-                <span class="en">Art Foundations</span>
-            </span>
-            <span class="industry-tag">
-                <span class="zh">教育机构</span>
-                <span class="es">Instituciones Educativas</span>
-                <span class="en">Educational Institutions</span>
-            </span>
-            <span class="industry-tag">
-                <span class="zh">地产与空间开发</span>
-                <span class="es">Desarrollo Inmobiliario y Espacial</span>
-                <span class="en">Real Estate &amp; Space Development</span>
-            </span>
-        </div>
-    </div>
+<section class="section section-gray" id="industries">
+<div class="container">
+<div class="text-center">
+<h2 class="section-title" data-zh="服务的行业" data-es="Sectores que Atendemos" data-en="Industries We Serve">服务的行业</h2>
+<p class="section-subtitle mx-auto" data-zh="我们服务于中拉文化生态中的各类机构与个人。" data-es="Atendemos a diversas instituciones y personas en el ecosistema cultural sino-latinoamericano." data-en="We serve various institutions and individuals across the Sino-Latin American cultural ecosystem.">我们服务于中拉文化生态中的各类机构与个人。</p>
+</div>
+<div class="industries-grid">
+<div class="industry-item"><div class="industry-icon">🏛️</div><div data-zh="政府机构" data-es="Gobierno" data-en="Government">政府机构</div></div>
+<div class="industry-item"><div class="industry-icon">🖼️</div><div data-zh="博物馆" data-es="Museos" data-en="Museums">博物馆</div></div>
+<div class="industry-item"><div class="industry-icon">🏢</div><div data-zh="企业" data-es="Empresas" data-en="Corporations">企业</div></div>
+<div class="industry-item"><div class="industry-icon">💎</div><div data-zh="基金会" data-es="Fundaciones" data-en="Foundations">基金会</div></div>
+<div class="industry-item"><div class="industry-icon">🎓</div><div data-zh="高校" data-es="Universidades" data-en="Universities">高校</div></div>
+<div class="industry-item"><div class="industry-icon">👤</div><div data-zh="私人藏家" data-es="Coleccionistas Privados" data-en="Private Collectors">私人藏家</div></div>
+<div class="industry-item"><div class="industry-icon">🏗️</div><div data-zh="房地产" data-es="Inmobiliaria" data-en="Real Estate">房地产</div></div>
+</div>
+</div>
 </section>
 
-<!-- ===== HOW WE WORK ===== -->
-<section class="how-we-work">
-    <div class="section-container">
-        <p class="section-label fade-in">
-            <span class="zh">工作方式</span>
-            <span class="es">Cómo Trabajamos</span>
-            <span class="en">How We Work</span>
-        </p>
-        <h2 class="section-title fade-in">
-            <span class="zh">专业的工作流程</span>
-            <span class="es">Proceso Profesional de Trabajo</span>
-            <span class="en">Our Professional Process</span>
-        </h2>
-        <div class="section-divider fade-in"></div>
-        <div class="process-steps">
-            <div class="process-step fade-in">
-                <h3>
-                    <span class="zh">需求洞察</span>
-                    <span class="es">Diagnóstico</span>
-                    <span class="en">Discovery</span>
-                </h3>
-                <p>
-                    <span class="zh">深入了解客户目标、文化背景和资源状况，精准定位合作方向。</span>
-                    <span class="es">Comprendemos a fondo los objetivos, el contexto cultural y los recursos de cada cliente para definir con precisión la dirección de colaboración.</span>
-                    <span class="en">Deep understanding of client goals, cultural context, and resources to precisely define the direction of collaboration.</span>
-                </p>
-            </div>
-            <div class="process-step fade-in">
-                <h3>
-                    <span class="zh">方案设计</span>
-                    <span class="es">Diseño</span>
-                    <span class="en">Strategy Design</span>
-                </h3>
-                <p>
-                    <span class="zh">基于调研结果制定定制化方案，涵盖学术框架、执行路径和时间规划。</span>
-                    <span class="es">Elaboramos soluciones personalizadas basadas en investigación, abarcando marcos académicos, rutas de ejecución y planificación temporal.</span>
-                    <span class="en">Customized solutions based on research, covering academic frameworks, execution paths, and timeline planning.</span>
-                </p>
-            </div>
-            <div class="process-step fade-in">
-                <h3>
-                    <span class="zh">执行落地</span>
-                    <span class="es">Ejecución</span>
-                    <span class="en">Execution</span>
-                </h3>
-                <p>
-                    <span class="zh">整合全球资源，协调多方团队，确保项目高质量交付。</span>
-                    <span class="es">Integramos recursos globales y coordinamos equipos multidisciplinarios para garantizar la entrega de alta calidad del proyecto.</span>
-                    <span class="en">Integrating global resources and coordinating multidisciplinary teams to ensure high-quality project delivery.</span>
-                </p>
-            </div>
-            <div class="process-step fade-in">
-                <h3>
-                    <span class="zh">持续运营</span>
-                    <span class="es">Seguimiento</span>
-                    <span class="en">Sustained Impact</span>
-                </h3>
-                <p>
-                    <span class="zh">项目完成后持续跟踪评估，建立长期合作关系，实现可持续的文化影响力。</span>
-                    <span class="es">Seguimiento y evaluación continua tras la entrega del proyecto, estableciendo relaciones a largo plazo para lograr un impacto cultural sostenible.</span>
-                    <span class="en">Continuous monitoring and evaluation after project delivery, building long-term relationships for sustained cultural impact.</span>
-                </p>
-            </div>
-        </div>
-    </div>
+<!-- ===== PROCESS ===== -->
+<section class="section" id="process">
+<div class="container">
+<div class="text-center">
+<h2 class="section-title" data-zh="合作流程" data-es="Nuestro Proceso" data-en="Our Process">合作流程</h2>
+<p class="section-subtitle mx-auto" data-zh="四个阶段，确保每一次合作都精准高效。" data-es="Cuatro fases para asegurar que cada cooperación sea precisa y eficiente." data-en="Four phases to ensure every collaboration is precise and efficient.">四个阶段，确保每一次合作都精准高效。</p>
+</div>
+<div class="process-steps">
+<div class="process-step">
+<div class="step-num">1</div>
+<h3 class="step-title" data-zh="沟通与需求分析" data-es="Comunicación y Análisis" data-en="Communication & Analysis">沟通与需求分析</h3>
+<p class="step-desc" data-zh="深入了解您的目标、预算和时间框架。" data-es="Comprendemos a fondo sus objetivos, presupuesto y marco temporal." data-en="We deeply understand your goals, budget, and timeline.">深入了解您的目标、预算和时间框架。</p>
+</div>
+<div class="process-step">
+<div class="step-num">2</div>
+<h3 class="step-title" data-zh="策略制定" data-es="Definición Estratégica" data-en="Strategy Formulation">策略制定</h3>
+<p class="step-desc" data-zh="基于需求分析，制定定制化的合作方案。" data-es="Basado en el análisis, desarrollamos un plan de cooperación personalizado." data-en="Based on the analysis, we develop a customized cooperation plan.">基于需求分析，制定定制化的合作方案。</p>
+</div>
+<div class="process-step">
+<div class="step-num">3</div>
+<h3 class="step-title" data-zh="执行落地" data-es="Ejecución" data-en="Execution">执行落地</h3>
+<p class="step-desc" data-zh="调动双方资源，确保项目高质量落地。" data-es="Movilizamos recursos de ambas partes para garantizar una ejecución de alta calidad." data-en="We mobilize resources from both sides to ensure high-quality execution.">调动双方资源，确保项目高质量落地。</p>
+</div>
+<div class="process-step">
+<div class="step-num">4</div>
+<h3 class="step-title" data-zh="长期维护" data-es="Seguimiento a Largo Plazo" data-en="Long-term Maintenance">长期维护</h3>
+<p class="step-desc" data-zh="项目结束后持续跟进，建立长期合作关系。" data-es="Seguimiento continuo después del proyecto para establecer relaciones a largo plazo." data-en="Continuous follow-up after project completion to establish long-term relationships.">项目结束后持续跟进，建立长期合作关系。</p>
+</div>
+</div>
+</div>
 </section>
 
 <!-- ===== FEATURED PROJECTS ===== -->
-<section class="projects">
-    <div class="section-container">
-        <p class="section-label fade-in">
-            <span class="zh">代表项目</span>
-            <span class="es">Proyectos Destacados</span>
-            <span class="en">Featured Projects</span>
-        </p>
-        <h2 class="section-title fade-in">
-            <span class="zh">代表性项目类型</span>
-            <span class="es">Tipos de Proyectos Representativos</span>
-            <span class="en">Representative Project Types</span>
-        </h2>
-        <div class="section-divider fade-in"></div>
-        <p class="section-text fade-in" style="margin-bottom: 1rem;">
-            <span class="zh">以下为 NEXO 服务的主要项目类型。具体案例详情见旗舰项目页面。</span>
-            <span class="es">A continuación se presentan los principales tipos de proyectos atendidos por NEXO. Para detalles de casos específicos, consulte nuestra página de Programas.</span>
-            <span class="en">Below are the main project types served by NEXO. See our Programs page for detailed case studies.</span>
-        </p>
-        <div class="projects-grid fade-in">
-            <div class="project-card" onclick="openModal('project-1')">
-                <img class="project-img" src="assets/images/museum-argentina-bellas-artes-1.webp" alt="Museo Nacional de Bellas Artes, Argentina">
-                <div class="project-caption"><span class="zh">阿根廷国立美术博物馆</span><span class="es">MNBA Argentina</span><span class="en">National Museum of Fine Arts, Argentina</span></div>
-            </div>
-            <div class="project-card" onclick="openModal('project-2')">
-                <img class="project-img" src="assets/images/museum-mexico-anthropology-1.webp" alt="Museo Nacional de Antropología, México">
-                <div class="project-caption"><span class="zh">墨西哥国家人类学博物馆</span><span class="es">MNA México</span><span class="en">National Museum of Anthropology, Mexico</span></div>
-            </div>
-            <div class="project-card" onclick="openModal('project-3')">
-                <img class="project-img" src="assets/images/museum-brazil-masp-1.jpg" alt="MASP, São Paulo">
-                <div class="project-caption"><span class="zh">圣保罗艺术博物馆 MASP</span><span class="es">MASP São Paulo</span><span class="en">São Paulo Art Museum, MASP</span></div>
-            </div>
-            <div class="project-card" onclick="openModal('project-4')">
-                <img class="project-img" src="assets/images/museum-naba-interior.jpg" alt="NABA, Milano">
-                <div class="project-caption"><span class="zh">意大利那不勒斯美术学院</span><span class="es">NABA Italia</span><span class="en">NABA, Milan</span></div>
-            </div>
-            <div class="project-card" onclick="openModal('project-5')">
-                <img class="project-img" src="assets/images/museum-argentina-decorative-arts-1.jpg" alt="Museo de Arte Decorativo, Argentina">
-                <div class="project-caption"><span class="zh">阿根廷装饰艺术博物馆</span><span class="es">MAD Argentina</span><span class="en">Museum of Decorative Arts, Argentina</span></div>
-            </div>
-            <div class="project-card" onclick="openModal('project-6')">
-                <img class="project-img" src="assets/images/gallery-contemporary-installation.jpg" alt="Contemporary Gallery Installation">
-                <div class="project-caption"><span class="zh">当代艺术画廊装置</span><span class="es">Instalación Contemporánea</span><span class="en">Contemporary Gallery Installation</span></div>
-            </div>
-        </div>
-    </div>
+<section class="section section-gray" id="featured">
+<div class="container">
+<div class="text-center">
+<h2 class="section-title" data-zh="标志性项目精选" data-es="Programas Destacados" data-en="Signature Programs">标志性项目精选</h2>
+<p class="section-subtitle mx-auto" data-zh="每一个项目都是中拉文化交流的里程碑。" data-es="Cada programa es un hito en el intercambio cultural entre China y Latinoamérica." data-en="Every program is a milestone in cultural exchange between China and Latin America.">每一个项目都是中拉文化交流的里程碑。</p>
+</div>
+<div class="projects-grid">
+<div class="project-card"><img src="assets/images/gallery-empty-interior.jpg" alt=""><div class="project-overlay"><div class="project-name" data-zh="中拉文化年" data-es="Año Cultural China-Latam" data-en="China-LatAm Cultural Year">中拉文化年</div><div class="project-year">2024</div></div></div>
+<div class="project-card"><img src="assets/images/museum-mad-exterior.jpg" alt=""><div class="project-overlay"><div class="project-name" data-zh="当代艺术展" data-es="Exposición de Arte Contemporáneo" data-en="Contemporary Art Exhibition">当代艺术展</div><div class="project-year">2023</div></div></div>
+<div class="project-card"><img src="assets/images/museum-anthropology-mexico.jpg" alt=""><div class="project-overlay"><div class="project-name" data-zh="文化遗产论坛" data-es="Foro de Patrimonio Cultural" data-en="Cultural Heritage Forum">文化遗产论坛</div><div class="project-year">2023</div></div></div>
+<div class="project-card"><img src="assets/images/museum-argentina-bellas-artes-1.webp" alt=""><div class="project-overlay"><div class="project-name" data-zh="中拉青年艺术家交流计划" data-es="Programa de Intercambio Joven" data-en="Young Artists Exchange">中拉青年艺术家交流计划</div><div class="project-year">2022</div></div></div>
+<div class="project-card"><img src="assets/images/museum-masp-exterior.jpg" alt=""><div class="project-overlay"><div class="project-name" data-zh="中拉设计周" data-es="Semana del Diseño China-Latam" data-en="China-LatAm Design Week">中拉设计周</div><div class="project-year">2022</div></div></div>
+</div>
+<div class="text-center" style="margin-top:48px">
+<a href="signature-programs.html" class="hero-cta" style="padding:14px 40px;font-size:.95rem" data-zh="查看全部项目 →" data-es="Ver Todos los Programas →" data-en="View All Programs →">查看全部项目 →</a>
+</div>
+</div>
 </section>
 
 <!-- ===== TEAM ===== -->
-<section class="team" id="team">
-    <div class="section-container">
-        <p class="section-label fade-in">
-            <span class="zh">核心团队</span>
-            <span class="es">Equipo Central</span>
-            <span class="en">Core Team</span>
-        </p>
-        <h2 class="section-title fade-in">
-            <span class="zh">我们的团队</span>
-            <span class="es">Nuestro Equipo</span>
-            <span class="en">Our Team</span>
-        </h2>
-        <div class="section-divider fade-in"></div>
-        <div class="team-grid fade-in">
-            <!-- Member 1: Isabel -->
-            <div class="team-member" onclick="openModal('team-isabel')">
-                <div class="team-photo">
-                    <img src="assets/images/isabel.jpg" alt="Isabel">
-                </div>
-                <div class="team-info">
-                    <h3>
-                        <span class="zh">创始人 &amp; 艺术总监</span>
-                        <span class="es">Fundadora &amp; Directora Artística</span>
-                        <span class="en">Founder &amp; Artistic Director</span>
-                    </h3>
-                    <p class="team-brief">
-                        <span class="zh">点击查看详情</span>
-                        <span class="es">Click para ver detalle</span>
-                        <span class="en">Click for details</span>
-                    </p>
-                </div>
-            </div>
-            <!-- Member 2: Claribel -->
-            <div class="team-member" onclick="openModal('team-claribel')">
-                <div class="team-photo">
-                    <img src="assets/images/claribel.jpg" alt="Claribel">
-                </div>
-                <div class="team-info">
-                    <h3>
-                        <span class="zh">联合创始人</span>
-                        <span class="es">Co-Fundadora</span>
-                        <span class="en">Co-Founder</span>
-                    </h3>
-                    <p class="team-brief">
-                        <span class="zh">点击查看详情</span>
-                        <span class="es">Click para ver detalle</span>
-                        <span class="en">Click for details</span>
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
+<section class="section" id="team">
+<div class="container">
+<div class="text-center">
+<h2 class="section-title" data-zh="国际顾问网络" data-es="Red de Asesores Internacionales" data-en="International Advisory Network">国际顾问网络</h2>
+<p class="section-subtitle mx-auto" data-zh="来自世界各地的文化与商业专家，共同推动中拉合作。" data-es="Expertos en cultura y negocios de todo el mundo, impulsando juntos la cooperación sino-latinoamericana." data-en="Culture and business experts from around the world, jointly driving Sino-Latin American cooperation.">来自世界各地的文化与商业专家，共同推动中拉合作。</p>
+</div>
+<div class="team-grid">
+<div class="team-card">
+<img src="assets/images/isabel.jpg" alt="Isabel" class="team-avatar">
+<div class="team-info">
+<h3>Isabel</h3>
+<div class="team-role" data-zh="联合创始人 & 首席执行官" data-es="Co-Fundadora y CEO" data-en="Co-Founder & CEO">联合创始人 & 首席执行官</div>
+<p class="team-bio" data-zh="深耕中拉文化艺术领域十余年，拥有丰富的国际项目经验和广泛的行业人脉。" data-es="Con más de una década de experiencia en el ámbito cultural y artístico sino-latinoamericano, con amplia experiencia en proyectos internacionales y una vasta red de contactos." data-en="With over a decade of experience in the Sino-Latin American cultural and artistic field, possessing rich international project experience and an extensive industry network.">深耕中拉文化艺术领域十余年，拥有丰富的国际项目经验和广泛的行业人脉。</p>
+</div>
+</div>
+<div class="team-card">
+<img src="assets/images/claribel.jpg" alt="Claribel" class="team-avatar">
+<div class="team-info">
+<h3>Claribel</h3>
+<div class="team-role" data-zh="联合创始人 & 首席运营官" data-es="Co-Fundadora y COO" data-en="Co-Founder & COO">联合创始人 & 首席运营官</div>
+<p class="team-bio" data-zh="擅长国际项目管理和跨文化沟通，确保每一项合作都能高效落地。" data-es="Especialista en gestión de proyectos internacionales y comunicación intercultural, asegurando que cada cooperación se ejecute de manera eficiente." data-en="Specialist in international project management and cross-cultural communication, ensuring every collaboration is executed efficiently.">擅长国际项目管理和跨文化沟通，确保每一项合作都能高效落地。</p>
+</div>
+</div>
+</div>
+<div class="text-center" style="margin-bottom:32px">
+<h3 style="font-size:1.1rem;font-weight:600;margin-bottom:24px" data-zh="我们的国际顾问团队" data-es="Nuestro Equipo de Asesores Internacionales" data-en="Our International Advisory Team">我们的国际顾问团队</h3>
+</div>
+<div class="advisors-grid">
+<div class="advisor-card"><div class="advisor-avatar">👤</div><div class="advisor-name">Advisor 1</div><div class="advisor-title" data-zh="文化顾问" data-es="Asesor Cultural" data-en="Cultural Advisor">文化顾问</div></div>
+<div class="advisor-card"><div class="advisor-avatar">👤</div><div class="advisor-name">Advisor 2</div><div class="advisor-title" data-zh="艺术顾问" data-es="Asesor de Arte" data-en="Art Advisor">艺术顾问</div></div>
+<div class="advisor-card"><div class="advisor-avatar">👤</div><div class="advisor-name">Advisor 3</div><div class="advisor-title" data-zh="商业顾问" data-es="Asesor Comercial" data-en="Business Advisor">商业顾问</div></div>
+<div class="advisor-card"><div class="advisor-avatar">👤</div><div class="advisor-name">Advisor 4</div><div class="advisor-title" data-zh="政策顾问" data-es="Asesor Político" data-en="Policy Advisor">政策顾问</div></div>
+<div class="advisor-card"><div class="advisor-avatar">👤</div><div class="advisor-name">Advisor 5</div><div class="advisor-title" data-zh="教育顾问" data-es="Asesor Educativo" data-en="Education Advisor">教育顾问</div></div>
+<div class="advisor-card"><div class="advisor-avatar">👤</div><div class="advisor-name">Advisor 6</div><div class="advisor-title" data-zh="媒体顾问" data-es="Asesor de Medios" data-en="Media Advisor">媒体顾问</div></div>
+<div class="advisor-card"><div class="advisor-avatar">👤</div><div class="advisor-name">Advisor 7</div><div class="advisor-title" data-zh="金融顾问" data-es="Asesor Financiero" data-en="Finance Advisor">金融顾问</div></div>
+<div class="advisor-card"><div class="advisor-avatar">👤</div><div class="advisor-name">Advisor 8</div><div class="advisor-title" data-zh="地产顾问" data-es="Asesor Inmobiliario" data-en="Real Estate Advisor">地产顾问</div></div>
+<div class="advisor-card"><div class="advisor-avatar">👤</div><div class="advisor-name">Advisor 9</div><div class="advisor-title" data-zh="科技顾问" data-es="Asesor Tecnológico" data-en="Technology Advisor">科技顾问</div></div>
+<div class="advisor-card"><div class="advisor-avatar">👤</div><div class="advisor-name">Advisor 10</div><div class="advisor-title" data-zh="法律顾问" data-es="Asesor Legal" data-en="Legal Advisor">法律顾问</div></div>
+<div class="advisor-card"><div class="advisor-avatar">👤</div><div class="advisor-name">Advisor 11</div><div class="advisor-title" data-zh="品牌顾问" data-es="Asesor de Marca" data-en="Brand Advisor">品牌顾问</div></div>
+<div class="advisor-card"><div class="advisor-avatar">👤</div><div class="advisor-name">Advisor 12</div><div class="advisor-title" data-zh="传播顾问" data-es="Asesor de Comunicación" data-en="Communications Advisor">传播顾问</div></div>
+</div>
+</div>
 </section>
 
-<!-- ===== PARTNERS ===== -->
-<section class="partners">
-    <div class="section-container">
-        <p class="section-label fade-in">
-            <span class="zh">合作伙伴</span>
-            <span class="es">Aliados</span>
-            <span class="en">Partners</span>
-        </p>
-        <h2 class="section-title fade-in">
-            <span class="zh">合作机构类型</span>
-            <span class="es">Tipos de Instituciones Aliadas</span>
-            <span class="en">Partner Institution Types</span>
-        </h2>
-        <div class="section-divider fade-in"></div>
-        <div class="partner-categories fade-in">
-            <span class="partner-cat" onclick="openModal('partner-museum')">
-                <span class="zh">美术馆 / 博物馆</span>
-                <span class="es">Museos de Arte / Museos</span>
-                <span class="en">Art Museums / Museums</span>
-            </span>
-            <span class="partner-cat" onclick="openModal('partner-gov')">
-                <span class="zh">政府文化部门</span>
-                <span class="es">Departamentos Culturales Gubernamentales</span>
-                <span class="en">Government Cultural Departments</span>
-            </span>
-            <span class="partner-cat" onclick="openModal('partner-corp')">
-                <span class="zh">企业</span>
-                <span class="es">Empresas</span>
-                <span class="en">Corporations</span>
-            </span>
-            <span class="partner-cat" onclick="openModal('partner-foundation')">
-                <span class="zh">艺术基金会</span>
-                <span class="es">Fundaciones Artísticas</span>
-                <span class="en">Art Foundations</span>
-            </span>
-            <span class="partner-cat" onclick="openModal('partner-edu')">
-                <span class="zh">教育机构</span>
-                <span class="es">Instituciones Educativas</span>
-                <span class="en">Educational Institutions</span>
-            </span>
-            <span class="partner-cat" onclick="openModal('partner-intl')">
-                <span class="zh">国际组织</span>
-                <span class="es">Organizaciones Internacionales</span>
-                <span class="en">International Organizations</span>
-            </span>
-        </div>
-    </div>
-</section>
-
-<!-- ===== CONTACT / CTA ===== -->
-<section class="contact" id="contact">
-    <div class="section-container">
-        <p class="section-label fade-in">
-            <span class="zh">联系我们</span>
-            <span class="es">Contáctenos</span>
-            <span class="en">Contact Us</span>
-        </p>
-        <h2 class="section-title fade-in">
-            <span class="zh">开启对话</span>
-            <span class="es">Iniciemos una Conversación</span>
-            <span class="en">Let's Start a Conversation</span>
-        </h2>
-        <div class="section-divider fade-in"></div>
-        <p class="section-text fade-in" style="text-align:center; margin: 0 auto 2.5rem;">
-            <span class="zh">无论您是机构、企业还是个人藏家，我们都期待与您探讨合作的可能。</span>
-            <span class="es">Ya sea que usted sea una institución, empresa o coleccionista individual, esperamos conversar con usted sobre las posibilidades de colaboración.</span>
-            <span class="en">Whether you are an institution, corporation, or private collector, we look forward to exploring collaboration possibilities with you.</span>
-        </p>
-        <a href="mailto:info@nexoarts.com" class="contact-email fade-in">info@nexoarts.com</a>
-        <br><br>
-        <a href="mailto:info@nexoarts.com" class="contact-cta-btn fade-in">
-            <span class="zh">预约咨询</span>
-            <span class="es">Solicitar Consulta</span>
-            <span class="en">Request a Consultation</span>
-        </a>
-    </div>
+<!-- ===== CONTACT ===== -->
+<section class="section section-gray" id="contact">
+<div class="container">
+<div class="text-center">
+<h2 class="section-title" data-zh="联系我们" data-es="Contacto" data-en="Contact">联系我们</h2>
+<p class="section-subtitle mx-auto" data-zh="期待与您开启对话。" data-es="Esperamos iniciar una conversación con usted." data-en="We look forward to starting a conversation with you.">期待与您开启对话。</p>
+</div>
+<div class="contact-grid">
+<div class="contact-card" onclick="window.open('https://calendly.com','_blank')">
+<div class="contact-card-icon">📅</div>
+<h3 class="contact-card-title" data-zh="预约会面" data-es="Agendar una Reunión" data-en="Schedule a Meeting">预约会面</h3>
+<p class="contact-card-desc" data-zh="通过Calendly选择一个适合您的时间，与我们进行线上或线下会议。" data-es="Seleccione un horario que le convenga a través de Calendly para una reunión online o presencial con nosotros." data-en="Select a convenient time through Calendly for an online or in-person meeting with us.">通过Calendly选择一个适合您的时间，与我们进行线上或线下会议。</p>
+</div>
+<div class="contact-card" onclick="window.location.href='mailto:info@nexoarts.com'">
+<div class="contact-card-icon">✉️</div>
+<h3 class="contact-card-title" data-zh="告诉我们您的需求" data-es="Cuéntenos sus Necesidades" data-en="Tell Us Your Needs">告诉我们您的需求</h3>
+<p class="contact-card-desc" data-zh="发送邮件描述您的项目和需求，我们将在24小时内回复。" data-es="Envíe un correo describiendo su proyecto y necesidades. Responderemos en 24 horas." data-en="Send an email describing your project and needs. We'll respond within 24 hours.">发送邮件描述您的项目和需求，我们将在24小时内回复。</p>
+</div>
+<div class="contact-card" onclick="window.open('https://wa.me/5491125628888','_blank')">
+<div class="contact-card-icon">💬</div>
+<h3 class="contact-card-title" data-zh="立即探索合作可能" data-es="Explore Posibilidades Ahora" data-en="Explore Possibilities Now">立即探索合作可能</h3>
+<p class="contact-card-desc" data-zh="通过WhatsApp直接联系我们，获取即时响应。" data-es="Contáctenos directamente por WhatsApp para una respuesta inmediata." data-en="Contact us directly via WhatsApp for an immediate response.">通过WhatsApp直接联系我们，获取即时响应。</p>
+</div>
+</div>
+<div class="contact-info-grid">
+<div class="contact-info-item">
+<div class="contact-info-icon">📧</div>
+<div class="contact-info-label" data-zh="电子邮件" data-es="Correo Electrónico" data-en="Email">电子邮件</div>
+<div class="contact-info-value"><a href="mailto:info@nexoarts.com">info@nexoarts.com</a></div>
+</div>
+<div class="contact-info-item">
+<div class="contact-info-icon">📱</div>
+<div class="contact-info-label" data-zh="WhatsApp" data-es="WhatsApp" data-en="WhatsApp">WhatsApp</div>
+<div class="contact-info-value"><a href="https://wa.me/5491125628888" target="_blank">点击发送消息</a></div>
+</div>
+<div class="contact-info-item">
+<div class="contact-info-icon">💚</div>
+<div class="contact-info-label" data-zh="微信" data-es="WeChat" data-en="WeChat">微信</div>
+<div class="contact-info-value" style="cursor:pointer" onclick="openWechatModal()">添加微信好友</div>
+</div>
+</div>
+</div>
 </section>
 
 <!-- ===== FOOTER ===== -->
-<footer>
-    <div class="footer-container">
-        <p class="footer-copy">&copy; 2026 NEXO Art &amp; Cultural Advisory. All rights reserved.</p>
-        <ul class="footer-links">
-            <li><a href="index.html">
-                <span class="zh">首页</span>
-                <span class="es">Inicio</span>
-                <span class="en">Home</span>
-            </a></li>
-            <li><a href="signature-programs.html">
-                <span class="zh">旗舰项目</span>
-                <span class="es">Programas</span>
-                <span class="en">Programs</span>
-            </a></li>
-            <li><a href="why-nexo.html">
-                <span class="zh">为什么选择 NEXO</span>
-                <span class="es">¿Por Qué NEXO?</span>
-                <span class="en">Why NEXO</span>
-            </a></li>
-            <li><a href="#contact">
-                <span class="zh">联系我们</span>
-                <span class="es">Contacto</span>
-                <span class="en">Contact</span>
-            </a></li>
-        </ul>
-    </div>
+<footer class="footer">
+<div class="container">
+<div class="footer-grid">
+<div class="footer-brand">
+<h3>NEXO Arts</h3>
+<p data-zh="搭建中国与拉丁美洲之间的文化桥梁。我们是中国政府机构、博物馆、基金会、收藏家及创意产业在中拉文化交流领域的战略合作伙伴。" data-es="Construyendo puentes culturales entre China y América Latina. Somos su socio estratégico en el intercambio cultural." data-en="Building cultural bridges between China and Latin America. We are your strategic partner in cultural exchange.">搭建中国与拉丁美洲之间的文化桥梁。我们是中国政府机构、博物馆、基金会、收藏家及创意产业在中拉文化交流领域的战略合作伙伴。</p>
+</div>
+<div class="footer-col">
+<h4 data-zh="导航" data-es="Navegación" data-en="Navigation">导航</h4>
+<ul>
+<li><a href="#about" data-zh="关于我们" data-es="Nosotros" data-en="About">关于我们</a></li>
+<li><a href="#solutions" data-zh="解决方案" data-es="Soluciones" data-en="Solutions">解决方案</a></li>
+<li><a href="signature-programs.html" data-zh="标志性项目" data-es="Programas Destacados" data-en="Projects">标志性项目</a></li>
+<li><a href="#contact" data-zh="联系我们" data-es="Contacto" data-en="Contact">联系我们</a></li>
+</ul>
+</div>
+<div class="footer-col">
+<h4 data-zh="解决方案" data-es="Soluciones" data-en="Solutions">解决方案</h4>
+<ul>
+<li><a href="solution-1.html" data-zh="文化伙伴关系" data-es="Alianzas Culturales" data-en="Cultural Partnerships">文化伙伴关系</a></li>
+<li><a href="solution-2.html" data-zh="展览与策展" data-es="Exposiciones" data-en="Exhibitions">展览与策展</a></li>
+<li><a href="solution-3.html" data-zh="项目管理" data-es="Gestión de Proyectos" data-en="Project Management">项目管理</a></li>
+<li><a href="solution-4.html" data-zh="品牌战略" data-es="Estrategia de Marca" data-en="Brand Strategy">品牌战略</a></li>
+<li><a href="solution-5.html" data-zh="藏家顾问" data-es="Asesoría para Coleccionistas" data-en="Collector Advisory">藏家顾问</a></li>
+</ul>
+</div>
+<div class="footer-col">
+<h4 data-zh="联系方式" data-es="Contacto" data-en="Contact">联系方式</h4>
+<ul>
+<li><a href="mailto:info@nexoarts.com">info@nexoarts.com</a></li>
+<li><a href="https://wa.me/5491125628888" target="_blank">WhatsApp</a></li>
+<li><a href="#" onclick="openWechatModal();return false;">微信</a></li>
+</ul>
+</div>
+</div>
+<div class="footer-bottom">
+<div>© 2025 NEXO Arts. <span data-zh="保留所有权利。" data-es="Todos los derechos reservados." data-en="All rights reserved.">保留所有权利。</span></div>
+<div><a href="insights.html" data-zh="洞察与观点" data-es="Perspectivas" data-en="Insights">洞察与观点</a></div>
+</div>
+</div>
 </footer>
 
-<!-- ===== MODAL OVERLAY ===== -->
-<div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
-    <div class="modal-content" onclick="event.stopPropagation()">
-        <button class="modal-close" onclick="closeModalDirect()">&times;</button>
-        <div id="modalBody"></div>
-    </div>
+<!-- ===== FLOATING CONTACT BUTTON ===== -->
+<div class="fab-container">
+<div class="fab-menu" id="fabMenu">
+<div class="fab-item fab-item-email" onclick="window.location.href='mailto:info@nexoarts.com'">
+<span class="fab-item-label">Email</span>
+<div class="fab-item-icon">📧</div>
+</div>
+<div class="fab-item fab-item-whatsapp" onclick="window.open('https://wa.me/5491125628888','_blank')">
+<span class="fab-item-label">WhatsApp</span>
+<div class="fab-item-icon">💬</div>
+</div>
+<div class="fab-item fab-item-wechat" onclick="openWechatModal()">
+<span class="fab-item-label">微信</span>
+<div class="fab-item-icon">💚</div>
+</div>
+<div class="fab-item fab-item-calendly" onclick="window.open('https://calendly.com','_blank')">
+<span class="fab-item-label">Calendly</span>
+<div class="fab-item-icon">📅</div>
+</div>
+</div>
+<button class="fab-main" id="fabMain" onclick="toggleFab()">＋</button>
 </div>
 
-<!-- ===== JAVASCRIPT ===== -->
+<!-- ===== WECHAT MODAL ===== -->
+<div class="modal-overlay" id="wechatModal">
+<div class="modal-content" style="position:relative">
+<button class="modal-close" onclick="closeWechatModal()">×</button>
+<h3 style="margin-bottom:8px" data-zh="添加微信" data-es="Agregar WeChat" data-en="Add WeChat">添加微信</h3>
+<p style="font-size:.85rem;color:var(--gray-600);margin-bottom:16px" data-zh="扫描下方二维码或通过微信号搜索添加" data-es="Escanee el código QR o busque por ID de WeChat" data-en="Scan the QR code below or search by WeChat ID">扫描下方二维码或通过微信号搜索添加</p>
+<div class="modal-qr">
+<div>
+<div style="font-size:3rem">💚</div>
+<div style="font-size:.75rem;margin-top:8px" data-zh="微信二维码占位符" data-es="QR Code de WeChat" data-en="WeChat QR Code Placeholder">微信二维码占位符</div>
+</div>
+</div>
+<div class="modal-id" data-zh="微信号：chinalatam1" data-es="ID de WeChat: chinalatam1" data-en="WeChat ID: chinalatam1">微信号：chinalatam1</div>
+</div>
+</div>
+
 <script>
-// ===== MODAL DATA =====
-var modalData = {
-    // --- WHY NEXO ---
-    'why-1': {
-        zh: { title: '双区域深耕', subtitle: 'Profundidad Binacional', body: '<p>NEXO 的核心竞争力源于团队对中拉两大区域的深度理解。我们的创始团队由来自中国拉丁美洲两地的资深从业者组成，他们不仅在各自的文化土壤中成长，更在国际化的艺术环境中积累了深厚的经验。</p><p>这种双区域的视角使我们能够：</p><ul><li>准确理解双方文化语境中的细微差异</li><li>预判并化解跨文化合作中的潜在障碍</li><li>精准匹配中拉两地的优质资源</li><li>在商业逻辑和艺术追求之间找到最佳平衡点</li></ul><p>我们不是简单的翻译者或中介，而是真正能够在两种文化中自由切换、深刻理解双方需求的战略合作伙伴。</p>' },
-        es: { title: 'Profundidad Binacional', subtitle: 'Profundidad Binacional', body: '<p>La ventaja competitiva central de NEXO surge de nuestra comprensión profunda de las dos regiones. Nuestro equipo fundador está conformado por profesionales experimentados de China y Latinoamérica, quienes no solo crecieron en sus respectivos contextos culturales, sino que también acumularon una sólida experiencia en entornos artísticos internacionalizados.</p><p>Esta perspectiva binacional nos permite:</p><ul><li>Comprender con precisión las sutilezas culturales entre ambos contextos</li><li>Anticipar y resolver obstáculos potenciales en la cooperación intercultural</li><li>Conectar de manera precisa los recursos de alta calidad entre China y Latinoamérica</li><li>Encontrar el mejor equilibrio entre lógica comercial y aspiraciones artísticas</li></ul><p>No somos simples traductores o intermediarios, sino verdaderos socios estratégicos que pueden moverse libremente entre ambas culturas y comprender profundamente las necesidades de cada parte.</p>' },
-        en: { title: 'Dual-Region Expertise', subtitle: 'Profundidad Binacional', body: '<p>NEXO\'s core competitiveness stems from our deep understanding of both regions. Our founding team consists of seasoned practitioners from China and Latin America, who not only grew up in their respective cultural contexts but also accumulated substantial experience in internationalized art environments.</p><p>This dual-region perspective enables us to:</p><ul><li>Accurately comprehend the nuanced differences between both cultural contexts</li><li>Anticipate and resolve potential obstacles in cross-cultural cooperation</li><li>Precisely match high-quality resources between China and Latin America</li><li>Find the optimal balance between commercial logic and artistic aspirations</li></ul><p>We are not simple translators or intermediaries, but genuine strategic partners who can navigate freely between both cultures and deeply understand the needs of each side.</p>' }
-    },
-    'why-2': {
-        zh: { title: '全链路服务', subtitle: 'Servicio Integral', body: '<p>NEXO 提供覆盖艺术项目全生命周期的专业服务。从最初的概念构思到最终的成果呈现，我们为每一个环节注入专业精神和文化敏感度。</p><p>我们的服务链条包括：</p><ul><li>战略规划与可行性研究</li><li>学术框架搭建与研究支持</li><li>艺术家与机构对接</li><li>策展设计与视觉呈现</li><li>项目管理与现场执行</li><li>公共教育与传播推广</li><li>成果评估与长期追踪</li></ul><p>一站式的服务模式确保项目的连贯性和完整性，减少沟通成本，提高执行效率。</p>' },
-        es: { title: 'Servicio Integral', subtitle: 'Servicio Integral', body: '<p>NEXO ofrece servicios profesionales que cubren todo el ciclo de vida de los proyectos artísticos. Desde la concepción inicial hasta la presentación final, inyectamos profesionalismo y sensibilidad cultural en cada etapa.</p><p>Nuestra cadena de servicios incluye:</p><ul><li>Planificación estratégica e investigación de viabilidad</li><li>Marco académico y apoyo investigativo</li><li>Conexión con artistas e instituciones</li><li>Diseño curatorial y presentación visual</li><li>Gestión de proyectos y ejecución en terreno</li><li>Educación pública y divulgación</li><li>Evaluación de resultados y seguimiento a largo plazo</li></ul><p>El modelo de servicio integral asegura la coherencia e integridad del proyecto, reduciendo costos de comunicación y mejorando la eficiencia de ejecución.</p>' },
-        en: { title: 'End-to-End Service', subtitle: 'Servicio Integral', body: '<p>NEXO provides professional services covering the full lifecycle of art projects. From initial concept conception to final presentation, we infuse professionalism and cultural sensitivity into every stage.</p><p>Our service chain includes:</p><ul><li>Strategic planning and feasibility research</li><li>Academic framework development and research support</li><li>Artist and institutional matchmaking</li><li>Curatorial design and visual presentation</li><li>Project management and on-site execution</li><li>Public education and outreach</li><li>Results evaluation and long-term tracking</li></ul><p>The one-stop service model ensures project coherence and completeness, reducing communication costs and improving execution efficiency.</p>' }
-    },
-    'why-3': {
-        zh: { title: '资源网络', subtitle: 'Red de Recursos', body: '<p>NEXO 与全球范围内的顶级文化机构建立了广泛而深入的合作网络。这一网络是我们为客户提供优质服务的重要保障。</p><p>我们的合作网络涵盖：</p><ul><li>全球 50+ 美术馆与博物馆</li><li>多国政府文化部门</li><li>国际艺术基金会</li><li>知名艺术院校与设计学院</li><li>企业品牌与文化机构</li></ul><p>凭借这一强大的资源网络，我们能够：</p><ul><li>为艺术家快速匹配理想的驻留与展览机会</li><li>为展览项目寻找最合适的学术支持</li><li>为品牌合作方对接最具影响力的文化 IP</li><li>为收藏家提供稀缺的艺术品获取渠道</li></ul>' },
-        es: { title: 'Red de Recursos', subtitle: 'Red de Recursos', body: '<p>NEXO ha establecido una red amplia y profunda de colaboración con las principales instituciones culturales del mundo. Esta red es una garantía fundamental para ofrecer un servicio de calidad a nuestros clientes.</p><p>Nuestra red de colaboración abarca:</p><ul><li>+50 museos y galerías de arte a nivel global</li><li>Departamentos culturales de gobiernos de múltiples países</li><li>Fundaciones artísticas internacionales</li><li>Escuelas de arte y academias de diseño de renombre</li><li>Empresas, marcas e instituciones culturales</li></ul><p>Gracias a esta poderosa red de recursos, podemos:</p><ul><li>Conectar rápidamente a artistas con oportunidades ideales de residencia y exposición</li><li>Encontrar el apoyo académico más adecuado para proyectos expositivos</li><li>Emparejar marcas con los IP culturales más influyentes</li><li>Proporcionar a coleccionistas canales de acceso a obras de arte excepcionales</li></ul>' },
-        en: { title: 'Resource Network', subtitle: 'Red de Recursos', body: '<p>NEXO has established an extensive and deep collaborative network with top cultural institutions worldwide. This network is a fundamental guarantee for delivering quality service to our clients.</p><p>Our collaborative network covers:</p><ul><li>50+ museums and art galleries globally</li><li>Government cultural departments across multiple countries</li><li>International art foundations</li><li>Prestigious art schools and design academies</li><li>Corporations, brands, and cultural institutions</li></ul><p>Leveraging this powerful resource network, we can:</p><ul><li>Rapidly connect artists with ideal residency and exhibition opportunities</li><li>Find the most suitable academic support for exhibition projects</li><li>Match brands with the most influential cultural IPs</li><li>Provide collectors with access channels to exceptional artworks</li></ul>' }
-    },
-
-    // --- SERVICES (from Word doc) ---
-    'service-1': {
-        zh: { title: '藏家路线', subtitle: 'Ruta del Coleccionista — Collector Route', body: '<p>为艺术藏家量身定制的深度文化体验项目。我们为您打开一扇通往拉美艺术世界的大门，让您亲身感受这片大陆丰富的艺术创造力。</p><p>项目内容包括：</p><ul><li>参观本地艺术家工作室，了解创作过程</li><li>探访知名画廊，发现新兴艺术家</li><li>参加顶级艺术博览会，把握市场趋势</li><li>与本地藏家交流收藏心得</li><li>独家闭门参观，体验非公开的艺术空间</li></ul><p>无论是首次探索拉美艺术，还是资深藏家的深度之旅，我们都能为您打造独一无二的文化体验。</p>' },
-        es: { title: 'Ruta del Coleccionista', subtitle: 'Collector Route', body: '<p>Proyectos de experiencia cultural profunda diseñados a medida para coleccionistas de arte. Abrimos las puertas del mundo del arte latinoamericano para que viva de primera mano la rica creatividad artística del continente.</p><p>El programa incluye:</p><ul><li>Visitas a talleres de artistas locales para conocer el proceso creativo</li><li>Exploración de galerías de renombre para descubrir nuevos talentos</li><li>Participación en ferias de arte de primer nivel para captar tendencias del mercado</li><li>Intercambio de experiencias de colección con coleccionistas locales</li><li>Visitas exclusivas reservadas a espacios artísticos no públicos</li></ul><p>Tanto si es su primera exploración del arte latinoamericano como un viaje profundo para un coleccionista experimentado, creamos experiencias culturales únicas para usted.</p>' },
-        en: { title: 'Collector Route', subtitle: 'Ruta del Coleccionista', body: '<p>Deep cultural experience programs tailor-made for art collectors. We open the doors to the Latin American art world, allowing you to personally experience the rich creative energy of this continent.</p><p>The program includes:</p><ul><li>Visits to local artist studios to understand the creative process</li><li>Exploration of renowned galleries to discover emerging talents</li><li>Participation in premier art fairs to capture market trends</li><li>Exchange of collecting insights with local collectors</li><li>Exclusive behind-closed-doors access to non-public art spaces</li></ul><p>Whether it\'s your first exploration of Latin American art or an in-depth journey for a seasoned collector, we craft unique cultural experiences for you.</p>' }
-    },
-    'service-2': {
-        zh: { title: '艺术家驻留', subtitle: 'Residencias Artísticas — Artist Residencies', body: '<p>我们组织并协调中拉两国之间的艺术家驻留项目，为艺术家提供深度创作的绝佳机会。</p><p>我们的驻留项目特色：</p><ul><li>与知名当代艺术博物馆和画廊建立合作</li><li>确保独家访问权限和闭门体验</li><li>跨文化创作环境的深度融入</li><li>驻留期间的学术导师配对</li><li>驻留成果的展览与出版支持</li></ul><p>我们协助艺术家完成从机构对接、资助申请、签证办理到驻留期间全面支持的整个流程。</p>' },
-        es: { title: 'Residencias Artísticas', subtitle: 'Artist Residencies', body: '<p>Organizamos y coordinamos programas de residencia artística entre China y Latinoamérica, brindando a los artistas oportunidades excepcionales de creación profunda.</p><p>Características de nuestros programas de residencia:</p><ul><li>Convenios con museos y galerías de arte contemporáneo de renombre</li><li>Acceso exclusivo y experiencias reservadas garantizadas</li><li>Inmersión profunda en entornos de creación intercultural</li><li>Asignación de mentores académicos durante la residencia</li><li>Apoyo para exposición y publicación de resultados</li></ul><p>Asistimos a los artistas en todo el proceso: desde la conexión institucional y solicitud de fondos, hasta trámites de visa y apoyo integral durante la estancia.</p>' },
-        en: { title: 'Artist Residencies', subtitle: 'Residencias Artísticas', body: '<p>We organize and coordinate artist residency programs between China and Latin America, providing artists with exceptional opportunities for deep creative work.</p><p>Features of our residency programs:</p><ul><li>Partnerships with renowned contemporary art museums and galleries</li><li>Guaranteed exclusive access and behind-the-scenes experiences</li><li>Deep immersion in cross-cultural creative environments</li><li>Academic mentor pairing during residency</li><li>Support for exhibition and publication of residency outcomes</li></ul><p>We assist artists through the entire process: from institutional matching and funding applications, to visa processing and comprehensive support during their stay.</p>' }
-    },
-    'service-3': {
-        zh: { title: '企业社会责任', subtitle: 'Responsabilidad Social Corporativa — CSR', body: '<p>我们与中国及阿根廷企业建立深度合作，通过文化艺术项目助力企业的社会责任实践。</p><p>我们的 CSR 文化项目包括：</p><ul><li>在企业总部举办文化艺术节</li><li>定制化主题讲座与大师班</li><li>企业空间艺术配置与收藏建议</li><li>员工文化体验与团队建设活动</li><li>中拉文化交流主题的年度合作项目</li></ul><p>我们帮助企业将文化融入品牌基因，在履行社会责任的同时提升品牌形象和文化内涵。</p>' },
-        es: { title: 'Responsabilidad Social Corporativa', subtitle: 'CSR — Responsabilidad Social Corporativa', body: '<p>Establecemos cooperación profunda con empresas chinas y argentinas, utilizando proyectos de arte y cultura para impulsar las prácticas de responsabilidad social empresarial.</p><p>Nuestros programas culturales de RSE incluyen:</p><ul><li>Festivales de arte y cultura en sedes corporativas</li><li>Charlas temáticas y masterclass personalizadas</li><li>Ambientación artística y asesoría de colección para espacios corporativos</li><li>Experiencias culturales y actividades de team building para empleados</li><li>Proyectos anuales de cooperación en el tema de intercambio cultural sino-latinoamericano</li></ul><p>Ayudamos a las empresas a integrar la cultura en su identidad de marca, elevando la imagen corporativa y la dimensión cultural mientras cumplen su responsabilidad social.</p>' },
-        en: { title: 'Corporate Social Responsibility', subtitle: 'CSR — Corporate Social Responsibility', body: '<p>We establish deep partnerships with Chinese and Argentine enterprises, leveraging art and culture projects to advance corporate social responsibility practices.</p><p>Our CSR cultural programs include:</p><ul><li>Art and culture festivals at corporate headquarters</li><li>Customized themed lectures and masterclasses</li><li>Spatial art installation and collection advisory for corporate spaces</li><li>Employee cultural experiences and team-building activities</li><li>Annual cooperation projects on China-Latin America cultural exchange themes</li></ul><p>We help companies integrate culture into their brand identity, elevating corporate image and cultural depth while fulfilling social responsibility.</p>' }
-    },
-    'service-4': {
-        zh: { title: '葡萄酒与艺术', subtitle: 'Vino por ARTE — Wine by ART', body: '<p>这是 NEXO 最具标志性的超高端定制项目之一。我们将阿根廷世界顶级的葡萄酒文化与当代艺术完美融合，为您打造一场感官与心灵的双重盛宴。</p><p>行程亮点：</p><ul><li>安第斯山脉脚下最负盛名的葡萄酒庄园品鉴</li><li>乌尔巴诺宫殿内的私人艺术晚宴</li><li>阿根廷乡间庄园中的前卫私人收藏参观</li><li>巴塔哥尼亚国际级路亚钓鱼体验</li><li>在传奇巴塔哥尼亚旅馆中，自然壮美与区域绘画、纺织艺术的温暖对话</li></ul><p>这是一个为极致品味人士设计的旅程，将美酒、艺术、自然与奢华融为一体。</p>' },
-        es: { title: 'Vino por ARTE', subtitle: 'Wine by ART', body: '<p>Este es uno de los programas personalizados ultra-premium más emblemáticos de NEXO. Fusionamos perfectamente la cultura vitivinícola de primer nivel mundial de Argentina con el arte contemporáneo, creando para usted un doble festín sensorial y espiritual.</p><p>Destacados del itinerario:</p><ul><li>Catas en las bodegas más prestigiosas a los pies de los Andes</li><li>Cenas artísticas privadas en palacios urbanos</li><li>Visitas a colecciones privadas de vanguardia en chacras del campo argentino</li><li>Experiencia de pesca con mosca de nivel internacional en la Patagonia</li><li>Diálogo entre la majestuosidad de la naturaleza y la calidez del arte pictórico y textil regional en míticos lodges patagónicos</li></ul><p>Un viaje diseñado para personas de gustos extremadamente refinados, donde el vino, el arte, la naturaleza y el lujo se fusionan en una sola experiencia.</p>' },
-        en: { title: 'Wine by ART', subtitle: 'Vino por ARTE', body: '<p>One of NEXO\'s most iconic ultra-premium bespoke programs. We perfectly fuse Argentina\'s world-class winery culture with contemporary art, creating a dual feast for both senses and spirit.</p><p>Itinerary highlights:</p><ul><li>Tastings at the most prestigious vineyards at the foot of the Andes</li><li>Private art dinners in urban palaces</li><li>Visits to avant-garde private collections in countryside estates</li><li>International-level fly-fishing experiences in Patagonia</li><li>A dialogue between nature\'s majesty and the warmth of regional painting and textile arts in legendary Patagonian lodges</li></ul><p>A journey designed for those with the most refined tastes, where wine, art, nature, and luxury merge into a single experience.</p>' }
-    },
-    'service-5': {
-        zh: { title: '音乐之旅', subtitle: 'Ruta del Melómano — Musician\'s Route', body: '<p>为音乐爱好者和艺术家量身定制的深度文化体验。走进拉美音乐的灵魂深处，感受探戈的节奏、历史的回响与文化的交融。</p><p>音乐之旅内容包括：</p><ul><li>与当地音乐家、舞者和作曲家的面对面交流</li><li>参观传统音乐节，尤其是探戈文化节</li><li>在历史悠久的歌剧院欣赏顶级音乐会</li><li>参与音乐工作坊和即兴演奏</li><li>探访音乐相关的文化地标与纪念馆</li></ul><p>这不仅是一次旅行，更是一场深入拉美音乐文化核心的沉浸式体验。</p>' },
-        es: { title: 'Ruta del Melómano', subtitle: 'Musician\'s Route', body: '<p>Experiencia cultural profunda diseñada para amantes de la música y artistas. Sumérjase en lo más profundo del alma musical latinoamericana, sintiendo el ritmo del tango, el eco de la historia y la fusión cultural.</p><p>El programa de Ruta del Melómano incluye:</p><ul><li>Encuentros cara a cara con músicos, bailarines y compositores locales</li><li>Visitas a festivales de música tradicional, especialmente el festival de tango</li><li>Conciertos de primer nivel en teatros históricos</li><li>Participación en talleres musicales y sesiones de improvisación</li><li>Visita a hitos culturales y memoriales relacionados con la música</li></ul><p>No es solo un viaje, sino una experiencia inmersiva en el corazón de la cultura musical latinoamericana.</p>' },
-        en: { title: 'Musician\'s Route', subtitle: 'Ruta del Melómano', body: '<p>Deep cultural experience tailored for music lovers and artists. Dive into the soul of Latin American music, feeling the rhythm of tango, the echo of history, and the fusion of cultures.</p><p>The Musician\'s Route program includes:</p><ul><li>Face-to-face encounters with local musicians, dancers, and composers</li><li>Visits to traditional music festivals, especially the tango festival</li><li>Top-tier concerts in historic theaters</li><li>Participation in music workshops and jam sessions</li><li>Visits to music-related cultural landmarks and memorials</li></ul><p>This is not just a trip — it\'s an immersive experience at the heart of Latin American musical culture.</p>' }
-    },
-
-    // --- PROJECTS ---
-    'project-1': {
-        zh: { title: '国际联合展览', subtitle: 'International Joint Exhibition', body: '<p>促成中国与拉丁美洲美术馆、画廊之间的联合策展与巡展项目。我们负责从艺术家遴选、展览主题策划、学术框架搭建，到物流协调、当地落地执行的全流程管理。</p><ul><li>跨国联合策展与巡展规划</li><li>艺术家遴选与作品借展谈判</li><li>展览文本撰写与多语翻译</li><li>物流保险与海关清关协调</li><li>开幕活动与公共项目策划</li></ul>' },
-        es: { title: 'Exposición Conjunta Internacional', subtitle: 'International Joint Exhibition', body: '<p>Facilitamos proyectos de curaduría conjunta y giras de exposiciones entre museos y galerías de China y América Latina. Nos encargamos de todo el proceso: desde la selección de artistas y la conceptualización temática, hasta la coordinación logística y la ejecución local.</p><ul><li>Curaduría conjunta y planificación de giras</li><li>Selección de artistas y negociación de préstamos</li><li>Redacción de textos expositivos y traducción multilingüe</li><li>Coordinación logística, seguros y despacho aduanero</li><li>Planificación de eventos de apertura y programas públicos</li></ul>' },
-        en: { title: 'International Joint Exhibition', subtitle: 'Exposición Conjunta Internacional', body: '<p>Facilitating joint curatorial and touring exhibition projects between museums and galleries in China and Latin America. We manage the entire process — from artist selection and thematic conceptualization, to logistics coordination and local execution.</p><ul><li>Joint curation and tour planning</li><li>Artist selection and loan negotiation</li><li>Exhibition text writing and multilingual translation</li><li>Logistics, insurance, and customs clearance coordination</li><li>Opening events and public program planning</li></ul>' }
-    },
-    'project-2': {
-        zh: { title: '艺术家驻留计划', subtitle: 'Artist Residency Program', body: '<p>为中拉两国艺术家提供跨国驻留机会，促进深度创作交流与跨文化对话。我们协助艺术家对接驻留机构、申请资助、安排行程，并提供驻留期间的学术支持和成果展示平台。</p><ul><li>驻留项目匹配与机构对接</li><li>资助申请与预算管理</li><li>签证与行程安排</li><li>驻期间学术导师配对</li><li>驻留成果展览与出版</li></ul>' },
-        es: { title: 'Residencia Artística', subtitle: 'Artist Residency Program', body: '<p>Brindamos oportunidades de residencia transnacional a artistas de China y Latinoamérica, fomentando el diálogo intercultural y la creación profunda. Asistimos a los artistas en la conexión con instituciones de residencia, solicitud de fondos, organización logística y apoyo académico durante la estancia.</p><ul><li>Match de proyectos de residencia y conexión institucional</li><li>Solicitud de fondos y gestión presupuestaria</li><li>Trámites de visa y organización de viajes</li><li>Asignación de mentores académicos durante la residencia</li><li>Exposición y publicación de resultados de residencia</li></ul>' },
-        en: { title: 'Artist Residency Program', subtitle: 'Residencia Artística', body: '<p>Providing cross-border residency opportunities for artists from China and Latin America, fostering deep creative exchange and cross-cultural dialogue. We help artists connect with residency institutions, apply for funding, arrange travel, and provide academic support and exhibition platforms during their stay.</p><ul><li>Residency matching and institutional connection</li><li>Funding applications and budget management</li><li>Visa processing and travel arrangements</li><li>Academic mentor pairing during residency</li><li>Residency outcome exhibitions and publications</li></ul>' }
-    },
-    'project-3': {
-        zh: { title: '文化论坛与峰会', subtitle: 'Cultural Forum & Summit', body: '<p>策划和执行高水平的中拉文化艺术论坛、峰会与对话活动。从主题设定、嘉宾邀请、议程设计到现场执行，我们确保每一场活动都能促进实质性的文化交流与行业合作。</p><ul><li>论坛主题策划与议程设计</li><li>国内外嘉宾邀请与接待</li><li>演讲者与圆桌讨论协调</li><li>同声传译与多语种支持</li><li>媒体传播与内容沉淀</li></ul>' },
-        es: { title: 'Foro y Cumbre Cultural', subtitle: 'Cultural Forum & Summit', body: '<p>Conceptualizamos y ejecutamos foros, cumbres y diálogos de alto nivel sobre arte y cultura entre China y Latinoamérica. Desde la definición temática y la invitación de invitados, hasta la producción en terreno, aseguramos que cada evento genere un intercambio cultural sustantivo y cooperación sectorial.</p><ul><li>Conceptualización temática y diseño de agenda</li><li>Invitación y recepción de invitados nacionales e internacionales</li><li>Coordinación de ponentes y mesas redondas</li><li>Interpretación simultánea y soporte multilingüe</li><li>Divulgación mediática y documentación de contenidos</li></ul>' },
-        en: { title: 'Cultural Forum & Summit', subtitle: 'Foro y Cumbre Cultural', body: '<p>Planning and executing high-level cultural forums, summits, and dialogue events between China and Latin America. From theme definition and guest invitation to on-site production, we ensure each event generates substantive cultural exchange and industry collaboration.</p><ul><li>Forum theme planning and agenda design</li><li>Domestic and international guest invitation and reception</li><li>Speaker and roundtable coordination</li><li>Simultaneous interpretation and multilingual support</li><li>Media dissemination and content documentation</li></ul>' }
-    },
-    'project-4': {
-        zh: { title: '品牌艺术合作', subtitle: 'Brand-Art Partnership', body: '<p>为企业和品牌提供艺术赋能的商业合作方案。我们帮助企业通过艺术项目提升品牌形象、拓展文化内涵，同时为艺术项目引入商业资源，实现文化与商业的双赢。</p><ul><li>品牌艺术战略咨询</li><li>企业艺术收藏与空间陈设</li><li>联名艺术项目策划</li><li>品牌赞助与文化基金对接</li><li>艺术体验活动设计与执行</li></ul>' },
-        es: { title: 'Colaboración Artística de Marca', subtitle: 'Brand-Art Partnership', body: '<p>Ofrecemos soluciones de colaboración comercial donde el arte potencia marcas y empresas. Ayudamos a las empresas a elevar su imagen corporativa y expandir su dimensión cultural a través de proyectos artísticos, mientras conectamos proyectos culturales con recursos comerciales, logrando un beneficio mutuo.</p><ul><li>Consultoría de estrategia arte-marca</li><li>colecciones corporativas y ambientación espacial</li><li>Conceptualización de proyectos de marca y arte</li><li>Conexión con patrocinadores y fondos culturales</li><li>Diseño y ejecución de experiencias artísticas</li></ul>' },
-        en: { title: 'Brand-Art Partnership', subtitle: 'Colaboración Artística de Marca', body: '<p>Providing commercial partnership solutions where art empowers brands and corporations. We help businesses elevate their brand image and expand their cultural dimension through art projects, while connecting art projects with commercial resources for mutual benefit.</p><ul><li>Brand-art strategy consulting</li><li>Corporate art collections and spatial installation</li><li>Co-branded art project planning</li><li>Brand sponsorship and cultural fund matching</li><li>Art experience event design and execution</li></ul>' }
-    },
-    'project-5': {
-        zh: { title: '公共艺术项目', subtitle: 'Public Art Project', body: '<p>将当代艺术引入公共空间，打造城市文化地标和公共艺术装置。我们从概念创作、场地评估、工程实施到后期维护，提供完整的公共艺术解决方案。</p><ul><li>公共艺术概念创作与方案比选</li><li>场地评估与工程可行性分析</li><li>艺术家与工程师协同创作</li><li>施工管理与质量监督</li><li>公众参与与社区互动策划</li></ul>' },
-        es: { title: 'Proyecto de Arte Público', subtitle: 'Public Art Project', body: '<p>Llevamos el arte contemporáneo al espacio público, creando hitos culturales urbanos e instalaciones de arte público. Ofrecemos soluciones integrales que abarcan desde la creación conceptual, evaluación de sitios e implementación técnica, hasta mantenimiento posterior.</p><ul><li>Creación conceptual y selección de propuestas</li><li>Evaluación de sitio y análisis de viabilidad técnica</li><li>Co-creación colaborativa entre artistas e ingenieros</li><li>Gestión de construcción y control de calidad</li><li>Participación pública y programación comunitaria</li></ul>' },
-        en: { title: 'Public Art Project', subtitle: 'Proyecto de Arte Público', body: '<p>Bringing contemporary art into public spaces, creating urban cultural landmarks and public art installations. We provide comprehensive public art solutions from conceptual creation, site assessment, and engineering implementation to post-installation maintenance.</p><ul><li>Conceptual creation and proposal selection</li><li>Site assessment and engineering feasibility analysis</li><li>Collaborative creation between artists and engineers</li><li>Construction management and quality supervision</li><li>Public engagement and community programming</li></ul>' }
-    },
-    'project-6': {
-        zh: { title: '学术出版与研究', subtitle: 'Academic Publishing & Research', body: '<p>为艺术展览、文化项目和艺术家创作提供学术支撑。我们组织学者进行深入研究，撰写展览画册、学术专著和多语出版物，确保艺术项目的学术深度和知识传承。</p><ul><li>展览画册与图录编辑出版</li><li>学术专题研究与论文撰写</li><li>多语种翻译与审校</li><li>艺术家个展专著策划</li><li>数字出版与线上学术资源建设</li></ul>' },
-        es: { title: 'Publicación y Investigación Académica', subtitle: 'Academic Publishing & Research', body: '<p>Brindamos soporte académico a exposiciones de arte, proyectos culturales y creaciones artísticas. Organizamos investigaciones profundas, escribimos catálogos de exposición, monografías académicas y publicaciones multilingües, asegurando la profundidad intelectual y la transmisión de conocimiento de cada proyecto.</p><ul><li>Edición y publicación de catálogos y libros de arte</li><li>Investigación temática y redacción académica</li><li>Traducción y revisión multilingüe</li><li>Conceptualización de monografías de artistas</li><li>Publicación digital y construcción de recursos académicos en línea</li></ul>' },
-        en: { title: 'Academic Publishing & Research', subtitle: 'Publicación y Investigación Académica', body: '<p>Providing academic support for art exhibitions, cultural projects, and artistic creation. We organize in-depth scholarly research, write exhibition catalogs, academic monographs, and multilingual publications, ensuring the intellectual depth and knowledge transmission of every art project.</p><ul><li>Exhibition catalog and art book editing & publishing</li><li>Thematic academic research and paper writing</li><li>Multilingual translation and proofreading</li><li>Artist monograph planning</li><li>Digital publishing and online academic resource development</li></ul>' }
-    },
-
-    // --- TEAM ---
-    'team-isabel': {
-        zh: { title: '创始人 & 艺术总监', subtitle: 'Fundadora & Directora Artística', body: '<p>拥有超过15年的文化艺术行业经验，深耕中国与拉美艺术生态。曾在国内多家知名美术馆担任策展与学术职务，主导策划多个具有影响力的中拉文化交流项目。</p><p>她对中拉两地的艺术市场、学术脉络和文化政策有着深刻的理解，善于将学术深度与跨文化传播相结合，为合作机构提供兼具专业性和创新性的解决方案。</p><ul><li>15+年文化艺术行业经验</li><li>知名美术馆策展与学术背景</li><li>中拉文化交流项目策划专家</li><li>跨文化沟通与资源整合能力</li></ul>' },
-        es: { title: 'Fundadora & Directora Artística', subtitle: 'Fundadora & Directora Artística', body: '<p>Más de 15 años de experiencia en el sector cultural y artístico, con especialización profunda en los ecosistemas artísticos de China y Latinoamérica. Ha desempeñado cargos curatoriales y académicos en prestigiosos museos de China, liderando la conceptualización de múltiples proyectos de intercambio cultural entre China y Latinoamérica de gran impacto.</p><p>Tiene una comprensión profunda del mercado artístico, las corrientes académicas y las políticas culturales de ambas regiones, y destaca por combinar rigor académico con comunicación intercultural efectiva, ofreciendo a las instituciones colaboradoras soluciones que combinan profesionalismo e innovación.</p><ul><li>+15 años de experiencia en el sector cultural y artístico</li><li>Formación curatorial y académica en museos de primer nivel</li><li>Especialista en conceptualización de intercambios culturales</li><li>Capacidad de comunicación intercultural e integración de recursos</li></ul>' },
-        en: { title: 'Founder & Artistic Director', subtitle: 'Fundadora & Directora Artística', body: '<p>With over 15 years of experience in the cultural and arts sector, she specializes deeply in the art ecosystems of China and Latin America. She has held curatorial and academic positions at several renowned Chinese museums, leading the conceptualization of multiple impactful China-Latin America cultural exchange projects.</p><p>She possesses a profound understanding of the art markets, academic currents, and cultural policies in both regions, excelling at combining academic rigor with effective cross-cultural communication to provide partner institutions with solutions that blend professionalism and innovation.</p><ul><li>15+ years in the cultural and arts sector</li><li>Curatorial and academic background at premier museums</li><li>Expert in China-Latin America cultural exchange projects</li><li>Cross-cultural communication and resource integration</li></ul>' }
-    },
-    'team-claribel': {
-        zh: { title: '联合创始人', subtitle: 'Co-Fundadora', body: '<p>来自拉丁美洲，拥有丰富的国际文化项目管理和机构运营经验。曾在多个国际文化组织和艺术机构担任管理职务，擅长跨文化团队协调和大型文化活动的策划执行。</p><p>她的加入使 NEXO 具备了真正的双区域视角——不仅理解中国文化的深层逻辑，也熟悉拉美艺术生态的运作方式和合作模式。</p><ul><li>拉美文化项目管理专家</li><li>国际文化组织管理经验</li><li>跨文化团队协调与领导</li><li>大型文化活动策划执行</li></ul>' },
-        es: { title: 'Co-Fundadora', subtitle: 'Co-Fundadora', body: '<p>Originaria de Latinoamérica, con amplia experiencia en gestión de proyectos culturales internacionales y operación institucional. Ha ocupado cargos directivos en múltiples organizaciones culturales internacionales e instituciones artísticas, destacándose en la coordinación de equipos interculturales y la conceptualización y ejecución de grandes eventos culturales.</p><p>Su incorporación aporta a NEXO una perspectiva verdaderamente binacional — no solo comprende la lógica profunda de la cultura china, sino también las formas de operación y los modelos de cooperación del ecosistema artístico latinoamericano.</p><ul><li>Especialista en gestión de proyectos culturales latinoamericanos</li><li>Experiencia directiva en organizaciones culturales internacionales</li><li>Coordinación y liderazgo de equipos interculturales</li><li>Conceptualización y ejecución de grandes eventos culturales</li></ul>' },
-        en: { title: 'Co-Founder', subtitle: 'Co-Fundadora', body: '<p>From Latin America, with extensive experience in international cultural project management and institutional operations. She has held management positions at multiple international cultural organizations and art institutions, excelling in cross-cultural team coordination and the planning and execution of large-scale cultural events.</p><p>Her addition brings a truly dual-region perspective to NEXO — not only understanding the deep logic of Chinese culture, but also familiar with the operational methods and cooperation models of the Latin American art ecosystem.</p><ul><li>Latin American cultural project management specialist</li><li>Management experience at international cultural organizations</li><li>Cross-cultural team coordination and leadership</li><li>Large-scale cultural event planning and execution</li></ul>' }
-    },
-
-    // --- PARTNERS ---
-    'partner-museum': {
-        zh: { title: '美术馆 / 博物馆', subtitle: 'Museos de Arte / Museos', body: '<p>我们与全球范围内的美术馆和博物馆建立了广泛的联系，包括但不限于：中国国家级美术馆、省级美术馆、拉美地区重要公立和私立美术馆、国际知名艺术博物馆等。我们协助这些机构开展国际合作展览、学术交流和文化互访项目。</p>' },
-        es: { title: 'Museos de Arte / Museos', subtitle: 'Museos de Arte / Museos', body: '<p>Hemos establecido amplias conexiones con museos de arte y museos a nivel global, incluyendo — entre otros — museos nacionales de China, museos provinciales, importantes museos públicos y privados de América Latina y museos de arte internacionalmente reconocidos. Asistimos a estas instituciones en proyectos de exposiciones internacionales conjuntas, intercambios académicos y misiones culturales recíprocas.</p>' },
-        en: { title: 'Art Museums / Museums', subtitle: 'Museos de Arte / Museos', body: '<p>We have established extensive connections with art museums and museums worldwide, including — among others — national museums in China, provincial museums, major public and private museums in Latin America, and internationally recognized art museums. We assist these institutions in international joint exhibitions, academic exchanges, and reciprocal cultural missions.</p>' }
-    },
-    'partner-gov': {
-        zh: { title: '政府文化部门', subtitle: 'Departamentos Culturales Gubernamentales', body: '<p>我们与多国政府文化部门保持合作关系，包括文化和旅游部下属机构、地方文化局、文化参赞办公室等。我们协助政府层面推动中拉文化交流协议的落实，策划国家级文化年、政府间艺术交流等重大项目。</p>' },
-        es: { title: 'Departamentos Culturales Gubernamentales', subtitle: 'Departamentos Culturales Gubernamentales', body: '<p>Mantenemos relaciones de colaboración con departamentos culturales gubernamentales de múltiples países, incluyendo organismos afiliados al Ministerio de Cultura y Turismo, oficinas culturales locales y despachos de secretarías culturales. Asistimos al gobierno en la implementación de acuerdos de intercambio cultural entre China y Latinoamérica, conceptualizando proyectos de gran envergadura como años culturales nacionales y intercambios artísticos intergubernamentales.</p>' },
-        en: { title: 'Government Cultural Departments', subtitle: 'Departamentos Culturales Gubernamentales', body: '<p>We maintain cooperative relationships with government cultural departments across multiple countries, including agencies under the Ministry of Culture and Tourism, local cultural bureaus, and cultural attaché offices. We assist governments in implementing China-Latin America cultural exchange agreements, conceptualizing large-scale projects such as national cultural years and intergovernmental art exchanges.</p>' }
-    },
-    'partner-corp': {
-        zh: { title: '企业', subtitle: 'Empresas', body: '<p>我们的企业合作伙伴涵盖金融、地产、科技、消费等多个行业。我们帮助企业通过艺术项目提升品牌价值、丰富企业文化，并为企业的艺术收藏和公共空间艺术配置提供专业顾问服务。</p>' },
-        es: { title: 'Empresas', subtitle: 'Empresas', body: '<p>Nuestras alianzas corporativas abarcan múltiples sectores, incluyendo finanzas, bienes raíces, tecnología y consumo. Ayudamos a las empresas a elevar su valor de marca y enriquecer su cultura corporativa a través de proyectos artísticos, además de ofrecer servicios de asesoría profesional para colecciones corporativas y ambientación artística de espacios públicos.</p>' },
-        en: { title: 'Corporations', subtitle: 'Empresas', body: '<p>Our corporate partners span multiple sectors including finance, real estate, technology, and consumer goods. We help companies elevate their brand value and enrich their corporate culture through art projects, and provide professional advisory services for corporate art collections and public space art installations.</p>' }
-    },
-    'partner-foundation': {
-        zh: { title: '艺术基金会', subtitle: 'Fundaciones Artísticas', body: '<p>我们与国内外艺术基金会保持紧密合作，共同推动艺术资助、学术研究和文化公益项目。基金会是我们的关键合作伙伴，为艺术家驻留、展览策划和学术出版提供重要的资金支持。</p>' },
-        es: { title: 'Fundaciones Artísticas', subtitle: 'Fundaciones Artísticas', body: '<p>Mantenemos una estrecha colaboración con fundaciones artísticas nacionales e internacionales, promoviendo conjuntamente la financiación artística, la investigación académica y los proyectos de bienestar cultural. Las fundaciones son socios clave que proporcionan financiamiento esencial para residencias artísticas, conceptualización de exposiciones y publicaciones académicas.</p>' },
-        en: { title: 'Art Foundations', subtitle: 'Fundaciones Artísticas', body: '<p>We maintain close collaboration with domestic and international art foundations, jointly advancing art funding, academic research, and cultural public welfare projects. Foundations are key partners providing essential financial support for artist residencies, exhibition planning, and academic publishing.</p>' }
-    },
-    'partner-edu': {
-        zh: { title: '教育机构', subtitle: 'Instituciones Educativas', body: '<p>我们与知名艺术院校、大学文化研究系和教育机构合作，开展艺术教育项目、联合研究计划和师生交流项目，为中拉文化艺术的未来培养跨文化人才。</p>' },
-        es: { title: 'Instituciones Educativas', subtitle: 'Instituciones Educativas', body: '<p>Colaboramos con escuelas de arte de primer nivel, departamentos de estudios culturales universitarios e instituciones educativas para desarrollar programas de educación artística, planes de investigación conjunta y programas de intercambio docente-estudiantil, formando talento intercultural para el futuro del arte y la cultura entre China y Latinoamérica.</p>' },
-        en: { title: 'Educational Institutions', subtitle: 'Instituciones Educativas', body: '<p>We collaborate with premier art schools, university cultural studies departments, and educational institutions to develop art education programs, joint research plans, and faculty-student exchange programs, cultivating cross-cultural talent for the future of China-Latin America art and culture.</p>' }
-    },
-    'partner-intl': {
-        zh: { title: '国际组织', subtitle: 'Organizaciones Internacionales', body: '<p>我们与联合国教科文组织、拉美文化共同体等国际及区域组织保持合作，参与多边文化对话和项目，推动中拉文化合作在全球层面的制度化发展。</p>' },
-        es: { title: 'Organizaciones Internacionales', subtitle: 'Organizaciones Internacionales', body: '<p>Mantenemos colaboración con organizaciones internacionales y regionales como la UNESCO y la Comunidad de Estados Latinoamericanos y Caribeños, participando en diálogos culturales multilaterales y proyectos que impulsan el desarrollo institucionalizado de la cooperación cultural entre China y Latinoamérica a nivel global.</p>' },
-        en: { title: 'International Organizations', subtitle: 'Organizaciones Internacionales', body: '<p>We collaborate with international and regional organizations such as UNESCO and CELAC, participating in multilateral cultural dialogues and projects that advance the institutionalized development of China-Latin America cultural cooperation at the global level.</p>' }
-    }
-};
-
 // ===== LANGUAGE SWITCHING =====
 function setLang(lang) {
-    document.body.className = 'lang-' + lang;
-    document.documentElement.lang = lang === 'zh' ? 'zh-CN' : lang === 'es' ? 'es' : 'en';
-    document.querySelectorAll('.lang-btn').forEach(function(btn) {
-        btn.classList.remove('active');
-        if (btn.getAttribute('data-lang-btn') === lang) {
-            btn.classList.add('active');
-        }
-    });
-    try { localStorage.setItem('nexo-lang', lang); } catch(e) {}
-}
-
-// Load saved language preference
-(function() {
-    try {
-        var saved = localStorage.getItem('nexo-lang');
-        if (saved && ['zh','es','en'].indexOf(saved) !== -1) {
-            setLang(saved);
-        } else {
-            // Default to Chinese if no saved preference
-            setLang('zh');
-        }
-    } catch(e) {}
-})();
-
-// ===== MODAL FUNCTIONS =====
-function openModal(id) {
-    var data = modalData[id];
-    if (!data) return;
-    var lang = document.body.className.match(/lang-(zh|es|en)/);
-    var langCode = lang ? lang[1] : 'zh';
-    var item = data[langCode] || data['zh'];
-
-    var html = '<h2 class="modal-title">' + item.title + '</h2>';
-    if (item.subtitle) html += '<p class="modal-subtitle">' + item.subtitle + '</p>';
-    html += '<div class="modal-body">' + item.body + '</div>';
-
-    document.getElementById('modalBody').innerHTML = html;
-    var overlay = document.getElementById('modalOverlay');
-    overlay.classList.add('active');
-    document.body.style.overflow = 'hidden';
-}
-
-function closeModal(e) {
-    if (e.target === document.getElementById('modalOverlay')) {
-        closeModalDirect();
-    }
-}
-
-function closeModalDirect() {
-    document.getElementById('modalOverlay').classList.remove('active');
-    document.body.style.overflow = '';
-}
-
-// Close modal with Escape key
-document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') {
-        closeModalDirect();
-    }
+document.body.className = 'lang-' + lang;
+document.querySelectorAll('[data-' + lang + ']').forEach(function(el) {
+el.textContent = el.getAttribute('data-' + lang);
 });
+document.getElementById('btn-zh').classList.toggle('active', lang === 'zh');
+document.getElementById('btn-es').classList.toggle('active', lang === 'es');
+document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+}
 
 // ===== MOBILE MENU =====
 function toggleMenu() {
-    document.getElementById('navLinks').classList.toggle('open');
+document.getElementById('navLinks').classList.toggle('open');
 }
 
-// Close mobile menu on link click
+// Close menu on link click
+document.querySelectorAll('.nav-links a').forEach(function(link) {
+link.addEventListener('click', function() {
+document.getElementById('navLinks').classList.remove('open');
+});
+});
+
+// ===== FLOATING CONTACT =====
+function toggleFab() {
+var menu = document.getElementById('fabMenu');
+var btn = document.getElementById('fabMain');
+menu.classList.toggle('show');
+btn.classList.toggle('open');
+}
+
+// Close FAB when clicking outside
 document.addEventListener('click', function(e) {
-    var navLinks = document.getElementById('navLinks');
-    if (navLinks.classList.contains('open') && e.target.tagName === 'A' && e.target.getAttribute('href').charAt(0) === '#') {
-        navLinks.classList.remove('open');
-    }
+if (!e.target.closest('.fab-container')) {
+document.getElementById('fabMenu').classList.remove('show');
+document.getElementById('fabMain').classList.remove('open');
+}
 });
 
-// ===== NAVBAR SCROLL EFFECT =====
-window.addEventListener('scroll', function() {
-    var nav = document.querySelector('nav');
-    if (window.scrollY > 50) {
-        nav.classList.add('scrolled');
-    } else {
-        nav.classList.remove('scrolled');
-    }
+// ===== WECHAT MODAL =====
+function openWechatModal() {
+document.getElementById('wechatModal').classList.add('show');
+}
+function closeWechatModal() {
+document.getElementById('wechatModal').classList.remove('show');
+}
+document.getElementById('wechatModal').addEventListener('click', function(e) {
+if (e.target === this) closeWechatModal();
 });
 
-// ===== SCROLL ANIMATIONS =====
-(function() {
-    var observer = new IntersectionObserver(function(entries) {
-        entries.forEach(function(entry) {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-            }
-        });
-    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-
-    document.querySelectorAll('.fade-in').forEach(function(el) {
-        observer.observe(el);
-    });
-})();
-
-// ===== SMOOTH SCROLL FOR ANCHOR LINKS =====
+// ===== SMOOTH SCROLL OFFSET =====
 document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
-    anchor.addEventListener('click', function(e) {
-        var targetId = this.getAttribute('href');
-        if (targetId === '#') return;
-        var target = document.querySelector(targetId);
-        if (target) {
-            e.preventDefault();
-            var offset = 80; // nav height
-            var top = target.getBoundingClientRect().top + window.pageYOffset - offset;
-            window.scrollTo({ top: top, behavior: 'smooth' });
-        }
-    });
+anchor.addEventListener('click', function(e) {
+var target = document.querySelector(this.getAttribute('href'));
+if (target) {
+e.preventDefault();
+var offset = 80;
+var top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+window.scrollTo({top: top, behavior: 'smooth'});
+}
+});
 });
 </script>
-
 </body>
 </html>

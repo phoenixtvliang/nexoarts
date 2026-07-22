@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>标志性项目 | NEXO Arts</title>
-<meta name="description" content="NEXO Arts标志性项目精选，每一个项目都是中拉文化交流的里程碑。">
+<title>国际项目管理 | NEXO Arts</title>
+<meta name="description" content="NEXO Arts提供跨文化、跨国界的大型项目全周期管理服务。">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
@@ -21,23 +21,19 @@ a{text-decoration:none;color:inherit}
 .nav-links a:hover{color:var(--accent)}
 .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:8px}
 .hamburger span{width:24px;height:2px;background:var(--black)}
-.page-hero{padding-top:calc(var(--nav-h) + 80px);padding-bottom:60px;background:linear-gradient(135deg,#1a1a2e,#0f3460);color:var(--white);text-align:center}
+.page-hero{padding-top:calc(var(--nav-h) + 80px);padding-bottom:80px;background:linear-gradient(135deg,#1a1a2e,#0f3460);color:var(--white);text-align:center}
 .page-hero h1{font-size:clamp(2rem,4vw,3rem);font-weight:700;margin-bottom:16px}
 .page-hero p{font-size:1.1rem;opacity:.8;max-width:600px;margin:0 auto}
-.categories{padding:60px 0}
-.cat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:20px}
-.cat-card{padding:32px 20px;text-align:center;background:var(--white);border:1px solid var(--gray-200);border-radius:8px;cursor:pointer;transition:all .3s}
-.cat-card:hover{border-color:var(--accent);background:var(--accent);color:var(--white)}
-.cat-icon{font-size:2rem;margin-bottom:12px}
-.cat-name{font-size:1rem;font-weight:600}
-.cat-count{font-size:.8rem;color:var(--gray-400);margin-top:4px}
-.projects-section{padding:40px 0 80px}
-.projects-section h2{font-size:1.5rem;font-weight:700;margin-bottom:32px;padding-bottom:16px;border-bottom:1px solid var(--gray-200)}
-.projects-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:20px}
-.project-card{border-radius:8px;overflow:hidden;background:var(--gray-100);aspect-ratio:3/4;display:flex;align-items:center;justify-content:center;color:var(--gray-400);font-size:.9rem}
-.coming-soon{text-align:center;padding:80px 24px}
-.coming-soon h2{font-size:2rem;font-weight:700;margin-bottom:16px}
-.coming-soon p{font-size:1.1rem;color:var(--gray-600);margin-bottom:40px}
+.content-section{padding:80px 0}
+.content-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.content-text h2{font-size:1.75rem;font-weight:700;margin-bottom:16px}
+.content-text p{font-size:1rem;color:var(--gray-600);margin-bottom:16px;line-height:1.8}
+.content-list{margin:24px 0}
+.content-list li{padding:12px 0;border-bottom:1px solid var(--gray-200);font-size:.95rem;display:flex;align-items:flex-start;gap:12px}
+.content-list li::before{content:'✓';color:var(--accent);font-weight:700;flex-shrink:0}
+.cta-section{background:var(--gray-100);padding:80px 0;text-align:center}
+.cta-section h2{font-size:2rem;font-weight:700;margin-bottom:16px}
+.cta-section p{font-size:1.05rem;color:var(--gray-600);margin-bottom:32px;max-width:500px;margin-left:auto;margin-right:auto}
 .btn{display:inline-block;padding:16px 48px;background:var(--accent);color:var(--white);font-size:1rem;font-weight:600;border-radius:4px;transition:all .3s}
 .btn:hover{background:var(--accent-dark);transform:translateY(-2px)}
 .footer{background:var(--black);color:rgba(255,255,255,.7);padding:48px 0 24px}
@@ -46,7 +42,7 @@ a{text-decoration:none;color:inherit}
 .footer p,.footer a{font-size:.875rem}
 .footer a:hover{color:var(--accent)}
 .footer-bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:24px;text-align:center;font-size:.8rem}
-@media(max-width:768px){.nav-links{display:none;position:absolute;top:var(--nav-h);left:0;right:0;background:var(--white);flex-direction:column;padding:24px;gap:16px;border-bottom:1px solid var(--gray-200)}.nav-links.open{display:flex}.hamburger{display:flex}.cat-grid{grid-template-columns:repeat(2,1fr)}.projects-grid{grid-template-columns:repeat(2,1fr)}.footer-grid{grid-template-columns:1fr 1fr;gap:24px}}
+@media(max-width:768px){.nav-links{display:none;position:absolute;top:var(--nav-h);left:0;right:0;background:var(--white);flex-direction:column;padding:24px;gap:16px;border-bottom:1px solid var(--gray-200)}.nav-links.open{display:flex}.hamburger{display:flex}.content-grid{grid-template-columns:1fr;gap:32px}.footer-grid{grid-template-columns:1fr 1fr;gap:24px}}
 </style>
 </head>
 <body>
@@ -68,34 +64,61 @@ a{text-decoration:none;color:inherit}
 
 <header class="page-hero">
 <div class="container">
-<h1>标志性项目</h1>
-<p>每一个项目都是中拉文化交流的里程碑</p>
+<h1>国际项目管理</h1>
+<p>跨文化、跨国界的大型项目全周期管理</p>
 </div>
 </header>
 
-<section class="categories">
+<section class="content-section">
 <div class="container">
-<h2 style="font-size:1.5rem;font-weight:700;margin-bottom:32px;text-align:center">项目分类</h2>
-<div class="cat-grid">
-<div class="cat-card"><div class="cat-icon">🏛️</div><div class="cat-name">政府间合作</div><div class="cat-count">Coming Soon</div></div>
-<div class="cat-card"><div class="cat-icon">🖼️</div><div class="cat-name">艺术展览</div><div class="cat-count">Coming Soon</div></div>
-<div class="cat-card"><div class="cat-icon">🎭</div><div class="cat-name">表演艺术</div><div class="cat-count">Coming Soon</div></div>
-<div class="cat-card"><div class="cat-icon">📚</div><div class="cat-name">出版与学术</div><div class="cat-count">Coming Soon</div></div>
-<div class="cat-card"><div class="cat-icon">🎓</div><div class="cat-name">教育交流</div><div class="cat-count">Coming Soon</div></div>
-<div class="cat-card"><div class="cat-icon">🎨</div><div class="cat-name">当代艺术</div><div class="cat-count">Coming Soon</div></div>
-<div class="cat-card"><div class="cat-icon">🏺</div><div class="cat-name">文化遗产</div><div class="cat-count">Coming Soon</div></div>
-<div class="cat-card"><div class="cat-icon">🎪</div><div class="cat-name">节庆活动</div><div class="cat-count">Coming Soon</div></div>
-<div class="cat-card"><div class="cat-icon">🏗️</div><div class="cat-name">空间设计</div><div class="cat-count">Coming Soon</div></div>
-<div class="cat-card"><div class="cat-icon">💡</div><div class="cat-name">创新融合</div><div class="cat-count">Coming Soon</div></div>
+<div class="content-grid">
+<div class="content-text">
+<h2>我们做什么</h2>
+<p>国际项目管理是 NEXO Arts 最具技术含量的服务之一。我们拥有经验丰富的项目管理团队，精通跨文化沟通和国际协作，能够确保任何复杂的中拉合作项目按时、按质、按预算完成。</p>
+<p>从文化年的整体统筹到单个展览的执行管理，我们提供全方位的项目管理服务。</p>
+</div>
+<div class="content-text">
+<h2>服务内容</h2>
+<ul class="content-list">
+<li>项目总体规划与进度管理</li>
+<li>多方协调与利益相关方管理</li>
+<li>跨文化团队建设与沟通</li>
+<li>预算管理成本控制</li>
+<li>风险评估与应急预案</li>
+<li>质量监控与效果评估</li>
+<li>多国法律合规与审批</li>
+</ul>
+</div>
 </div>
 </div>
 </section>
 
-<section class="coming-soon">
+<section class="content-section" style="background:var(--gray-100)">
 <div class="container">
-<h2>项目案例正在整理中</h2>
-<p>我们正在完善项目案例库，敬请期待。</p>
-<a href="index.html#contact" class="btn">联系我们了解更多信息</a>
+<div class="content-grid">
+<div class="content-text">
+<h2>管理理念</h2>
+<p>我们相信好的项目管理不仅仅是时间表和预算表的管控，更是对人的理解和协调。每个项目都是一个独特的生态系统，需要灵活应变和精准决策。</p>
+</div>
+<div class="content-text">
+<h2>典型项目类型</h2>
+<ul class="content-list">
+<li>国家文化年/旅游年</li>
+<li>大型巡回展览</li>
+<li>国际艺术节</li>
+<li>文化交流周</li>
+<li>政府间文化合作协议执行</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+
+<section class="cta-section">
+<div class="container">
+<h2>需要一个可靠的项目管理伙伴？</h2>
+<p>让我们帮您把复杂的项目变得简单可控。</p>
+<a href="index.html#contact" class="btn">联系我们</a>
 </div>
 </section>
 
